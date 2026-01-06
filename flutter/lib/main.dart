@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: GoRouter(
         refreshListenable: authService,
+        initialLocation: SplashPage.routeName,
         redirect: (context, state) {
           final isLoggedIn = authService.isAuthenticated;
           final location = state.matchedLocation;
