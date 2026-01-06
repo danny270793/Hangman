@@ -1,0 +1,209 @@
+{
+  "words": [
+    {
+      "word": "piano",
+      "tags": ["instrumento musical", "instrumento de teclado", "instrumento tocado por beethoven", "tiene 88 teclas", "música clásica"]
+    },
+    {
+      "word": "guitarra",
+      "tags": ["instrumento musical", "instrumento de cuerda", "tiene seis cuerdas", "usado en música rock", "acústica o eléctrica"]
+    },
+    {
+      "word": "violin",
+      "tags": ["instrumento musical", "instrumento de cuerda", "se toca con arco", "usado en orquestas", "instrumento de cuerda más pequeño"]
+    },
+    {
+      "word": "bateria",
+      "tags": ["instrumento musical", "instrumento de percusión", "se toca con palillos", "mantiene el ritmo", "parte de bandas de rock"]
+    },
+    {
+      "word": "flauta",
+      "tags": ["instrumento musical", "instrumento de viento", "hecha de metal o madera", "se toca de lado", "tiene tono agudo"]
+    },
+    {
+      "word": "saxofon",
+      "tags": ["instrumento musical", "instrumento de viento", "usado en música jazz", "hecho de latón", "inventado por adolphe sax"]
+    },
+    {
+      "word": "trompeta",
+      "tags": ["instrumento musical", "instrumento de metal", "tiene tres válvulas", "usado en jazz y clásica", "metal de tono agudo"]
+    },
+    {
+      "word": "cello",
+      "tags": ["instrumento musical", "instrumento de cuerda", "se toca sentado", "más grande que el violín", "sonido profundo y rico"]
+    },
+    {
+      "word": "arpa",
+      "tags": ["instrumento musical", "instrumento de cuerda", "forma triangular", "se toca con los dedos", "instrumento antiguo"]
+    },
+    {
+      "word": "acordeon",
+      "tags": ["instrumento musical", "teclado y fuelle", "usado en música folclórica", "instrumento portátil", "concertina"]
+    },
+    {
+      "word": "elefante",
+      "tags": ["mamífero grande", "tiene trompa", "animal terrestre más grande", "vive en áfrica y asia", "nunca olvida"]
+    },
+    {
+      "word": "jirafa",
+      "tags": ["mamífero alto", "cuello largo", "animal más alto", "vive en áfrica", "patrón de manchas"]
+    },
+    {
+      "word": "pinguino",
+      "tags": ["ave que no vuela", "vive en la antártida", "blanco y negro", "excelente nadador", "camina balanceándose"]
+    },
+    {
+      "word": "delfin",
+      "tags": ["mamífero marino", "criatura inteligente", "vive en el océano", "animal juguetón", "usa ecolocalización"]
+    },
+    {
+      "word": "canguro",
+      "tags": ["marsupial", "salta en patas traseras", "vive en australia", "lleva bebé en bolsa", "cola fuerte"]
+    },
+    {
+      "word": "guepardo",
+      "tags": ["gran felino", "animal terrestre más rápido", "vive en áfrica", "pelaje con manchas", "cazador veloz"]
+    },
+    {
+      "word": "pulpo",
+      "tags": ["animal marino", "tiene ocho tentáculos", "invertebrado inteligente", "puede cambiar de color", "vive bajo el agua"]
+    },
+    {
+      "word": "mariposa",
+      "tags": ["insecto", "tiene alas coloridas", "pasa por metamorfosis", "bebe néctar", "poliniza flores"]
+    },
+    {
+      "word": "aguila",
+      "tags": ["ave rapaz", "garras afiladas", "excelente vista", "símbolo de libertad", "construye nidos en lo alto"]
+    },
+    {
+      "word": "tigre",
+      "tags": ["gran felino", "patrón de rayas", "vive en asia", "especie en peligro", "cazador solitario"]
+    },
+    {
+      "word": "cebra",
+      "tags": ["caballo rayado", "rayas blancas y negras", "vive en áfrica", "corre en manadas", "herbívoro"]
+    },
+    {
+      "word": "pavoreal",
+      "tags": ["ave colorida", "macho tiene cola elegante", "despliega plumas para atraer", "nativo de india", "plumaje iridiscente"]
+    },
+    {
+      "word": "koala",
+      "tags": ["marsupial", "vive en australia", "come hojas de eucalipto", "duerme la mayor parte del día", "parece un oso"]
+    },
+    {
+      "word": "panda",
+      "tags": ["oso", "blanco y negro", "come bambú", "vive en china", "especie en peligro"]
+    },
+    {
+      "word": "ballena",
+      "tags": ["mamífero marino más grande", "vive en el océano", "respira por espiráculo", "canta canciones bajo el agua", "migra largas distancias"]
+    },
+    {
+      "word": "manzana",
+      "tags": ["fruta", "crece en árboles", "roja verde o amarilla", "mantiene alejado al doctor", "crujiente y dulce"]
+    },
+    {
+      "word": "platano",
+      "tags": ["fruta tropical", "amarillo cuando madura", "alto en potasio", "crece en racimos", "favorito de monos"]
+    },
+    {
+      "word": "naranja",
+      "tags": ["fruta cítrica", "color naranja", "alta en vitamina c", "gajos jugosos", "cultivada en climas cálidos"]
+    },
+    {
+      "word": "fresa",
+      "tags": ["baya roja", "semillas por fuera", "fruta dulce", "crece cerca del suelo", "popular en postres"]
+    },
+    {
+      "word": "sandia",
+      "tags": ["fruta grande", "verde por fuera roja por dentro", "muy jugosa", "mayormente agua", "fruta de verano"]
+    },
+    {
+      "word": "piña",
+      "tags": ["fruta tropical", "exterior con pinchos", "dulce y ácida", "pulpa amarilla", "corona en la parte superior"]
+    },
+    {
+      "word": "mango",
+      "tags": ["fruta tropical", "pulpa naranja", "dulce y jugosa", "semilla grande dentro", "rey de las frutas"]
+    },
+    {
+      "word": "uva",
+      "tags": ["fruta pequeña", "crece en racimos", "usada para hacer vino", "roja verde o morada", "crece en vides"]
+    },
+    {
+      "word": "cereza",
+      "tags": ["fruta roja pequeña", "tiene hueso", "crece en árboles", "dulce o ácida", "popular en pasteles"]
+    },
+    {
+      "word": "durazno",
+      "tags": ["piel aterciopelada", "color naranja rosado", "fruta de hueso jugosa", "sabor dulce", "crece en climas cálidos"]
+    },
+    {
+      "word": "zanahoria",
+      "tags": ["vegetal de raíz", "color naranja", "buena para la vista", "textura crujiente", "alta en vitamina a"]
+    },
+    {
+      "word": "brocoli",
+      "tags": ["vegetal verde", "parece pequeños árboles", "vegetal crucífero", "rico en nutrientes", "se come cocido o crudo"]
+    },
+    {
+      "word": "papa",
+      "tags": ["vegetal con almidón", "crece bajo tierra", "ingrediente versátil", "hace papas fritas", "alimento básico"]
+    },
+    {
+      "word": "tomate",
+      "tags": ["vegetal rojo", "técnicamente una fruta", "usado en salsas", "crece en vides", "jugoso y ácido"]
+    },
+    {
+      "word": "lechuga",
+      "tags": ["hoja verde", "usado en ensaladas", "textura crujiente", "bajo en calorías", "crece en cabezas"]
+    },
+    {
+      "word": "pepino",
+      "tags": ["vegetal verde", "mayormente agua", "sabor refrescante", "crece en vides", "usado en ensaladas"]
+    },
+    {
+      "word": "pimiento",
+      "tags": ["vegetal colorido", "rojo amarillo o verde", "dulce o picante", "forma de campana o largo", "rico en vitamina c"]
+    },
+    {
+      "word": "cebolla",
+      "tags": ["vegetal de bulbo", "te hace llorar al cortar", "capas dentro", "usado en cocina", "sabor fuerte"]
+    },
+    {
+      "word": "espinaca",
+      "tags": ["hoja verde", "alta en hierro", "favorita de popeye", "se come cocida o cruda", "vegetal nutritivo"]
+    },
+    {
+      "word": "maiz",
+      "tags": ["vegetal amarillo", "crece en mazorcas", "granos en filas", "existe variedad dulce", "usado para muchos productos"]
+    },
+    {
+      "word": "doctor",
+      "tags": ["profesional médico", "trata pacientes", "trabaja en hospital", "ayuda a enfermos", "usa bata blanca"]
+    },
+    {
+      "word": "maestro",
+      "tags": ["educador", "trabaja en escuela", "enseña a estudiantes", "comparte conocimiento", "califica tareas"]
+    },
+    {
+      "word": "ingeniero",
+      "tags": ["diseña y construye", "resuelve problemas técnicos", "usa matemáticas y ciencia", "crea soluciones", "construye puentes o software"]
+    },
+    {
+      "word": "chef",
+      "tags": ["cocinero profesional", "trabaja en cocina", "crea platillos", "experto culinario", "usa sombrero blanco alto"]
+    },
+    {
+      "word": "piloto",
+      "tags": ["vuela aviones", "trabaja en aviación", "viaja por el mundo", "se sienta en cabina", "necesita licencia"]
+    },
+    {
+      "word": "artista",
+      "tags": ["crea arte", "pinta o esculpe", "profesional creativo", "trabaja en estudio", "se expresa visualmente"]
+    }
+  ]
+}
+
