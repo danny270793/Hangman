@@ -2,6 +2,12 @@
 
 ## Commands
 
+### Format code
+
+```bash
+dart format .
+```
+
 ### Generate new platform icons
 
 ```bash
