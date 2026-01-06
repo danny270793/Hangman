@@ -166,4 +166,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hard => 'Hard';
+
+  @override
+  String get time => 'Time';
 }

@@ -412,6 +412,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hard'**
   String get hard;
+
+  /// No description provided for @time.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get time;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
