@@ -172,4 +172,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get score => 'Puntuación';
+
+  @override
+  String get nextWord => 'Siguiente Palabra';
+
+  @override
+  String get points => 'puntos';
 }
