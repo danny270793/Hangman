@@ -4,6 +4,7 @@ import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
 import 'package:hangman/services/difficulty_service.dart';
+import 'package:hangman/services/timed_mode_service.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -17,6 +18,7 @@ class SettingsPage extends StatelessWidget {
     final localeService = context.watch<LocaleService>();
     final themeService = context.watch<ThemeService>();
     final difficultyService = context.watch<DifficultyService>();
+    final timedModeService = context.watch<TimedModeService>();
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settings)),
@@ -99,9 +101,9 @@ class SettingsPage extends StatelessWidget {
             title: l10n.timedMode,
             subtitle: l10n.playWithTimer,
             trailing: Switch(
-              value: false,
+              value: timedModeService.isEnabled,
               onChanged: (value) {
-                // TODO: Implement timed mode toggle
+                timedModeService.setTimedMode(value);
               },
             ),
           ),
