@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hangman/pages/login.dart';
 
 class SplashPage extends StatefulWidget {
-  static const String routeName = '/';
+  static const String routeName = '/splash';
 
   const SplashPage({super.key});
 
@@ -20,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
       if(!context.mounted) {
         return;
       }
-      
+
       context.replace(LoginPage.routeName);
     });
   }
