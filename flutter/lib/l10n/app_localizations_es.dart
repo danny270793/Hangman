@@ -169,4 +169,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get time => 'Tiempo';
+
+  @override
+  String get score => 'Puntuación';
 }
