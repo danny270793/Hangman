@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage>
                         width: 100,
                         height: 100,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surface,
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
@@ -103,10 +103,10 @@ class _LoginPageState extends State<LoginPage>
                             ),
                           ],
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.sports_esports,
                           size: 50,
-                          color: Color(0xFF6366F1),
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -114,11 +114,11 @@ class _LoginPageState extends State<LoginPage>
                       // Welcome Text
                       Text(
                         l10n.welcomeBack,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          shadows: [
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          shadows: const [
                             Shadow(
                               color: Colors.black26,
                               offset: Offset(1, 1),
@@ -130,9 +130,9 @@ class _LoginPageState extends State<LoginPage>
                       const SizedBox(height: 8),
                       Text(
                         l10n.signInToContinue,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white70,
+                          color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
                         ),
                       ),
                       const SizedBox(height: 48),
@@ -163,7 +163,7 @@ class _LoginPageState extends State<LoginPage>
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     filled: true,
-                                    fillColor: Colors.grey.shade50,
+                                    fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -201,7 +201,7 @@ class _LoginPageState extends State<LoginPage>
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     filled: true,
-                                    fillColor: Colors.grey.shade50,
+                                    fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -222,7 +222,7 @@ class _LoginPageState extends State<LoginPage>
                                     backgroundColor: Theme.of(
                                       context,
                                     ).colorScheme.primary,
-                                    foregroundColor: Colors.white,
+                                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 16,
                                     ),
@@ -256,8 +256,8 @@ class _LoginPageState extends State<LoginPage>
                       // Footer Text
                       Text(
                         l10n.readyToTest,
-                        style: const TextStyle(
-                          color: Colors.white70,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
                           fontSize: 14,
                         ),
                       ),
