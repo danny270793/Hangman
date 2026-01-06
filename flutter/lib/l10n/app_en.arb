@@ -52,5 +52,6 @@
   "themeDark": "Dark",
   "selectDifficulty": "Select Difficulty",
   "easy": "Easy",
-  "hard": "Hard"
+  "hard": "Hard",
+  "time": "Time"
 }
