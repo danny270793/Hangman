@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hangman/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = '/';
@@ -10,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +20,12 @@ class _HomePageState extends State<HomePage> {
         title: Text('Home Page'),
       ),
       body: Center(
-        child: Text('Home Page'),
+        child: ElevatedButton(
+          onPressed: () {
+            context.watch<AuthService>().logout();
+          },
+          child: Text('Logout'),
+        ),
       ),
     );
   }
