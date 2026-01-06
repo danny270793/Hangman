@@ -117,12 +117,12 @@ class _SplashPageState extends State<SplashPage>
                       // App Name
                       Text(
                         l10n.splashTitle,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: Colors.white,
                           letterSpacing: 8,
-                          shadows: const [
+                          shadows: [
                             Shadow(
                               color: Colors.black26,
                               offset: Offset(2, 2),
@@ -135,21 +135,21 @@ class _SplashPageState extends State<SplashPage>
                       // Subtitle
                       Text(
                         l10n.splashSubtitle,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
-                          color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
+                          color: Colors.white70,
                           letterSpacing: 2,
                         ),
                       ),
                       const SizedBox(height: 60),
                       // Loading Indicator
-                      SizedBox(
+                      const SizedBox(
                         width: 40,
                         height: 40,
                         child: CircularProgressIndicator(
                           strokeWidth: 3,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
+                            Colors.white70,
                           ),
                         ),
                       ),
