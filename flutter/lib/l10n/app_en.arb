@@ -54,5 +54,7 @@
   "easy": "Easy",
   "hard": "Hard",
   "time": "Time",
-  "score": "Score"
+  "score": "Score",
+  "nextWord": "Next Word",
+  "points": "points"
 }
