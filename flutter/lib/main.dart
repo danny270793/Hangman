@@ -8,6 +8,7 @@ import 'package:hangman/pages/settings.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
+import 'package:hangman/services/difficulty_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -20,12 +21,18 @@ void main() async {
   final themeService = ThemeService();
   await themeService.loadTheme();
 
+  final difficultyService = DifficultyService();
+  await difficultyService.loadDifficulty();
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthService>(create: (_) => AuthService()),
         ChangeNotifierProvider<LocaleService>.value(value: localeService),
         ChangeNotifierProvider<ThemeService>.value(value: themeService),
+        ChangeNotifierProvider<DifficultyService>.value(
+          value: difficultyService,
+        ),
       ],
       child: const MyApp(),
     ),
