@@ -34,56 +34,53 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authService = context.read<AuthService>();
+    final localeService = context.watch<LocaleService>();
 
-    return Consumer<LocaleService>(
-      builder: (context, localeService, child) {
-        return MaterialApp.router(
-          routerConfig: GoRouter(
-            refreshListenable: authService,
-            initialLocation: SplashPage.routeName,
-            redirect: (context, state) {
-              final isLoggedIn = authService.isAuthenticated;
-              final location = state.matchedLocation;
+    return MaterialApp.router(
+      routerConfig: GoRouter(
+        refreshListenable: authService,
+        initialLocation: SplashPage.routeName,
+        redirect: (context, state) {
+          final isLoggedIn = authService.isAuthenticated;
+          final location = state.matchedLocation;
 
-              final isPublicPage = publicPages.contains(location);
-              final isProtectedPage = protectedPages.contains(location);
+          final isPublicPage = publicPages.contains(location);
+          final isProtectedPage = protectedPages.contains(location);
 
-              if (!isLoggedIn && isProtectedPage) {
-                return LoginPage.routeName;
-              }
+          if (!isLoggedIn && isProtectedPage) {
+            return LoginPage.routeName;
+          }
 
-              if (isLoggedIn && isPublicPage) {
-                return HomePage.routeName;
-              }
+          if (isLoggedIn && isPublicPage) {
+            return HomePage.routeName;
+          }
 
-              return null;
-            },
-            routes: [
-              GoRoute(
-                path: SplashPage.routeName,
-                builder: (context, state) => const SplashPage(),
-              ),
-              GoRoute(
-                path: LoginPage.routeName,
-                builder: (context, state) => const LoginPage(),
-              ),
-              GoRoute(
-                path: HomePage.routeName,
-                builder: (context, state) => const HomePage(),
-              ),
-              GoRoute(
-                path: SettingsPage.routeName,
-                builder: (context, state) => const SettingsPage(),
-              ),
-            ],
+          return null;
+        },
+        routes: [
+          GoRoute(
+            path: SplashPage.routeName,
+            builder: (context, state) => const SplashPage(),
           ),
-          title: 'Flutter Demo',
-          locale: localeService.locale,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-        );
-      },
+          GoRoute(
+            path: LoginPage.routeName,
+            builder: (context, state) => const LoginPage(),
+          ),
+          GoRoute(
+            path: HomePage.routeName,
+            builder: (context, state) => const HomePage(),
+          ),
+          GoRoute(
+            path: SettingsPage.routeName,
+            builder: (context, state) => const SettingsPage(),
+          ),
+        ],
+      ),
+      title: 'Flutter Demo',
+      locale: localeService.locale,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
     );
   }
 }
