@@ -17,9 +17,7 @@ class SettingsPage extends StatelessWidget {
     final themeService = context.watch<ThemeService>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.settings),
-      ),
+      appBar: AppBar(title: Text(l10n.settings)),
       body: ListView(
         children: [
           // Profile Section
@@ -50,8 +48,8 @@ class SettingsPage extends StatelessWidget {
                 Text(
                   'Player',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
@@ -90,9 +88,9 @@ class SettingsPage extends StatelessWidget {
             title: l10n.difficulty,
             subtitle: l10n.medium,
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(l10n.comingSoon)),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(l10n.comingSoon)));
             },
           ),
           _buildSettingsTile(
@@ -124,9 +122,9 @@ class SettingsPage extends StatelessWidget {
             icon: Icons.privacy_tip_outlined,
             title: l10n.privacyPolicy,
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(l10n.comingSoon)),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(l10n.comingSoon)));
             },
           ),
           _buildSettingsTile(
@@ -134,9 +132,9 @@ class SettingsPage extends StatelessWidget {
             icon: Icons.description_outlined,
             title: l10n.termsOfService,
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(l10n.comingSoon)),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(l10n.comingSoon)));
             },
           ),
 
@@ -174,9 +172,9 @@ class SettingsPage extends StatelessWidget {
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),
+          color: Theme.of(context).colorScheme.primary,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
@@ -196,14 +194,12 @@ class SettingsPage extends StatelessWidget {
           color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Icon(
-          icon,
-          color: Theme.of(context).colorScheme.primary,
-        ),
+        child: Icon(icon, color: Theme.of(context).colorScheme.primary),
       ),
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle) : null,
-      trailing: trailing ?? (onTap != null ? const Icon(Icons.chevron_right) : null),
+      trailing:
+          trailing ?? (onTap != null ? const Icon(Icons.chevron_right) : null),
       onTap: trailing == null ? onTap : null,
     );
   }
@@ -250,7 +246,11 @@ class SettingsPage extends StatelessWidget {
     }
   }
 
-  void _showLanguagePicker(BuildContext context, AppLocalizations l10n, LocaleService localeService) {
+  void _showLanguagePicker(
+    BuildContext context,
+    AppLocalizations l10n,
+    LocaleService localeService,
+  ) {
     final supportedLocales = AppLocalizations.supportedLocales;
 
     showDialog(
@@ -261,11 +261,14 @@ class SettingsPage extends StatelessWidget {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: supportedLocales.map((locale) {
-              final isSelected = locale.languageCode == localeService.locale.languageCode;
+              final isSelected =
+                  locale.languageCode == localeService.locale.languageCode;
               return ListTile(
                 leading: Icon(
                   isSelected ? Icons.check_circle : Icons.circle_outlined,
-                  color: isSelected ? Theme.of(context).colorScheme.primary : null,
+                  color: isSelected
+                      ? Theme.of(context).colorScheme.primary
+                      : null,
                 ),
                 title: Text(_getLanguageName(locale.languageCode, l10n)),
                 selected: isSelected,
@@ -300,7 +303,11 @@ class SettingsPage extends StatelessWidget {
     }
   }
 
-  void _showThemePicker(BuildContext context, AppLocalizations l10n, ThemeService themeService) {
+  void _showThemePicker(
+    BuildContext context,
+    AppLocalizations l10n,
+    ThemeService themeService,
+  ) {
     final themeOptions = AppThemeMode.values;
 
     showDialog(
@@ -315,7 +322,9 @@ class SettingsPage extends StatelessWidget {
               return ListTile(
                 leading: Icon(
                   isSelected ? Icons.check_circle : Icons.circle_outlined,
-                  color: isSelected ? Theme.of(context).colorScheme.primary : null,
+                  color: isSelected
+                      ? Theme.of(context).colorScheme.primary
+                      : null,
                 ),
                 title: Text(_getThemeName(mode, l10n)),
                 selected: isSelected,
@@ -339,4 +348,3 @@ class SettingsPage extends StatelessWidget {
     );
   }
 }
-
