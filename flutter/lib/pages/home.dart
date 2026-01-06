@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   
   // Score
   int _totalScore = 0;
+  int _lastRoundPoints = 0;
 
   @override
   void didChangeDependencies() {
@@ -148,7 +149,8 @@ class _HomePageState extends State<HomePage> {
       _stopTimer();
       // Add points for winning
       setState(() {
-        _totalScore += _calculatePoints();
+        _lastRoundPoints = _calculatePoints();
+        _totalScore += _lastRoundPoints;
       });
     } else if (_isGameLost) {
       _stopTimer();
@@ -283,11 +285,22 @@ class _HomePageState extends State<HomePage> {
                                 color: _isGameWon ? Colors.green : Colors.red,
                               ),
                             ),
+                            if (_isGameWon) ...[
+                              const SizedBox(height: 8),
+                              Text(
+                                '+$_lastRoundPoints ${l10n.points}',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green.shade700,
+                                ),
+                              ),
+                            ],
                             const SizedBox(height: 8),
                             ElevatedButton.icon(
                               onPressed: _resetGame,
-                              icon: const Icon(Icons.refresh),
-                              label: Text(l10n.playAgain),
+                              icon: Icon(_isGameWon ? Icons.arrow_forward : Icons.refresh),
+                              label: Text(_isGameWon ? l10n.nextWord : l10n.playAgain),
                               style: ElevatedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 32,
