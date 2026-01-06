@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/pages/login.dart';
 
 class SplashPage extends StatefulWidget {
@@ -11,7 +12,8 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin {
+class _SplashPageState extends State<SplashPage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
@@ -42,7 +44,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     _animationController.forward();
 
     Future.delayed(const Duration(seconds: 2), () {
-      if(!mounted) {
+      if (!mounted) {
         return;
       }
 
@@ -58,6 +60,8 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -105,9 +109,9 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                       ),
                       const SizedBox(height: 40),
                       // App Name
-                      const Text(
-                        'HANGMAN',
-                        style: TextStyle(
+                      Text(
+                        l10n.splashTitle,
+                        style: const TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -123,9 +127,9 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                       ),
                       const SizedBox(height: 16),
                       // Subtitle
-                      const Text(
-                        'Guess the Word',
-                        style: TextStyle(
+                      Text(
+                        l10n.splashSubtitle,
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.white70,
                           letterSpacing: 2,

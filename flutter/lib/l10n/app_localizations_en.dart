@@ -10,4 +10,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appTitle => 'Hangman';
+
+  @override
+  String get splashTitle => 'HANGMAN';
+
+  @override
+  String get splashSubtitle => 'Guess the Word';
+
+  @override
+  String get welcomeBack => 'Welcome Back!';
+
+  @override
+  String get signInToContinue => 'Sign in to continue playing';
+
+  @override
+  String get username => 'Username';
+
+  @override
+  String get enterUsername => 'Enter your username';
+
+  @override
+  String get pleaseEnterUsername => 'Please enter your username';
+
+  @override
+  String get usernameMinLength => 'Username must be at least 3 characters';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get enterPassword => 'Enter your password';
+
+  @override
+  String get pleaseEnterPassword => 'Please enter your password';
+
+  @override
+  String get passwordMinLength => 'Password must be at least 6 characters';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get readyToTest => 'Ready to test your vocabulary?';
+
+  @override
+  String get hangmanGame => 'Hangman Game';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get guessesLeft => 'Guesses Left';
+
+  @override
+  String get lettersUsed => 'Letters Used';
+
+  @override
+  String get youWon => '🎉 You Won!';
+
+  @override
+  String get gameOver => '😢 Game Over!';
+
+  @override
+  String get playAgain => 'Play Again';
 }

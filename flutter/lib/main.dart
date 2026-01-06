@@ -18,13 +18,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final protectedPages = const [
-    HomePage.routeName,
-  ];
-  final publicPages = const [
-    SplashPage.routeName,
-    LoginPage.routeName,
-  ];
+  final protectedPages = const [HomePage.routeName];
+  final publicPages = const [SplashPage.routeName, LoginPage.routeName];
 
   const MyApp({super.key});
 
@@ -54,10 +49,20 @@ class MyApp extends StatelessWidget {
           return null;
         },
         routes: [
-          GoRoute(path: SplashPage.routeName, builder: (context, state) => const SplashPage()),
-          GoRoute(path: LoginPage.routeName, builder: (context, state) => const LoginPage()),
-          GoRoute(path: HomePage.routeName, builder: (context, state) => const HomePage()),
-        ]),
+          GoRoute(
+            path: SplashPage.routeName,
+            builder: (context, state) => const SplashPage(),
+          ),
+          GoRoute(
+            path: LoginPage.routeName,
+            builder: (context, state) => const LoginPage(),
+          ),
+          GoRoute(
+            path: HomePage.routeName,
+            builder: (context, state) => const HomePage(),
+          ),
+        ],
+      ),
       title: 'Flutter Demo',
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -66,9 +71,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
     );
   }
 }

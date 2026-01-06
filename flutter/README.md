@@ -2,6 +2,18 @@
 
 ## Commands
 
+### Format code
+
+```bash
+dart format .
+```
+
+### Check for "code smells"
+
+```bash
+flutter analyze
+```
+
 ### Generate new platform icons
 
 ```bash
