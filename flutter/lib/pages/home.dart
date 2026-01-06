@@ -101,87 +101,91 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         child: _isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? const Center(child: CircularProgressIndicator())
             : SafeArea(
-          child: Column(
-            children: [
-              // Score Section
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
                   children: [
-                    _buildScoreCard(
-                      l10n.guessesLeft,
-                      '${_maxWrongGuesses - _wrongGuesses}',
-                      Icons.favorite,
-                      Colors.red,
+                    // Score Section
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _buildScoreCard(
+                            l10n.guessesLeft,
+                            '${_maxWrongGuesses - _wrongGuesses}',
+                            Icons.favorite,
+                            Colors.red,
+                          ),
+                          _buildScoreCard(
+                            l10n.lettersUsed,
+                            '${_guessedLetters.length}',
+                            Icons.text_fields,
+                            Colors.blue,
+                          ),
+                        ],
+                      ),
                     ),
-                    _buildScoreCard(
-                      l10n.lettersUsed,
-                      '${_guessedLetters.length}',
-                      Icons.text_fields,
-                      Colors.blue,
+
+                    // Hangman Drawing
+                    Expanded(
+                      flex: 3,
+                      child: Center(child: _buildHangmanDrawing()),
+                    ),
+
+                    // Word Display
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      child: _buildWordDisplay(),
+                    ),
+
+                    // Hint Display
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 8.0,
+                      ),
+                      child: _buildHintDisplay(),
+                    ),
+
+                    // Game Status Message
+                    if (_isGameWon || _isGameLost)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              _isGameWon ? l10n.youWon : l10n.gameOver,
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
+                                color: _isGameWon ? Colors.green : Colors.red,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            ElevatedButton.icon(
+                              onPressed: _resetGame,
+                              icon: const Icon(Icons.refresh),
+                              label: Text(l10n.playAgain),
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 32,
+                                  vertical: 12,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                    // Keyboard
+                    Expanded(
+                      flex: 2,
+                      child: SingleChildScrollView(child: _buildKeyboard()),
                     ),
                   ],
                 ),
               ),
-
-              // Hangman Drawing
-              Expanded(flex: 3, child: Center(child: _buildHangmanDrawing())),
-
-              // Word Display
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: _buildWordDisplay(),
-              ),
-
-              // Hint Display
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: _buildHintDisplay(),
-              ),
-
-              // Game Status Message
-              if (_isGameWon || _isGameLost)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        _isGameWon ? l10n.youWon : l10n.gameOver,
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: _isGameWon ? Colors.green : Colors.red,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      ElevatedButton.icon(
-                        onPressed: _resetGame,
-                        icon: const Icon(Icons.refresh),
-                        label: Text(l10n.playAgain),
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 32,
-                            vertical: 12,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-              // Keyboard
-              Expanded(
-                flex: 2,
-                child: SingleChildScrollView(child: _buildKeyboard()),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
@@ -290,10 +294,10 @@ class _HomePageState extends State<HomePage> {
   Widget _buildHintDisplay() {
     final l10n = AppLocalizations.of(context)!;
     // Get a random tag from the current word as a hint
-    final hint = _currentWord.tags.isNotEmpty 
-        ? _currentWord.tags.first 
+    final hint = _currentWord.tags.isNotEmpty
+        ? _currentWord.tags.first
         : 'No hint available';
-    
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -391,8 +395,8 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.bold,
                             color: isGuessed
                                 ? (isCorrect
-                                    ? Theme.of(context).colorScheme.onPrimary
-                                    : Theme.of(context).colorScheme.onError)
+                                      ? Theme.of(context).colorScheme.onPrimary
+                                      : Theme.of(context).colorScheme.onError)
                                 : Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
