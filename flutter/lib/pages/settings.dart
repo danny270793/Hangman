@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
+import 'package:hangman/services/theme_service.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -13,6 +14,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final localeService = context.watch<LocaleService>();
+    final themeService = context.watch<ThemeService>();
 
     return Scaffold(
       appBar: AppBar(
@@ -66,6 +68,15 @@ class SettingsPage extends StatelessWidget {
             subtitle: _getLanguageName(localeService.locale.languageCode, l10n),
             onTap: () {
               _showLanguagePicker(context, l10n, localeService);
+            },
+          ),
+          _buildSettingsTile(
+            context,
+            icon: Icons.brightness_6,
+            title: l10n.theme,
+            subtitle: _getThemeName(themeService.themeMode, l10n),
+            onTap: () {
+              _showThemePicker(context, l10n, themeService);
             },
           ),
 
@@ -260,6 +271,56 @@ class SettingsPage extends StatelessWidget {
                 selected: isSelected,
                 onTap: () {
                   localeService.setLocale(locale);
+                  Navigator.of(dialogContext).pop();
+                },
+              );
+            }).toList(),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  String _getThemeName(AppThemeMode themeMode, AppLocalizations l10n) {
+    switch (themeMode) {
+      case AppThemeMode.system:
+        return l10n.themeSystem;
+      case AppThemeMode.light:
+        return l10n.themeLight;
+      case AppThemeMode.dark:
+        return l10n.themeDark;
+    }
+  }
+
+  void _showThemePicker(BuildContext context, AppLocalizations l10n, ThemeService themeService) {
+    final themeOptions = AppThemeMode.values;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.selectTheme),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: themeOptions.map((mode) {
+              final isSelected = mode == themeService.themeMode;
+              return ListTile(
+                leading: Icon(
+                  isSelected ? Icons.check_circle : Icons.circle_outlined,
+                  color: isSelected ? Theme.of(context).colorScheme.primary : null,
+                ),
+                title: Text(_getThemeName(mode, l10n)),
+                selected: isSelected,
+                onTap: () {
+                  themeService.setTheme(mode);
                   Navigator.of(dialogContext).pop();
                 },
               );
