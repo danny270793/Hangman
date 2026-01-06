@@ -31,6 +31,9 @@ class _HomePageState extends State<HomePage> {
   Timer? _timer;
   int _remainingSeconds = 60;
   bool _isTimedOut = false;
+  
+  // Score
+  int _totalScore = 0;
 
   @override
   void didChangeDependencies() {
@@ -106,6 +109,28 @@ class _HomePageState extends State<HomePage> {
     return _wrongGuesses >= _maxWrongGuesses || _isTimedOut;
   }
 
+  /// Calculate points based on time remaining and wrong guesses
+  /// More time left = more points (up to 60 points from time)
+  /// Fewer mistakes = more points (up to 60 points from accuracy)
+  int _calculatePoints() {
+    final timedModeService = context.read<TimedModeService>();
+    
+    // Time bonus: 1 point per second remaining (0-60 points)
+    int timeBonus = 0;
+    if (timedModeService.isEnabled) {
+      timeBonus = _remainingSeconds;
+    }
+    
+    // Accuracy bonus: max 60 points, reduced by 10 per wrong guess
+    int accuracyBonus = 60 - (_wrongGuesses * 10);
+    if (accuracyBonus < 0) accuracyBonus = 0;
+    
+    // Base points for completing the word
+    int basePoints = 20;
+    
+    return basePoints + timeBonus + accuracyBonus;
+  }
+
   void _guessLetter(String letter) {
     if (_isGameWon || _isGameLost || _guessedLetters.contains(letter)) {
       return;
@@ -118,8 +143,14 @@ class _HomePageState extends State<HomePage> {
       }
     });
     
-    // Stop timer if game is won or lost
-    if (_isGameWon || _isGameLost) {
+    // Check if game ended after this guess
+    if (_isGameWon) {
+      _stopTimer();
+      // Add points for winning
+      setState(() {
+        _totalScore += _calculatePoints();
+      });
+    } else if (_isGameLost) {
       _stopTimer();
     }
   }
@@ -150,7 +181,16 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.hangmanGame),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(l10n.hangmanGame),
+            Text(
+              '${l10n.score}: $_totalScore',
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
