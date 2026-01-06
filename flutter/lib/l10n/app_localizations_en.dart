@@ -178,4 +178,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get points => 'points';
+
+  @override
+  String get letsPlay => 'Let\'s Play!';
+
+  @override
+  String get gameConfiguration => 'Game Configuration';
 }
