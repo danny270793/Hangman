@@ -119,11 +119,11 @@ class _LoginPageState extends State<LoginPage>
                       // Welcome Text
                       Text(
                         l10n.welcomeBack,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                          shadows: const [
+                          color: Colors.white,
+                          shadows: [
                             Shadow(
                               color: Colors.black26,
                               offset: Offset(1, 1),
@@ -135,9 +135,9 @@ class _LoginPageState extends State<LoginPage>
                       const SizedBox(height: 8),
                       Text(
                         l10n.signInToContinue,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
-                          color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
+                          color: Colors.white70,
                         ),
                       ),
                       const SizedBox(height: 48),
@@ -261,8 +261,8 @@ class _LoginPageState extends State<LoginPage>
                       // Footer Text
                       Text(
                         l10n.readyToTest,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
+                        style: const TextStyle(
+                          color: Colors.white70,
                           fontSize: 14,
                         ),
                       ),
