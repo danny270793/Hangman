@@ -12,6 +12,7 @@ class ThemeService extends ChangeNotifier {
   AppThemeMode _themeMode = AppThemeMode.system;
 
   AppThemeMode get themeMode => _themeMode;
+  bool get isDarkMode => _themeMode == AppThemeMode.dark;
 
   ThemeMode get materialThemeMode {
     switch (_themeMode) {
