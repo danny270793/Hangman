@@ -157,4 +157,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get themeDark => 'Dark';
+
+  @override
+  String get selectDifficulty => 'Select Difficulty';
+
+  @override
+  String get easy => 'Easy';
+
+  @override
+  String get hard => 'Hard';
 }
