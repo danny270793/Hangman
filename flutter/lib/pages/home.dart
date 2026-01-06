@@ -260,6 +260,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildHintDisplay() {
+    final l10n = AppLocalizations.of(context)!;
     // Get a random tag from the current word as a hint
     final hint = _currentWord.tags.isNotEmpty 
         ? _currentWord.tags.first 
@@ -286,7 +287,7 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(width: 12),
           Expanded(
             child: Text(
-              'Hint: $hint',
+              '${l10n.hint}: $hint',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 16,
