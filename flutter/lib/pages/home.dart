@@ -21,11 +21,15 @@ class _HomePageState extends State<HomePage> {
   int _wrongGuesses = 0;
   final int _maxWrongGuesses = 6;
   bool _isLoading = true;
+  bool _hasLoadedWords = false;
 
   @override
-  void initState() {
-    super.initState();
-    _loadAndStartGame();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_hasLoadedWords) {
+      _loadAndStartGame();
+      _hasLoadedWords = true;
+    }
   }
 
   Future<void> _loadAndStartGame() async {
