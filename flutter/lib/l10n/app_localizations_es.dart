@@ -133,4 +133,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get cancel => 'Cancelar';
+
+  @override
+  String get selectLanguage => 'Seleccionar Idioma';
+
+  @override
+  String get languageEnglish => 'Inglés';
+
+  @override
+  String get languageSpanish => 'Español';
 }
