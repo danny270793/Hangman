@@ -91,7 +91,7 @@ class _SplashPageState extends State<SplashPage>
                         width: 120,
                         height: 120,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surface,
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
@@ -101,22 +101,22 @@ class _SplashPageState extends State<SplashPage>
                             ),
                           ],
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.sports_esports,
                           size: 60,
-                          color: Color(0xFF6366F1),
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       const SizedBox(height: 40),
                       // App Name
                       Text(
                         l10n.splashTitle,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.onPrimary,
                           letterSpacing: 8,
-                          shadows: [
+                          shadows: const [
                             Shadow(
                               color: Colors.black26,
                               offset: Offset(2, 2),
@@ -129,9 +129,9 @@ class _SplashPageState extends State<SplashPage>
                       // Subtitle
                       Text(
                         l10n.splashSubtitle,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
-                          color: Colors.white70,
+                          color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
                           letterSpacing: 2,
                         ),
                       ),
@@ -143,7 +143,7 @@ class _SplashPageState extends State<SplashPage>
                         child: CircularProgressIndicator(
                           strokeWidth: 3,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.white.withOpacity(0.8),
+                            Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
                           ),
                         ),
                       ),
