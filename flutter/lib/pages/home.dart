@@ -97,12 +97,7 @@ class _HomePageState extends State<HomePage> {
               ),
 
               // Hangman Drawing
-              Expanded(
-                flex: 3,
-                child: Center(
-                  child: _buildHangmanDrawing(),
-                ),
-              ),
+              Expanded(flex: 3, child: Center(child: _buildHangmanDrawing())),
 
               // Word Display
               Padding(
@@ -143,9 +138,7 @@ class _HomePageState extends State<HomePage> {
               // Keyboard
               Expanded(
                 flex: 2,
-                child: SingleChildScrollView(
-                  child: _buildKeyboard(),
-                ),
+                child: SingleChildScrollView(child: _buildKeyboard()),
               ),
             ],
           ),
@@ -154,7 +147,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildScoreCard(String label, String value, IconData icon, Color color) {
+  Widget _buildScoreCard(
+    String label,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -166,17 +164,11 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 8),
             Text(
               value,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
               label,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey.shade600,
-              ),
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
             ),
           ],
         ),
@@ -199,9 +191,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      child: CustomPaint(
-        painter: HangmanPainter(_wrongGuesses),
-      ),
+      child: CustomPaint(painter: HangmanPainter(_wrongGuesses)),
     );
   }
 
@@ -212,13 +202,15 @@ class _HomePageState extends State<HomePage> {
       children: _word.split('').map((letter) {
         final isGuessed = _guessedLetters.contains(letter);
         final showLetter = isGuessed || _isGameLost;
-        
+
         return Container(
           width: 40,
           height: 50,
           decoration: BoxDecoration(
             color: showLetter
-                ? (_isGameLost && !isGuessed ? Colors.red.shade100 : Colors.green.shade100)
+                ? (_isGameLost && !isGuessed
+                      ? Colors.red.shade100
+                      : Colors.green.shade100)
                 : Colors.grey.shade200,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
@@ -235,7 +227,9 @@ class _HomePageState extends State<HomePage> {
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: showLetter
-                  ? (_isGameLost && !isGuessed ? Colors.red.shade700 : Colors.green.shade700)
+                  ? (_isGameLost && !isGuessed
+                        ? Colors.red.shade700
+                        : Colors.green.shade700)
                   : Colors.transparent,
             ),
           ),
@@ -279,11 +273,13 @@ class _HomePageState extends State<HomePage> {
                           color: isCorrect
                               ? Colors.green
                               : isWrong
-                                  ? Colors.red
-                                  : Colors.white,
+                              ? Colors.red
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: isGuessed ? Colors.transparent : Colors.grey.shade400,
+                            color: isGuessed
+                                ? Colors.transparent
+                                : Colors.grey.shade400,
                             width: 1,
                           ),
                           boxShadow: isGuessed
