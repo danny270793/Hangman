@@ -11,7 +11,8 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin {
+class _SplashPageState extends State<SplashPage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
@@ -42,7 +43,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     _animationController.forward();
 
     Future.delayed(const Duration(seconds: 2), () {
-      if(!mounted) {
+      if (!mounted) {
         return;
       }
 
