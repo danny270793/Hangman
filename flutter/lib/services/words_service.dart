@@ -53,6 +53,23 @@ class WordsService {
     return random.first;
   }
 
+  /// Get a random word filtered by difficulty category
+  Word getRandomWordByDifficulty(String difficultyCategory) {
+    final allWords = getAllWords();
+    final filteredWords = allWords
+        .where((word) => getWordDifficultyCategory(word.word) == difficultyCategory)
+        .toList();
+    
+    // If no words match the difficulty, fall back to all words
+    if (filteredWords.isEmpty) {
+      final random = allWords.toList()..shuffle();
+      return random.first;
+    }
+    
+    filteredWords.shuffle();
+    return filteredWords.first;
+  }
+
   List<Word> searchByTag(String tag) {
     final words = getAllWords();
     return words
