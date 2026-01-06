@@ -18,16 +18,19 @@ class Word {
 class WordsService {
   List<Word>? _words;
   bool _isLoaded = false;
+  String _currentLocale = 'en';
 
-  Future<void> loadWords() async {
-    if (_isLoaded) return;
+  Future<void> loadWords({String locale = 'en'}) async {
+    // Reload if locale changed
+    if (_isLoaded && _currentLocale == locale) return;
 
     try {
-      final String jsonString = await rootBundle.loadString('assets/words_en.json');
+      final String jsonString = await rootBundle.loadString('assets/words_$locale.json');
       final Map<String, dynamic> jsonData = json.decode(jsonString);
       final List<dynamic> wordsJson = jsonData['words'] as List<dynamic>;
 
       _words = wordsJson.map((wordJson) => Word.fromJson(wordJson as Map<String, dynamic>)).toList();
+      _currentLocale = locale;
       _isLoaded = true;
     } catch (e) {
       // If loading fails, use fallback words
