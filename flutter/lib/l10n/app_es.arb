@@ -54,6 +54,8 @@
   "easy": "Fácil",
   "hard": "Difícil",
   "time": "Tiempo",
-  "score": "Puntuación"
+  "score": "Puntuación",
+  "nextWord": "Siguiente Palabra",
+  "points": "puntos"
 }
 
