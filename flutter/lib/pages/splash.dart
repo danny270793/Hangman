@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/pages/login.dart';
+import 'package:hangman/services/theme_service.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   static const String routeName = '/splash';
@@ -61,6 +63,7 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final themeService = context.watch<ThemeService>();
 
     return Scaffold(
       body: Container(
@@ -68,7 +71,10 @@ class _SplashPageState extends State<SplashPage>
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
+            colors: themeService.isDarkMode ? [
+              Theme.of(context).colorScheme.primary.withOpacity(0.1),
+              Theme.of(context).colorScheme.secondary.withOpacity(0.05),
+            ] : [
               Theme.of(context).colorScheme.primary,
               Theme.of(context).colorScheme.secondary,
               Theme.of(context).colorScheme.tertiary,
