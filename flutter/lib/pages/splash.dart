@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/pages/login.dart';
 
 class SplashPage extends StatefulWidget {
@@ -59,6 +60,8 @@ class _SplashPageState extends State<SplashPage>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -106,9 +109,9 @@ class _SplashPageState extends State<SplashPage>
                       ),
                       const SizedBox(height: 40),
                       // App Name
-                      const Text(
-                        'HANGMAN',
-                        style: TextStyle(
+                      Text(
+                        l10n.splashTitle,
+                        style: const TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -124,9 +127,9 @@ class _SplashPageState extends State<SplashPage>
                       ),
                       const SizedBox(height: 16),
                       // Subtitle
-                      const Text(
-                        'Guess the Word',
-                        style: TextStyle(
+                      Text(
+                        l10n.splashSubtitle,
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.white70,
                           letterSpacing: 2,
