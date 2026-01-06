@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -130,7 +130,10 @@ class _LoginPageState extends State<LoginPage>
                       const SizedBox(height: 8),
                       Text(
                         l10n.signInToContinue,
-                        style: const TextStyle(fontSize: 16, color: Colors.white70),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white70,
+                        ),
                       ),
                       const SizedBox(height: 48),
 
@@ -253,7 +256,10 @@ class _LoginPageState extends State<LoginPage>
                       // Footer Text
                       Text(
                         l10n.readyToTest,
-                        style: const TextStyle(color: Colors.white70, fontSize: 14),
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 14,
+                        ),
                       ),
                     ],
                   ),
