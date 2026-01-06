@@ -6,9 +6,15 @@ import 'package:hangman/pages/splash.dart';
 import 'package:hangman/pages/login.dart';
 import 'package:hangman/pages/home.dart';
 import 'package:hangman/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider<AuthService>(
+      create: (_) => AuthService(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,12 +25,13 @@ class MyApp extends StatelessWidget {
     SplashPage.routeName,
     LoginPage.routeName,
   ];
-  final authService = AuthService();
 
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final authService = context.read<AuthService>();
+
     return MaterialApp.router(
       routerConfig: GoRouter(
         refreshListenable: authService,
