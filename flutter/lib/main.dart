@@ -12,26 +12,20 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize services and load saved preferences
   final localeService = LocaleService();
   await localeService.loadLocale();
-  
+
   final themeService = ThemeService();
   await themeService.loadTheme();
-  
+
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthService>(
-          create: (_) => AuthService(),
-        ),
-        ChangeNotifierProvider<LocaleService>.value(
-          value: localeService,
-        ),
-        ChangeNotifierProvider<ThemeService>.value(
-          value: themeService,
-        ),
+        ChangeNotifierProvider<AuthService>(create: (_) => AuthService()),
+        ChangeNotifierProvider<LocaleService>.value(value: localeService),
+        ChangeNotifierProvider<ThemeService>.value(value: themeService),
       ],
       child: const MyApp(),
     ),
