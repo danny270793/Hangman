@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
+import 'package:hangman/services/theme_service.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -63,6 +64,7 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final themeService = context.watch<ThemeService>();
 
     return Scaffold(
       body: Container(
@@ -70,7 +72,10 @@ class _LoginPageState extends State<LoginPage>
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
+            colors: themeService.isDarkMode ? [
+              Theme.of(context).colorScheme.primary.withOpacity(0.1),
+              Theme.of(context).colorScheme.secondary.withOpacity(0.05),
+            ] : [
               Theme.of(context).colorScheme.primary,
               Theme.of(context).colorScheme.secondary,
               Theme.of(context).colorScheme.tertiary,
