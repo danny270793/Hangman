@@ -41,6 +41,9 @@
   "termsOfService": "Términos de Servicio",
   "comingSoon": "¡Próximamente!",
   "logoutConfirmation": "¿Estás seguro de que quieres cerrar sesión?",
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "selectLanguage": "Seleccionar Idioma",
+  "languageEnglish": "Inglés",
+  "languageSpanish": "Español"
 }
 
