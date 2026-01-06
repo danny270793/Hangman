@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:provider/provider.dart';
 
@@ -47,16 +48,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hangman Game'),
+        title: Text(l10n.hangmanGame),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
               context.read<AuthService>().logout();
             },
-            tooltip: 'Logout',
+            tooltip: l10n.logout,
           ),
         ],
       ),
@@ -81,13 +84,13 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     _buildScoreCard(
-                      'Guesses Left',
+                      l10n.guessesLeft,
                       '${_maxWrongGuesses - _wrongGuesses}',
                       Icons.favorite,
                       Colors.red,
                     ),
                     _buildScoreCard(
-                      'Letters Used',
+                      l10n.lettersUsed,
                       '${_guessedLetters.length}',
                       Icons.text_fields,
                       Colors.blue,
@@ -112,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       Text(
-                        _isGameWon ? '🎉 You Won!' : '😢 Game Over!',
+                        _isGameWon ? l10n.youWon : l10n.gameOver,
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -123,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                       ElevatedButton.icon(
                         onPressed: _resetGame,
                         icon: const Icon(Icons.refresh),
-                        label: const Text('Play Again'),
+                        label: Text(l10n.playAgain),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 32,
