@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:provider/provider.dart';
 
@@ -47,16 +48,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hangman Game'),
+        title: Text(l10n.hangmanGame),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
               context.read<AuthService>().logout();
             },
-            tooltip: 'Logout',
+            tooltip: l10n.logout,
           ),
         ],
       ),
@@ -81,13 +84,13 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     _buildScoreCard(
-                      'Guesses Left',
+                      l10n.guessesLeft,
                       '${_maxWrongGuesses - _wrongGuesses}',
                       Icons.favorite,
                       Colors.red,
                     ),
                     _buildScoreCard(
-                      'Letters Used',
+                      l10n.lettersUsed,
                       '${_guessedLetters.length}',
                       Icons.text_fields,
                       Colors.blue,
@@ -97,12 +100,7 @@ class _HomePageState extends State<HomePage> {
               ),
 
               // Hangman Drawing
-              Expanded(
-                flex: 3,
-                child: Center(
-                  child: _buildHangmanDrawing(),
-                ),
-              ),
+              Expanded(flex: 3, child: Center(child: _buildHangmanDrawing())),
 
               // Word Display
               Padding(
@@ -117,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       Text(
-                        _isGameWon ? '🎉 You Won!' : '😢 Game Over!',
+                        _isGameWon ? l10n.youWon : l10n.gameOver,
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -128,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                       ElevatedButton.icon(
                         onPressed: _resetGame,
                         icon: const Icon(Icons.refresh),
-                        label: const Text('Play Again'),
+                        label: Text(l10n.playAgain),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 32,
@@ -143,9 +141,7 @@ class _HomePageState extends State<HomePage> {
               // Keyboard
               Expanded(
                 flex: 2,
-                child: SingleChildScrollView(
-                  child: _buildKeyboard(),
-                ),
+                child: SingleChildScrollView(child: _buildKeyboard()),
               ),
             ],
           ),
@@ -154,7 +150,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildScoreCard(String label, String value, IconData icon, Color color) {
+  Widget _buildScoreCard(
+    String label,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -166,17 +167,11 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 8),
             Text(
               value,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
               label,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey.shade600,
-              ),
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
             ),
           ],
         ),
@@ -199,9 +194,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      child: CustomPaint(
-        painter: HangmanPainter(_wrongGuesses),
-      ),
+      child: CustomPaint(painter: HangmanPainter(_wrongGuesses)),
     );
   }
 
@@ -212,13 +205,15 @@ class _HomePageState extends State<HomePage> {
       children: _word.split('').map((letter) {
         final isGuessed = _guessedLetters.contains(letter);
         final showLetter = isGuessed || _isGameLost;
-        
+
         return Container(
           width: 40,
           height: 50,
           decoration: BoxDecoration(
             color: showLetter
-                ? (_isGameLost && !isGuessed ? Colors.red.shade100 : Colors.green.shade100)
+                ? (_isGameLost && !isGuessed
+                      ? Colors.red.shade100
+                      : Colors.green.shade100)
                 : Colors.grey.shade200,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
@@ -235,7 +230,9 @@ class _HomePageState extends State<HomePage> {
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: showLetter
-                  ? (_isGameLost && !isGuessed ? Colors.red.shade700 : Colors.green.shade700)
+                  ? (_isGameLost && !isGuessed
+                        ? Colors.red.shade700
+                        : Colors.green.shade700)
                   : Colors.transparent,
             ),
           ),
@@ -279,11 +276,13 @@ class _HomePageState extends State<HomePage> {
                           color: isCorrect
                               ? Colors.green
                               : isWrong
-                                  ? Colors.red
-                                  : Colors.white,
+                              ? Colors.red
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: isGuessed ? Colors.transparent : Colors.grey.shade400,
+                            color: isGuessed
+                                ? Colors.transparent
+                                : Colors.grey.shade400,
                             width: 1,
                           ),
                           boxShadow: isGuessed
