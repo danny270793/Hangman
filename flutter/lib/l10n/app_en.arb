@@ -56,5 +56,7 @@
   "time": "Time",
   "score": "Score",
   "nextWord": "Next Word",
-  "points": "points"
+  "points": "points",
+  "letsPlay": "Let's Play!",
+  "gameConfiguration": "Game Configuration"
 }
