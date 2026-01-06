@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hangman/pages/home.dart';
+import 'package:hangman/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            context.go(HomePage.routeName);
+            context.watch<AuthService>().login();
           },
           child: Text('Login'),
         ),
