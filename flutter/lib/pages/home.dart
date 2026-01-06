@@ -29,7 +29,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _loadAndStartGame() async {
-    await _wordsService.loadWords();
+    final locale = Localizations.localeOf(context).languageCode;
+    await _wordsService.loadWords(locale: locale);
     setState(() {
       _currentWord = _wordsService.getRandomWord();
       _word = _currentWord.word.toUpperCase();
