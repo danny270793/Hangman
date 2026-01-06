@@ -20,12 +20,21 @@ class _HomePageState extends State<HomePage> {
   final Set<String> _guessedLetters = {};
   int _wrongGuesses = 0;
   final int _maxWrongGuesses = 6;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _currentWord = _wordsService.getRandomWord();
-    _word = _currentWord.word.toUpperCase();
+    _loadAndStartGame();
+  }
+
+  Future<void> _loadAndStartGame() async {
+    await _wordsService.loadWords();
+    setState(() {
+      _currentWord = _wordsService.getRandomWord();
+      _word = _currentWord.word.toUpperCase();
+      _isLoading = false;
+    });
   }
 
   bool get _isGameWon {
@@ -86,7 +95,11 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        child: SafeArea(
+        child: _isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : SafeArea(
           child: Column(
             children: [
               // Score Section
