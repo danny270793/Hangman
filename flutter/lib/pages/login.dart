@@ -72,14 +72,16 @@ class _LoginPageState extends State<LoginPage>
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: themeService.isDarkMode ? [
-              Theme.of(context).colorScheme.primary.withOpacity(0.1),
-              Theme.of(context).colorScheme.secondary.withOpacity(0.05),
-            ] : [
-              Theme.of(context).colorScheme.primary,
-              Theme.of(context).colorScheme.secondary,
-              Theme.of(context).colorScheme.tertiary,
-            ],
+            colors: themeService.isDarkMode
+                ? [
+                    Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                    Theme.of(context).colorScheme.secondary.withOpacity(0.05),
+                  ]
+                : [
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.secondary,
+                    Theme.of(context).colorScheme.tertiary,
+                  ],
           ),
         ),
         child: SafeArea(
@@ -168,7 +170,9 @@ class _LoginPageState extends State<LoginPage>
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     filled: true,
-                                    fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+                                    fillColor: Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerHighest,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -206,7 +210,9 @@ class _LoginPageState extends State<LoginPage>
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     filled: true,
-                                    fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+                                    fillColor: Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerHighest,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -227,7 +233,9 @@ class _LoginPageState extends State<LoginPage>
                                     backgroundColor: Theme.of(
                                       context,
                                     ).colorScheme.primary,
-                                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                                    foregroundColor: Theme.of(
+                                      context,
+                                    ).colorScheme.onPrimary,
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 16,
                                     ),
