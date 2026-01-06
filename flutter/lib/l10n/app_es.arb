@@ -53,6 +53,7 @@
   "selectDifficulty": "Seleccionar Dificultad",
   "easy": "Fácil",
   "hard": "Difícil",
-  "time": "Tiempo"
+  "time": "Tiempo",
+  "score": "Puntuación"
 }
 
