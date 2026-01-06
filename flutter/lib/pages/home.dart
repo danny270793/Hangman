@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
+import 'package:hangman/services/words_service.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,10 +14,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final String _word = 'DEVELOPER';
+  final WordsService _wordsService = WordsService();
+  late String _word;
   final Set<String> _guessedLetters = {};
   int _wrongGuesses = 0;
   final int _maxWrongGuesses = 6;
+
+  @override
+  void initState() {
+    super.initState();
+    _word = _wordsService.getRandomWord().word.toUpperCase();
+  }
 
   bool get _isGameWon {
     return _word.split('').every((letter) => _guessedLetters.contains(letter));
@@ -41,6 +49,7 @@ class _HomePageState extends State<HomePage> {
 
   void _resetGame() {
     setState(() {
+      _word = _wordsService.getRandomWord().word.toUpperCase();
       _guessedLetters.clear();
       _wrongGuesses = 0;
     });
