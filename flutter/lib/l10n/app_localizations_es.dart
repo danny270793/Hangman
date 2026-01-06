@@ -45,7 +45,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get pleaseEnterPassword => 'Por favor ingresa tu contraseña';
 
   @override
-  String get passwordMinLength => 'La contraseña debe tener al menos 6 caracteres';
+  String get passwordMinLength =>
+      'La contraseña debe tener al menos 6 caracteres';
 
   @override
   String get login => 'Iniciar Sesión';
@@ -129,7 +130,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get comingSoon => '¡Próximamente!';
 
   @override
-  String get logoutConfirmation => '¿Estás seguro de que quieres cerrar sesión?';
+  String get logoutConfirmation =>
+      '¿Estás seguro de que quieres cerrar sesión?';
 
   @override
   String get cancel => 'Cancelar';
