@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final WordsService _wordsService = WordsService();
+  late Word _currentWord;
   late String _word;
   final Set<String> _guessedLetters = {};
   int _wrongGuesses = 0;
@@ -23,7 +24,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _word = _wordsService.getRandomWord().word.toUpperCase();
+    _currentWord = _wordsService.getRandomWord();
+    _word = _currentWord.word.toUpperCase();
   }
 
   bool get _isGameWon {
@@ -49,7 +51,8 @@ class _HomePageState extends State<HomePage> {
 
   void _resetGame() {
     setState(() {
-      _word = _wordsService.getRandomWord().word.toUpperCase();
+      _currentWord = _wordsService.getRandomWord();
+      _word = _currentWord.word.toUpperCase();
       _guessedLetters.clear();
       _wrongGuesses = 0;
     });
@@ -115,6 +118,12 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                 child: _buildWordDisplay(),
+              ),
+
+              // Hint Display
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: _buildHintDisplay(),
               ),
 
               // Game Status Message
@@ -247,6 +256,47 @@ class _HomePageState extends State<HomePage> {
           ),
         );
       }).toList(),
+    );
+  }
+
+  Widget _buildHintDisplay() {
+    // Get a random tag from the current word as a hint
+    final hint = _currentWord.tags.isNotEmpty 
+        ? _currentWord.tags.first 
+        : 'No hint available';
+    
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.amber.shade50,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.amber.shade300,
+          width: 2,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.lightbulb_outline,
+            color: Colors.amber.shade700,
+            size: 24,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              'Hint: $hint',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.amber.shade900,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
