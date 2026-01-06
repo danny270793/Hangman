@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/pages/settings.dart';
 import 'package:hangman/services/words_service.dart';
+import 'package:hangman/services/difficulty_service.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = '/';
@@ -34,12 +36,26 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _loadAndStartGame() async {
     final locale = Localizations.localeOf(context).languageCode;
+    final difficultyService = context.read<DifficultyService>();
+    final difficulty = _getDifficultyString(difficultyService.difficulty);
+    
     await _wordsService.loadWords(locale: locale);
     setState(() {
-      _currentWord = _wordsService.getRandomWord();
+      _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
       _word = _currentWord.word.toUpperCase();
       _isLoading = false;
     });
+  }
+
+  String _getDifficultyString(GameDifficulty difficulty) {
+    switch (difficulty) {
+      case GameDifficulty.easy:
+        return 'easy';
+      case GameDifficulty.medium:
+        return 'medium';
+      case GameDifficulty.hard:
+        return 'hard';
+    }
   }
 
   bool get _isGameWon {
@@ -64,8 +80,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _resetGame() {
+    final difficultyService = context.read<DifficultyService>();
+    final difficulty = _getDifficultyString(difficultyService.difficulty);
+    
     setState(() {
-      _currentWord = _wordsService.getRandomWord();
+      _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
       _word = _currentWord.word.toUpperCase();
       _guessedLetters.clear();
       _wrongGuesses = 0;
