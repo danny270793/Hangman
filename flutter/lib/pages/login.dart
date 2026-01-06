@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:provider/provider.dart';
 
@@ -61,6 +62,8 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -109,9 +112,9 @@ class _LoginPageState extends State<LoginPage>
                       const SizedBox(height: 24),
 
                       // Welcome Text
-                      const Text(
-                        'Welcome Back!',
-                        style: TextStyle(
+                      Text(
+                        l10n.welcomeBack,
+                        style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -125,9 +128,9 @@ class _LoginPageState extends State<LoginPage>
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        'Sign in to continue playing',
-                        style: TextStyle(fontSize: 16, color: Colors.white70),
+                      Text(
+                        l10n.signInToContinue,
+                        style: const TextStyle(fontSize: 16, color: Colors.white70),
                       ),
                       const SizedBox(height: 48),
 
@@ -148,8 +151,8 @@ class _LoginPageState extends State<LoginPage>
                                 TextFormField(
                                   controller: _usernameController,
                                   decoration: InputDecoration(
-                                    labelText: 'Username',
-                                    hintText: 'Enter your username',
+                                    labelText: l10n.username,
+                                    hintText: l10n.enterUsername,
                                     prefixIcon: const Icon(
                                       Icons.person_outline,
                                     ),
@@ -161,10 +164,10 @@ class _LoginPageState extends State<LoginPage>
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Please enter your username';
+                                      return l10n.pleaseEnterUsername;
                                     }
                                     if (value.length < 3) {
-                                      return 'Username must be at least 3 characters';
+                                      return l10n.usernameMinLength;
                                     }
                                     return null;
                                   },
@@ -176,8 +179,8 @@ class _LoginPageState extends State<LoginPage>
                                   controller: _passwordController,
                                   obscureText: _obscurePassword,
                                   decoration: InputDecoration(
-                                    labelText: 'Password',
-                                    hintText: 'Enter your password',
+                                    labelText: l10n.password,
+                                    hintText: l10n.enterPassword,
                                     prefixIcon: const Icon(Icons.lock_outline),
                                     suffixIcon: IconButton(
                                       icon: Icon(
@@ -199,10 +202,10 @@ class _LoginPageState extends State<LoginPage>
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Please enter your password';
+                                      return l10n.pleaseEnterPassword;
                                     }
                                     if (value.length < 6) {
-                                      return 'Password must be at least 6 characters';
+                                      return l10n.passwordMinLength;
                                     }
                                     return null;
                                   },
@@ -225,18 +228,18 @@ class _LoginPageState extends State<LoginPage>
                                     ),
                                     elevation: 4,
                                   ),
-                                  child: const Row(
+                                  child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Login',
-                                        style: TextStyle(
+                                        l10n.login,
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      SizedBox(width: 8),
-                                      Icon(Icons.arrow_forward),
+                                      const SizedBox(width: 8),
+                                      const Icon(Icons.arrow_forward),
                                     ],
                                   ),
                                 ),
@@ -248,9 +251,9 @@ class _LoginPageState extends State<LoginPage>
                       const SizedBox(height: 24),
 
                       // Footer Text
-                      const Text(
-                        'Ready to test your vocabulary?',
-                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                      Text(
+                        l10n.readyToTest,
+                        style: const TextStyle(color: Colors.white70, fontSize: 14),
                       ),
                     ],
                   ),
