@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              context.go(SettingsPage.routeName);
+              context.push(SettingsPage.routeName);
             },
             tooltip: l10n.settings,
           ),
