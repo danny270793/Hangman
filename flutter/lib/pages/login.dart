@@ -241,21 +241,6 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 16),
-                                
-                                // Guest Login
-                                TextButton(
-                                  onPressed: _handleLogin,
-                                  style: TextButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(vertical: 12),
-                                  ),
-                                  child: const Text(
-                                    'Continue as Guest',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
