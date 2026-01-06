@@ -73,4 +73,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get playAgain => 'Play Again';
+
+  @override
+  String get hint => 'Hint';
 }
