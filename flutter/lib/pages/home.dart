@@ -207,7 +207,10 @@ class _HomePageState extends State<HomePage> {
             ),
             Text(
               label,
-              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+              style: TextStyle(
+                fontSize: 12,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
             ),
           ],
         ),
@@ -220,7 +223,7 @@ class _HomePageState extends State<HomePage> {
       width: 200,
       height: 250,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -230,7 +233,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      child: CustomPaint(painter: HangmanPainter(_wrongGuesses)),
+      child: CustomPaint(
+        painter: HangmanPainter(
+          _wrongGuesses,
+          Theme.of(context).colorScheme.onSurface,
+        ),
+      ),
     );
   }
 
@@ -248,14 +256,16 @@ class _HomePageState extends State<HomePage> {
           decoration: BoxDecoration(
             color: showLetter
                 ? (_isGameLost && !isGuessed
-                      ? Colors.red.shade100
-                      : Colors.green.shade100)
-                : Colors.grey.shade200,
+                      ? Theme.of(context).colorScheme.errorContainer
+                      : Theme.of(context).colorScheme.primaryContainer)
+                : Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
               color: showLetter
-                  ? (_isGameLost && !isGuessed ? Colors.red : Colors.green)
-                  : Colors.grey.shade400,
+                  ? (_isGameLost && !isGuessed
+                        ? Theme.of(context).colorScheme.error
+                        : Theme.of(context).colorScheme.primary)
+                  : Theme.of(context).colorScheme.outline,
               width: 2,
             ),
           ),
@@ -267,8 +277,8 @@ class _HomePageState extends State<HomePage> {
               fontWeight: FontWeight.bold,
               color: showLetter
                   ? (_isGameLost && !isGuessed
-                        ? Colors.red.shade700
-                        : Colors.green.shade700)
+                        ? Theme.of(context).colorScheme.onErrorContainer
+                        : Theme.of(context).colorScheme.onPrimaryContainer)
                   : Colors.transparent,
             ),
           ),
@@ -287,10 +297,10 @@ class _HomePageState extends State<HomePage> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.amber.shade50,
+        color: Theme.of(context).colorScheme.tertiaryContainer,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: Colors.amber.shade300,
+          color: Theme.of(context).colorScheme.tertiary,
           width: 2,
         ),
       ),
@@ -299,7 +309,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Icon(
             Icons.lightbulb_outline,
-            color: Colors.amber.shade700,
+            color: Theme.of(context).colorScheme.onTertiaryContainer,
             size: 24,
           ),
           const SizedBox(width: 12),
@@ -310,7 +320,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Colors.amber.shade900,
+                color: Theme.of(context).colorScheme.onTertiaryContainer,
               ),
             ),
           ),
@@ -352,15 +362,15 @@ class _HomePageState extends State<HomePage> {
                         height: 40,
                         decoration: BoxDecoration(
                           color: isCorrect
-                              ? Colors.green
+                              ? Theme.of(context).colorScheme.primary
                               : isWrong
-                              ? Colors.red
-                              : Colors.white,
+                              ? Theme.of(context).colorScheme.error
+                              : Theme.of(context).colorScheme.surface,
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
                             color: isGuessed
                                 ? Colors.transparent
-                                : Colors.grey.shade400,
+                                : Theme.of(context).colorScheme.outline,
                             width: 1,
                           ),
                           boxShadow: isGuessed
@@ -379,7 +389,11 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: isGuessed ? Colors.white : Colors.black87,
+                            color: isGuessed
+                                ? (isCorrect
+                                    ? Theme.of(context).colorScheme.onPrimary
+                                    : Theme.of(context).colorScheme.onError)
+                                : Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                       ),
@@ -397,13 +411,14 @@ class _HomePageState extends State<HomePage> {
 
 class HangmanPainter extends CustomPainter {
   final int wrongGuesses;
+  final Color color;
 
-  HangmanPainter(this.wrongGuesses);
+  HangmanPainter(this.wrongGuesses, this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.black87
+      ..color = color
       ..strokeWidth = 3
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
