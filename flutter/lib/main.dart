@@ -9,15 +9,21 @@ import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize LocaleService and load saved locale
+  final localeService = LocaleService();
+  await localeService.loadLocale();
+  
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthService>(
           create: (_) => AuthService(),
         ),
-        ChangeNotifierProvider<LocaleService>(
-          create: (_) => LocaleService(),
+        ChangeNotifierProvider<LocaleService>.value(
+          value: localeService,
         ),
       ],
       child: const MyApp(),
