@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 2), () {
-      if(!context.mounted) {
+      if(!mounted) {
         return;
       }
 
