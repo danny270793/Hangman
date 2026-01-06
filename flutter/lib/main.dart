@@ -9,6 +9,7 @@ import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
 import 'package:hangman/services/difficulty_service.dart';
+import 'package:hangman/services/timed_mode_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -24,6 +25,9 @@ void main() async {
   final difficultyService = DifficultyService();
   await difficultyService.loadDifficulty();
 
+  final timedModeService = TimedModeService();
+  await timedModeService.loadTimedMode();
+
   runApp(
     MultiProvider(
       providers: [
@@ -32,6 +36,9 @@ void main() async {
         ChangeNotifierProvider<ThemeService>.value(value: themeService),
         ChangeNotifierProvider<DifficultyService>.value(
           value: difficultyService,
+        ),
+        ChangeNotifierProvider<TimedModeService>.value(
+          value: timedModeService,
         ),
       ],
       child: const MyApp(),
