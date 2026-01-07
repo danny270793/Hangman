@@ -7,24 +7,25 @@ import 'package:hangman/pages/home.dart';
 import 'package:hangman/pages/settings.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
+import 'package:hangman/services/theme_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  // Initialize LocaleService and load saved locale
+
+  // Initialize services and load saved preferences
   final localeService = LocaleService();
   await localeService.loadLocale();
-  
+
+  final themeService = ThemeService();
+  await themeService.loadTheme();
+
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthService>(
-          create: (_) => AuthService(),
-        ),
-        ChangeNotifierProvider<LocaleService>.value(
-          value: localeService,
-        ),
+        ChangeNotifierProvider<AuthService>(create: (_) => AuthService()),
+        ChangeNotifierProvider<LocaleService>.value(value: localeService),
+        ChangeNotifierProvider<ThemeService>.value(value: themeService),
       ],
       child: const MyApp(),
     ),
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final authService = context.read<AuthService>();
     final localeService = context.watch<LocaleService>();
+    final themeService = context.watch<ThemeService>();
 
     return MaterialApp.router(
       routerConfig: GoRouter(
@@ -86,7 +88,18 @@ class MyApp extends StatelessWidget {
       locale: localeService.locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
+      themeMode: themeService.materialThemeMode,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
     );
   }
 }
