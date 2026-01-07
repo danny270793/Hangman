@@ -324,51 +324,50 @@ class _GamePageState extends State<GamePage> {
   ) {
     return Row(
       children: [
-        // Left side - Hangman and Score Cards
+        // Left side - Score Cards (vertical) and Hangman
         Expanded(
           flex: 2,
-          child: Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Hangman Drawing
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(
-                  height: 250,
-                  child: Center(child: _buildHangmanDrawing()),
-                ),
+              // Score Cards - Vertical
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildScoreCard(
+                    l10n.guessesLeft,
+                    '${_maxWrongGuesses - _wrongGuesses}',
+                    Icons.favorite,
+                    Colors.red,
+                  ),
+                  const SizedBox(height: 8),
+                  if (timedModeService.isEnabled) ...[
+                    _buildScoreCard(
+                      l10n.time,
+                      '${_remainingSeconds}s',
+                      Icons.timer,
+                      _remainingSeconds <= 10 ? Colors.red : Colors.orange,
+                    ),
+                    const SizedBox(height: 8),
+                  ],
+                  _buildScoreCard(
+                    l10n.lettersUsed,
+                    '${_guessedLetters.length}',
+                    Icons.text_fields,
+                    Colors.blue,
+                  ),
+                ],
               ),
               
-              const SizedBox(height: 16),
+              const SizedBox(width: 16),
               
-              // Score Cards
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  alignment: WrapAlignment.center,
-                  children: [
-                    _buildScoreCard(
-                      l10n.guessesLeft,
-                      '${_maxWrongGuesses - _wrongGuesses}',
-                      Icons.favorite,
-                      Colors.red,
-                    ),
-                    if (timedModeService.isEnabled)
-                      _buildScoreCard(
-                        l10n.time,
-                        '${_remainingSeconds}s',
-                        Icons.timer,
-                        _remainingSeconds <= 10 ? Colors.red : Colors.orange,
-                      ),
-                    _buildScoreCard(
-                      l10n.lettersUsed,
-                      '${_guessedLetters.length}',
-                      Icons.text_fields,
-                      Colors.blue,
-                    ),
-                  ],
+              // Hangman Drawing
+              Expanded(
+                child: Center(
+                  child: SizedBox(
+                    height: 250,
+                    child: _buildHangmanDrawing(),
+                  ),
                 ),
               ),
             ],
