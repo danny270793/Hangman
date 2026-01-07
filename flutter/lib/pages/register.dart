@@ -19,6 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -29,11 +30,46 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
-  void _handleRegister() {
-    if (_formKey.currentState!.validate()) {
-      // TODO: Implement actual registration logic with email and password
-      // For now, just log the user in after successful validation
-      context.read<AuthService>().login();
+  Future<void> _handleRegister() async {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    final authService = context.read<AuthService>();
+    final error = await authService.signUp(
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+      username: _usernameController.text.trim(),
+    );
+
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+      });
+
+      if (error != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(error),
+            backgroundColor: Colors.red,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.updateSuccess),
+            backgroundColor: Colors.green,
+          ),
+        );
+        // Navigate back to login page after successful registration
+        if (mounted) {
+          context.pop();
+        }
+      }
     }
   }
 
@@ -370,7 +406,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
             // Register Button
             ElevatedButton(
-              onPressed: _handleRegister,
+              onPressed: _isLoading ? null : _handleRegister,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 foregroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -380,20 +416,29 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 elevation: 4,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    l10n.register,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              child: _isLoading
+                  ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      ),
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          l10n.register,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        const Icon(Icons.arrow_forward),
+                      ],
                     ),
-                  ),
-                  const SizedBox(width: 8),
-                  const Icon(Icons.arrow_forward),
-                ],
-              ),
             ),
           ],
         ),
