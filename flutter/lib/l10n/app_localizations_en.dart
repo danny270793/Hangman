@@ -81,6 +81,63 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
+  String get profile => 'Profile';
+
+  @override
+  String get changeEmail => 'Change Email';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get changeUsername => 'Change Username';
+
+  @override
+  String get currentEmail => 'Current Email';
+
+  @override
+  String get currentUsername => 'Current Username';
+
+  @override
+  String get newEmail => 'New Email';
+
+  @override
+  String get enterNewEmail => 'Enter your new email';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get enterNewPassword => 'Enter your new password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get enterConfirmPassword => 'Confirm your new password';
+
+  @override
+  String get newUsername => 'New Username';
+
+  @override
+  String get enterNewUsername => 'Enter your new username';
+
+  @override
+  String get update => 'Update';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get pleaseEnterEmail => 'Please enter your email';
+
+  @override
+  String get invalidEmail => 'Please enter a valid email';
+
+  @override
+  String get updateSuccess => 'Updated successfully!';
+
+  @override
   String get general => 'General';
 
   @override
