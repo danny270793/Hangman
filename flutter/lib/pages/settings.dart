@@ -57,6 +57,37 @@ class SettingsPage extends StatelessWidget {
 
           const SizedBox(height: 8),
 
+          // Profile Section
+          _buildSectionHeader(context, l10n.profile),
+          _buildSettingsTile(
+            context,
+            icon: Icons.email_outlined,
+            title: l10n.changeEmail,
+            subtitle: l10n.currentEmail,
+            onTap: () {
+              _showChangeEmailDialog(context, l10n);
+            },
+          ),
+          _buildSettingsTile(
+            context,
+            icon: Icons.lock_outlined,
+            title: l10n.changePassword,
+            onTap: () {
+              _showChangePasswordDialog(context, l10n);
+            },
+          ),
+          _buildSettingsTile(
+            context,
+            icon: Icons.person_outlined,
+            title: l10n.changeUsername,
+            subtitle: l10n.currentUsername,
+            onTap: () {
+              _showChangeUsernameDialog(context, l10n);
+            },
+          ),
+
+          const Divider(height: 32),
+
           // General Settings Section
           _buildSectionHeader(context, l10n.general),
           _buildSettingsTile(
@@ -313,6 +344,200 @@ class SettingsPage extends StatelessWidget {
                 Navigator.of(dialogContext).pop();
               },
               child: Text(l10n.cancel),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showChangeEmailDialog(BuildContext context, AppLocalizations l10n) {
+    final formKey = GlobalKey<FormState>();
+    final emailController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.changeEmail),
+          content: Form(
+            key: formKey,
+            child: TextFormField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: l10n.newEmail,
+                hintText: l10n.enterNewEmail,
+                prefixIcon: const Icon(Icons.email),
+                border: const OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.emailAddress,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return l10n.pleaseEnterEmail;
+                }
+                if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                    .hasMatch(value)) {
+                  return l10n.invalidEmail;
+                }
+                return null;
+              },
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  Navigator.of(dialogContext).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(l10n.updateSuccess)),
+                  );
+                  // TODO: Implement email update logic
+                }
+              },
+              child: Text(l10n.update),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showChangePasswordDialog(BuildContext context, AppLocalizations l10n) {
+    final formKey = GlobalKey<FormState>();
+    final passwordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.changePassword),
+          content: Form(
+            key: formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    labelText: l10n.newPassword,
+                    hintText: l10n.enterNewPassword,
+                    prefixIcon: const Icon(Icons.lock),
+                    border: const OutlineInputBorder(),
+                  ),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return l10n.pleaseEnterPassword;
+                    }
+                    if (value.length < 6) {
+                      return l10n.passwordMinLength;
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 16),
+                TextFormField(
+                  controller: confirmPasswordController,
+                  decoration: InputDecoration(
+                    labelText: l10n.confirmPassword,
+                    hintText: l10n.enterConfirmPassword,
+                    prefixIcon: const Icon(Icons.lock),
+                    border: const OutlineInputBorder(),
+                  ),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return l10n.pleaseEnterPassword;
+                    }
+                    if (value != passwordController.text) {
+                      return l10n.passwordsDoNotMatch;
+                    }
+                    return null;
+                  },
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  Navigator.of(dialogContext).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(l10n.updateSuccess)),
+                  );
+                  // TODO: Implement password update logic
+                }
+              },
+              child: Text(l10n.update),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showChangeUsernameDialog(BuildContext context, AppLocalizations l10n) {
+    final formKey = GlobalKey<FormState>();
+    final usernameController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.changeUsername),
+          content: Form(
+            key: formKey,
+            child: TextFormField(
+              controller: usernameController,
+              decoration: InputDecoration(
+                labelText: l10n.newUsername,
+                hintText: l10n.enterNewUsername,
+                prefixIcon: const Icon(Icons.person),
+                border: const OutlineInputBorder(),
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return l10n.pleaseEnterUsername;
+                }
+                if (value.length < 3) {
+                  return l10n.usernameMinLength;
+                }
+                return null;
+              },
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  Navigator.of(dialogContext).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(l10n.updateSuccess)),
+                  );
+                  // TODO: Implement username update logic
+                }
+              },
+              child: Text(l10n.update),
             ),
           ],
         );
