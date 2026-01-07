@@ -426,7 +426,7 @@ class _LoginPageState extends State<LoginPage>
                   ),
                   TextButton(
                     onPressed: () {
-                      context.push('/register');
+                      context.push(RegisterPage.routeName);
                     },
                     child: Text(
                       l10n.createOne,
