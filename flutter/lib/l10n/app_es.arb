@@ -44,6 +44,11 @@
   "cancel": "Cancelar",
   "selectLanguage": "Seleccionar Idioma",
   "languageEnglish": "Inglés",
-  "languageSpanish": "Español"
+  "languageSpanish": "Español",
+  "theme": "Tema",
+  "selectTheme": "Seleccionar Tema",
+  "themeSystem": "Sistema",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro"
 }
 

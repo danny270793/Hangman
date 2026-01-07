@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
+import 'package:hangman/services/theme_service.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -63,6 +64,7 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final themeService = context.watch<ThemeService>();
 
     return Scaffold(
       body: Container(
@@ -70,11 +72,16 @@ class _LoginPageState extends State<LoginPage>
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Theme.of(context).colorScheme.primary,
-              Theme.of(context).colorScheme.secondary,
-              Theme.of(context).colorScheme.tertiary,
-            ],
+            colors: themeService.isDarkMode
+                ? [
+                    Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                    Theme.of(context).colorScheme.secondary.withOpacity(0.05),
+                  ]
+                : [
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.secondary,
+                    Theme.of(context).colorScheme.tertiary,
+                  ],
           ),
         ),
         child: SafeArea(
@@ -93,7 +100,7 @@ class _LoginPageState extends State<LoginPage>
                         width: 100,
                         height: 100,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surface,
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
@@ -103,10 +110,10 @@ class _LoginPageState extends State<LoginPage>
                             ),
                           ],
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.sports_esports,
                           size: 50,
-                          color: Color(0xFF6366F1),
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -163,7 +170,9 @@ class _LoginPageState extends State<LoginPage>
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     filled: true,
-                                    fillColor: Colors.grey.shade50,
+                                    fillColor: Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerHighest,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -201,7 +210,9 @@ class _LoginPageState extends State<LoginPage>
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     filled: true,
-                                    fillColor: Colors.grey.shade50,
+                                    fillColor: Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerHighest,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -222,7 +233,9 @@ class _LoginPageState extends State<LoginPage>
                                     backgroundColor: Theme.of(
                                       context,
                                     ).colorScheme.primary,
-                                    foregroundColor: Colors.white,
+                                    foregroundColor: Theme.of(
+                                      context,
+                                    ).colorScheme.onPrimary,
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 16,
                                     ),

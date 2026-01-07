@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/pages/login.dart';
+import 'package:hangman/services/theme_service.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   static const String routeName = '/splash';
@@ -61,6 +63,7 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final themeService = context.watch<ThemeService>();
 
     return Scaffold(
       body: Container(
@@ -68,11 +71,16 @@ class _SplashPageState extends State<SplashPage>
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Theme.of(context).colorScheme.primary,
-              Theme.of(context).colorScheme.secondary,
-              Theme.of(context).colorScheme.tertiary,
-            ],
+            colors: themeService.isDarkMode
+                ? [
+                    Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                    Theme.of(context).colorScheme.secondary.withOpacity(0.05),
+                  ]
+                : [
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.secondary,
+                    Theme.of(context).colorScheme.tertiary,
+                  ],
           ),
         ),
         child: Center(
@@ -91,7 +99,7 @@ class _SplashPageState extends State<SplashPage>
                         width: 120,
                         height: 120,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surface,
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
@@ -101,10 +109,10 @@ class _SplashPageState extends State<SplashPage>
                             ),
                           ],
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.sports_esports,
                           size: 60,
-                          color: Color(0xFF6366F1),
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       const SizedBox(height: 40),
@@ -137,13 +145,13 @@ class _SplashPageState extends State<SplashPage>
                       ),
                       const SizedBox(height: 60),
                       // Loading Indicator
-                      SizedBox(
+                      const SizedBox(
                         width: 40,
                         height: 40,
                         child: CircularProgressIndicator(
                           strokeWidth: 3,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.white.withOpacity(0.8),
+                            Colors.white70,
                           ),
                         ),
                       ),
