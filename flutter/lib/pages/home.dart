@@ -19,18 +19,6 @@ class HomePage extends StatelessWidget {
     final timedModeService = context.watch<TimedModeService>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.hangmanGame),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              context.push(SettingsPage.routeName);
-            },
-            tooltip: l10n.settings,
-          ),
-        ],
-      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -42,20 +30,45 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24.0),
-            child: OrientationBuilder(
-              builder: (context, orientation) {
-                final isLandscape = orientation == Orientation.landscape;
-                
-                if (isLandscape) {
-                  return _buildLandscapeLayout(context, l10n, difficultyService, timedModeService);
-                } else {
-                  return _buildPortraitLayout(context, l10n, difficultyService, timedModeService);
-                }
-              },
-            ),
+        child: SafeArea(
+          child: Stack(
+            children: [
+              // Main content
+              Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(24.0),
+                  child: OrientationBuilder(
+                    builder: (context, orientation) {
+                      final isLandscape = orientation == Orientation.landscape;
+                      
+                      if (isLandscape) {
+                        return _buildLandscapeLayout(context, l10n, difficultyService, timedModeService);
+                      } else {
+                        return _buildPortraitLayout(context, l10n, difficultyService, timedModeService);
+                      }
+                    },
+                  ),
+                ),
+              ),
+              
+              // Settings button in top-right corner
+              Positioned(
+                top: 8,
+                right: 8,
+                child: IconButton(
+                  icon: const Icon(Icons.settings),
+                  iconSize: 28,
+                  onPressed: () {
+                    context.push(SettingsPage.routeName);
+                  },
+                  tooltip: l10n.settings,
+                  style: IconButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.9),
+                    foregroundColor: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -221,7 +234,7 @@ class HomePage extends StatelessWidget {
       width: double.infinity,
       height: 60,
       child: ElevatedButton.icon(
-        onPressed: () {
+          onPressed: () {
           context.push(GamePage.routeName);
         },
         icon: const Icon(Icons.play_arrow, size: 32),
