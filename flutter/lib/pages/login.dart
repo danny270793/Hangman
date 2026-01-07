@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hangman/l10n/app_localizations.dart';
+import 'package:hangman/pages/register.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/theme_service.dart';
 import 'package:provider/provider.dart';
+
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -272,7 +274,7 @@ class _LoginPageState extends State<LoginPage>
                     ),
                     TextButton(
                       onPressed: () {
-                        context.push('/register');
+                        context.push(RegisterPage.routeName);
                       },
                       child: Text(
                         l10n.createOne,
