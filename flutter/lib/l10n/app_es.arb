@@ -53,6 +53,11 @@
   "selectDifficulty": "Seleccionar Dificultad",
   "easy": "Fácil",
   "hard": "Difícil",
-  "time": "Tiempo"
+  "time": "Tiempo",
+  "score": "Puntuación",
+  "nextWord": "Siguiente Palabra",
+  "points": "puntos",
+  "letsPlay": "¡Juguemos!",
+  "gameConfiguration": "Configuración del Juego"
 }
 

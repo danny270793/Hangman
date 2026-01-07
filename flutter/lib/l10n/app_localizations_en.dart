@@ -169,4 +169,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get time => 'Time';
+
+  @override
+  String get score => 'Score';
+
+  @override
+  String get nextWord => 'Next Word';
+
+  @override
+  String get points => 'points';
+
+  @override
+  String get letsPlay => 'Let\'s Play!';
+
+  @override
+  String get gameConfiguration => 'Game Configuration';
 }
