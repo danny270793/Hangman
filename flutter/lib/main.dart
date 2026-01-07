@@ -15,9 +15,13 @@ import 'package:hangman/services/timed_mode_service.dart';
 import 'package:hangman/config/supabase_config.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables
+  await dotenv.load(fileName: '.env');
 
   // Initialize Supabase
   await Supabase.initialize(
