@@ -45,7 +45,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get pleaseEnterPassword => 'Por favor ingresa tu contraseña';
 
   @override
-  String get passwordMinLength => 'La contraseña debe tener al menos 6 caracteres';
+  String get passwordMinLength =>
+      'La contraseña debe tener al menos 6 caracteres';
 
   @override
   String get login => 'Iniciar Sesión';
@@ -174,7 +175,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get passwordsDoNotMatch => 'Las contraseñas no coinciden';
 
   @override
-  String get newPasswordMustBeDifferent => 'La nueva contraseña debe ser diferente de la actual';
+  String get newPasswordMustBeDifferent =>
+      'La nueva contraseña debe ser diferente de la actual';
 
   @override
   String get pleaseEnterEmail => 'Por favor ingresa tu correo';
@@ -234,7 +236,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get comingSoon => '¡Próximamente!';
 
   @override
-  String get logoutConfirmation => '¿Estás seguro de que quieres cerrar sesión?';
+  String get logoutConfirmation =>
+      '¿Estás seguro de que quieres cerrar sesión?';
 
   @override
   String get cancel => 'Cancelar';
@@ -294,7 +297,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get exitGame => '¿Salir del Juego?';
 
   @override
-  String get exitGameConfirmation => '¿Estás seguro de que quieres salir? Se perderá tu progreso actual.';
+  String get exitGameConfirmation =>
+      '¿Estás seguro de que quieres salir? Se perderá tu progreso actual.';
 
   @override
   String get exit => 'Salir';
