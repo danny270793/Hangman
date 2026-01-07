@@ -29,11 +29,35 @@ class WordsService {
         'assets/words_$locale.json',
       );
       final Map<String, dynamic> jsonData = json.decode(jsonString);
-      final List<dynamic> wordsJson = jsonData['words'] as List<dynamic>;
+      
+      // Combine words from all difficulty levels
+      final List<Word> allWords = [];
+      
+      // Load easy words
+      if (jsonData.containsKey('easy') && jsonData['easy']['words'] != null) {
+        final List<dynamic> easyWords = jsonData['easy']['words'] as List<dynamic>;
+        allWords.addAll(
+          easyWords.map((wordJson) => Word.fromJson(wordJson as Map<String, dynamic>))
+        );
+      }
+      
+      // Load medium words
+      if (jsonData.containsKey('medium') && jsonData['medium']['words'] != null) {
+        final List<dynamic> mediumWords = jsonData['medium']['words'] as List<dynamic>;
+        allWords.addAll(
+          mediumWords.map((wordJson) => Word.fromJson(wordJson as Map<String, dynamic>))
+        );
+      }
+      
+      // Load hard words
+      if (jsonData.containsKey('hard') && jsonData['hard']['words'] != null) {
+        final List<dynamic> hardWords = jsonData['hard']['words'] as List<dynamic>;
+        allWords.addAll(
+          hardWords.map((wordJson) => Word.fromJson(wordJson as Map<String, dynamic>))
+        );
+      }
 
-      _words = wordsJson
-          .map((wordJson) => Word.fromJson(wordJson as Map<String, dynamic>))
-          .toList();
+      _words = allWords;
       _currentLocale = locale;
       _isLoaded = true;
     } catch (e) {
