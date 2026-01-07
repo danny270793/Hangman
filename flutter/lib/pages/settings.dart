@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
+import 'package:hangman/services/locale_service.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -11,6 +12,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final localeService = context.watch<LocaleService>();
 
     return Scaffold(
       appBar: AppBar(
@@ -61,11 +63,9 @@ class SettingsPage extends StatelessWidget {
             context,
             icon: Icons.language,
             title: l10n.language,
-            subtitle: 'English',
+            subtitle: _getLanguageName(localeService.locale.languageCode, l10n),
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(l10n.comingSoon)),
-              );
+              _showLanguagePicker(context, l10n, localeService);
             },
           ),
 
@@ -221,6 +221,56 @@ class SettingsPage extends StatelessWidget {
                 foregroundColor: Colors.white,
               ),
               child: Text(l10n.logout),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  String _getLanguageName(String languageCode, AppLocalizations l10n) {
+    switch (languageCode) {
+      case 'en':
+        return l10n.languageEnglish;
+      case 'es':
+        return l10n.languageSpanish;
+      default:
+        return l10n.languageEnglish;
+    }
+  }
+
+  void _showLanguagePicker(BuildContext context, AppLocalizations l10n, LocaleService localeService) {
+    final supportedLocales = AppLocalizations.supportedLocales;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.selectLanguage),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: supportedLocales.map((locale) {
+              final isSelected = locale.languageCode == localeService.locale.languageCode;
+              return ListTile(
+                leading: Icon(
+                  isSelected ? Icons.check_circle : Icons.circle_outlined,
+                  color: isSelected ? Theme.of(context).colorScheme.primary : null,
+                ),
+                title: Text(_getLanguageName(locale.languageCode, l10n)),
+                selected: isSelected,
+                onTap: () {
+                  localeService.setLocale(locale);
+                  Navigator.of(dialogContext).pop();
+                },
+              );
+            }).toList(),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
             ),
           ],
         );
