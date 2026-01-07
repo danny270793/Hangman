@@ -1,0 +1,209 @@
+{
+  "words": [
+    {
+      "word": "piano",
+      "tags": ["musical instrument", "keyboard instrument", "instrument played by beethoven", "has 88 keys", "classical music"]
+    },
+    {
+      "word": "guitar",
+      "tags": ["musical instrument", "string instrument", "has six strings", "used in rock music", "acoustic or electric"]
+    },
+    {
+      "word": "violin",
+      "tags": ["musical instrument", "string instrument", "played with a bow", "used in orchestras", "smallest string instrument"]
+    },
+    {
+      "word": "drums",
+      "tags": ["musical instrument", "percussion instrument", "played with sticks", "keeps the rhythm", "part of rock bands"]
+    },
+    {
+      "word": "flute",
+      "tags": ["musical instrument", "wind instrument", "made of metal or wood", "played sideways", "has a high pitch"]
+    },
+    {
+      "word": "saxophone",
+      "tags": ["musical instrument", "wind instrument", "used in jazz music", "made of brass", "invented by adolphe sax"]
+    },
+    {
+      "word": "trumpet",
+      "tags": ["musical instrument", "brass instrument", "has three valves", "used in jazz and classical", "high pitched brass"]
+    },
+    {
+      "word": "cello",
+      "tags": ["musical instrument", "string instrument", "played sitting down", "larger than violin", "deep rich sound"]
+    },
+    {
+      "word": "harp",
+      "tags": ["musical instrument", "string instrument", "triangular shape", "plucked with fingers", "ancient instrument"]
+    },
+    {
+      "word": "accordion",
+      "tags": ["musical instrument", "keyboard and bellows", "used in folk music", "portable instrument", "squeezebox"]
+    },
+    {
+      "word": "elephant",
+      "tags": ["large mammal", "has a trunk", "largest land animal", "lives in africa and asia", "never forgets"]
+    },
+    {
+      "word": "giraffe",
+      "tags": ["tall mammal", "long neck", "tallest animal", "lives in africa", "spotted pattern"]
+    },
+    {
+      "word": "penguin",
+      "tags": ["flightless bird", "lives in antarctica", "black and white", "excellent swimmer", "waddles on land"]
+    },
+    {
+      "word": "dolphin",
+      "tags": ["marine mammal", "intelligent creature", "lives in ocean", "playful animal", "uses echolocation"]
+    },
+    {
+      "word": "kangaroo",
+      "tags": ["marsupial", "hops on hind legs", "lives in australia", "carries baby in pouch", "strong tail"]
+    },
+    {
+      "word": "cheetah",
+      "tags": ["big cat", "fastest land animal", "lives in africa", "spotted fur", "sprint hunter"]
+    },
+    {
+      "word": "octopus",
+      "tags": ["marine animal", "has eight tentacles", "intelligent invertebrate", "can change color", "lives underwater"]
+    },
+    {
+      "word": "butterfly",
+      "tags": ["insect", "has colorful wings", "goes through metamorphosis", "drinks nectar", "pollinates flowers"]
+    },
+    {
+      "word": "eagle",
+      "tags": ["bird of prey", "sharp talons", "excellent eyesight", "symbol of freedom", "builds nests high up"]
+    },
+    {
+      "word": "tiger",
+      "tags": ["big cat", "striped pattern", "lives in asia", "endangered species", "solitary hunter"]
+    },
+    {
+      "word": "zebra",
+      "tags": ["striped horse", "black and white stripes", "lives in africa", "runs in herds", "herbivore"]
+    },
+    {
+      "word": "peacock",
+      "tags": ["colorful bird", "male has fancy tail", "displays feathers to attract mates", "native to india", "iridescent plumage"]
+    },
+    {
+      "word": "koala",
+      "tags": ["marsupial", "lives in australia", "eats eucalyptus leaves", "sleeps most of the day", "looks like a bear"]
+    },
+    {
+      "word": "panda",
+      "tags": ["bear", "black and white", "eats bamboo", "lives in china", "endangered species"]
+    },
+    {
+      "word": "whale",
+      "tags": ["largest marine mammal", "lives in ocean", "breathes through blowhole", "sings underwater songs", "migrates long distances"]
+    },
+    {
+      "word": "apple",
+      "tags": ["fruit", "grows on trees", "red green or yellow", "keeps the doctor away", "crispy and sweet"]
+    },
+    {
+      "word": "banana",
+      "tags": ["tropical fruit", "yellow when ripe", "high in potassium", "grows in bunches", "monkeys favorite"]
+    },
+    {
+      "word": "orange",
+      "tags": ["citrus fruit", "orange color", "high in vitamin c", "juicy segments", "grown in warm climates"]
+    },
+    {
+      "word": "strawberry",
+      "tags": ["red berry", "seeds on outside", "sweet fruit", "grows close to ground", "popular in desserts"]
+    },
+    {
+      "word": "watermelon",
+      "tags": ["large fruit", "green outside red inside", "very juicy", "mostly water", "summer fruit"]
+    },
+    {
+      "word": "pineapple",
+      "tags": ["tropical fruit", "spiky outside", "sweet and tangy", "yellow flesh", "crown on top"]
+    },
+    {
+      "word": "mango",
+      "tags": ["tropical fruit", "orange flesh", "sweet and juicy", "large seed inside", "king of fruits"]
+    },
+    {
+      "word": "grape",
+      "tags": ["small fruit", "grows in clusters", "used to make wine", "red green or purple", "grows on vines"]
+    },
+    {
+      "word": "cherry",
+      "tags": ["small red fruit", "has a pit", "grows on trees", "sweet or tart", "popular in pies"]
+    },
+    {
+      "word": "peach",
+      "tags": ["fuzzy skin", "orange pink color", "juicy stone fruit", "sweet flavor", "grows in warm climates"]
+    },
+    {
+      "word": "carrot",
+      "tags": ["root vegetable", "orange color", "good for eyesight", "crunchy texture", "high in vitamin a"]
+    },
+    {
+      "word": "broccoli",
+      "tags": ["green vegetable", "looks like small trees", "cruciferous vegetable", "rich in nutrients", "eaten cooked or raw"]
+    },
+    {
+      "word": "potato",
+      "tags": ["starchy vegetable", "grows underground", "versatile ingredient", "makes french fries", "staple food"]
+    },
+    {
+      "word": "tomato",
+      "tags": ["red vegetable", "technically a fruit", "used in sauces", "grows on vines", "juicy and acidic"]
+    },
+    {
+      "word": "lettuce",
+      "tags": ["leafy green", "used in salads", "crispy texture", "low in calories", "grows in heads"]
+    },
+    {
+      "word": "cucumber",
+      "tags": ["green vegetable", "mostly water", "refreshing taste", "grows on vines", "used in salads"]
+    },
+    {
+      "word": "pepper",
+      "tags": ["colorful vegetable", "red yellow or green", "sweet or spicy", "bell shaped or long", "rich in vitamin c"]
+    },
+    {
+      "word": "onion",
+      "tags": ["bulb vegetable", "makes you cry when cut", "layers inside", "used in cooking", "strong flavor"]
+    },
+    {
+      "word": "spinach",
+      "tags": ["leafy green", "high in iron", "popeyes favorite", "eaten cooked or raw", "nutritious vegetable"]
+    },
+    {
+      "word": "corn",
+      "tags": ["yellow vegetable", "grows on cobs", "kernels in rows", "sweet variety exists", "used for many products"]
+    },
+    {
+      "word": "doctor",
+      "tags": ["medical professional", "treats patients", "works in hospital", "helps sick people", "wears white coat"]
+    },
+    {
+      "word": "teacher",
+      "tags": ["educator", "works in school", "teaches students", "shares knowledge", "grades homework"]
+    },
+    {
+      "word": "engineer",
+      "tags": ["designs and builds", "solves technical problems", "uses math and science", "creates solutions", "builds bridges or software"]
+    },
+    {
+      "word": "chef",
+      "tags": ["professional cook", "works in kitchen", "creates dishes", "culinary expert", "wears tall white hat"]
+    },
+    {
+      "word": "pilot",
+      "tags": ["flies airplanes", "works in aviation", "travels the world", "sits in cockpit", "needs license"]
+    },
+    {
+      "word": "artist",
+      "tags": ["creates art", "paints or sculpts", "creative professional", "works in studio", "expresses through visuals"]
+    }
+  ]
+}
+

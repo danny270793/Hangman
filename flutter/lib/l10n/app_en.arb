@@ -21,5 +21,6 @@
   "lettersUsed": "Letters Used",
   "youWon": "🎉 You Won!",
   "gameOver": "😢 Game Over!",
-  "playAgain": "Play Again"
+  "playAgain": "Play Again",
+  "hint": "Hint"
 }
