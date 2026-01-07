@@ -29,10 +29,13 @@ void main() async {
   final timedModeService = TimedModeService();
   await timedModeService.loadTimedMode();
 
+  final authService = AuthService();
+  await authService.loadAuth();
+
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthService>(create: (_) => AuthService()),
+        ChangeNotifierProvider<AuthService>.value(value: authService),
         ChangeNotifierProvider<LocaleService>.value(value: localeService),
         ChangeNotifierProvider<ThemeService>.value(value: themeService),
         ChangeNotifierProvider<DifficultyService>.value(
