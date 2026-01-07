@@ -573,44 +573,40 @@ class HangmanPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
+    // Always draw the gallows structure
+    
     // Base
-    if (wrongGuesses > 0) {
-      canvas.drawLine(
-        Offset(size.width * 0.1, size.height * 0.9),
-        Offset(size.width * 0.5, size.height * 0.9),
-        paint,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width * 0.1, size.height * 0.9),
+      Offset(size.width * 0.5, size.height * 0.9),
+      paint,
+    );
 
     // Pole
-    if (wrongGuesses > 1) {
-      canvas.drawLine(
-        Offset(size.width * 0.2, size.height * 0.9),
-        Offset(size.width * 0.2, size.height * 0.1),
-        paint,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width * 0.2, size.height * 0.9),
+      Offset(size.width * 0.2, size.height * 0.1),
+      paint,
+    );
 
     // Top bar
-    if (wrongGuesses > 2) {
-      canvas.drawLine(
-        Offset(size.width * 0.2, size.height * 0.1),
-        Offset(size.width * 0.6, size.height * 0.1),
-        paint,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width * 0.2, size.height * 0.1),
+      Offset(size.width * 0.6, size.height * 0.1),
+      paint,
+    );
 
     // Rope
-    if (wrongGuesses > 3) {
-      canvas.drawLine(
-        Offset(size.width * 0.6, size.height * 0.1),
-        Offset(size.width * 0.6, size.height * 0.2),
-        paint,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width * 0.6, size.height * 0.1),
+      Offset(size.width * 0.6, size.height * 0.2),
+      paint,
+    );
 
-    // Head
-    if (wrongGuesses > 4) {
+    // Draw person parts based on wrong guesses
+    
+    // Head (1st wrong guess)
+    if (wrongGuesses >= 1) {
       canvas.drawCircle(
         Offset(size.width * 0.6, size.height * 0.25),
         size.width * 0.05,
@@ -618,36 +614,44 @@ class HangmanPainter extends CustomPainter {
       );
     }
 
-    // Body
-    if (wrongGuesses > 5) {
+    // Body (2nd wrong guess)
+    if (wrongGuesses >= 2) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.3),
         Offset(size.width * 0.6, size.height * 0.5),
         paint,
       );
+    }
 
-      // Left arm
+    // Left arm (3rd wrong guess)
+    if (wrongGuesses >= 3) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.35),
         Offset(size.width * 0.5, size.height * 0.4),
         paint,
       );
+    }
 
-      // Right arm
+    // Right arm (4th wrong guess)
+    if (wrongGuesses >= 4) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.35),
         Offset(size.width * 0.7, size.height * 0.4),
         paint,
       );
+    }
 
-      // Left leg
+    // Left leg (5th wrong guess)
+    if (wrongGuesses >= 5) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.5),
         Offset(size.width * 0.5, size.height * 0.65),
         paint,
       );
+    }
 
-      // Right leg
+    // Right leg (6th wrong guess)
+    if (wrongGuesses >= 6) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.5),
         Offset(size.width * 0.7, size.height * 0.65),
