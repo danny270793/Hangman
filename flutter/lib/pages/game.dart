@@ -224,117 +224,238 @@ class _GamePageState extends State<GamePage> {
         ),
         child: _isLoading
             ? const Center(child: CircularProgressIndicator())
-            : Column(
+            : OrientationBuilder(
+                builder: (context, orientation) {
+                  final isLandscape = orientation == Orientation.landscape;
+                  
+                  if (isLandscape) {
+                    return _buildLandscapeLayout(context, l10n, timedModeService);
+                  } else {
+                    return _buildPortraitLayout(context, l10n, timedModeService);
+                  }
+                },
+              ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPortraitLayout(
+    BuildContext context,
+    AppLocalizations l10n,
+    TimedModeService timedModeService,
+  ) {
+    return Column(
+      children: [
+        // Score Cards
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildScoreCard(
+                l10n.guessesLeft,
+                '${_maxWrongGuesses - _wrongGuesses}',
+                Icons.favorite,
+                Colors.red,
+              ),
+              if (timedModeService.isEnabled)
+                _buildScoreCard(
+                  l10n.time,
+                  '${_remainingSeconds}s',
+                  Icons.timer,
+                  _remainingSeconds <= 10 ? Colors.red : Colors.orange,
+                ),
+              _buildScoreCard(
+                l10n.lettersUsed,
+                '${_guessedLetters.length}',
+                Icons.text_fields,
+                Colors.blue,
+              ),
+            ],
+          ),
+        ),
+
+        // Hangman Drawing
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: SizedBox(
+            height: 200,
+            child: Center(child: _buildHangmanDrawing()),
+          ),
+        ),
+
+        const SizedBox(height: 8),
+
+        // Word Display
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Center(
+            child: _buildWordDisplay(),
+          ),
+        ),
+
+        const SizedBox(height: 12),
+
+        // Hint Display or Game Status
+        if (!_isGameWon && !_isGameLost)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+            child: _buildHintDisplay(),
+          ),
+
+        if (_isGameWon || _isGameLost)
+          _buildGameStatus(l10n),
+
+        const SizedBox(height: 8),
+
+        // Keyboard
+        Expanded(
+          child: _buildKeyboard(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLandscapeLayout(
+    BuildContext context,
+    AppLocalizations l10n,
+    TimedModeService timedModeService,
+  ) {
+    return Row(
+      children: [
+        // Left side - Score Cards (vertical) and Hangman
+        Expanded(
+          flex: 2,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Score Cards - Vertical
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Score Cards
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildScoreCard(
-                          l10n.guessesLeft,
-                          '${_maxWrongGuesses - _wrongGuesses}',
-                          Icons.favorite,
-                          Colors.red,
-                        ),
-                        if (timedModeService.isEnabled)
-                          _buildScoreCard(
-                            l10n.time,
-                            '${_remainingSeconds}s',
-                            Icons.timer,
-                            _remainingSeconds <= 10
-                                ? Colors.red
-                                : Colors.orange,
-                          ),
-                        _buildScoreCard(
-                          l10n.lettersUsed,
-                          '${_guessedLetters.length}',
-                          Icons.text_fields,
-                          Colors.blue,
-                        ),
-                      ],
-                    ),
+                  _buildScoreCard(
+                    l10n.guessesLeft,
+                    '${_maxWrongGuesses - _wrongGuesses}',
+                    Icons.favorite,
+                    Colors.red,
                   ),
-
-                  // Hangman Drawing
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: SizedBox(
-                      height: 200,
-                      child: Center(child: _buildHangmanDrawing()),
-                    ),
-                  ),
-
                   const SizedBox(height: 8),
-
-                  // Word Display
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Center(
-                      child: _buildWordDisplay(),
+                  if (timedModeService.isEnabled) ...[
+                    _buildScoreCard(
+                      l10n.time,
+                      '${_remainingSeconds}s',
+                      Icons.timer,
+                      _remainingSeconds <= 10 ? Colors.red : Colors.orange,
                     ),
-                  ),
-
-                  const SizedBox(height: 12),
-
-                  // Hint Display
-                  if (!_isGameWon && !_isGameLost)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-                      child: _buildHintDisplay(),
-                    ),
-
-                  // Game Status Message
-                  if (_isGameWon || _isGameLost)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            _isGameWon ? l10n.youWon : l10n.gameOver,
-                            style: TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              color: _isGameWon ? Colors.green : Colors.red,
-                            ),
-                          ),
-                          if (_isGameWon) ...[
-                            const SizedBox(height: 8),
-                            Text(
-                              '+$_lastRoundPoints ${l10n.points}',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green.shade700,
-                              ),
-                            ),
-                          ],
-                          const SizedBox(height: 8),
-                          ElevatedButton.icon(
-                            onPressed: _resetGame,
-                            icon: Icon(_isGameWon ? Icons.arrow_forward : Icons.refresh),
-                            label: Text(_isGameWon ? l10n.nextWord : l10n.playAgain),
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 32,
-                                vertical: 12,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                  const SizedBox(height: 8),
-
-                  // Keyboard
-                  Expanded(
-                    child: _buildKeyboard(),
+                    const SizedBox(height: 8),
+                  ],
+                  _buildScoreCard(
+                    l10n.lettersUsed,
+                    '${_guessedLetters.length}',
+                    Icons.text_fields,
+                    Colors.blue,
                   ),
                 ],
               ),
+              
+              const SizedBox(width: 16),
+              
+              // Hangman Drawing
+              Expanded(
+                child: Center(
+                  child: SizedBox(
+                    height: 250,
+                    child: _buildHangmanDrawing(),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
+
+        // Right side - Word, Hint, Status, and Keyboard
+        Expanded(
+          flex: 3,
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              
+              // Word Display
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Center(
+                  child: _buildWordDisplay(),
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              // Hint Display or Game Status
+              if (!_isGameWon && !_isGameLost)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                  child: _buildHintDisplay(),
+                ),
+
+              if (_isGameWon || _isGameLost)
+                _buildGameStatus(l10n),
+
+              const SizedBox(height: 8),
+
+              // Keyboard
+              Expanded(
+                child: _buildKeyboard(),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGameStatus(AppLocalizations l10n) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        children: [
+          Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 8,
+            children: [
+              Text(
+                _isGameWon ? l10n.youWon : l10n.gameOver,
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: _isGameWon ? Colors.green : Colors.red,
+                ),
+              ),
+              if (_isGameWon)
+                Text(
+                  '+$_lastRoundPoints ${l10n.points}',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green.shade700,
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          ElevatedButton.icon(
+            onPressed: _resetGame,
+            icon: Icon(_isGameWon ? Icons.arrow_forward : Icons.refresh),
+            label: Text(_isGameWon ? l10n.nextWord : l10n.playAgain),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 32,
+                vertical: 12,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -370,31 +491,38 @@ class _GamePageState extends State<GamePage> {
   }
 
   Widget _buildScoreCard(String label, String value, IconData icon, Color color) {
-    return Card(
-      elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, color: color, size: 24),
-            const SizedBox(height: 4),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.onSurface,
+    return SizedBox(
+      width: 100,
+      height: 100,
+      child: Card(
+        elevation: 4,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, color: color, size: 24),
+              const SizedBox(height: 4),
+              Text(
+                value,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
               ),
-            ),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 12,
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
