@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
+import 'package:hangman/services/words_service.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,10 +14,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final String _word = 'DEVELOPER';
+  final WordsService _wordsService = WordsService();
+  late Word _currentWord;
+  late String _word;
   final Set<String> _guessedLetters = {};
   int _wrongGuesses = 0;
   final int _maxWrongGuesses = 6;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAndStartGame();
+  }
+
+  Future<void> _loadAndStartGame() async {
+    await _wordsService.loadWords();
+    setState(() {
+      _currentWord = _wordsService.getRandomWord();
+      _word = _currentWord.word.toUpperCase();
+      _isLoading = false;
+    });
+  }
 
   bool get _isGameWon {
     return _word.split('').every((letter) => _guessedLetters.contains(letter));
@@ -41,6 +60,8 @@ class _HomePageState extends State<HomePage> {
 
   void _resetGame() {
     setState(() {
+      _currentWord = _wordsService.getRandomWord();
+      _word = _currentWord.word.toUpperCase();
       _guessedLetters.clear();
       _wrongGuesses = 0;
     });
@@ -74,7 +95,11 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        child: SafeArea(
+        child: _isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : SafeArea(
           child: Column(
             children: [
               // Score Section
@@ -106,6 +131,12 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                 child: _buildWordDisplay(),
+              ),
+
+              // Hint Display
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: _buildHintDisplay(),
               ),
 
               // Game Status Message
@@ -238,6 +269,48 @@ class _HomePageState extends State<HomePage> {
           ),
         );
       }).toList(),
+    );
+  }
+
+  Widget _buildHintDisplay() {
+    final l10n = AppLocalizations.of(context)!;
+    // Get a random tag from the current word as a hint
+    final hint = _currentWord.tags.isNotEmpty 
+        ? _currentWord.tags.first 
+        : 'No hint available';
+    
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.amber.shade50,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.amber.shade300,
+          width: 2,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.lightbulb_outline,
+            color: Colors.amber.shade700,
+            size: 24,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              '${l10n.hint}: $hint',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.amber.shade900,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
