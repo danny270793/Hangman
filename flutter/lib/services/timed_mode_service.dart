@@ -27,4 +27,3 @@ class TimedModeService extends ChangeNotifier {
     notifyListeners();
   }
 }
-
