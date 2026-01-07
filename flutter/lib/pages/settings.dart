@@ -410,7 +410,8 @@ class SettingsPage extends StatelessWidget {
 
   void _showChangePasswordDialog(BuildContext context, AppLocalizations l10n) {
     final formKey = GlobalKey<FormState>();
-    final passwordController = TextEditingController();
+    final currentPasswordController = TextEditingController();
+    final newPasswordController = TextEditingController();
     final confirmPasswordController = TextEditingController();
 
     showDialog(
@@ -420,49 +421,71 @@ class SettingsPage extends StatelessWidget {
           title: Text(l10n.changePassword),
           content: Form(
             key: formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextFormField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    labelText: l10n.newPassword,
-                    hintText: l10n.enterNewPassword,
-                    prefixIcon: const Icon(Icons.lock),
-                    border: const OutlineInputBorder(),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextFormField(
+                    controller: currentPasswordController,
+                    decoration: InputDecoration(
+                      labelText: l10n.currentPassword,
+                      hintText: l10n.enterCurrentPassword,
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      border: const OutlineInputBorder(),
+                    ),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return l10n.pleaseEnterPassword;
+                      }
+                      return null;
+                    },
                   ),
-                  obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return l10n.pleaseEnterPassword;
-                    }
-                    if (value.length < 6) {
-                      return l10n.passwordMinLength;
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  controller: confirmPasswordController,
-                  decoration: InputDecoration(
-                    labelText: l10n.confirmPassword,
-                    hintText: l10n.enterConfirmPassword,
-                    prefixIcon: const Icon(Icons.lock),
-                    border: const OutlineInputBorder(),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: newPasswordController,
+                    decoration: InputDecoration(
+                      labelText: l10n.newPassword,
+                      hintText: l10n.enterNewPassword,
+                      prefixIcon: const Icon(Icons.lock),
+                      border: const OutlineInputBorder(),
+                    ),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return l10n.pleaseEnterPassword;
+                      }
+                      if (value.length < 6) {
+                        return l10n.passwordMinLength;
+                      }
+                      if (value == currentPasswordController.text) {
+                        return l10n.newPasswordMustBeDifferent;
+                      }
+                      return null;
+                    },
                   ),
-                  obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return l10n.pleaseEnterPassword;
-                    }
-                    if (value != passwordController.text) {
-                      return l10n.passwordsDoNotMatch;
-                    }
-                    return null;
-                  },
-                ),
-              ],
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: confirmPasswordController,
+                    decoration: InputDecoration(
+                      labelText: l10n.confirmPassword,
+                      hintText: l10n.enterConfirmPassword,
+                      prefixIcon: const Icon(Icons.lock),
+                      border: const OutlineInputBorder(),
+                    ),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return l10n.pleaseEnterPassword;
+                      }
+                      if (value != newPasswordController.text) {
+                        return l10n.passwordsDoNotMatch;
+                      }
+                      return null;
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           actions: [
@@ -480,6 +503,8 @@ class SettingsPage extends StatelessWidget {
                     SnackBar(content: Text(l10n.updateSuccess)),
                   );
                   // TODO: Implement password update logic
+                  // Verify currentPasswordController.text matches user's current password
+                  // Then update to newPasswordController.text
                 }
               },
               child: Text(l10n.update),
