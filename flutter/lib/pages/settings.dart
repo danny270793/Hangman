@@ -3,8 +3,6 @@ import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
-import 'package:hangman/services/difficulty_service.dart';
-import 'package:hangman/services/timed_mode_service.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -17,8 +15,6 @@ class SettingsPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final localeService = context.watch<LocaleService>();
     final themeService = context.watch<ThemeService>();
-    final difficultyService = context.watch<DifficultyService>();
-    final timedModeService = context.watch<TimedModeService>();
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settings)),
@@ -306,62 +302,6 @@ class SettingsPage extends StatelessWidget {
                 selected: isSelected,
                 onTap: () {
                   themeService.setTheme(mode);
-                  Navigator.of(dialogContext).pop();
-                },
-              );
-            }).toList(),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(dialogContext).pop();
-              },
-              child: Text(l10n.cancel),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  String _getDifficultyName(GameDifficulty difficulty, AppLocalizations l10n) {
-    switch (difficulty) {
-      case GameDifficulty.easy:
-        return l10n.easy;
-      case GameDifficulty.medium:
-        return l10n.medium;
-      case GameDifficulty.hard:
-        return l10n.hard;
-    }
-  }
-
-  void _showDifficultyPicker(
-    BuildContext context,
-    AppLocalizations l10n,
-    DifficultyService difficultyService,
-  ) {
-    final difficultyOptions = GameDifficulty.values;
-
-    showDialog(
-      context: context,
-      builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          title: Text(l10n.selectDifficulty),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: difficultyOptions.map((difficulty) {
-              final isSelected = difficulty == difficultyService.difficulty;
-              return ListTile(
-                leading: Icon(
-                  isSelected ? Icons.check_circle : Icons.circle_outlined,
-                  color: isSelected
-                      ? Theme.of(context).colorScheme.primary
-                      : null,
-                ),
-                title: Text(_getDifficultyName(difficulty, l10n)),
-                selected: isSelected,
-                onTap: () {
-                  difficultyService.setDifficulty(difficulty);
                   Navigator.of(dialogContext).pop();
                 },
               );
