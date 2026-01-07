@@ -49,6 +49,10 @@
   "selectTheme": "Seleccionar Tema",
   "themeSystem": "Sistema",
   "themeLight": "Claro",
-  "themeDark": "Oscuro"
+  "themeDark": "Oscuro",
+  "selectDifficulty": "Seleccionar Dificultad",
+  "easy": "Fácil",
+  "hard": "Difícil",
+  "time": "Tiempo"
 }
 

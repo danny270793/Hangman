@@ -49,5 +49,9 @@
   "selectTheme": "Select Theme",
   "themeSystem": "System",
   "themeLight": "Light",
-  "themeDark": "Dark"
+  "themeDark": "Dark",
+  "selectDifficulty": "Select Difficulty",
+  "easy": "Easy",
+  "hard": "Hard",
+  "time": "Time"
 }
