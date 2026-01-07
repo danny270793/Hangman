@@ -433,7 +433,7 @@ class _GamePageState extends State<GamePage> {
         final shouldReveal = isGuessed || _isGameLost;
         return Container(
           width: 40,
-          height: 50,
+          height: 40,
           decoration: BoxDecoration(
             color: shouldReveal
                 ? (_isGameLost && !isGuessed
