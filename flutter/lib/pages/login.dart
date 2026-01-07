@@ -6,7 +6,6 @@ import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/theme_service.dart';
 import 'package:provider/provider.dart';
 
-
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
 
@@ -98,7 +97,7 @@ class _LoginPageState extends State<LoginPage>
                   child: OrientationBuilder(
                     builder: (context, orientation) {
                       final isLandscape = orientation == Orientation.landscape;
-                      
+
                       if (isLandscape) {
                         return _buildLandscapeLayout(context, l10n);
                       } else {
@@ -161,10 +160,7 @@ class _LoginPageState extends State<LoginPage>
         const SizedBox(height: 8),
         Text(
           l10n.signInToContinue,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Colors.white70,
-          ),
+          style: const TextStyle(fontSize: 16, color: Colors.white70),
         ),
         const SizedBox(height: 48),
 
@@ -173,31 +169,28 @@ class _LoginPageState extends State<LoginPage>
         const SizedBox(height: 24),
 
         // Register Link
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    l10n.dontHaveAccount,
-                    style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: 14,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      context.push(RegisterPage.routeName);
-                    },
-                    child: Text(
-                      l10n.createOne,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              l10n.dontHaveAccount,
+              style: const TextStyle(color: Colors.white70, fontSize: 14),
+            ),
+            TextButton(
+              onPressed: () {
+                context.push(RegisterPage.routeName);
+              },
+              child: Text(
+                l10n.createOne,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -251,26 +244,20 @@ class _LoginPageState extends State<LoginPage>
               const SizedBox(height: 8),
               Text(
                 l10n.signInToContinue,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.white70,
-                ),
+                style: const TextStyle(fontSize: 14, color: Colors.white70),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
               Text(
                 l10n.readyToTest,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 12,
-                ),
+                style: const TextStyle(color: Colors.white70, fontSize: 12),
                 textAlign: TextAlign.center,
               ),
             ],
           ),
         ),
         const SizedBox(width: 24),
-        
+
         // Right side - Login Form
         Expanded(
           child: SingleChildScrollView(
@@ -316,9 +303,7 @@ class _LoginPageState extends State<LoginPage>
   Widget _buildLoginCard(BuildContext context, AppLocalizations l10n) {
     return Card(
       elevation: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Container(
         padding: const EdgeInsets.all(32),
         child: Form(
@@ -333,9 +318,7 @@ class _LoginPageState extends State<LoginPage>
                 decoration: InputDecoration(
                   labelText: l10n.username,
                   hintText: l10n.enterUsername,
-                  prefixIcon: const Icon(
-                    Icons.person_outline,
-                  ),
+                  prefixIcon: const Icon(Icons.person_outline),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -370,7 +353,7 @@ class _LoginPageState extends State<LoginPage>
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                     ),
-          onPressed: () {
+                    onPressed: () {
                       setState(() {
                         _obscurePassword = !_obscurePassword;
                       });
@@ -400,15 +383,9 @@ class _LoginPageState extends State<LoginPage>
               ElevatedButton(
                 onPressed: _handleLogin,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(
-                    context,
-                  ).colorScheme.primary,
-                  foregroundColor: Theme.of(
-                    context,
-                  ).colorScheme.onPrimary,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                  ),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
