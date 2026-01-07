@@ -44,13 +44,6 @@ class SettingsPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 16),
-                Text(
-                  'Player',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
               ],
             ),
           ),
