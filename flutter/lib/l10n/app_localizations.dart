@@ -245,6 +245,30 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get profile;
 
+  /// No description provided for @changeProfilePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Profile Photo'**
+  String get changeProfilePhoto;
+
+  /// No description provided for @selectPhotoSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Photo Source'**
+  String get selectPhotoSource;
+
+  /// No description provided for @camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get camera;
+
+  /// No description provided for @gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get gallery;
+
   /// No description provided for @changeEmail.
   ///
   /// In en, this message translates to:

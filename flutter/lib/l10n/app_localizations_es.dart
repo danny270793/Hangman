@@ -84,6 +84,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get profile => 'Perfil';
 
   @override
+  String get changeProfilePhoto => 'Cambiar Foto de Perfil';
+
+  @override
+  String get selectPhotoSource => 'Seleccionar Fuente de Foto';
+
+  @override
+  String get camera => 'Cámara';
+
+  @override
+  String get gallery => 'Galería';
+
+  @override
   String get changeEmail => 'Cambiar Correo';
 
   @override
