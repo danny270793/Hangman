@@ -42,9 +42,7 @@ void main() async {
         ChangeNotifierProvider<DifficultyService>.value(
           value: difficultyService,
         ),
-        ChangeNotifierProvider<TimedModeService>.value(
-          value: timedModeService,
-        ),
+        ChangeNotifierProvider<TimedModeService>.value(value: timedModeService),
       ],
       child: const MyApp(),
     ),
@@ -52,8 +50,16 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final protectedPages = const [HomePage.routeName, GamePage.routeName, SettingsPage.routeName];
-  final publicPages = const [SplashPage.routeName, LoginPage.routeName, RegisterPage.routeName];
+  final protectedPages = const [
+    HomePage.routeName,
+    GamePage.routeName,
+    SettingsPage.routeName,
+  ];
+  final publicPages = const [
+    SplashPage.routeName,
+    LoginPage.routeName,
+    RegisterPage.routeName,
+  ];
 
   const MyApp({super.key});
 
