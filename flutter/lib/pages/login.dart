@@ -172,14 +172,32 @@ class _LoginPageState extends State<LoginPage>
         _buildLoginCard(context, l10n),
         const SizedBox(height: 24),
 
-        // Footer Text
-        Text(
-          l10n.readyToTest,
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 14,
-          ),
-        ),
+        // Register Link
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    l10n.dontHaveAccount,
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      context.push(RegisterPage.routeName);
+                    },
+                    child: Text(
+                      l10n.createOne,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
       ],
     );
   }
@@ -412,33 +430,6 @@ class _LoginPageState extends State<LoginPage>
                 ),
               ),
               const SizedBox(height: 24),
-
-              // Register Link
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    l10n.dontHaveAccount,
-                    style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: 14,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      context.push(RegisterPage.routeName);
-                    },
-                    child: Text(
-                      l10n.createOne,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
