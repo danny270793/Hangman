@@ -53,6 +53,23 @@ class WordsService {
     return random.first;
   }
 
+  /// Get a random word filtered by difficulty category
+  Word getRandomWordByDifficulty(String difficultyCategory) {
+    final allWords = getAllWords();
+    final filteredWords = allWords
+        .where((word) => getWordDifficultyCategory(word.word) == difficultyCategory)
+        .toList();
+    
+    // If no words match the difficulty, fall back to all words
+    if (filteredWords.isEmpty) {
+      final random = allWords.toList()..shuffle();
+      return random.first;
+    }
+    
+    filteredWords.shuffle();
+    return filteredWords.first;
+  }
+
   List<Word> searchByTag(String tag) {
     final words = getAllWords();
     return words
@@ -71,6 +88,40 @@ class WordsService {
               word.word.length >= minLength && word.word.length <= maxLength,
         )
         .toList();
+  }
+
+  /// Calculate the difficulty of a word based on the number of unique letters
+  /// Returns a value from 0.0 (easiest) to 1.0 (hardest)
+  /// More unique letters = harder to guess
+  double getWordDifficulty(String word) {
+    final uniqueLetters = word.toUpperCase().split('').toSet().length;
+    final totalLetters = word.length;
+    
+    // Normalize to 0.0 - 1.0 range
+    // Words with all unique letters are hardest (ratio = 1.0)
+    // Words with many repeated letters are easier (ratio closer to 0)
+    return uniqueLetters / totalLetters;
+  }
+
+  /// Get the difficulty category based on unique letter ratio
+  /// Easy: < 0.65 (many repeated letters)
+  /// Medium: 0.65 - 0.85 (some repeated letters)
+  /// Hard: > 0.85 (mostly unique letters)
+  String getWordDifficultyCategory(String word) {
+    final difficulty = getWordDifficulty(word);
+    
+    if (difficulty < 0.65) {
+      return 'easy';
+    } else if (difficulty < 0.85) {
+      return 'medium';
+    } else {
+      return 'hard';
+    }
+  }
+
+  /// Get the count of unique letters in a word
+  int getUniqueLetterCount(String word) {
+    return word.toUpperCase().split('').toSet().length;
   }
 
   // Fallback words in case JSON fails to load

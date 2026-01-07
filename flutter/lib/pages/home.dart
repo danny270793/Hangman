@@ -1,8 +1,12 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/pages/settings.dart';
 import 'package:hangman/services/words_service.dart';
+import 'package:hangman/services/difficulty_service.dart';
+import 'package:hangman/services/timed_mode_service.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = '/';
@@ -22,6 +26,11 @@ class _HomePageState extends State<HomePage> {
   final int _maxWrongGuesses = 6;
   bool _isLoading = true;
   bool _hasLoadedWords = false;
+  
+  // Timer related
+  Timer? _timer;
+  int _remainingSeconds = 60;
+  bool _isTimedOut = false;
 
   @override
   void didChangeDependencies() {
@@ -34,12 +43,59 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _loadAndStartGame() async {
     final locale = Localizations.localeOf(context).languageCode;
+    final difficultyService = context.read<DifficultyService>();
+    final difficulty = _getDifficultyString(difficultyService.difficulty);
+    
     await _wordsService.loadWords(locale: locale);
     setState(() {
-      _currentWord = _wordsService.getRandomWord();
+      _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
       _word = _currentWord.word.toUpperCase();
       _isLoading = false;
     });
+    
+    // Start timer if timed mode is enabled
+    final timedModeService = context.read<TimedModeService>();
+    if (timedModeService.isEnabled) {
+      _startTimer();
+    }
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    _remainingSeconds = 60;
+    _isTimedOut = false;
+    
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_remainingSeconds > 0) {
+          _remainingSeconds--;
+        } else {
+          _timer?.cancel();
+          _isTimedOut = true;
+        }
+      });
+    });
+  }
+
+  void _stopTimer() {
+    _timer?.cancel();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  String _getDifficultyString(GameDifficulty difficulty) {
+    switch (difficulty) {
+      case GameDifficulty.easy:
+        return 'easy';
+      case GameDifficulty.medium:
+        return 'medium';
+      case GameDifficulty.hard:
+        return 'hard';
+    }
   }
 
   bool get _isGameWon {
@@ -47,7 +103,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   bool get _isGameLost {
-    return _wrongGuesses >= _maxWrongGuesses;
+    return _wrongGuesses >= _maxWrongGuesses || _isTimedOut;
   }
 
   void _guessLetter(String letter) {
@@ -61,20 +117,36 @@ class _HomePageState extends State<HomePage> {
         _wrongGuesses++;
       }
     });
+    
+    // Stop timer if game is won or lost
+    if (_isGameWon || _isGameLost) {
+      _stopTimer();
+    }
   }
 
   void _resetGame() {
+    final difficultyService = context.read<DifficultyService>();
+    final difficulty = _getDifficultyString(difficultyService.difficulty);
+    final timedModeService = context.read<TimedModeService>();
+    
     setState(() {
-      _currentWord = _wordsService.getRandomWord();
+      _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
       _word = _currentWord.word.toUpperCase();
       _guessedLetters.clear();
       _wrongGuesses = 0;
+      _isTimedOut = false;
     });
+    
+    // Restart timer if timed mode is enabled
+    if (timedModeService.isEnabled) {
+      _startTimer();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final timedModeService = context.watch<TimedModeService>();
 
     return Scaffold(
       appBar: AppBar(
@@ -109,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           _buildScoreCard(
                             l10n.guessesLeft,
@@ -117,6 +189,15 @@ class _HomePageState extends State<HomePage> {
                             Icons.favorite,
                             Colors.red,
                           ),
+                          if (timedModeService.isEnabled)
+                            _buildScoreCard(
+                              l10n.time,
+                              '${_remainingSeconds}s',
+                              Icons.timer,
+                              _remainingSeconds <= 10
+                                  ? Colors.red
+                                  : Colors.orange,
+                            ),
                           _buildScoreCard(
                             l10n.lettersUsed,
                             '${_guessedLetters.length}',
