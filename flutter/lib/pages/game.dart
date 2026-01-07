@@ -4,7 +4,6 @@ import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/words_service.dart';
 import 'package:hangman/services/difficulty_service.dart';
 import 'package:hangman/services/timed_mode_service.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class GamePage extends StatefulWidget {
@@ -187,7 +186,7 @@ class _GamePageState extends State<GamePage> {
         
         final shouldPop = await _showExitConfirmationDialog(context, l10n);
         if (shouldPop == true && context.mounted) {
-          context.pop();
+          Navigator.of(context).pop();
         }
       },
       child: Scaffold(
@@ -197,7 +196,7 @@ class _GamePageState extends State<GamePage> {
             onPressed: () async {
               final shouldExit = await _showExitConfirmationDialog(context, l10n);
               if (shouldExit == true && context.mounted) {
-                context.pop();
+                Navigator.of(context).pop();
               }
             },
           ),
