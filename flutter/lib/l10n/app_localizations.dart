@@ -418,6 +418,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Time'**
   String get time;
+
+  /// No description provided for @score.
+  ///
+  /// In en, this message translates to:
+  /// **'Score'**
+  String get score;
+
+  /// No description provided for @nextWord.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Word'**
+  String get nextWord;
+
+  /// No description provided for @points.
+  ///
+  /// In en, this message translates to:
+  /// **'points'**
+  String get points;
+
+  /// No description provided for @letsPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Play!'**
+  String get letsPlay;
+
+  /// No description provided for @gameConfiguration.
+  ///
+  /// In en, this message translates to:
+  /// **'Game Configuration'**
+  String get gameConfiguration;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -169,4 +169,19 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get time => 'Tiempo';
+
+  @override
+  String get score => 'Puntuación';
+
+  @override
+  String get nextWord => 'Siguiente Palabra';
+
+  @override
+  String get points => 'puntos';
+
+  @override
+  String get letsPlay => '¡Juguemos!';
+
+  @override
+  String get gameConfiguration => 'Configuración del Juego';
 }
