@@ -128,7 +128,7 @@ class HomePage extends StatelessWidget {
                   height: 60,
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      context.go(GamePage.routeName);
+                      context.push(GamePage.routeName);
                     },
                     icon: const Icon(Icons.play_arrow, size: 32),
                     label: Text(
