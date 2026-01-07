@@ -84,32 +84,6 @@ class SettingsPage extends StatelessWidget {
 
           const Divider(height: 32),
 
-          // Game Settings Section
-          _buildSectionHeader(context, l10n.gameSettings),
-          _buildSettingsTile(
-            context,
-            icon: Icons.speed,
-            title: l10n.difficulty,
-            subtitle: _getDifficultyName(difficultyService.difficulty, l10n),
-            onTap: () {
-              _showDifficultyPicker(context, l10n, difficultyService);
-            },
-          ),
-          _buildSettingsTile(
-            context,
-            icon: Icons.timer,
-            title: l10n.timedMode,
-            subtitle: l10n.playWithTimer,
-            trailing: Switch(
-              value: timedModeService.isEnabled,
-              onChanged: (value) {
-                timedModeService.setTimedMode(value);
-              },
-            ),
-          ),
-
-          const Divider(height: 32),
-
           // About Section
           _buildSectionHeader(context, l10n.about),
           _buildSettingsTile(
