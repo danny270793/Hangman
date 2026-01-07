@@ -105,6 +105,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enterNewEmail => 'Enter your new email';
 
   @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get enterCurrentPassword => 'Enter your current password';
+
+  @override
   String get newPassword => 'New Password';
 
   @override
@@ -127,6 +133,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get newPasswordMustBeDifferent => 'New password must be different from current password';
 
   @override
   String get pleaseEnterEmail => 'Please enter your email';
