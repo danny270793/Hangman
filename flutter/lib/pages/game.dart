@@ -259,30 +259,37 @@ class _GamePageState extends State<GamePage> {
                   ),
 
                   // Hangman Drawing
-                  Expanded(
-                    flex: 3,
-                    child: Center(child: _buildHangmanDrawing()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: SizedBox(
+                      height: 200,
+                      child: Center(child: _buildHangmanDrawing()),
+                    ),
                   ),
 
+                  const SizedBox(height: 8),
+
                   // Word Display
-                  Expanded(
-                    flex: 2,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Center(
                       child: _buildWordDisplay(),
                     ),
                   ),
 
+                  const SizedBox(height: 12),
+
                   // Hint Display
                   if (!_isGameWon && !_isGameLost)
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
                       child: _buildHintDisplay(),
                     ),
 
                   // Game Status Message
                   if (_isGameWon || _isGameLost)
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Column(
                         children: [
                           Text(
@@ -320,9 +327,10 @@ class _GamePageState extends State<GamePage> {
                       ),
                     ),
 
+                  const SizedBox(height: 8),
+
                   // Keyboard
                   Expanded(
-                    flex: 2,
                     child: _buildKeyboard(),
                   ),
                 ],
