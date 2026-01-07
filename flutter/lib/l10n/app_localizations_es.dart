@@ -60,10 +60,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get logout => 'Cerrar Sesión';
 
   @override
-  String get guessesLeft => 'Intentos Restantes';
+  String get guessesLeft => 'Vidas';
 
   @override
-  String get lettersUsed => 'Letras Usadas';
+  String get lettersUsed => 'Letras';
 
   @override
   String get youWon => '🎉 ¡Ganaste!';
