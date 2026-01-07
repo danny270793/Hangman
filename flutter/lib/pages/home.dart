@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
-import 'package:hangman/services/auth_service.dart';
+import 'package:hangman/pages/settings.dart';
 import 'package:hangman/services/words_service.dart';
-import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = '/';
@@ -76,11 +76,11 @@ class _HomePageState extends State<HomePage> {
         title: Text(l10n.hangmanGame),
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout),
+            icon: const Icon(Icons.settings),
             onPressed: () {
-              context.read<AuthService>().logout();
+              context.go(SettingsPage.routeName);
             },
-            tooltip: l10n.logout,
+            tooltip: l10n.settings,
           ),
         ],
       ),

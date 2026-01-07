@@ -76,4 +76,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hint => 'Hint';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get general => 'General';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get sound => 'Sound';
+
+  @override
+  String get soundEffects => 'Sound effects';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get enableNotifications => 'Enable notifications';
+
+  @override
+  String get gameSettings => 'Game Settings';
+
+  @override
+  String get difficulty => 'Difficulty';
+
+  @override
+  String get medium => 'Medium';
+
+  @override
+  String get timedMode => 'Timed Mode';
+
+  @override
+  String get playWithTimer => 'Play with a timer';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get appVersion => 'App Version';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get termsOfService => 'Terms of Service';
+
+  @override
+  String get comingSoon => 'Coming soon!';
+
+  @override
+  String get logoutConfirmation => 'Are you sure you want to logout?';
+
+  @override
+  String get cancel => 'Cancel';
 }
