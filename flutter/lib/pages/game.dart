@@ -419,25 +419,30 @@ class _GamePageState extends State<GamePage> {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
         children: [
-          Text(
-            _isGameWon ? l10n.youWon : l10n.gameOver,
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: _isGameWon ? Colors.green : Colors.red,
-            ),
-          ),
-          if (_isGameWon) ...[
-            const SizedBox(height: 8),
-            Text(
-              '+$_lastRoundPoints ${l10n.points}',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.green.shade700,
+          Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 8,
+            children: [
+              Text(
+                _isGameWon ? l10n.youWon : l10n.gameOver,
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: _isGameWon ? Colors.green : Colors.red,
+                ),
               ),
-            ),
-          ],
+              if (_isGameWon)
+                Text(
+                  '+$_lastRoundPoints ${l10n.points}',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green.shade700,
+                  ),
+                ),
+            ],
+          ),
           const SizedBox(height: 8),
           ElevatedButton.icon(
             onPressed: _resetGame,
