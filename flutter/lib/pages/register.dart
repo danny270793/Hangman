@@ -310,8 +310,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 if (value == null || value.isEmpty) {
                   return l10n.pleaseEnterEmail;
                 }
-                if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                    .hasMatch(value)) {
+                if (!RegExp(
+                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                ).hasMatch(value)) {
                   return l10n.invalidEmail;
                 }
                 return null;
@@ -400,4 +401,3 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
-
