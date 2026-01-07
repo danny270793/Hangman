@@ -58,6 +58,9 @@
   "nextWord": "Siguiente Palabra",
   "points": "puntos",
   "letsPlay": "¡Juguemos!",
-  "gameConfiguration": "Configuración del Juego"
+  "gameConfiguration": "Configuración del Juego",
+  "exitGame": "¿Salir del Juego?",
+  "exitGameConfirmation": "¿Estás seguro de que quieres salir? Se perderá tu progreso actual.",
+  "exit": "Salir"
 }
 
