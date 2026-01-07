@@ -67,9 +67,9 @@ class _SettingsPageState extends State<SettingsPage> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to pick image')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Failed to pick image')));
       }
     }
   }
@@ -500,8 +500,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 if (value == null || value.isEmpty) {
                   return l10n.pleaseEnterEmail;
                 }
-                if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                    .hasMatch(value)) {
+                if (!RegExp(
+                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                ).hasMatch(value)) {
                   return l10n.invalidEmail;
                 }
                 return null;
@@ -519,9 +520,9 @@ class _SettingsPageState extends State<SettingsPage> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   Navigator.of(dialogContext).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(l10n.updateSuccess)),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(l10n.updateSuccess)));
                   // TODO: Implement email update logic
                 }
               },
@@ -624,9 +625,9 @@ class _SettingsPageState extends State<SettingsPage> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   Navigator.of(dialogContext).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(l10n.updateSuccess)),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(l10n.updateSuccess)));
                   // TODO: Implement password update logic
                   // Verify currentPasswordController.text matches user's current password
                   // Then update to newPasswordController.text
@@ -681,9 +682,9 @@ class _SettingsPageState extends State<SettingsPage> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   Navigator.of(dialogContext).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(l10n.updateSuccess)),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(l10n.updateSuccess)));
                   // TODO: Implement username update logic
                 }
               },
