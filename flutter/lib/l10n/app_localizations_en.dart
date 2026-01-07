@@ -184,4 +184,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gameConfiguration => 'Game Configuration';
+
+  @override
+  String get exitGame => 'Exit Game?';
+
+  @override
+  String get exitGameConfirmation => 'Are you sure you want to exit? Your current progress will be lost.';
+
+  @override
+  String get exit => 'Exit';
 }
