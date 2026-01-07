@@ -200,13 +200,13 @@ abstract class AppLocalizations {
   /// No description provided for @guessesLeft.
   ///
   /// In en, this message translates to:
-  /// **'Guesses Left'**
+  /// **'Lives'**
   String get guessesLeft;
 
   /// No description provided for @lettersUsed.
   ///
   /// In en, this message translates to:
-  /// **'Letters Used'**
+  /// **'Letters'**
   String get lettersUsed;
 
   /// No description provided for @youWon.
