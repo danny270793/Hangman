@@ -58,5 +58,8 @@
   "nextWord": "Next Word",
   "points": "points",
   "letsPlay": "Let's Play!",
-  "gameConfiguration": "Game Configuration"
+  "gameConfiguration": "Game Configuration",
+  "exitGame": "Exit Game?",
+  "exitGameConfirmation": "Are you sure you want to exit? Your current progress will be lost.",
+  "exit": "Exit"
 }
