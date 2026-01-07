@@ -17,16 +17,22 @@ This guide explains how to set up Supabase authentication for the Hangman app.
    - **Project URL** (e.g., `https://xxxxx.supabase.co`)
    - **anon public** key (starts with `eyJh...`)
 
-### 2. Update Configuration File
+### 2. Update Environment Variables
 
-Open `lib/config/supabase_config.dart` and replace the placeholder values:
+Create a `.env` file in the project root (it's already in `.gitignore`):
 
-```dart
-class SupabaseConfig {
-  static const String supabaseUrl = 'YOUR_SUPABASE_URL'; // Replace with your Project URL
-  static const String supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY'; // Replace with your anon key
-}
+```bash
+cp .env.example .env
 ```
+
+Then edit `.env` and replace the placeholder values:
+
+```env
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+**Note**: The `.env` file is ignored by git to keep your credentials secure. Never commit this file!
 
 ### 3. Configure Authentication
 
@@ -83,13 +89,30 @@ The authentication is handled by Supabase automatically, but if you want to stor
 
 ## Security Notes
 
-⚠️ **Important**: Never commit your actual Supabase credentials to version control!
+✅ **Good News**: Your credentials are now stored in `.env` which is automatically ignored by git!
 
-Consider using environment variables or a secure configuration management solution for production apps.
+The `.env` file is added to `.gitignore`, so it won't be committed to version control. This keeps your credentials secure.
 
-For Flutter, you can use packages like:
-- `flutter_dotenv` for environment variables
-- `flutter_secure_storage` for secure local storage
+**Best Practices:**
+- Never commit the `.env` file to version control
+- Share `.env.example` with your team (without actual credentials)
+- Each developer should create their own `.env` file locally
+- Use different Supabase projects for development, staging, and production
+
+## Environment Variables
+
+The app uses `flutter_dotenv` to load environment variables from `.env`:
+
+```env
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+These are accessed in `lib/config/supabase_config.dart` using:
+```dart
+dotenv.env['SUPABASE_URL']
+dotenv.env['SUPABASE_ANON_KEY']
+```
 
 ## Next Steps
 
