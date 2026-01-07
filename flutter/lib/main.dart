@@ -12,10 +12,18 @@ import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
 import 'package:hangman/services/difficulty_service.dart';
 import 'package:hangman/services/timed_mode_service.dart';
+import 'package:hangman/config/supabase_config.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Supabase
+  await Supabase.initialize(
+    url: SupabaseConfig.supabaseUrl,
+    anonKey: SupabaseConfig.supabaseAnonKey,
+  );
 
   // Initialize services and load saved preferences
   final localeService = LocaleService();
