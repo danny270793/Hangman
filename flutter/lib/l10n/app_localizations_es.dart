@@ -81,6 +81,84 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settings => 'Configuración';
 
   @override
+  String get profile => 'Perfil';
+
+  @override
+  String get changeProfilePhoto => 'Cambiar Foto de Perfil';
+
+  @override
+  String get selectPhotoSource => 'Seleccionar Fuente de Foto';
+
+  @override
+  String get camera => 'Cámara';
+
+  @override
+  String get gallery => 'Galería';
+
+  @override
+  String get changeEmail => 'Cambiar Correo';
+
+  @override
+  String get changePassword => 'Cambiar Contraseña';
+
+  @override
+  String get changeUsername => 'Cambiar Usuario';
+
+  @override
+  String get currentEmail => 'Correo Actual';
+
+  @override
+  String get currentUsername => 'Usuario Actual';
+
+  @override
+  String get newEmail => 'Nuevo Correo';
+
+  @override
+  String get enterNewEmail => 'Ingresa tu nuevo correo';
+
+  @override
+  String get currentPassword => 'Contraseña Actual';
+
+  @override
+  String get enterCurrentPassword => 'Ingresa tu contraseña actual';
+
+  @override
+  String get newPassword => 'Nueva Contraseña';
+
+  @override
+  String get enterNewPassword => 'Ingresa tu nueva contraseña';
+
+  @override
+  String get confirmPassword => 'Confirmar Contraseña';
+
+  @override
+  String get enterConfirmPassword => 'Confirma tu nueva contraseña';
+
+  @override
+  String get newUsername => 'Nuevo Usuario';
+
+  @override
+  String get enterNewUsername => 'Ingresa tu nuevo usuario';
+
+  @override
+  String get update => 'Actualizar';
+
+  @override
+  String get passwordsDoNotMatch => 'Las contraseñas no coinciden';
+
+  @override
+  String get newPasswordMustBeDifferent => 'La nueva contraseña debe ser diferente de la actual';
+
+  @override
+  String get pleaseEnterEmail => 'Por favor ingresa tu correo';
+
+  @override
+  String get invalidEmail => 'Por favor ingresa un correo válido';
+
+  @override
+  String get updateSuccess => '¡Actualizado con éxito!';
+
+  @override
   String get general => 'General';
 
   @override

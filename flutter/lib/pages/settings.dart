@@ -1,14 +1,118 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   static const String routeName = '/settings';
 
   const SettingsPage({super.key});
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  static const String _profileImageKey = 'profile_image_path';
+  String? _profileImagePath;
+  final ImagePicker _picker = ImagePicker();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileImage();
+  }
+
+  Future<void> _loadProfileImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final imagePath = prefs.getString(_profileImageKey);
+    if (imagePath != null && await File(imagePath).exists()) {
+      setState(() {
+        _profileImagePath = imagePath;
+      });
+    }
+  }
+
+  Future<void> _saveProfileImage(String path) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_profileImageKey, path);
+    setState(() {
+      _profileImagePath = path;
+    });
+  }
+
+  Future<void> _pickImage(ImageSource source) async {
+    try {
+      final XFile? image = await _picker.pickImage(
+        source: source,
+        maxWidth: 512,
+        maxHeight: 512,
+        imageQuality: 85,
+      );
+
+      if (image != null) {
+        await _saveProfileImage(image.path);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(AppLocalizations.of(context)!.updateSuccess),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Failed to pick image')),
+        );
+      }
+    }
+  }
+
+  void _showImageSourceDialog(AppLocalizations l10n) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.selectPhotoSource),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: Text(l10n.camera),
+                onTap: () {
+                  Navigator.of(dialogContext).pop();
+                  _pickImage(ImageSource.camera);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: Text(l10n.gallery),
+                onTap: () {
+                  Navigator.of(dialogContext).pop();
+                  _pickImage(ImageSource.gallery);
+                },
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,20 +139,41 @@ class SettingsPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  child: const Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'Player',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
+                GestureDetector(
+                  onTap: () => _showImageSourceDialog(l10n),
+                  child: Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        backgroundImage: _profileImagePath != null
+                            ? FileImage(File(_profileImagePath!))
+                            : null,
+                        child: _profileImagePath == null
+                            ? const Icon(
+                                Icons.person,
+                                size: 40,
+                                color: Colors.white,
+                              )
+                            : null,
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.secondary,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.camera_alt,
+                            size: 16,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -56,6 +181,37 @@ class SettingsPage extends StatelessWidget {
           ),
 
           const SizedBox(height: 8),
+
+          // Profile Section
+          _buildSectionHeader(context, l10n.profile),
+          _buildSettingsTile(
+            context,
+            icon: Icons.email_outlined,
+            title: l10n.changeEmail,
+            subtitle: l10n.currentEmail,
+            onTap: () {
+              _showChangeEmailDialog(context, l10n);
+            },
+          ),
+          _buildSettingsTile(
+            context,
+            icon: Icons.lock_outlined,
+            title: l10n.changePassword,
+            onTap: () {
+              _showChangePasswordDialog(context, l10n);
+            },
+          ),
+          _buildSettingsTile(
+            context,
+            icon: Icons.person_outlined,
+            title: l10n.changeUsername,
+            subtitle: l10n.currentUsername,
+            onTap: () {
+              _showChangeUsernameDialog(context, l10n);
+            },
+          ),
+
+          const Divider(height: 32),
 
           // General Settings Section
           _buildSectionHeader(context, l10n.general),
@@ -313,6 +469,225 @@ class SettingsPage extends StatelessWidget {
                 Navigator.of(dialogContext).pop();
               },
               child: Text(l10n.cancel),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showChangeEmailDialog(BuildContext context, AppLocalizations l10n) {
+    final formKey = GlobalKey<FormState>();
+    final emailController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.changeEmail),
+          content: Form(
+            key: formKey,
+            child: TextFormField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: l10n.newEmail,
+                hintText: l10n.enterNewEmail,
+                prefixIcon: const Icon(Icons.email),
+                border: const OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.emailAddress,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return l10n.pleaseEnterEmail;
+                }
+                if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                    .hasMatch(value)) {
+                  return l10n.invalidEmail;
+                }
+                return null;
+              },
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  Navigator.of(dialogContext).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(l10n.updateSuccess)),
+                  );
+                  // TODO: Implement email update logic
+                }
+              },
+              child: Text(l10n.update),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showChangePasswordDialog(BuildContext context, AppLocalizations l10n) {
+    final formKey = GlobalKey<FormState>();
+    final currentPasswordController = TextEditingController();
+    final newPasswordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.changePassword),
+          content: Form(
+            key: formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextFormField(
+                    controller: currentPasswordController,
+                    decoration: InputDecoration(
+                      labelText: l10n.currentPassword,
+                      hintText: l10n.enterCurrentPassword,
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      border: const OutlineInputBorder(),
+                    ),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return l10n.pleaseEnterPassword;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: newPasswordController,
+                    decoration: InputDecoration(
+                      labelText: l10n.newPassword,
+                      hintText: l10n.enterNewPassword,
+                      prefixIcon: const Icon(Icons.lock),
+                      border: const OutlineInputBorder(),
+                    ),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return l10n.pleaseEnterPassword;
+                      }
+                      if (value.length < 6) {
+                        return l10n.passwordMinLength;
+                      }
+                      if (value == currentPasswordController.text) {
+                        return l10n.newPasswordMustBeDifferent;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: confirmPasswordController,
+                    decoration: InputDecoration(
+                      labelText: l10n.confirmPassword,
+                      hintText: l10n.enterConfirmPassword,
+                      prefixIcon: const Icon(Icons.lock),
+                      border: const OutlineInputBorder(),
+                    ),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return l10n.pleaseEnterPassword;
+                      }
+                      if (value != newPasswordController.text) {
+                        return l10n.passwordsDoNotMatch;
+                      }
+                      return null;
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  Navigator.of(dialogContext).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(l10n.updateSuccess)),
+                  );
+                  // TODO: Implement password update logic
+                  // Verify currentPasswordController.text matches user's current password
+                  // Then update to newPasswordController.text
+                }
+              },
+              child: Text(l10n.update),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showChangeUsernameDialog(BuildContext context, AppLocalizations l10n) {
+    final formKey = GlobalKey<FormState>();
+    final usernameController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.changeUsername),
+          content: Form(
+            key: formKey,
+            child: TextFormField(
+              controller: usernameController,
+              decoration: InputDecoration(
+                labelText: l10n.newUsername,
+                hintText: l10n.enterNewUsername,
+                prefixIcon: const Icon(Icons.person),
+                border: const OutlineInputBorder(),
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return l10n.pleaseEnterUsername;
+                }
+                if (value.length < 3) {
+                  return l10n.usernameMinLength;
+                }
+                return null;
+              },
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: Text(l10n.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  Navigator.of(dialogContext).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(l10n.updateSuccess)),
+                  );
+                  // TODO: Implement username update logic
+                }
+              },
+              child: Text(l10n.update),
             ),
           ],
         );
