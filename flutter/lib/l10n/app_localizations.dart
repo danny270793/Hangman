@@ -287,6 +287,18 @@ abstract class AppLocalizations {
   /// **'Enter your new email'**
   String get enterNewEmail;
 
+  /// No description provided for @currentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get currentPassword;
+
+  /// No description provided for @enterCurrentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your current password'**
+  String get enterCurrentPassword;
+
   /// No description provided for @newPassword.
   ///
   /// In en, this message translates to:
@@ -334,6 +346,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match'**
   String get passwordsDoNotMatch;
+
+  /// No description provided for @newPasswordMustBeDifferent.
+  ///
+  /// In en, this message translates to:
+  /// **'New password must be different from current password'**
+  String get newPasswordMustBeDifferent;
 
   /// No description provided for @pleaseEnterEmail.
   ///
