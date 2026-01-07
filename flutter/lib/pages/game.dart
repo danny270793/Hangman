@@ -179,19 +179,38 @@ class _GamePageState extends State<GamePage> {
     final l10n = AppLocalizations.of(context)!;
     final timedModeService = context.watch<TimedModeService>();
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(l10n.hangmanGame),
-            Text(
-              '${l10n.score}: $_totalScore',
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
-            ),
-          ],
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, dynamic result) async {
+        if (didPop) return;
+        
+        final shouldPop = await _showExitConfirmationDialog(context, l10n);
+        if (shouldPop == true && context.mounted) {
+          Navigator.of(context).pop();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () async {
+              final shouldExit = await _showExitConfirmationDialog(context, l10n);
+              if (shouldExit == true && context.mounted) {
+                Navigator.of(context).pop();
+              }
+            },
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(l10n.hangmanGame),
+              Text(
+                '${l10n.score}: $_totalScore',
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+              ),
+            ],
+          ),
         ),
-      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -239,30 +258,37 @@ class _GamePageState extends State<GamePage> {
                   ),
 
                   // Hangman Drawing
-                  Expanded(
-                    flex: 3,
-                    child: Center(child: _buildHangmanDrawing()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: SizedBox(
+                      height: 200,
+                      child: Center(child: _buildHangmanDrawing()),
+                    ),
                   ),
 
+                  const SizedBox(height: 8),
+
                   // Word Display
-                  Expanded(
-                    flex: 2,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Center(
                       child: _buildWordDisplay(),
                     ),
                   ),
 
+                  const SizedBox(height: 12),
+
                   // Hint Display
                   if (!_isGameWon && !_isGameLost)
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
                       child: _buildHintDisplay(),
                     ),
 
                   // Game Status Message
                   if (_isGameWon || _isGameLost)
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Column(
                         children: [
                           Text(
@@ -300,14 +326,46 @@ class _GamePageState extends State<GamePage> {
                       ),
                     ),
 
+                  const SizedBox(height: 8),
+
                   // Keyboard
                   Expanded(
-                    flex: 2,
                     child: _buildKeyboard(),
                   ),
                 ],
               ),
+        ),
       ),
+    );
+  }
+
+  Future<bool?> _showExitConfirmationDialog(BuildContext context, AppLocalizations l10n) {
+    return showDialog<bool>(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.exitGame),
+          content: Text(l10n.exitGameConfirmation),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(false);
+              },
+              child: Text(l10n.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(true);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: Text(l10n.exit),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -375,7 +433,7 @@ class _GamePageState extends State<GamePage> {
         final shouldReveal = isGuessed || _isGameLost;
         return Container(
           width: 40,
-          height: 50,
+          height: 40,
           decoration: BoxDecoration(
             color: shouldReveal
                 ? (_isGameLost && !isGuessed
@@ -522,44 +580,40 @@ class HangmanPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
+    // Always draw the gallows structure
+    
     // Base
-    if (wrongGuesses > 0) {
-      canvas.drawLine(
-        Offset(size.width * 0.1, size.height * 0.9),
-        Offset(size.width * 0.5, size.height * 0.9),
-        paint,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width * 0.1, size.height * 0.9),
+      Offset(size.width * 0.5, size.height * 0.9),
+      paint,
+    );
 
     // Pole
-    if (wrongGuesses > 1) {
-      canvas.drawLine(
-        Offset(size.width * 0.2, size.height * 0.9),
-        Offset(size.width * 0.2, size.height * 0.1),
-        paint,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width * 0.2, size.height * 0.9),
+      Offset(size.width * 0.2, size.height * 0.1),
+      paint,
+    );
 
     // Top bar
-    if (wrongGuesses > 2) {
-      canvas.drawLine(
-        Offset(size.width * 0.2, size.height * 0.1),
-        Offset(size.width * 0.6, size.height * 0.1),
-        paint,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width * 0.2, size.height * 0.1),
+      Offset(size.width * 0.6, size.height * 0.1),
+      paint,
+    );
 
     // Rope
-    if (wrongGuesses > 3) {
-      canvas.drawLine(
-        Offset(size.width * 0.6, size.height * 0.1),
-        Offset(size.width * 0.6, size.height * 0.2),
-        paint,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width * 0.6, size.height * 0.1),
+      Offset(size.width * 0.6, size.height * 0.2),
+      paint,
+    );
 
-    // Head
-    if (wrongGuesses > 4) {
+    // Draw person parts based on wrong guesses
+    
+    // Head (1st wrong guess)
+    if (wrongGuesses >= 1) {
       canvas.drawCircle(
         Offset(size.width * 0.6, size.height * 0.25),
         size.width * 0.05,
@@ -567,36 +621,44 @@ class HangmanPainter extends CustomPainter {
       );
     }
 
-    // Body
-    if (wrongGuesses > 5) {
+    // Body (2nd wrong guess)
+    if (wrongGuesses >= 2) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.3),
         Offset(size.width * 0.6, size.height * 0.5),
         paint,
       );
+    }
 
-      // Left arm
+    // Left arm (3rd wrong guess)
+    if (wrongGuesses >= 3) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.35),
         Offset(size.width * 0.5, size.height * 0.4),
         paint,
       );
+    }
 
-      // Right arm
+    // Right arm (4th wrong guess)
+    if (wrongGuesses >= 4) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.35),
         Offset(size.width * 0.7, size.height * 0.4),
         paint,
       );
+    }
 
-      // Left leg
+    // Left leg (5th wrong guess)
+    if (wrongGuesses >= 5) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.5),
         Offset(size.width * 0.5, size.height * 0.65),
         paint,
       );
+    }
 
-      // Right leg
+    // Right leg (6th wrong guess)
+    if (wrongGuesses >= 6) {
       canvas.drawLine(
         Offset(size.width * 0.6, size.height * 0.5),
         Offset(size.width * 0.7, size.height * 0.65),
