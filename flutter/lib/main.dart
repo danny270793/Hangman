@@ -6,12 +6,26 @@ import 'package:hangman/pages/login.dart';
 import 'package:hangman/pages/home.dart';
 import 'package:hangman/pages/settings.dart';
 import 'package:hangman/services/auth_service.dart';
+import 'package:hangman/services/locale_service.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize LocaleService and load saved locale
+  final localeService = LocaleService();
+  await localeService.loadLocale();
+  
   runApp(
-    ChangeNotifierProvider<AuthService>(
-      create: (_) => AuthService(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthService>(
+          create: (_) => AuthService(),
+        ),
+        ChangeNotifierProvider<LocaleService>.value(
+          value: localeService,
+        ),
+      ],
       child: const MyApp(),
     ),
   );
@@ -26,6 +40,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authService = context.read<AuthService>();
+    final localeService = context.watch<LocaleService>();
 
     return MaterialApp.router(
       routerConfig: GoRouter(
@@ -68,9 +83,10 @@ class MyApp extends StatelessWidget {
         ],
       ),
       title: 'Flutter Demo',
+      locale: localeService.locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
     );
   }
 }

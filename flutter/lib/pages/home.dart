@@ -21,15 +21,20 @@ class _HomePageState extends State<HomePage> {
   int _wrongGuesses = 0;
   final int _maxWrongGuesses = 6;
   bool _isLoading = true;
+  bool _hasLoadedWords = false;
 
   @override
-  void initState() {
-    super.initState();
-    _loadAndStartGame();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_hasLoadedWords) {
+      _loadAndStartGame();
+      _hasLoadedWords = true;
+    }
   }
 
   Future<void> _loadAndStartGame() async {
-    await _wordsService.loadWords();
+    final locale = Localizations.localeOf(context).languageCode;
+    await _wordsService.loadWords(locale: locale);
     setState(() {
       _currentWord = _wordsService.getRandomWord();
       _word = _currentWord.word.toUpperCase();
@@ -78,7 +83,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              context.go(SettingsPage.routeName);
+              context.push(SettingsPage.routeName);
             },
             tooltip: l10n.settings,
           ),
