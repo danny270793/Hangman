@@ -4,6 +4,7 @@ import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/words_service.dart';
 import 'package:hangman/services/difficulty_service.dart';
 import 'package:hangman/services/timed_mode_service.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class GamePage extends StatefulWidget {
@@ -179,19 +180,38 @@ class _GamePageState extends State<GamePage> {
     final l10n = AppLocalizations.of(context)!;
     final timedModeService = context.watch<TimedModeService>();
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(l10n.hangmanGame),
-            Text(
-              '${l10n.score}: $_totalScore',
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
-            ),
-          ],
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, dynamic result) async {
+        if (didPop) return;
+        
+        final shouldPop = await _showExitConfirmationDialog(context, l10n);
+        if (shouldPop == true && context.mounted) {
+          context.pop();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () async {
+              final shouldExit = await _showExitConfirmationDialog(context, l10n);
+              if (shouldExit == true && context.mounted) {
+                context.pop();
+              }
+            },
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(l10n.hangmanGame),
+              Text(
+                '${l10n.score}: $_totalScore',
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+              ),
+            ],
+          ),
         ),
-      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -307,7 +327,38 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ],
               ),
+        ),
       ),
+    );
+  }
+
+  Future<bool?> _showExitConfirmationDialog(BuildContext context, AppLocalizations l10n) {
+    return showDialog<bool>(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.exitGame),
+          content: Text(l10n.exitGameConfirmation),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(false);
+              },
+              child: Text(l10n.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(true);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: Text(l10n.exit),
+            ),
+          ],
+        );
+      },
     );
   }
 
