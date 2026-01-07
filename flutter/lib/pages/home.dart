@@ -236,7 +236,7 @@ class HomePage extends StatelessWidget {
       child: ElevatedButton.icon(
           onPressed: () {
           context.push(GamePage.routeName);
-        },
+          },
         icon: const Icon(Icons.play_arrow, size: 32),
         label: Text(
           l10n.letsPlay,
