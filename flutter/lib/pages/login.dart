@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hangman/l10n/app_localizations.dart';
+import 'package:hangman/pages/register.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/theme_service.dart';
 import 'package:provider/provider.dart';
+
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -169,14 +172,32 @@ class _LoginPageState extends State<LoginPage>
         _buildLoginCard(context, l10n),
         const SizedBox(height: 24),
 
-        // Footer Text
-        Text(
-          l10n.readyToTest,
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 14,
-          ),
-        ),
+        // Register Link
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    l10n.dontHaveAccount,
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      context.push(RegisterPage.routeName);
+                    },
+                    child: Text(
+                      l10n.createOne,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
       ],
     );
   }
@@ -252,7 +273,41 @@ class _LoginPageState extends State<LoginPage>
         
         // Right side - Login Form
         Expanded(
-          child: _buildLoginCard(context, l10n),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildLoginCard(context, l10n),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      l10n.dontHaveAccount,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        context.push(RegisterPage.routeName);
+                      },
+                      child: Text(
+                        l10n.createOne,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );
@@ -374,6 +429,7 @@ class _LoginPageState extends State<LoginPage>
                   ],
                 ),
               ),
+              const SizedBox(height: 24),
             ],
           ),
         ),

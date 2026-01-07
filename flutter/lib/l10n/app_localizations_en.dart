@@ -51,6 +51,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Login';
 
   @override
+  String get register => 'Register';
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get createOne => 'Create one';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account?';
+
+  @override
+  String get signIn => 'Sign in';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get enterEmail => 'Enter your email';
+
+  @override
+  String get confirmPasswordLabel => 'Confirm Password';
+
+  @override
+  String get enterConfirmPassword => 'Confirm your new password';
+
+  @override
   String get readyToTest => 'Ready to test your vocabulary?';
 
   @override
@@ -130,9 +160,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmPassword => 'Confirm Password';
-
-  @override
-  String get enterConfirmPassword => 'Confirm your new password';
 
   @override
   String get newUsername => 'New Username';

@@ -3,6 +3,7 @@ import 'package:hangman/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hangman/pages/splash.dart';
 import 'package:hangman/pages/login.dart';
+import 'package:hangman/pages/register.dart';
 import 'package:hangman/pages/home.dart';
 import 'package:hangman/pages/game.dart';
 import 'package:hangman/pages/settings.dart';
@@ -52,7 +53,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final protectedPages = const [HomePage.routeName, GamePage.routeName, SettingsPage.routeName];
-  final publicPages = const [SplashPage.routeName, LoginPage.routeName];
+  final publicPages = const [SplashPage.routeName, LoginPage.routeName, RegisterPage.routeName];
 
   const MyApp({super.key});
 
@@ -91,6 +92,10 @@ class MyApp extends StatelessWidget {
           GoRoute(
             path: LoginPage.routeName,
             builder: (context, state) => const LoginPage(),
+          ),
+          GoRoute(
+            path: RegisterPage.routeName,
+            builder: (context, state) => const RegisterPage(),
           ),
           GoRoute(
             path: HomePage.routeName,
