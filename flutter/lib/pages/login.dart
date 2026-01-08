@@ -54,13 +54,6 @@ class _LoginPageState extends State<LoginPage>
         );
 
     _animationController.forward();
-
-    // Show email confirmation message after registration
-    if (widget.showEmailConfirmation) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _showEmailConfirmationDialog(widget.registeredEmail);
-      });
-    }
   }
 
   @override
@@ -222,6 +215,13 @@ class _LoginPageState extends State<LoginPage>
     );
   }
 
+  void _handleRegister() async {
+    var result = await context.push<Map<String, dynamic>>(RegisterPage.routeName);
+    if (result != null && result['showEmailConfirmation'] == true) {
+      _showEmailConfirmationDialog(result['registeredEmail']);
+    }
+  }
+
   Widget _buildPortraitLayout(BuildContext context, AppLocalizations l10n) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -285,9 +285,7 @@ class _LoginPageState extends State<LoginPage>
               style: const TextStyle(color: Colors.white70, fontSize: 14),
             ),
             TextButton(
-              onPressed: () {
-                context.push(RegisterPage.routeName);
-              },
+              onPressed: _handleRegister,
               child: Text(
                 l10n.createOne,
                 style: const TextStyle(
@@ -386,9 +384,7 @@ class _LoginPageState extends State<LoginPage>
                       ),
                     ),
                     TextButton(
-                      onPressed: () {
-                        context.push(RegisterPage.routeName);
-                      },
+                      onPressed: _handleRegister,
                       child: Text(
                         l10n.createOne,
                         style: const TextStyle(
