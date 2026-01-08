@@ -4,6 +4,7 @@ import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/words_service.dart';
 import 'package:hangman/services/difficulty_service.dart';
 import 'package:hangman/services/timed_mode_service.dart';
+import 'package:hangman/services/game_record_service.dart';
 import 'package:provider/provider.dart';
 
 class GamePage extends StatefulWidget {
@@ -17,6 +18,7 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   final WordsService _wordsService = WordsService();
+  final GameRecordService _gameRecordService = GameRecordService();
   late Word _currentWord;
   late String _word;
   final Set<String> _guessedLetters = {};
@@ -29,10 +31,16 @@ class _GamePageState extends State<GamePage> {
   Timer? _timer;
   int _remainingSeconds = 60;
   bool _isTimedOut = false;
+  int _currentWordStartTime = 0; // Tracks seconds elapsed for current word
 
   // Score
   int _totalScore = 0;
   int _lastRoundPoints = 0;
+
+  // Statistics
+  int _totalSecondsPlayed = 0;
+  int _wordsSolved = 0;
+  bool _hasGameRecordBeenSaved = false;
 
   @override
   void didChangeDependencies() {
@@ -59,22 +67,38 @@ class _GamePageState extends State<GamePage> {
     final timedModeService = context.read<TimedModeService>();
     if (timedModeService.isEnabled) {
       _startTimer();
+    } else {
+      // Even without timed mode, track time for statistics
+      _startPlaytimeTracking();
     }
   }
 
   void _startTimer() {
     _remainingSeconds = 60;
     _isTimedOut = false;
+    _currentWordStartTime = 0;
     _timer?.cancel();
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
+        _currentWordStartTime++; // Track time for current word
         if (_remainingSeconds > 0) {
           _remainingSeconds--;
         } else {
           _isTimedOut = true;
           timer.cancel();
         }
+      });
+    });
+  }
+
+  void _startPlaytimeTracking() {
+    _currentWordStartTime = 0;
+    _timer?.cancel();
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _currentWordStartTime++; // Track time for current word
       });
     });
   }
@@ -97,6 +121,42 @@ class _GamePageState extends State<GamePage> {
         return 'medium';
       case GameDifficulty.hard:
         return 'hard';
+    }
+  }
+
+  Future<void> _saveGameRecordOnGameEnd() async {
+    // Only save once per game session
+    if (_hasGameRecordBeenSaved) {
+      return;
+    }
+
+    // Only save if the user has played at least one word
+    if (_totalSecondsPlayed == 0 && _wordsSolved == 0) {
+      return;
+    }
+
+    _hasGameRecordBeenSaved = true;
+
+    final difficultyService = context.read<DifficultyService>();
+    final timedModeService = context.read<TimedModeService>();
+
+    final error = await _gameRecordService.saveGameRecord(
+      hasTimedModeEnabled: timedModeService.isEnabled,
+      difficulty: _getDifficultyString(difficultyService.difficulty),
+      points: _totalScore,
+      words: _wordsSolved,
+      timePlaying: _totalSecondsPlayed,
+    );
+
+    if (error != null && mounted) {
+      // Optionally show error to user, but don't prevent exit
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to save game record: $error'),
+          backgroundColor: Colors.orange,
+          duration: const Duration(seconds: 2),
+        ),
+      );
     }
   }
 
@@ -145,17 +205,24 @@ class _GamePageState extends State<GamePage> {
     // Check if game ended after this guess
     if (_isGameWon) {
       _stopTimer();
-      // Add points for winning
+      // Add points for winning and update statistics
       setState(() {
         _lastRoundPoints = _calculatePoints();
         _totalScore += _lastRoundPoints;
+        _wordsSolved++;
+        _totalSecondsPlayed += _currentWordStartTime;
       });
     } else if (_isGameLost) {
       _stopTimer();
+      // Still track time even if lost
+      setState(() {
+        _totalSecondsPlayed += _currentWordStartTime;
+      });
     }
   }
 
-  void _resetGame() {
+  // Continue to next word after winning (preserves statistics)
+  void _continueToNextWord() {
     final difficultyService = context.read<DifficultyService>();
     final difficulty = _getDifficultyString(difficultyService.difficulty);
     final timedModeService = context.read<TimedModeService>();
@@ -166,11 +233,48 @@ class _GamePageState extends State<GamePage> {
       _guessedLetters.clear();
       _wrongGuesses = 0;
       _isTimedOut = false;
+      _currentWordStartTime = 0;
+      // Statistics are preserved - continue accumulating
     });
 
-    // Restart timer if timed mode is enabled
+    // Restart timer if timed mode is enabled, otherwise track playtime
     if (timedModeService.isEnabled) {
       _startTimer();
+    } else {
+      _startPlaytimeTracking();
+    }
+  }
+
+  // Play again after game over (saves record and resets everything)
+  Future<void> _playAgainAfterGameOver() async {
+    // Save the game record before resetting
+    await _saveGameRecordOnGameEnd();
+
+    final difficultyService = context.read<DifficultyService>();
+    final difficulty = _getDifficultyString(difficultyService.difficulty);
+    final timedModeService = context.read<TimedModeService>();
+
+    setState(() {
+      _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
+      _word = _currentWord.word.toUpperCase();
+      _guessedLetters.clear();
+      _wrongGuesses = 0;
+      _isTimedOut = false;
+      _currentWordStartTime = 0;
+      
+      // Reset all accumulated statistics when starting a new game
+      _totalScore = 0;
+      _lastRoundPoints = 0;
+      _totalSecondsPlayed = 0;
+      _wordsSolved = 0;
+      _hasGameRecordBeenSaved = false; // Reset save flag for new session
+    });
+
+    // Restart timer if timed mode is enabled, otherwise track playtime
+    if (timedModeService.isEnabled) {
+      _startTimer();
+    } else {
+      _startPlaytimeTracking();
     }
   }
 
@@ -186,7 +290,14 @@ class _GamePageState extends State<GamePage> {
 
         final shouldPop = await _showExitConfirmationDialog(context, l10n);
         if (shouldPop == true && context.mounted) {
-          Navigator.of(context).pop();
+          // Save record if not already saved (in case user is exiting mid-game)
+          if (!_hasGameRecordBeenSaved && 
+              (_totalSecondsPlayed > 0 || _wordsSolved > 0)) {
+            await _saveGameRecordOnGameEnd();
+          }
+          if (context.mounted) {
+            Navigator.of(context).pop();
+          }
         }
       },
       child: Scaffold(
@@ -199,7 +310,14 @@ class _GamePageState extends State<GamePage> {
                 l10n,
               );
               if (shouldExit == true && context.mounted) {
-                Navigator.of(context).pop();
+                // Save record if not already saved (in case user is exiting mid-game)
+                if (!_hasGameRecordBeenSaved && 
+                    (_totalSecondsPlayed > 0 || _wordsSolved > 0)) {
+                  await _saveGameRecordOnGameEnd();
+                }
+                if (context.mounted) {
+                  Navigator.of(context).pop();
+                }
               }
             },
           ),
@@ -264,8 +382,10 @@ class _GamePageState extends State<GamePage> {
         // Score Cards
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            alignment: WrapAlignment.center,
             children: [
               _buildScoreCard(
                 l10n.guessesLeft,
@@ -285,6 +405,24 @@ class _GamePageState extends State<GamePage> {
                 '${_guessedLetters.length}',
                 Icons.text_fields,
                 Colors.blue,
+              ),
+              _buildScoreCard(
+                l10n.score,
+                '$_totalScore',
+                Icons.star,
+                Colors.amber,
+              ),
+              _buildScoreCard(
+                l10n.wordsSolved,
+                '$_wordsSolved',
+                Icons.check_circle,
+                Colors.green,
+              ),
+              _buildScoreCard(
+                l10n.totalTime,
+                '${_totalSecondsPlayed}s',
+                Icons.access_time,
+                Colors.purple,
               ),
             ],
           ),
@@ -343,7 +481,8 @@ class _GamePageState extends State<GamePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Score Cards - Vertical
-              Column(
+              SingleChildScrollView(
+                child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _buildScoreCard(
@@ -368,7 +507,29 @@ class _GamePageState extends State<GamePage> {
                     Icons.text_fields,
                     Colors.blue,
                   ),
+                  const SizedBox(height: 8),
+                  _buildScoreCard(
+                    l10n.score,
+                    '$_totalScore',
+                    Icons.star,
+                    Colors.amber,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildScoreCard(
+                    l10n.wordsSolved,
+                    '$_wordsSolved',
+                    Icons.check_circle,
+                    Colors.green,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildScoreCard(
+                    l10n.totalTime,
+                    '${_totalSecondsPlayed}s',
+                    Icons.access_time,
+                    Colors.purple,
+                  )
                 ],
+              ),
               ),
 
               const SizedBox(width: 16),
@@ -452,7 +613,7 @@ class _GamePageState extends State<GamePage> {
           ),
           const SizedBox(height: 8),
           ElevatedButton.icon(
-            onPressed: _resetGame,
+            onPressed: _isGameWon ? _continueToNextWord : _playAgainAfterGameOver,
             icon: Icon(_isGameWon ? Icons.arrow_forward : Icons.refresh),
             label: Text(_isGameWon ? l10n.nextWord : l10n.playAgain),
             style: ElevatedButton.styleFrom(

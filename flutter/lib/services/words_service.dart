@@ -7,9 +7,25 @@ class Word {
 
   Word({required this.word, required this.tags});
 
+  /// Remove accents from a string
+  /// Example: "café" -> "cafe", "árbol" -> "arbol"
+  static String _removeAccents(String text) {
+    const withAccents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ';
+    const withoutAccents = 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn';
+
+    String result = text;
+    for (int i = 0; i < withAccents.length; i++) {
+      result = result.replaceAll(withAccents[i], withoutAccents[i]);
+    }
+    return result;
+  }
+
   factory Word.fromJson(Map<String, dynamic> json) {
+    final originalWord = json['word'] as String;
+    final wordWithoutAccents = _removeAccents(originalWord);
+    
     return Word(
-      word: json['word'] as String,
+      word: wordWithoutAccents,
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
     );
   }
