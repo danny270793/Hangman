@@ -13,6 +13,7 @@ Run this SQL in your Supabase SQL Editor to create the table:
 CREATE TABLE game_records (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    username TEXT,
     has_timed_mode_enabled BOOLEAN NOT NULL,
     difficulty TEXT NOT NULL CHECK (difficulty IN ('easy', 'medium', 'hard')),
     points INTEGER NOT NULL DEFAULT 0,
@@ -27,6 +28,9 @@ CREATE INDEX idx_game_records_user_id ON game_records(user_id);
 -- Create an index on created_at for sorting
 CREATE INDEX idx_game_records_created_at ON game_records(created_at DESC);
 
+-- Create an index on points for leaderboard
+CREATE INDEX idx_game_records_points ON game_records(points DESC);
+
 -- Enable Row Level Security (RLS)
 ALTER TABLE game_records ENABLE ROW LEVEL SECURITY;
 
@@ -36,11 +40,11 @@ ON game_records FOR INSERT
 TO authenticated
 WITH CHECK (auth.uid() = user_id);
 
--- Create policy: Users can only view their own records
-CREATE POLICY "Users can view their own game records"
+-- Create policy: Anyone can view all records (for leaderboard)
+CREATE POLICY "Anyone can view game records"
 ON game_records FOR SELECT
 TO authenticated
-USING (auth.uid() = user_id);
+USING (true);
 
 -- Create policy: Users can only update their own records
 CREATE POLICY "Users can update their own game records"
