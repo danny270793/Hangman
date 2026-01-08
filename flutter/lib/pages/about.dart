@@ -74,15 +74,25 @@ class _AboutPageState extends State<AboutPage> {
 
                   // App Icon
                   Container(
-                    padding: const EdgeInsets.all(20),
+                    width: 120,
+                    height: 120,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primaryContainer,
+                      color: Colors.white,
                       shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 10,
+                          spreadRadius: 2,
+                        ),
+                      ],
                     ),
-                    child: Icon(
-                      Icons.games_outlined,
-                      size: 80,
-                      color: Theme.of(context).colorScheme.primary,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Image.asset(
+                        'assets/icons/icon.png',
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
 
