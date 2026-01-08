@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
 
-  const LoginPage({ super.key });
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -80,10 +80,7 @@ class _LoginPageState extends State<LoginPage>
 
       if (error != null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(error),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text(error), backgroundColor: Colors.red),
         );
       }
     }
@@ -91,7 +88,7 @@ class _LoginPageState extends State<LoginPage>
 
   void _showEmailConfirmationDialog(String? email) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {
@@ -132,9 +129,9 @@ class _LoginPageState extends State<LoginPage>
                         child: Text(
                           email,
                           style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onPrimaryContainer,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -210,7 +207,9 @@ class _LoginPageState extends State<LoginPage>
   }
 
   void _handleRegister() async {
-    var result = await context.push<Map<String, dynamic>>(RegisterPage.routeName);
+    var result = await context.push<Map<String, dynamic>>(
+      RegisterPage.routeName,
+    );
     if (result != null && result['showEmailConfirmation'] == true) {
       _showEmailConfirmationDialog(result['registeredEmail']);
     }
@@ -430,8 +429,9 @@ class _LoginPageState extends State<LoginPage>
                   if (value == null || value.isEmpty) {
                     return l10n.pleaseEnterEmail;
                   }
-                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                      .hasMatch(value)) {
+                  if (!RegExp(
+                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
                     return l10n.invalidEmail;
                   }
                   return null;
@@ -453,7 +453,7 @@ class _LoginPageState extends State<LoginPage>
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                     ),
-          onPressed: () {
+                    onPressed: () {
                       setState(() {
                         _obscurePassword = !_obscurePassword;
                       });
@@ -497,8 +497,9 @@ class _LoginPageState extends State<LoginPage>
                         width: 20,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.white),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.white,
+                          ),
                         ),
                       )
                     : Row(
