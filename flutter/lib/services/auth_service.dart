@@ -58,6 +58,22 @@ class AuthService extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<String?> updateUsername(String newUsername) async {
+    try {
+      await Supabase.instance.client.auth.updateUser(
+        UserAttributes(
+          data: {'username': newUsername},
+        ),
+      );
+      notifyListeners();
+      return null; // Success
+    } on AuthException catch (e) {
+      return e.message;
+    } catch (e) {
+      return 'An unexpected error occurred';
+    }
+  }
+
   String? get userEmail => currentUser?.email;
 
   String? get userName {
