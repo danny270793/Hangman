@@ -68,35 +68,42 @@ class _RecordsPageState extends State<RecordsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.gameRecords),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: _loadRecords,
-          ),
-        ],
       ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : _records.isEmpty
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+      body: RefreshIndicator(
+        onRefresh: _loadRecords,
+        child: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : _records.isEmpty
+                ? ListView(
+                    // Wrap in ListView to enable pull-to-refresh on empty state
                     children: [
-                      Icon(
-                        Icons.emoji_events_outlined,
-                        size: 80,
-                        color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        l10n.noRecordsYet,
-                        style: Theme.of(context).textTheme.titleLarge,
-                        textAlign: TextAlign.center,
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height - 200,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.emoji_events_outlined,
+                                size: 80,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primary
+                                    .withOpacity(0.3),
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                l10n.noRecordsYet,
+                                style: Theme.of(context).textTheme.titleLarge,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
-                  ),
-                )
-              : ListView.builder(
+                  )
+                : ListView.builder(
                   padding: const EdgeInsets.all(16),
                   itemCount: _records.length,
                   itemBuilder: (context, index) {
@@ -195,6 +202,7 @@ class _RecordsPageState extends State<RecordsPage> {
                     );
                   },
                 ),
+      ),
     );
   }
 
