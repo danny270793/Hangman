@@ -32,41 +32,41 @@ class HomePage extends StatelessWidget {
           ),
         ),
         child: SafeArea(
-          child: Stack(
-            children: [
-              // Main content
-              Center(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(24.0),
-                  child: OrientationBuilder(
-                    builder: (context, orientation) {
-                      final isLandscape = orientation == Orientation.landscape;
+          child: OrientationBuilder(
+            builder: (context, orientation) {
+              final isLandscape = orientation == Orientation.landscape;
 
-                      if (isLandscape) {
-                        return _buildLandscapeLayout(
+              return Stack(
+                children: [
+                  // Main content
+                  if (isLandscape)
+                    Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: _buildLandscapeLayout(
+                        context,
+                        l10n,
+                        difficultyService,
+                        timedModeService,
+                      ),
+                    )
+                  else
+                    Center(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(24.0),
+                        child: _buildPortraitLayout(
                           context,
                           l10n,
                           difficultyService,
                           timedModeService,
-                        );
-                      } else {
-                        return _buildPortraitLayout(
-                          context,
-                          l10n,
-                          difficultyService,
-                          timedModeService,
-                        );
-                      }
-                    },
-                  ),
-                ),
-              ),
+                        ),
+                      ),
+                    ),
 
-              // Settings button in top-right corner
-              Positioned(
-                top: 8,
-                right: 8,
-                child: IconButton(
+                  // Settings button in top-right corner
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: IconButton(
                   icon: const Icon(Icons.settings),
                   iconSize: 28,
                   onPressed: () {
@@ -81,7 +81,9 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-            ],
+                ],
+              );
+            },
           ),
         ),
       ),
