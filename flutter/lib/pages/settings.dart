@@ -119,6 +119,7 @@ class _SettingsPageState extends State<SettingsPage> {
     final l10n = AppLocalizations.of(context)!;
     final localeService = context.watch<LocaleService>();
     final themeService = context.watch<ThemeService>();
+    final authService = context.watch<AuthService>();
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settings)),
@@ -188,7 +189,7 @@ class _SettingsPageState extends State<SettingsPage> {
             context,
             icon: Icons.email_outlined,
             title: l10n.changeEmail,
-            subtitle: l10n.currentEmail,
+            subtitle: authService.userEmail ?? l10n.currentEmail,
             onTap: () {
               _showChangeEmailDialog(context, l10n);
             },
@@ -205,7 +206,7 @@ class _SettingsPageState extends State<SettingsPage> {
             context,
             icon: Icons.person_outlined,
             title: l10n.changeUsername,
-            subtitle: l10n.currentUsername,
+            subtitle: authService.userName ?? l10n.currentUsername,
             onTap: () {
               _showChangeUsernameDialog(context, l10n);
             },
@@ -644,53 +645,115 @@ class _SettingsPageState extends State<SettingsPage> {
   void _showChangeUsernameDialog(BuildContext context, AppLocalizations l10n) {
     final formKey = GlobalKey<FormState>();
     final usernameController = TextEditingController();
+    final authService = context.read<AuthService>();
+
+    // Pre-fill with current username
+    usernameController.text = authService.userName ?? '';
 
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          title: Text(l10n.changeUsername),
-          content: Form(
-            key: formKey,
-            child: TextFormField(
-              controller: usernameController,
-              decoration: InputDecoration(
-                labelText: l10n.newUsername,
-                hintText: l10n.enterNewUsername,
-                prefixIcon: const Icon(Icons.person),
-                border: const OutlineInputBorder(),
+        bool isLoading = false;
+
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            return AlertDialog(
+              title: Text(l10n.changeUsername),
+              content: Form(
+                key: formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextFormField(
+                      controller: usernameController,
+                      decoration: InputDecoration(
+                        labelText: l10n.newUsername,
+                        hintText: l10n.enterNewUsername,
+                        prefixIcon: const Icon(Icons.person),
+                        border: const OutlineInputBorder(),
+                      ),
+                      enabled: !isLoading,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return l10n.pleaseEnterUsername;
+                        }
+                        if (value.length < 3) {
+                          return l10n.usernameMinLength;
+                        }
+                        if (value == authService.userName) {
+                          return l10n.usernameMustBeDifferent;
+                        }
+                        return null;
+                      },
+                    ),
+                    if (isLoading) ...[
+                      const SizedBox(height: 16),
+                      const LinearProgressIndicator(),
+                    ],
+                  ],
+                ),
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return l10n.pleaseEnterUsername;
-                }
-                if (value.length < 3) {
-                  return l10n.usernameMinLength;
-                }
-                return null;
-              },
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(dialogContext).pop();
-              },
-              child: Text(l10n.cancel),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  Navigator.of(dialogContext).pop();
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(l10n.updateSuccess)));
-                  // TODO: Implement username update logic
-                }
-              },
-              child: Text(l10n.update),
-            ),
-          ],
+              actions: [
+                TextButton(
+                  onPressed: isLoading
+                      ? null
+                      : () {
+                          Navigator.of(dialogContext).pop();
+                        },
+                  child: Text(l10n.cancel),
+                ),
+                ElevatedButton(
+                  onPressed: isLoading
+                      ? null
+                      : () async {
+                          if (formKey.currentState!.validate()) {
+                            setDialogState(() {
+                              isLoading = true;
+                            });
+
+                            final error = await authService.updateUsername(
+                              usernameController.text.trim(),
+                            );
+
+                            if (dialogContext.mounted) {
+                              setDialogState(() {
+                                isLoading = false;
+                              });
+
+                              if (error != null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(error),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                              } else {
+                                Navigator.of(dialogContext).pop();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(l10n.updateSuccess),
+                                    backgroundColor: Colors.green,
+                                  ),
+                                );
+                              }
+                            }
+                          }
+                        },
+                  child: isLoading
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        )
+                      : Text(l10n.update),
+                ),
+              ],
+            );
+          },
         );
       },
     );
