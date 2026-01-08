@@ -300,24 +300,6 @@ class _GamePageState extends State<GamePage> {
             alignment: WrapAlignment.center,
             children: [
               _buildScoreCard(
-                l10n.score,
-                '$_totalScore',
-                Icons.star,
-                Colors.amber,
-              ),
-              _buildScoreCard(
-                l10n.wordsSolved,
-                '$_wordsSolved',
-                Icons.check_circle,
-                Colors.green,
-              ),
-              _buildScoreCard(
-                l10n.totalTime,
-                '${_totalSecondsPlayed}s',
-                Icons.access_time,
-                Colors.purple,
-              ),
-              _buildScoreCard(
                 l10n.guessesLeft,
                 '${_maxWrongGuesses - _wrongGuesses}',
                 Icons.favorite,
@@ -335,6 +317,24 @@ class _GamePageState extends State<GamePage> {
                 '${_guessedLetters.length}',
                 Icons.text_fields,
                 Colors.blue,
+              ),
+              _buildScoreCard(
+                l10n.score,
+                '$_totalScore',
+                Icons.star,
+                Colors.amber,
+              ),
+              _buildScoreCard(
+                l10n.wordsSolved,
+                '$_wordsSolved',
+                Icons.check_circle,
+                Colors.green,
+              ),
+              _buildScoreCard(
+                l10n.totalTime,
+                '${_totalSecondsPlayed}s',
+                Icons.access_time,
+                Colors.purple,
               ),
             ],
           ),
@@ -393,30 +393,10 @@ class _GamePageState extends State<GamePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Score Cards - Vertical
-              Column(
+              SingleChildScrollView(
+                child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildScoreCard(
-                    l10n.score,
-                    '$_totalScore',
-                    Icons.star,
-                    Colors.amber,
-                  ),
-                  const SizedBox(height: 8),
-                  _buildScoreCard(
-                    l10n.wordsSolved,
-                    '$_wordsSolved',
-                    Icons.check_circle,
-                    Colors.green,
-                  ),
-                  const SizedBox(height: 8),
-                  _buildScoreCard(
-                    l10n.totalTime,
-                    '${_totalSecondsPlayed}s',
-                    Icons.access_time,
-                    Colors.purple,
-                  ),
-                  const SizedBox(height: 8),
                   _buildScoreCard(
                     l10n.guessesLeft,
                     '${_maxWrongGuesses - _wrongGuesses}',
@@ -439,7 +419,29 @@ class _GamePageState extends State<GamePage> {
                     Icons.text_fields,
                     Colors.blue,
                   ),
+                  const SizedBox(height: 8),
+                  _buildScoreCard(
+                    l10n.score,
+                    '$_totalScore',
+                    Icons.star,
+                    Colors.amber,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildScoreCard(
+                    l10n.wordsSolved,
+                    '$_wordsSolved',
+                    Icons.check_circle,
+                    Colors.green,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildScoreCard(
+                    l10n.totalTime,
+                    '${_totalSecondsPlayed}s',
+                    Icons.access_time,
+                    Colors.purple,
+                  )
                 ],
+              ),
               ),
 
               const SizedBox(width: 16),
