@@ -8,8 +8,14 @@ import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
+  final bool showEmailConfirmation;
+  final String? registeredEmail;
 
-  const LoginPage({super.key});
+  const LoginPage({
+    super.key,
+    this.showEmailConfirmation = false,
+    this.registeredEmail,
+  });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -50,14 +56,11 @@ class _LoginPageState extends State<LoginPage>
     _animationController.forward();
 
     // Show email confirmation message after registration
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final state = GoRouterState.of(context);
-      final extra = state.extra as Map<String, dynamic>?;
-      
-      if (extra != null && extra['showEmailConfirmation'] == true) {
-        _showEmailConfirmationDialog(extra['email'] as String?);
-      }
-    });
+    if (widget.showEmailConfirmation) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showEmailConfirmationDialog(widget.registeredEmail);
+      });
+    }
   }
 
   @override
@@ -460,7 +463,7 @@ class _LoginPageState extends State<LoginPage>
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                     ),
-                    onPressed: () {
+          onPressed: () {
                       setState(() {
                         _obscurePassword = !_obscurePassword;
                       });
