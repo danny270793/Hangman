@@ -12,10 +12,22 @@ import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
 import 'package:hangman/services/difficulty_service.dart';
 import 'package:hangman/services/timed_mode_service.dart';
+import 'package:hangman/config/supabase_config.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables
+  await dotenv.load(fileName: '.env');
+
+  // Initialize Supabase
+  await Supabase.initialize(
+    url: SupabaseConfig.supabaseUrl,
+    anonKey: SupabaseConfig.supabaseAnonKey,
+  );
 
   // Initialize services and load saved preferences
   final localeService = LocaleService();
@@ -42,9 +54,7 @@ void main() async {
         ChangeNotifierProvider<DifficultyService>.value(
           value: difficultyService,
         ),
-        ChangeNotifierProvider<TimedModeService>.value(
-          value: timedModeService,
-        ),
+        ChangeNotifierProvider<TimedModeService>.value(value: timedModeService),
       ],
       child: const MyApp(),
     ),
@@ -52,8 +62,16 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final protectedPages = const [HomePage.routeName, GamePage.routeName, SettingsPage.routeName];
-  final publicPages = const [SplashPage.routeName, LoginPage.routeName, RegisterPage.routeName];
+  final protectedPages = const [
+    HomePage.routeName,
+    GamePage.routeName,
+    SettingsPage.routeName,
+  ];
+  final publicPages = const [
+    SplashPage.routeName,
+    LoginPage.routeName,
+    RegisterPage.routeName,
+  ];
 
   const MyApp({super.key});
 

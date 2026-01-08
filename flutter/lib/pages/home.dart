@@ -40,17 +40,27 @@ class HomePage extends StatelessWidget {
                   child: OrientationBuilder(
                     builder: (context, orientation) {
                       final isLandscape = orientation == Orientation.landscape;
-                      
+
                       if (isLandscape) {
-                        return _buildLandscapeLayout(context, l10n, difficultyService, timedModeService);
+                        return _buildLandscapeLayout(
+                          context,
+                          l10n,
+                          difficultyService,
+                          timedModeService,
+                        );
                       } else {
-                        return _buildPortraitLayout(context, l10n, difficultyService, timedModeService);
+                        return _buildPortraitLayout(
+                          context,
+                          l10n,
+                          difficultyService,
+                          timedModeService,
+                        );
                       }
                     },
                   ),
                 ),
               ),
-              
+
               // Settings button in top-right corner
               Positioned(
                 top: 8,
@@ -63,7 +73,9 @@ class HomePage extends StatelessWidget {
                   },
                   tooltip: l10n.settings,
                   style: IconButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.9),
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.surface.withOpacity(0.9),
                     foregroundColor: Theme.of(context).colorScheme.primary,
                   ),
                 ),
@@ -101,14 +113,19 @@ class HomePage extends StatelessWidget {
         Text(
           l10n.hangmanGame,
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
         const SizedBox(height: 48),
 
         // Game Configuration Card
-        _buildConfigurationCard(context, l10n, difficultyService, timedModeService),
+        _buildConfigurationCard(
+          context,
+          l10n,
+          difficultyService,
+          timedModeService,
+        ),
         const SizedBox(height: 48),
 
         // Let's Play Button
@@ -147,22 +164,27 @@ class HomePage extends StatelessWidget {
               Text(
                 l10n.hangmanGame,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 textAlign: TextAlign.center,
               ),
             ],
           ),
         ),
         const SizedBox(width: 24),
-        
+
         // Right side - Configuration and Play Button
         Expanded(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _buildConfigurationCard(context, l10n, difficultyService, timedModeService),
+              _buildConfigurationCard(
+                context,
+                l10n,
+                difficultyService,
+                timedModeService,
+              ),
               const SizedBox(height: 24),
               _buildPlayButton(context, l10n),
             ],
@@ -180,9 +202,7 @@ class HomePage extends StatelessWidget {
   ) {
     return Card(
       elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -192,9 +212,9 @@ class HomePage extends StatelessWidget {
             Text(
               l10n.gameConfiguration,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
             const SizedBox(height: 24),
 
@@ -234,16 +254,13 @@ class HomePage extends StatelessWidget {
       width: double.infinity,
       height: 60,
       child: ElevatedButton.icon(
-          onPressed: () {
+        onPressed: () {
           context.push(GamePage.routeName);
-          },
+        },
         icon: const Icon(Icons.play_arrow, size: 32),
         label: Text(
           l10n.letsPlay,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.primary,
