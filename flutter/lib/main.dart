@@ -109,7 +109,14 @@ class MyApp extends StatelessWidget {
           ),
           GoRoute(
             path: LoginPage.routeName,
-            builder: (context, state) => const LoginPage(),
+            builder: (context, state) {
+              final extra = state.extra as Map<String, dynamic>?;
+              return LoginPage(
+                showEmailConfirmation:
+                    extra?['showEmailConfirmation'] as bool? ?? false,
+                registeredEmail: extra?['email'] as String?,
+              );
+            },
           ),
           GoRoute(
             path: RegisterPage.routeName,
