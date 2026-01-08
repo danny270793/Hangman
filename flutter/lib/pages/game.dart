@@ -29,10 +29,15 @@ class _GamePageState extends State<GamePage> {
   Timer? _timer;
   int _remainingSeconds = 60;
   bool _isTimedOut = false;
+  int _currentWordStartTime = 0; // Tracks seconds elapsed for current word
 
   // Score
   int _totalScore = 0;
   int _lastRoundPoints = 0;
+
+  // Statistics
+  int _totalSecondsPlayed = 0;
+  int _wordsSolved = 0;
 
   @override
   void didChangeDependencies() {
@@ -59,22 +64,38 @@ class _GamePageState extends State<GamePage> {
     final timedModeService = context.read<TimedModeService>();
     if (timedModeService.isEnabled) {
       _startTimer();
+    } else {
+      // Even without timed mode, track time for statistics
+      _startPlaytimeTracking();
     }
   }
 
   void _startTimer() {
     _remainingSeconds = 60;
     _isTimedOut = false;
+    _currentWordStartTime = 0;
     _timer?.cancel();
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
+        _currentWordStartTime++; // Track time for current word
         if (_remainingSeconds > 0) {
           _remainingSeconds--;
         } else {
           _isTimedOut = true;
           timer.cancel();
         }
+      });
+    });
+  }
+
+  void _startPlaytimeTracking() {
+    _currentWordStartTime = 0;
+    _timer?.cancel();
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _currentWordStartTime++; // Track time for current word
       });
     });
   }
@@ -145,13 +166,19 @@ class _GamePageState extends State<GamePage> {
     // Check if game ended after this guess
     if (_isGameWon) {
       _stopTimer();
-      // Add points for winning
+      // Add points for winning and update statistics
       setState(() {
         _lastRoundPoints = _calculatePoints();
         _totalScore += _lastRoundPoints;
+        _wordsSolved++;
+        _totalSecondsPlayed += _currentWordStartTime;
       });
     } else if (_isGameLost) {
       _stopTimer();
+      // Still track time even if lost
+      setState(() {
+        _totalSecondsPlayed += _currentWordStartTime;
+      });
     }
   }
 
@@ -166,11 +193,14 @@ class _GamePageState extends State<GamePage> {
       _guessedLetters.clear();
       _wrongGuesses = 0;
       _isTimedOut = false;
+      _currentWordStartTime = 0;
     });
 
-    // Restart timer if timed mode is enabled
+    // Restart timer if timed mode is enabled, otherwise track playtime
     if (timedModeService.isEnabled) {
       _startTimer();
+    } else {
+      _startPlaytimeTracking();
     }
   }
 
@@ -264,9 +294,29 @@ class _GamePageState extends State<GamePage> {
         // Score Cards
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            alignment: WrapAlignment.center,
             children: [
+              _buildScoreCard(
+                l10n.score,
+                '$_totalScore',
+                Icons.star,
+                Colors.amber,
+              ),
+              _buildScoreCard(
+                l10n.wordsSolved,
+                '$_wordsSolved',
+                Icons.check_circle,
+                Colors.green,
+              ),
+              _buildScoreCard(
+                l10n.totalTime,
+                '${_totalSecondsPlayed}s',
+                Icons.access_time,
+                Colors.purple,
+              ),
               _buildScoreCard(
                 l10n.guessesLeft,
                 '${_maxWrongGuesses - _wrongGuesses}',
@@ -346,6 +396,27 @@ class _GamePageState extends State<GamePage> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  _buildScoreCard(
+                    l10n.score,
+                    '$_totalScore',
+                    Icons.star,
+                    Colors.amber,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildScoreCard(
+                    l10n.wordsSolved,
+                    '$_wordsSolved',
+                    Icons.check_circle,
+                    Colors.green,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildScoreCard(
+                    l10n.totalTime,
+                    '${_totalSecondsPlayed}s',
+                    Icons.access_time,
+                    Colors.purple,
+                  ),
+                  const SizedBox(height: 8),
                   _buildScoreCard(
                     l10n.guessesLeft,
                     '${_maxWrongGuesses - _wrongGuesses}',
