@@ -689,6 +689,36 @@ abstract class AppLocalizations {
   /// **'Let\'s Play!'**
   String get letsPlay;
 
+  /// No description provided for @seeRecords.
+  ///
+  /// In en, this message translates to:
+  /// **'See Records'**
+  String get seeRecords;
+
+  /// No description provided for @gameRecords.
+  ///
+  /// In en, this message translates to:
+  /// **'Game Records'**
+  String get gameRecords;
+
+  /// No description provided for @rank.
+  ///
+  /// In en, this message translates to:
+  /// **'Rank'**
+  String get rank;
+
+  /// No description provided for @player.
+  ///
+  /// In en, this message translates to:
+  /// **'Player'**
+  String get player;
+
+  /// No description provided for @noRecordsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No records yet. Be the first to play!'**
+  String get noRecordsYet;
+
   /// No description provided for @gameConfiguration.
   ///
   /// In en, this message translates to:
