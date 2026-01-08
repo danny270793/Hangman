@@ -184,7 +184,8 @@ class HomePage extends StatelessWidget {
 
         // Right side - Configuration and Play Button
         Expanded(
-          child: Column(
+          child: SingleChildScrollView(
+            child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildConfigurationCard(
@@ -198,6 +199,7 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 16),
               _buildRecordsButton(context, l10n),
             ],
+          ),
           ),
         ),
       ],
