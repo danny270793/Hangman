@@ -27,6 +27,27 @@ CREATE INDEX idx_game_records_user_id ON game_records(user_id);
 -- Create an index on created_at for sorting
 CREATE INDEX idx_game_records_created_at ON game_records(created_at DESC);
 
+-- Create an index on points for leaderboard
+CREATE INDEX idx_game_records_points ON game_records(points DESC);
+
+-- Create a view that joins game_records with auth.users to get usernames
+CREATE OR REPLACE VIEW game_records_with_usernames AS
+SELECT 
+    gr.id,
+    gr.user_id,
+    COALESCE(
+        (au.raw_user_meta_data->>'username')::text,
+        'Player'
+    ) as username,
+    gr.has_timed_mode_enabled,
+    gr.difficulty,
+    gr.points,
+    gr.words,
+    gr.time_playing,
+    gr.created_at
+FROM game_records gr
+LEFT JOIN auth.users au ON gr.user_id = au.id;
+
 -- Enable Row Level Security (RLS)
 ALTER TABLE game_records ENABLE ROW LEVEL SECURITY;
 
@@ -36,11 +57,14 @@ ON game_records FOR INSERT
 TO authenticated
 WITH CHECK (auth.uid() = user_id);
 
--- Create policy: Users can only view their own records
-CREATE POLICY "Users can view their own game records"
+-- Create policy: Anyone can view all records (for leaderboard)
+CREATE POLICY "Anyone can view game records"
 ON game_records FOR SELECT
 TO authenticated
-USING (auth.uid() = user_id);
+USING (true);
+
+-- Grant access to the view
+GRANT SELECT ON game_records_with_usernames TO authenticated;
 
 -- Create policy: Users can only update their own records
 CREATE POLICY "Users can update their own game records"
@@ -55,7 +79,7 @@ TO authenticated
 USING (auth.uid() = user_id);
 ```
 
-## Table Columns
+## Table Columns (`game_records`)
 
 | Column | Type | Description | Constraints |
 |--------|------|-------------|-------------|
@@ -68,14 +92,26 @@ USING (auth.uid() = user_id);
 | `time_playing` | INTEGER | Total seconds played | NOT NULL, DEFAULT 0 |
 | `created_at` | TIMESTAMP | When the record was created | DEFAULT NOW() |
 
+## View Columns (`game_records_with_usernames`)
+
+The view adds the `username` column by joining with `auth.users`:
+
+| Column | Type | Description | Source |
+|--------|------|-------------|--------|
+| All columns above | - | Inherited from game_records | game_records table |
+| `username` | TEXT | Player's username | auth.users.raw_user_meta_data->>'username' |
+
 ## Row Level Security (RLS)
 
 The table has RLS enabled with the following policies:
 - ✅ Users can **INSERT** their own records
-- ✅ Users can **SELECT** their own records
+- ✅ **Anyone authenticated** can **SELECT** all records (for leaderboard)
 - ✅ Users can **UPDATE** their own records
 - ✅ Users can **DELETE** their own records
-- ❌ Users **CANNOT** access other users' records
+
+The view `game_records_with_usernames`:
+- ✅ **Anyone authenticated** can **SELECT** from the view
+- ✅ Automatically joins usernames from `auth.users` metadata
 
 ## Usage in Flutter
 
@@ -101,16 +137,18 @@ if (error != null) {
 }
 ```
 
-### Retrieve User's Game Records
+### Retrieve All Game Records (Leaderboard)
 
 ```dart
 final gameRecordService = GameRecordService();
-final records = await gameRecordService.getUserGameRecords();
+final records = await gameRecordService.getAllGameRecords(limit: 100);
 
 for (var record in records) {
-  print('Score: ${record['points']}, Words: ${record['words']}');
+  print('${record['username']}: ${record['points']} points, ${record['words']} words');
 }
 ```
+
+**Note:** The `username` field is automatically fetched from `auth.users` via the database view, so you don't need to store it when saving records.
 
 ## Setup Instructions
 

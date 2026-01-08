@@ -306,6 +306,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get letsPlay => 'Let\'s Play!';
 
   @override
+  String get seeRecords => 'See Records';
+
+  @override
+  String get gameRecords => 'Game Records';
+
+  @override
+  String get rank => 'Rank';
+
+  @override
+  String get player => 'Player';
+
+  @override
+  String get noRecordsYet => 'No records yet. Be the first to play!';
+
+  @override
   String get gameConfiguration => 'Game Configuration';
 
   @override

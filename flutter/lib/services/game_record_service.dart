@@ -50,5 +50,20 @@ class GameRecordService {
       return [];
     }
   }
+
+  Future<List<Map<String, dynamic>>> getAllGameRecords({int limit = 100}) async {
+    try {
+      // Query from the view that joins with auth.users to get usernames
+      final response = await _supabase
+          .from('game_records_with_usernames')
+          .select()
+          .order('points', ascending: false)
+          .limit(limit);
+
+      return List<Map<String, dynamic>>.from(response);
+    } catch (e) {
+      return [];
+    }
+  }
 }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/pages/settings.dart';
 import 'package:hangman/pages/game.dart';
+import 'package:hangman/pages/records.dart';
 import 'package:hangman/services/difficulty_service.dart';
 import 'package:hangman/services/timed_mode_service.dart';
 import 'package:go_router/go_router.dart';
@@ -130,6 +131,11 @@ class HomePage extends StatelessWidget {
 
         // Let's Play Button
         _buildPlayButton(context, l10n),
+
+        const SizedBox(height: 16),
+
+        // See Records Button
+        _buildRecordsButton(context, l10n),
       ],
     );
   }
@@ -187,6 +193,8 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               _buildPlayButton(context, l10n),
+              const SizedBox(height: 16),
+              _buildRecordsButton(context, l10n),
             ],
           ),
         ),
@@ -269,6 +277,33 @@ class HomePage extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           elevation: 4,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRecordsButton(BuildContext context, AppLocalizations l10n) {
+    return SizedBox(
+      width: double.infinity,
+      height: 50,
+      child: OutlinedButton.icon(
+          onPressed: () {
+          context.push(RecordsPage.routeName);
+        },
+        icon: const Icon(Icons.emoji_events, size: 24),
+        label: Text(
+          l10n.seeRecords,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Theme.of(context).colorScheme.primary,
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.primary,
+            width: 2,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
         ),
       ),
     );
