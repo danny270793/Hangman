@@ -62,6 +62,7 @@
   "newPasswordMustBeDifferent": "La nueva contraseña debe ser diferente de la actual",
   "pleaseEnterEmail": "Por favor ingresa tu correo",
   "invalidEmail": "Por favor ingresa un correo válido",
+  "emailMustBeDifferent": "El correo debe ser diferente",
   "updateSuccess": "¡Actualizado con éxito!",
   "general": "General",
   "language": "Idioma",
