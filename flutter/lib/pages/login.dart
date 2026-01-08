@@ -6,7 +6,6 @@ import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/theme_service.dart';
 import 'package:provider/provider.dart';
 
-
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
 
@@ -18,10 +17,11 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
+  bool _isLoading = false;
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
@@ -52,16 +52,107 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     _animationController.dispose();
     super.dispose();
   }
 
-  void _handleLogin() {
-    if (_formKey.currentState?.validate() ?? false) {
-      context.read<AuthService>().login();
+  Future<void> _handleLogin() async {
+    if (!(_formKey.currentState?.validate() ?? false)) {
+      return;
     }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    final authService = context.read<AuthService>();
+    final error = await authService.signInWithPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+    );
+
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+      });
+
+      if (error != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(error), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
+
+  void _showEmailConfirmationDialog(String? email) {
+    final l10n = AppLocalizations.of(context)!;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(
+                Icons.mark_email_read_outlined,
+                color: Theme.of(context).colorScheme.primary,
+                size: 28,
+              ),
+              const SizedBox(width: 12),
+              Text(l10n.registrationSuccess),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(l10n.checkEmailToConfirm),
+              if (email != null) ...[
+                const SizedBox(height: 16),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.email_outlined,
+                        size: 20,
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          email,
+                          style: TextStyle(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onPrimaryContainer,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -98,7 +189,7 @@ class _LoginPageState extends State<LoginPage>
                   child: OrientationBuilder(
                     builder: (context, orientation) {
                       final isLandscape = orientation == Orientation.landscape;
-                      
+
                       if (isLandscape) {
                         return _buildLandscapeLayout(context, l10n);
                       } else {
@@ -113,6 +204,15 @@ class _LoginPageState extends State<LoginPage>
         ),
       ),
     );
+  }
+
+  void _handleRegister() async {
+    var result = await context.push<Map<String, dynamic>>(
+      RegisterPage.routeName,
+    );
+    if (result != null && result['showEmailConfirmation'] == true) {
+      _showEmailConfirmationDialog(result['registeredEmail']);
+    }
   }
 
   Widget _buildPortraitLayout(BuildContext context, AppLocalizations l10n) {
@@ -161,10 +261,7 @@ class _LoginPageState extends State<LoginPage>
         const SizedBox(height: 8),
         Text(
           l10n.signInToContinue,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Colors.white70,
-          ),
+          style: const TextStyle(fontSize: 16, color: Colors.white70),
         ),
         const SizedBox(height: 48),
 
@@ -173,31 +270,26 @@ class _LoginPageState extends State<LoginPage>
         const SizedBox(height: 24),
 
         // Register Link
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    l10n.dontHaveAccount,
-                    style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: 14,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      context.push(RegisterPage.routeName);
-                    },
-                    child: Text(
-                      l10n.createOne,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              l10n.dontHaveAccount,
+              style: const TextStyle(color: Colors.white70, fontSize: 14),
+            ),
+            TextButton(
+              onPressed: _handleRegister,
+              child: Text(
+                l10n.createOne,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -251,26 +343,20 @@ class _LoginPageState extends State<LoginPage>
               const SizedBox(height: 8),
               Text(
                 l10n.signInToContinue,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.white70,
-                ),
+                style: const TextStyle(fontSize: 14, color: Colors.white70),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
               Text(
                 l10n.readyToTest,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 12,
-                ),
+                style: const TextStyle(color: Colors.white70, fontSize: 12),
                 textAlign: TextAlign.center,
               ),
             ],
           ),
         ),
         const SizedBox(width: 24),
-        
+
         // Right side - Login Form
         Expanded(
           child: SingleChildScrollView(
@@ -291,9 +377,7 @@ class _LoginPageState extends State<LoginPage>
                       ),
                     ),
                     TextButton(
-                      onPressed: () {
-                        context.push(RegisterPage.routeName);
-                      },
+                      onPressed: _handleRegister,
                       child: Text(
                         l10n.createOne,
                         style: const TextStyle(
@@ -316,9 +400,7 @@ class _LoginPageState extends State<LoginPage>
   Widget _buildLoginCard(BuildContext context, AppLocalizations l10n) {
     return Card(
       elevation: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Container(
         padding: const EdgeInsets.all(32),
         child: Form(
@@ -327,15 +409,13 @@ class _LoginPageState extends State<LoginPage>
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Username Field
+              // Email Field
               TextFormField(
-                controller: _usernameController,
+                controller: _emailController,
                 decoration: InputDecoration(
-                  labelText: l10n.username,
-                  hintText: l10n.enterUsername,
-                  prefixIcon: const Icon(
-                    Icons.person_outline,
-                  ),
+                  labelText: l10n.email,
+                  hintText: l10n.enterEmail,
+                  prefixIcon: const Icon(Icons.email_outlined),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -344,12 +424,15 @@ class _LoginPageState extends State<LoginPage>
                     context,
                   ).colorScheme.surfaceContainerHighest,
                 ),
+                keyboardType: TextInputType.emailAddress,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return l10n.pleaseEnterUsername;
+                    return l10n.pleaseEnterEmail;
                   }
-                  if (value.length < 3) {
-                    return l10n.usernameMinLength;
+                  if (!RegExp(
+                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
+                    return l10n.invalidEmail;
                   }
                   return null;
                 },
@@ -370,7 +453,7 @@ class _LoginPageState extends State<LoginPage>
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                     ),
-          onPressed: () {
+                    onPressed: () {
                       setState(() {
                         _obscurePassword = !_obscurePassword;
                       });
@@ -398,36 +481,41 @@ class _LoginPageState extends State<LoginPage>
 
               // Login Button
               ElevatedButton(
-                onPressed: _handleLogin,
+                onPressed: _isLoading ? null : _handleLogin,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(
-                    context,
-                  ).colorScheme.primary,
-                  foregroundColor: Theme.of(
-                    context,
-                  ).colorScheme.onPrimary,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                  ),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                   elevation: 4,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      l10n.login,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                child: _isLoading
+                    ? const SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.white,
+                          ),
+                        ),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            l10n.login,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          const Icon(Icons.arrow_forward),
+                        ],
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Icon(Icons.arrow_forward),
-                  ],
-                ),
               ),
               const SizedBox(height: 24),
             ],

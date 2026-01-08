@@ -29,31 +29,41 @@ class WordsService {
         'assets/words_$locale.json',
       );
       final Map<String, dynamic> jsonData = json.decode(jsonString);
-      
+
       // Combine words from all difficulty levels
       final List<Word> allWords = [];
-      
+
       // Load easy words
       if (jsonData.containsKey('easy') && jsonData['easy']['words'] != null) {
-        final List<dynamic> easyWords = jsonData['easy']['words'] as List<dynamic>;
+        final List<dynamic> easyWords =
+            jsonData['easy']['words'] as List<dynamic>;
         allWords.addAll(
-          easyWords.map((wordJson) => Word.fromJson(wordJson as Map<String, dynamic>))
+          easyWords.map(
+            (wordJson) => Word.fromJson(wordJson as Map<String, dynamic>),
+          ),
         );
       }
-      
+
       // Load medium words
-      if (jsonData.containsKey('medium') && jsonData['medium']['words'] != null) {
-        final List<dynamic> mediumWords = jsonData['medium']['words'] as List<dynamic>;
+      if (jsonData.containsKey('medium') &&
+          jsonData['medium']['words'] != null) {
+        final List<dynamic> mediumWords =
+            jsonData['medium']['words'] as List<dynamic>;
         allWords.addAll(
-          mediumWords.map((wordJson) => Word.fromJson(wordJson as Map<String, dynamic>))
+          mediumWords.map(
+            (wordJson) => Word.fromJson(wordJson as Map<String, dynamic>),
+          ),
         );
       }
-      
+
       // Load hard words
       if (jsonData.containsKey('hard') && jsonData['hard']['words'] != null) {
-        final List<dynamic> hardWords = jsonData['hard']['words'] as List<dynamic>;
+        final List<dynamic> hardWords =
+            jsonData['hard']['words'] as List<dynamic>;
         allWords.addAll(
-          hardWords.map((wordJson) => Word.fromJson(wordJson as Map<String, dynamic>))
+          hardWords.map(
+            (wordJson) => Word.fromJson(wordJson as Map<String, dynamic>),
+          ),
         );
       }
 
@@ -81,15 +91,17 @@ class WordsService {
   Word getRandomWordByDifficulty(String difficultyCategory) {
     final allWords = getAllWords();
     final filteredWords = allWords
-        .where((word) => getWordDifficultyCategory(word.word) == difficultyCategory)
+        .where(
+          (word) => getWordDifficultyCategory(word.word) == difficultyCategory,
+        )
         .toList();
-    
+
     // If no words match the difficulty, fall back to all words
     if (filteredWords.isEmpty) {
       final random = allWords.toList()..shuffle();
       return random.first;
     }
-    
+
     filteredWords.shuffle();
     return filteredWords.first;
   }
@@ -120,7 +132,7 @@ class WordsService {
   double getWordDifficulty(String word) {
     final uniqueLetters = word.toUpperCase().split('').toSet().length;
     final totalLetters = word.length;
-    
+
     // Normalize to 0.0 - 1.0 range
     // Words with all unique letters are hardest (ratio = 1.0)
     // Words with many repeated letters are easier (ratio closer to 0)
@@ -133,7 +145,7 @@ class WordsService {
   /// Hard: > 0.85 (mostly unique letters)
   String getWordDifficultyCategory(String word) {
     final difficulty = getWordDifficulty(word);
-    
+
     if (difficulty < 0.65) {
       return 'easy';
     } else if (difficulty < 0.85) {

@@ -36,4 +36,3 @@ class DifficultyService extends ChangeNotifier {
     notifyListeners();
   }
 }
-

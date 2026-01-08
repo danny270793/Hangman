@@ -24,12 +24,12 @@ class _GamePageState extends State<GamePage> {
   final int _maxWrongGuesses = 6;
   bool _isLoading = true;
   bool _hasLoadedWords = false;
-  
+
   // Timer related
   Timer? _timer;
   int _remainingSeconds = 60;
   bool _isTimedOut = false;
-  
+
   // Score
   int _totalScore = 0;
   int _lastRoundPoints = 0;
@@ -47,14 +47,14 @@ class _GamePageState extends State<GamePage> {
     final locale = Localizations.localeOf(context).languageCode;
     final difficultyService = context.read<DifficultyService>();
     final difficulty = _getDifficultyString(difficultyService.difficulty);
-    
+
     await _wordsService.loadWords(locale: locale);
     setState(() {
       _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
       _word = _currentWord.word.toUpperCase();
       _isLoading = false;
     });
-    
+
     // Start timer if timed mode is enabled
     final timedModeService = context.read<TimedModeService>();
     if (timedModeService.isEnabled) {
@@ -66,7 +66,7 @@ class _GamePageState extends State<GamePage> {
     _remainingSeconds = 60;
     _isTimedOut = false;
     _timer?.cancel();
-    
+
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (_remainingSeconds > 0) {
@@ -113,20 +113,20 @@ class _GamePageState extends State<GamePage> {
   /// Fewer mistakes = more points (up to 60 points from accuracy)
   int _calculatePoints() {
     final timedModeService = context.read<TimedModeService>();
-    
+
     // Time bonus: 1 point per second remaining (0-60 points)
     int timeBonus = 0;
     if (timedModeService.isEnabled) {
       timeBonus = _remainingSeconds;
     }
-    
+
     // Accuracy bonus: max 60 points, reduced by 10 per wrong guess
     int accuracyBonus = 60 - (_wrongGuesses * 10);
     if (accuracyBonus < 0) accuracyBonus = 0;
-    
+
     // Base points for completing the word
     int basePoints = 20;
-    
+
     return basePoints + timeBonus + accuracyBonus;
   }
 
@@ -141,7 +141,7 @@ class _GamePageState extends State<GamePage> {
         _wrongGuesses++;
       }
     });
-    
+
     // Check if game ended after this guess
     if (_isGameWon) {
       _stopTimer();
@@ -159,7 +159,7 @@ class _GamePageState extends State<GamePage> {
     final difficultyService = context.read<DifficultyService>();
     final difficulty = _getDifficultyString(difficultyService.difficulty);
     final timedModeService = context.read<TimedModeService>();
-    
+
     setState(() {
       _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
       _word = _currentWord.word.toUpperCase();
@@ -167,7 +167,7 @@ class _GamePageState extends State<GamePage> {
       _wrongGuesses = 0;
       _isTimedOut = false;
     });
-    
+
     // Restart timer if timed mode is enabled
     if (timedModeService.isEnabled) {
       _startTimer();
@@ -183,7 +183,7 @@ class _GamePageState extends State<GamePage> {
       canPop: false,
       onPopInvokedWithResult: (bool didPop, dynamic result) async {
         if (didPop) return;
-        
+
         final shouldPop = await _showExitConfirmationDialog(context, l10n);
         if (shouldPop == true && context.mounted) {
           Navigator.of(context).pop();
@@ -194,7 +194,10 @@ class _GamePageState extends State<GamePage> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () async {
-              final shouldExit = await _showExitConfirmationDialog(context, l10n);
+              final shouldExit = await _showExitConfirmationDialog(
+                context,
+                l10n,
+              );
               if (shouldExit == true && context.mounted) {
                 Navigator.of(context).pop();
               }
@@ -206,35 +209,46 @@ class _GamePageState extends State<GamePage> {
               Text(l10n.hangmanGame),
               Text(
                 '${l10n.score}: $_totalScore',
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.normal,
+                ),
               ),
             ],
           ),
         ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Theme.of(context).colorScheme.primary.withOpacity(0.1),
-              Theme.of(context).colorScheme.secondary.withOpacity(0.05),
-            ],
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                Theme.of(context).colorScheme.secondary.withOpacity(0.05),
+              ],
+            ),
           ),
-        ),
-        child: _isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : OrientationBuilder(
-                builder: (context, orientation) {
-                  final isLandscape = orientation == Orientation.landscape;
-                  
-                  if (isLandscape) {
-                    return _buildLandscapeLayout(context, l10n, timedModeService);
-                  } else {
-                    return _buildPortraitLayout(context, l10n, timedModeService);
-                  }
-                },
-              ),
+          child: _isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : OrientationBuilder(
+                  builder: (context, orientation) {
+                    final isLandscape = orientation == Orientation.landscape;
+
+                    if (isLandscape) {
+                      return _buildLandscapeLayout(
+                        context,
+                        l10n,
+                        timedModeService,
+                      );
+                    } else {
+                      return _buildPortraitLayout(
+                        context,
+                        l10n,
+                        timedModeService,
+                      );
+                    }
+                  },
+                ),
         ),
       ),
     );
@@ -290,9 +304,7 @@ class _GamePageState extends State<GamePage> {
         // Word Display
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Center(
-            child: _buildWordDisplay(),
-          ),
+          child: Center(child: _buildWordDisplay()),
         ),
 
         const SizedBox(height: 12),
@@ -300,19 +312,19 @@ class _GamePageState extends State<GamePage> {
         // Hint Display or Game Status
         if (!_isGameWon && !_isGameLost)
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 4.0,
+            ),
             child: _buildHintDisplay(),
           ),
 
-        if (_isGameWon || _isGameLost)
-          _buildGameStatus(l10n),
+        if (_isGameWon || _isGameLost) _buildGameStatus(l10n),
 
         const SizedBox(height: 8),
 
         // Keyboard
-        Expanded(
-          child: _buildKeyboard(),
-        ),
+        Expanded(child: _buildKeyboard()),
       ],
     );
   }
@@ -358,16 +370,13 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ],
               ),
-              
+
               const SizedBox(width: 16),
-              
+
               // Hangman Drawing
               Expanded(
                 child: Center(
-                  child: SizedBox(
-                    height: 250,
-                    child: _buildHangmanDrawing(),
-                  ),
+                  child: SizedBox(height: 250, child: _buildHangmanDrawing()),
                 ),
               ),
             ],
@@ -380,13 +389,11 @@ class _GamePageState extends State<GamePage> {
           child: Column(
             children: [
               const SizedBox(height: 16),
-              
+
               // Word Display
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Center(
-                  child: _buildWordDisplay(),
-                ),
+                child: Center(child: _buildWordDisplay()),
               ),
 
               const SizedBox(height: 12),
@@ -394,19 +401,19 @@ class _GamePageState extends State<GamePage> {
               // Hint Display or Game Status
               if (!_isGameWon && !_isGameLost)
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 4.0,
+                  ),
                   child: _buildHintDisplay(),
                 ),
 
-              if (_isGameWon || _isGameLost)
-                _buildGameStatus(l10n),
+              if (_isGameWon || _isGameLost) _buildGameStatus(l10n),
 
               const SizedBox(height: 8),
 
               // Keyboard
-              Expanded(
-                child: _buildKeyboard(),
-              ),
+              Expanded(child: _buildKeyboard()),
             ],
           ),
         ),
@@ -449,10 +456,7 @@ class _GamePageState extends State<GamePage> {
             icon: Icon(_isGameWon ? Icons.arrow_forward : Icons.refresh),
             label: Text(_isGameWon ? l10n.nextWord : l10n.playAgain),
             style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 12,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
             ),
           ),
         ],
@@ -460,7 +464,10 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
-  Future<bool?> _showExitConfirmationDialog(BuildContext context, AppLocalizations l10n) {
+  Future<bool?> _showExitConfirmationDialog(
+    BuildContext context,
+    AppLocalizations l10n,
+  ) {
     return showDialog<bool>(
       context: context,
       builder: (BuildContext dialogContext) {
@@ -490,7 +497,12 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
-  Widget _buildScoreCard(String label, String value, IconData icon, Color color) {
+  Widget _buildScoreCard(
+    String label,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return SizedBox(
       width: 100,
       height: 100,
@@ -545,7 +557,10 @@ class _GamePageState extends State<GamePage> {
       child: AspectRatio(
         aspectRatio: 1,
         child: CustomPaint(
-          painter: HangmanPainter(_wrongGuesses, Theme.of(context).colorScheme.primary),
+          painter: HangmanPainter(
+            _wrongGuesses,
+            Theme.of(context).colorScheme.primary,
+          ),
         ),
       ),
     );
@@ -565,8 +580,8 @@ class _GamePageState extends State<GamePage> {
           decoration: BoxDecoration(
             color: shouldReveal
                 ? (_isGameLost && !isGuessed
-                    ? Theme.of(context).colorScheme.errorContainer
-                    : Theme.of(context).colorScheme.primaryContainer)
+                      ? Theme.of(context).colorScheme.errorContainer
+                      : Theme.of(context).colorScheme.primaryContainer)
                 : Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
@@ -591,10 +606,8 @@ class _GamePageState extends State<GamePage> {
 
   Widget _buildHintDisplay() {
     final l10n = AppLocalizations.of(context)!;
-    final randomTag = _currentWord.tags.isNotEmpty 
-        ? _currentWord.tags[0] 
-        : '';
-    
+    final randomTag = _currentWord.tags.isNotEmpty ? _currentWord.tags[0] : '';
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
@@ -665,13 +678,15 @@ class _GamePageState extends State<GamePage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: isGuessed
                           ? (isCorrect
-                              ? Theme.of(context).colorScheme.primary
-                              : Theme.of(context).colorScheme.error)
-                          : Theme.of(context).colorScheme.surfaceContainerHighest,
+                                ? Theme.of(context).colorScheme.primary
+                                : Theme.of(context).colorScheme.error)
+                          : Theme.of(
+                              context,
+                            ).colorScheme.surfaceContainerHighest,
                       foregroundColor: isGuessed
                           ? (isCorrect
-                              ? Theme.of(context).colorScheme.onPrimary
-                              : Theme.of(context).colorScheme.onError)
+                                ? Theme.of(context).colorScheme.onPrimary
+                                : Theme.of(context).colorScheme.onError)
                           : Theme.of(context).colorScheme.onSurface,
                       minimumSize: const Size(32, 42),
                       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -709,7 +724,7 @@ class HangmanPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     // Always draw the gallows structure
-    
+
     // Base
     canvas.drawLine(
       Offset(size.width * 0.1, size.height * 0.9),
@@ -739,7 +754,7 @@ class HangmanPainter extends CustomPainter {
     );
 
     // Draw person parts based on wrong guesses
-    
+
     // Head (1st wrong guess)
     if (wrongGuesses >= 1) {
       canvas.drawCircle(
@@ -800,4 +815,3 @@ class HangmanPainter extends CustomPainter {
     return oldDelegate.wrongGuesses != wrongGuesses;
   }
 }
-
