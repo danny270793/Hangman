@@ -54,10 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       if (error != null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(error),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text(error), backgroundColor: Colors.red),
         );
       } else {
         // Navigate to login page and show success message
