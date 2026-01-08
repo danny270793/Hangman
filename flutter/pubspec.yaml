@@ -110,3 +110,4 @@ flutter_launcher_icons:
   adaptive_icon_foreground: assets/icons/icon.png
 
   ios: true
+  remove_alpha_ios: true
