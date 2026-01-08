@@ -415,29 +415,32 @@ class _LoginPageState extends State<LoginPage>
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Container(
         padding: const EdgeInsets.all(32),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Email Field
-              TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: l10n.email,
-                  hintText: l10n.enterEmail,
-                  prefixIcon: const Icon(Icons.email_outlined),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+        child: AutofillGroup(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Email Field
+                TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: l10n.email,
+                    hintText: l10n.enterEmail,
+                    prefixIcon: const Icon(Icons.email_outlined),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    filled: true,
+                    fillColor: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
                   ),
-                  filled: true,
-                  fillColor: Theme.of(
-                    context,
-                  ).colorScheme.surfaceContainerHighest,
-                ),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  autofillHints: const [AutofillHints.email],
+                  validator: (value) {
                   if (value == null || value.isEmpty) {
                     return l10n.pleaseEnterEmail;
                   }
@@ -479,6 +482,9 @@ class _LoginPageState extends State<LoginPage>
                     context,
                   ).colorScheme.surfaceContainerHighest,
                 ),
+                textInputAction: TextInputAction.done,
+                autofillHints: const [AutofillHints.password],
+                onFieldSubmitted: (_) => _handleLogin(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return l10n.pleaseEnterPassword;
@@ -532,6 +538,7 @@ class _LoginPageState extends State<LoginPage>
               const SizedBox(height: 24),
             ],
           ),
+        ),
         ),
       ),
     );
