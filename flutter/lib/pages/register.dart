@@ -62,13 +62,10 @@ class _RegisterPageState extends State<RegisterPage> {
       } else {
         // Navigate to login page and show success message
         if (mounted) {
-          context.go(
-            LoginPage.routeName,
-            extra: {
-              'showEmailConfirmation': true,
-              'email': _emailController.text.trim(),
-            },
-          );
+          context.pop({
+            'showEmailConfirmation': true,
+            'email': _emailController.text.trim(),
+          });
         }
       }
     }
