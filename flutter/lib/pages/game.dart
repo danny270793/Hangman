@@ -225,6 +225,12 @@ class _GamePageState extends State<GamePage> {
       _wrongGuesses = 0;
       _isTimedOut = false;
       _currentWordStartTime = 0;
+      
+      // Reset all accumulated statistics when starting a new game
+      _totalScore = 0;
+      _lastRoundPoints = 0;
+      _totalSecondsPlayed = 0;
+      _wordsSolved = 0;
     });
 
     // Restart timer if timed mode is enabled, otherwise track playtime
