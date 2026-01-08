@@ -212,20 +212,44 @@ class _GamePageState extends State<GamePage> {
         _wordsSolved++;
         _totalSecondsPlayed += _currentWordStartTime;
       });
-      // Save game record when game ends
-      _saveGameRecordOnGameEnd();
     } else if (_isGameLost) {
       _stopTimer();
       // Still track time even if lost
       setState(() {
         _totalSecondsPlayed += _currentWordStartTime;
       });
-      // Save game record when game ends
-      _saveGameRecordOnGameEnd();
     }
   }
 
-  void _resetGame() {
+  // Continue to next word after winning (preserves statistics)
+  void _continueToNextWord() {
+    final difficultyService = context.read<DifficultyService>();
+    final difficulty = _getDifficultyString(difficultyService.difficulty);
+    final timedModeService = context.read<TimedModeService>();
+
+    setState(() {
+      _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
+      _word = _currentWord.word.toUpperCase();
+      _guessedLetters.clear();
+      _wrongGuesses = 0;
+      _isTimedOut = false;
+      _currentWordStartTime = 0;
+      // Statistics are preserved - continue accumulating
+    });
+
+    // Restart timer if timed mode is enabled, otherwise track playtime
+    if (timedModeService.isEnabled) {
+      _startTimer();
+    } else {
+      _startPlaytimeTracking();
+    }
+  }
+
+  // Play again after game over (saves record and resets everything)
+  Future<void> _playAgainAfterGameOver() async {
+    // Save the game record before resetting
+    await _saveGameRecordOnGameEnd();
+
     final difficultyService = context.read<DifficultyService>();
     final difficulty = _getDifficultyString(difficultyService.difficulty);
     final timedModeService = context.read<TimedModeService>();
@@ -266,7 +290,14 @@ class _GamePageState extends State<GamePage> {
 
         final shouldPop = await _showExitConfirmationDialog(context, l10n);
         if (shouldPop == true && context.mounted) {
-          Navigator.of(context).pop();
+          // Save record if not already saved (in case user is exiting mid-game)
+          if (!_hasGameRecordBeenSaved && 
+              (_totalSecondsPlayed > 0 || _wordsSolved > 0)) {
+            await _saveGameRecordOnGameEnd();
+          }
+          if (context.mounted) {
+            Navigator.of(context).pop();
+          }
         }
       },
       child: Scaffold(
@@ -279,7 +310,14 @@ class _GamePageState extends State<GamePage> {
                 l10n,
               );
               if (shouldExit == true && context.mounted) {
-                Navigator.of(context).pop();
+                // Save record if not already saved (in case user is exiting mid-game)
+                if (!_hasGameRecordBeenSaved && 
+                    (_totalSecondsPlayed > 0 || _wordsSolved > 0)) {
+                  await _saveGameRecordOnGameEnd();
+                }
+                if (context.mounted) {
+                  Navigator.of(context).pop();
+                }
               }
             },
           ),
@@ -575,7 +613,7 @@ class _GamePageState extends State<GamePage> {
           ),
           const SizedBox(height: 8),
           ElevatedButton.icon(
-            onPressed: _resetGame,
+            onPressed: _isGameWon ? _continueToNextWord : _playAgainAfterGameOver,
             icon: Icon(_isGameWon ? Icons.arrow_forward : Icons.refresh),
             label: Text(_isGameWon ? l10n.nextWord : l10n.playAgain),
             style: ElevatedButton.styleFrom(
