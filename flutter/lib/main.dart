@@ -8,6 +8,7 @@ import 'package:hangman/pages/home.dart';
 import 'package:hangman/pages/game.dart';
 import 'package:hangman/pages/settings.dart';
 import 'package:hangman/pages/records.dart';
+import 'package:hangman/pages/privacy.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
       GamePage.routeName,
       SettingsPage.routeName,
       RecordsPage.routeName,
+      PrivacyPage.routeName,
     ];
   final publicPages = const [
     SplashPage.routeName,
@@ -132,6 +134,10 @@ class MyApp extends StatelessWidget {
           GoRoute(
             path: RecordsPage.routeName,
             builder: (context, state) => const RecordsPage(),
+          ),
+          GoRoute(
+            path: PrivacyPage.routeName,
+            builder: (context, state) => const PrivacyPage(),
           ),
         ],
       ),
