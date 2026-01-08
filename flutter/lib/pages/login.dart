@@ -179,27 +179,33 @@ class _LoginPageState extends State<LoginPage>
           ),
         ),
         child: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: SlideTransition(
-                  position: _slideAnimation,
-                  child: OrientationBuilder(
-                    builder: (context, orientation) {
-                      final isLandscape = orientation == Orientation.landscape;
+          child: OrientationBuilder(
+            builder: (context, orientation) {
+              final isLandscape = orientation == Orientation.landscape;
 
-                      if (isLandscape) {
-                        return _buildLandscapeLayout(context, l10n);
-                      } else {
-                        return _buildPortraitLayout(context, l10n);
-                      }
-                    },
+              if (isLandscape) {
+                return FadeTransition(
+                  opacity: _fadeAnimation,
+                  child: SlideTransition(
+                    position: _slideAnimation,
+                    child: _buildLandscapeLayout(context, l10n),
                   ),
-                ),
-              ),
-            ),
+                );
+              } else {
+                return Center(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(24.0),
+                    child: FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: SlideTransition(
+                        position: _slideAnimation,
+                        child: _buildPortraitLayout(context, l10n),
+                      ),
+                    ),
+                  ),
+                );
+              }
+            },
           ),
         ),
       ),
@@ -297,14 +303,16 @@ class _LoginPageState extends State<LoginPage>
   }
 
   Widget _buildLandscapeLayout(BuildContext context, AppLocalizations l10n) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // Left side - Logo and Welcome
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Left side - Logo and Welcome
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
               Container(
                 width: 80,
                 height: 80,
@@ -364,7 +372,6 @@ class _LoginPageState extends State<LoginPage>
         // Right side - Login Form
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -398,6 +405,7 @@ class _LoginPageState extends State<LoginPage>
           ),
         ),
       ],
+    ),
     );
   }
 
@@ -457,7 +465,7 @@ class _LoginPageState extends State<LoginPage>
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                     ),
-                    onPressed: () {
+          onPressed: () {
                       setState(() {
                         _obscurePassword = !_obscurePassword;
                       });
