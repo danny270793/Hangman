@@ -40,6 +40,7 @@ class _GamePageState extends State<GamePage> {
   // Statistics
   int _totalSecondsPlayed = 0;
   int _wordsSolved = 0;
+  bool _hasGameRecordBeenSaved = false;
 
   @override
   void didChangeDependencies() {
@@ -123,11 +124,18 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
-  Future<void> _saveGameRecord() async {
+  Future<void> _saveGameRecordOnGameEnd() async {
+    // Only save once per game session
+    if (_hasGameRecordBeenSaved) {
+      return;
+    }
+
     // Only save if the user has played at least one word
     if (_totalSecondsPlayed == 0 && _wordsSolved == 0) {
       return;
     }
+
+    _hasGameRecordBeenSaved = true;
 
     final difficultyService = context.read<DifficultyService>();
     final timedModeService = context.read<TimedModeService>();
@@ -204,12 +212,16 @@ class _GamePageState extends State<GamePage> {
         _wordsSolved++;
         _totalSecondsPlayed += _currentWordStartTime;
       });
+      // Save game record when game ends
+      _saveGameRecordOnGameEnd();
     } else if (_isGameLost) {
       _stopTimer();
       // Still track time even if lost
       setState(() {
         _totalSecondsPlayed += _currentWordStartTime;
       });
+      // Save game record when game ends
+      _saveGameRecordOnGameEnd();
     }
   }
 
@@ -231,6 +243,7 @@ class _GamePageState extends State<GamePage> {
       _lastRoundPoints = 0;
       _totalSecondsPlayed = 0;
       _wordsSolved = 0;
+      _hasGameRecordBeenSaved = false; // Reset save flag for new session
     });
 
     // Restart timer if timed mode is enabled, otherwise track playtime
@@ -253,10 +266,7 @@ class _GamePageState extends State<GamePage> {
 
         final shouldPop = await _showExitConfirmationDialog(context, l10n);
         if (shouldPop == true && context.mounted) {
-          await _saveGameRecord();
-          if (context.mounted) {
-            Navigator.of(context).pop();
-          }
+          Navigator.of(context).pop();
         }
       },
       child: Scaffold(
@@ -269,10 +279,7 @@ class _GamePageState extends State<GamePage> {
                 l10n,
               );
               if (shouldExit == true && context.mounted) {
-                await _saveGameRecord();
-                if (context.mounted) {
-                  Navigator.of(context).pop();
-                }
+                Navigator.of(context).pop();
               }
             },
           ),
