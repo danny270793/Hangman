@@ -659,6 +659,18 @@ abstract class AppLocalizations {
   /// **'Score'**
   String get score;
 
+  /// No description provided for @wordsSolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Words'**
+  String get wordsSolved;
+
+  /// No description provided for @totalTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get totalTime;
+
   /// No description provided for @nextWord.
   ///
   /// In en, this message translates to:

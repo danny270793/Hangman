@@ -291,6 +291,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get score => 'Puntuación';
 
   @override
+  String get wordsSolved => 'Palabras';
+
+  @override
+  String get totalTime => 'Tiempo';
+
+  @override
   String get nextWord => 'Siguiente Palabra';
 
   @override

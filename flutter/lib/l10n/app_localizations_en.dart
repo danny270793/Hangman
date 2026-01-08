@@ -291,6 +291,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get score => 'Score';
 
   @override
+  String get wordsSolved => 'Words';
+
+  @override
+  String get totalTime => 'Time';
+
+  @override
   String get nextWord => 'Next Word';
 
   @override
