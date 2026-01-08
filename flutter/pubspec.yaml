@@ -102,6 +102,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 
+#dart pub run flutter_launcher_icons
 flutter_launcher_icons:
   image_path: assets/icons/icon.png
   
