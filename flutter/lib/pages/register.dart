@@ -3,7 +3,6 @@ import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hangman/pages/login.dart';
 
 class RegisterPage extends StatefulWidget {
   static const String routeName = '/register';
@@ -200,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.all(32.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       padding: const EdgeInsets.all(16),
@@ -222,6 +221,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 8),
                     Text(
@@ -230,6 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: 14,
                         color: Colors.white.withOpacity(0.9),
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
