@@ -192,6 +192,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get invalidEmail => 'Please enter a valid email';
 
   @override
+  String get emailMustBeDifferent => 'Email must be different';
+
+  @override
   String get updateSuccess => 'Updated successfully!';
 
   @override

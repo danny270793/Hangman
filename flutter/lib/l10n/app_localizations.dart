@@ -461,6 +461,12 @@ abstract class AppLocalizations {
   /// **'Please enter a valid email'**
   String get invalidEmail;
 
+  /// No description provided for @emailMustBeDifferent.
+  ///
+  /// In en, this message translates to:
+  /// **'Email must be different'**
+  String get emailMustBeDifferent;
+
   /// No description provided for @updateSuccess.
   ///
   /// In en, this message translates to:

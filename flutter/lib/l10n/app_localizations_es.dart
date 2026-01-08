@@ -192,6 +192,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get invalidEmail => 'Por favor ingresa un correo válido';
 
   @override
+  String get emailMustBeDifferent => 'El correo debe ser diferente';
+
+  @override
   String get updateSuccess => '¡Actualizado con éxito!';
 
   @override
