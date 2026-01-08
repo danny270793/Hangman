@@ -379,90 +379,100 @@ class _GamePageState extends State<GamePage> {
   ) {
     return Column(
       children: [
-        // Score Cards
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            alignment: WrapAlignment.center,
-            children: [
-              _buildScoreCard(
-                l10n.guessesLeft,
-                '${_maxWrongGuesses - _wrongGuesses}',
-                Icons.favorite,
-                Colors.red,
-              ),
-              if (timedModeService.isEnabled)
-                _buildScoreCard(
-                  l10n.time,
-                  '${_remainingSeconds}s',
-                  Icons.timer,
-                  _remainingSeconds <= 10 ? Colors.red : Colors.orange,
+        // Scrollable content
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Score Cards
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      _buildScoreCard(
+                        l10n.guessesLeft,
+                        '${_maxWrongGuesses - _wrongGuesses}',
+                        Icons.favorite,
+                        Colors.red,
+                      ),
+                      if (timedModeService.isEnabled)
+                        _buildScoreCard(
+                          l10n.time,
+                          '${_remainingSeconds}s',
+                          Icons.timer,
+                          _remainingSeconds <= 10 ? Colors.red : Colors.orange,
+                        ),
+                      _buildScoreCard(
+                        l10n.lettersUsed,
+                        '${_guessedLetters.length}',
+                        Icons.text_fields,
+                        Colors.blue,
+                      ),
+                      _buildScoreCard(
+                        l10n.score,
+                        '$_totalScore',
+                        Icons.star,
+                        Colors.amber,
+                      ),
+                      _buildScoreCard(
+                        l10n.wordsSolved,
+                        '$_wordsSolved',
+                        Icons.check_circle,
+                        Colors.green,
+                      ),
+                      _buildScoreCard(
+                        l10n.totalTime,
+                        '${_totalSecondsPlayed}s',
+                        Icons.access_time,
+                        Colors.purple,
+                      ),
+                    ],
+                  ),
                 ),
-              _buildScoreCard(
-                l10n.lettersUsed,
-                '${_guessedLetters.length}',
-                Icons.text_fields,
-                Colors.blue,
-              ),
-              _buildScoreCard(
-                l10n.score,
-                '$_totalScore',
-                Icons.star,
-                Colors.amber,
-              ),
-              _buildScoreCard(
-                l10n.wordsSolved,
-                '$_wordsSolved',
-                Icons.check_circle,
-                Colors.green,
-              ),
-              _buildScoreCard(
-                l10n.totalTime,
-                '${_totalSecondsPlayed}s',
-                Icons.access_time,
-                Colors.purple,
-              ),
-            ],
-          ),
-        ),
 
-        // Hangman Drawing
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: SizedBox(
-            height: 200,
-            child: Center(child: _buildHangmanDrawing()),
-          ),
-        ),
+                // Hangman Drawing
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: SizedBox(
+                    height: 200,
+                    child: Center(child: _buildHangmanDrawing()),
+                  ),
+                ),
 
-        const SizedBox(height: 8),
+                const SizedBox(height: 8),
 
-        // Word Display
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Center(child: _buildWordDisplay()),
-        ),
+                // Word Display
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Center(child: _buildWordDisplay()),
+                ),
 
-        const SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-        // Hint Display or Game Status
-        if (!_isGameWon && !_isGameLost)
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 4.0,
+                // Hint Display or Game Status
+                if (!_isGameWon && !_isGameLost)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 4.0,
+                    ),
+                    child: _buildHintDisplay(),
+                  ),
+
+                if (_isGameWon || _isGameLost) _buildGameStatus(l10n),
+
+                const SizedBox(height: 8),
+              ],
             ),
-            child: _buildHintDisplay(),
           ),
+        ),
 
-        if (_isGameWon || _isGameLost) _buildGameStatus(l10n),
-
-        const SizedBox(height: 8),
-
-        // Keyboard
-        Expanded(child: _buildKeyboard()),
+        // Fixed Keyboard at bottom
+        _buildKeyboard(),
       ],
     );
   }
@@ -549,32 +559,42 @@ class _GamePageState extends State<GamePage> {
           flex: 3,
           child: Column(
             children: [
-              const SizedBox(height: 16),
+              // Scrollable content
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(height: 16),
 
-              // Word Display
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Center(child: _buildWordDisplay()),
+                      // Word Display
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Center(child: _buildWordDisplay()),
+                      ),
+
+                      const SizedBox(height: 12),
+
+                      // Hint Display or Game Status
+                      if (!_isGameWon && !_isGameLost)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 4.0,
+                          ),
+                          child: _buildHintDisplay(),
+                        ),
+
+                      if (_isGameWon || _isGameLost) _buildGameStatus(l10n),
+
+                      const SizedBox(height: 8),
+                    ],
+                  ),
+                ),
               ),
 
-              const SizedBox(height: 12),
-
-              // Hint Display or Game Status
-              if (!_isGameWon && !_isGameLost)
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 4.0,
-                  ),
-                  child: _buildHintDisplay(),
-                ),
-
-              if (_isGameWon || _isGameLost) _buildGameStatus(l10n),
-
-              const SizedBox(height: 8),
-
-              // Keyboard
-              Expanded(child: _buildKeyboard()),
+              // Fixed Keyboard at bottom
+              _buildKeyboard(),
             ],
           ),
         ),
