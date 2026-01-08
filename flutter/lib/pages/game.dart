@@ -471,8 +471,18 @@ class _GamePageState extends State<GamePage> {
           ),
         ),
 
-        // Fixed Keyboard at bottom
-        _buildKeyboard(),
+        // Fixed Keyboard at bottom with card elevation
+        Card(
+          margin: EdgeInsets.zero,
+          elevation: 8,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
+            ),
+          ),
+          child: _buildKeyboard(),
+        ),
       ],
     );
   }
