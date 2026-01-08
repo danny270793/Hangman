@@ -4,6 +4,7 @@ import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/words_service.dart';
 import 'package:hangman/services/difficulty_service.dart';
 import 'package:hangman/services/timed_mode_service.dart';
+import 'package:hangman/services/game_record_service.dart';
 import 'package:provider/provider.dart';
 
 class GamePage extends StatefulWidget {
@@ -17,6 +18,7 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   final WordsService _wordsService = WordsService();
+  final GameRecordService _gameRecordService = GameRecordService();
   late Word _currentWord;
   late String _word;
   final Set<String> _guessedLetters = {};
@@ -121,6 +123,35 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
+  Future<void> _saveGameRecord() async {
+    // Only save if the user has played at least one word
+    if (_totalSecondsPlayed == 0 && _wordsSolved == 0) {
+      return;
+    }
+
+    final difficultyService = context.read<DifficultyService>();
+    final timedModeService = context.read<TimedModeService>();
+
+    final error = await _gameRecordService.saveGameRecord(
+      hasTimedModeEnabled: timedModeService.isEnabled,
+      difficulty: _getDifficultyString(difficultyService.difficulty),
+      points: _totalScore,
+      words: _wordsSolved,
+      timePlaying: _totalSecondsPlayed,
+    );
+
+    if (error != null && mounted) {
+      // Optionally show error to user, but don't prevent exit
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to save game record: $error'),
+          backgroundColor: Colors.orange,
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+
   bool get _isGameWon {
     return _word.split('').every((letter) => _guessedLetters.contains(letter));
   }
@@ -216,7 +247,10 @@ class _GamePageState extends State<GamePage> {
 
         final shouldPop = await _showExitConfirmationDialog(context, l10n);
         if (shouldPop == true && context.mounted) {
-          Navigator.of(context).pop();
+          await _saveGameRecord();
+          if (context.mounted) {
+            Navigator.of(context).pop();
+          }
         }
       },
       child: Scaffold(
@@ -229,7 +263,10 @@ class _GamePageState extends State<GamePage> {
                 l10n,
               );
               if (shouldExit == true && context.mounted) {
-                Navigator.of(context).pop();
+                await _saveGameRecord();
+                if (context.mounted) {
+                  Navigator.of(context).pop();
+                }
               }
             },
           ),
