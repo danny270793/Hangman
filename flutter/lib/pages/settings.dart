@@ -480,56 +480,118 @@ class _SettingsPageState extends State<SettingsPage> {
   void _showChangeEmailDialog(BuildContext context, AppLocalizations l10n) {
     final formKey = GlobalKey<FormState>();
     final emailController = TextEditingController();
+    final authService = context.read<AuthService>();
+
+    // Pre-fill with current email
+    emailController.text = authService.userEmail ?? '';
 
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          title: Text(l10n.changeEmail),
-          content: Form(
-            key: formKey,
-            child: TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: l10n.newEmail,
-                hintText: l10n.enterNewEmail,
-                prefixIcon: const Icon(Icons.email),
-                border: const OutlineInputBorder(),
+        bool isLoading = false;
+
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            return AlertDialog(
+              title: Text(l10n.changeEmail),
+              content: Form(
+                key: formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextFormField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        labelText: l10n.newEmail,
+                        hintText: l10n.enterNewEmail,
+                        prefixIcon: const Icon(Icons.email),
+                        border: const OutlineInputBorder(),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      enabled: !isLoading,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return l10n.pleaseEnterEmail;
+                        }
+                        if (!RegExp(
+                          r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                        ).hasMatch(value)) {
+                          return l10n.invalidEmail;
+                        }
+                        if (value == authService.userEmail) {
+                          return l10n.emailMustBeDifferent;
+                        }
+                        return null;
+                      },
+                    ),
+                    if (isLoading) ...[
+                      const SizedBox(height: 16),
+                      const LinearProgressIndicator(),
+                    ],
+                  ],
+                ),
               ),
-              keyboardType: TextInputType.emailAddress,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return l10n.pleaseEnterEmail;
-                }
-                if (!RegExp(
-                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                ).hasMatch(value)) {
-                  return l10n.invalidEmail;
-                }
-                return null;
-              },
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(dialogContext).pop();
-              },
-              child: Text(l10n.cancel),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  Navigator.of(dialogContext).pop();
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(l10n.updateSuccess)));
-                  // TODO: Implement email update logic
-                }
-              },
-              child: Text(l10n.update),
-            ),
-          ],
+              actions: [
+                TextButton(
+                  onPressed: isLoading
+                      ? null
+                      : () {
+                          Navigator.of(dialogContext).pop();
+                        },
+                  child: Text(l10n.cancel),
+                ),
+                ElevatedButton(
+                  onPressed: isLoading
+                      ? null
+                      : () async {
+                          if (formKey.currentState!.validate()) {
+                            setDialogState(() {
+                              isLoading = true;
+                            });
+
+                            final error = await authService.updateEmail(
+                              emailController.text.trim(),
+                            );
+
+                            if (dialogContext.mounted) {
+                              setDialogState(() {
+                                isLoading = false;
+                              });
+
+                              if (error != null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(error),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                              } else {
+                                Navigator.of(dialogContext).pop();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(l10n.updateSuccess),
+                                    backgroundColor: Colors.green,
+                                  ),
+                                );
+                              }
+                            }
+                          }
+                        },
+                  child: isLoading
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        )
+                      : Text(l10n.update),
+                ),
+              ],
+            );
+          },
         );
       },
     );
