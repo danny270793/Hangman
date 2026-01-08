@@ -306,6 +306,21 @@ class AppLocalizationsEs extends AppLocalizations {
   String get letsPlay => '¡Juguemos!';
 
   @override
+  String get seeRecords => 'Ver Récords';
+
+  @override
+  String get gameRecords => 'Récords del Juego';
+
+  @override
+  String get rank => 'Rango';
+
+  @override
+  String get player => 'Jugador';
+
+  @override
+  String get noRecordsYet => '¡Aún no hay récords. Sé el primero en jugar!';
+
+  @override
   String get gameConfiguration => 'Configuración del Juego';
 
   @override
