@@ -95,6 +95,8 @@
   "hard": "Hard",
   "time": "Time",
   "score": "Score",
+  "wordsSolved": "Words",
+  "totalTime": "Time",
   "nextWord": "Next Word",
   "points": "points",
   "letsPlay": "Let's Play!",
