@@ -8,14 +8,8 @@ import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
-  final bool showEmailConfirmation;
-  final String? registeredEmail;
 
-  const LoginPage({
-    super.key,
-    this.showEmailConfirmation = false,
-    this.registeredEmail,
-  });
+  const LoginPage({ super.key });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
