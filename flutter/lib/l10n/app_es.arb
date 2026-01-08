@@ -9,6 +9,7 @@
   "enterUsername": "Ingresa tu usuario",
   "pleaseEnterUsername": "Por favor ingresa tu usuario",
   "usernameMinLength": "El usuario debe tener al menos 3 caracteres",
+  "usernameMustBeDifferent": "El usuario debe ser diferente",
   "password": "Contraseña",
   "enterPassword": "Ingresa tu contraseña",
   "pleaseEnterPassword": "Por favor ingresa tu contraseña",
