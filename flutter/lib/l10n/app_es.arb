@@ -15,6 +15,8 @@
   "passwordMinLength": "La contraseña debe tener al menos 6 caracteres",
   "login": "Iniciar Sesión",
   "register": "Registrarse",
+  "registrationSuccess": "¡Registro exitoso!",
+  "checkEmailToConfirm": "Por favor revisa tu correo para confirmar tu cuenta antes de iniciar sesión.",
   "createAccount": "Crear Cuenta",
   "dontHaveAccount": "¿No tienes cuenta?",
   "createOne": "Crea una",
