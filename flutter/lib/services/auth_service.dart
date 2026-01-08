@@ -58,6 +58,73 @@ class AuthService extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<String?> updateUsername(String newUsername) async {
+    try {
+      await Supabase.instance.client.auth.updateUser(
+        UserAttributes(
+          data: {'username': newUsername},
+        ),
+      );
+      notifyListeners();
+      return null; // Success
+    } on AuthException catch (e) {
+      return e.message;
+    } catch (e) {
+      return 'An unexpected error occurred';
+    }
+  }
+
+  Future<String?> updateEmail(String newEmail) async {
+    try {
+      await Supabase.instance.client.auth.updateUser(
+        UserAttributes(
+          email: newEmail,
+        ),
+      );
+      notifyListeners();
+      return null; // Success
+    } on AuthException catch (e) {
+      return e.message;
+    } catch (e) {
+      return 'An unexpected error occurred';
+    }
+  }
+
+  Future<String?> updatePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    try {
+      // First verify the current password by attempting to sign in
+      final email = currentUser?.email;
+      if (email == null) {
+        return 'User not found';
+      }
+
+      try {
+        await Supabase.instance.client.auth.signInWithPassword(
+          email: email,
+          password: currentPassword,
+        );
+      } on AuthException {
+        return 'Current password is incorrect';
+      }
+
+      // If verification successful, update to new password
+      await Supabase.instance.client.auth.updateUser(
+        UserAttributes(
+          password: newPassword,
+        ),
+      );
+      notifyListeners();
+      return null; // Success
+    } on AuthException catch (e) {
+      return e.message;
+    } catch (e) {
+      return 'An unexpected error occurred';
+    }
+  }
+
   String? get userEmail => currentUser?.email;
 
   String? get userName {
