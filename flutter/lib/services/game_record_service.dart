@@ -16,11 +16,7 @@ class GameRecordService {
         return 'User not authenticated';
       }
 
-      // Get username from user metadata
-      final username = _supabase.auth.currentUser?.userMetadata?['username'] as String? ?? 'Player';
-
       await _supabase.from('game_records').insert({
-        'username': username,
         'has_timed_mode_enabled': hasTimedModeEnabled,
         'difficulty': difficulty,
         'points': points,
@@ -57,8 +53,9 @@ class GameRecordService {
 
   Future<List<Map<String, dynamic>>> getAllGameRecords({int limit = 100}) async {
     try {
+      // Query from the view that joins with auth.users to get usernames
       final response = await _supabase
-          .from('game_records')
+          .from('game_records_with_usernames')
           .select()
           .order('points', ascending: false)
           .limit(limit);
