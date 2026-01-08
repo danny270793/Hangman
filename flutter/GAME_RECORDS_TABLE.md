@@ -99,19 +99,6 @@ CREATE POLICY "Anyone can view game records"
 ON public.game_records FOR SELECT
 TO authenticated
 USING (true);
-
--- Policy: Users can only update their own records
-CREATE POLICY "Users can update their own game records"
-ON public.game_records FOR UPDATE
-TO authenticated
-USING (auth.uid() = user_id)
-WITH CHECK (auth.uid() = user_id);
-
--- Policy: Users can only delete their own records
-CREATE POLICY "Users can delete their own game records"
-ON public.game_records FOR DELETE
-TO authenticated
-USING (auth.uid() = user_id);
 ```
 
 ## Table Columns (`game_records`)
@@ -151,8 +138,8 @@ The table has RLS enabled with the following policies:
 |--------|--------|-------------|
 | **INSERT** | Users can insert their own records | Users can only create records for themselves (`auth.uid() = user_id`) |
 | **SELECT** | Anyone can view game records | All authenticated users can view all records (for leaderboard) |
-| **UPDATE** | Users can update their own records | Users can only modify their own records |
-| **DELETE** | Users can delete their own records | Users can only delete their own records |
+| **UPDATE** | ❌ Not allowed | Game records are immutable (prevents tampering/cheating) |
+| **DELETE** | ❌ Not allowed | Game records are permanent (maintains leaderboard integrity) |
 
 The view `game_records_with_usernames`:
 - ✅ **Anyone authenticated** can **SELECT** from the view
@@ -232,6 +219,7 @@ Your table already exists! Follow these steps to add the necessary indices, view
 - ✅ Most fields are **NULLABLE** (except id, created_at, user_id)
 - ✅ The view automatically fetches usernames from `auth.users` metadata
 - ✅ Leaderboard queries are optimized with composite indices
+- 🔒 **Game records are IMMUTABLE** - no updates or deletes allowed (prevents cheating)
 - ⚠️ Make sure to handle NULL values when querying (use COALESCE or default values)
 
 ## Performance Considerations
