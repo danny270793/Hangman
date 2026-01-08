@@ -3,6 +3,7 @@ import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hangman/pages/login.dart';
 
 class RegisterPage extends StatefulWidget {
   static const String routeName = '/register';
@@ -59,15 +60,15 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(AppLocalizations.of(context)!.updateSuccess),
-            backgroundColor: Colors.green,
-          ),
-        );
-        // Navigate back to login page after successful registration
+        // Navigate to login page and show success message
         if (mounted) {
-          context.pop();
+          context.go(
+            LoginPage.routeName,
+            extra: {
+              'showEmailConfirmation': true,
+              'email': _emailController.text.trim(),
+            },
+          );
         }
       }
     }
