@@ -17,13 +17,11 @@ class GameRecordService {
       }
 
       await _supabase.from('game_records').insert({
-        'user_id': userId,
         'has_timed_mode_enabled': hasTimedModeEnabled,
         'difficulty': difficulty,
         'points': points,
         'words': words,
         'time_playing': timePlaying,
-        'created_at': DateTime.now().toIso8601String(),
       });
 
       return null; // Success
