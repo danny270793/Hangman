@@ -101,15 +101,25 @@ class HomePage extends StatelessWidget {
       children: [
         // Logo/Title Section
         Container(
-          padding: const EdgeInsets.all(24),
+          width: 120,
+          height: 120,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            color: Colors.white,
             shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 10,
+                spreadRadius: 2,
+              ),
+            ],
           ),
-          child: Icon(
-            Icons.games_outlined,
-            size: 80,
-            color: Theme.of(context).colorScheme.primary,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Image.asset(
+              'assets/icons/icon.png',
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         const SizedBox(height: 24),
@@ -157,15 +167,25 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(20),
+                width: 100,
+                height: 100,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                  color: Colors.white,
                   shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                    ),
+                  ],
                 ),
-                child: Icon(
-                  Icons.games_outlined,
-                  size: 60,
-                  color: Theme.of(context).colorScheme.primary,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Image.asset(
+                    'assets/icons/icon.png',
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
