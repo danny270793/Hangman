@@ -18,116 +18,35 @@ class TermsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildSection(
-                context,
-                'Acceptance of Terms',
-                'By accessing and using this Hangman game app, you accept and agree to be bound by the terms and provision of this agreement. '
-                    'If you do not agree to abide by these terms, please do not use this app.',
-              ),
+              _buildSection(context, l10n.acceptanceOfTerms, l10n.acceptanceOfTermsContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'User Account',
-                'To access certain features of the app, you must create an account by providing:\n\n'
-                    '• A valid email address\n'
-                    '• A unique username\n'
-                    '• A secure password\n\n'
-                    'You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.',
-              ),
+              _buildSection(context, l10n.userAccount, l10n.userAccountContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'User Conduct',
-                'You agree to use the app only for lawful purposes. You must not:\n\n'
-                    '• Use offensive or inappropriate usernames\n'
-                    '• Attempt to manipulate game scores or statistics\n'
-                    '• Interfere with other users\' experience\n'
-                    '• Attempt to gain unauthorized access to the app or its systems\n'
-                    '• Upload malicious code or content\n'
-                    '• Violate any applicable laws or regulations',
-              ),
+              _buildSection(context, l10n.userConduct, l10n.userConductContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Game Rules and Fair Play',
-                'The game is intended for entertainment purposes. We expect all users to play fairly:\n\n'
-                    '• Do not use automated tools or scripts\n'
-                    '• Play the game as intended\n'
-                    '• Respect the leaderboard and competition\n'
-                    '• We reserve the right to remove records that appear to be fraudulent',
-              ),
+              _buildSection(context, l10n.gameRulesFairPlay, l10n.gameRulesFairPlayContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Intellectual Property',
-                'All content, features, and functionality of this app, including but not limited to text, graphics, logos, and software, '
-                    'are owned by the app developers and are protected by copyright, trademark, and other intellectual property laws.',
-              ),
+              _buildSection(context, l10n.intellectualProperty, l10n.intellectualPropertyContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'User-Generated Content',
-                'You retain ownership of your game statistics and profile information. '
-                    'By using the app, you grant us a license to display your username and game scores on leaderboards visible to other users.',
-              ),
+              _buildSection(context, l10n.userGeneratedContent, l10n.userGeneratedContentContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Service Availability',
-                'We strive to keep the app available 24/7, but we do not guarantee uninterrupted access. '
-                    'We reserve the right to:\n\n'
-                    '• Modify or discontinue features\n'
-                    '• Perform maintenance and updates\n'
-                    '• Suspend access for violations of these terms',
-              ),
+              _buildSection(context, l10n.serviceAvailability, l10n.serviceAvailabilityContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Account Termination',
-                'We reserve the right to suspend or terminate your account if:\n\n'
-                    '• You violate these terms of service\n'
-                    '• You engage in fraudulent activity\n'
-                    '• We receive valid legal requests\n\n'
-                    'You may also delete your account at any time through the app settings.',
-              ),
+              _buildSection(context, l10n.accountTermination, l10n.accountTerminationContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Disclaimer of Warranties',
-                'The app is provided "as is" and "as available" without warranties of any kind, either express or implied. '
-                    'We do not warrant that the app will be error-free or that defects will be corrected.',
-              ),
+              _buildSection(context, l10n.disclaimerWarranties, l10n.disclaimerWarrantiesContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Limitation of Liability',
-                'To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, '
-                    'or punitive damages resulting from your use of or inability to use the app.',
-              ),
+              _buildSection(context, l10n.limitationLiability, l10n.limitationLiabilityContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Changes to Terms',
-                'We reserve the right to modify these terms at any time. We will notify users of significant changes. '
-                    'Continued use of the app after changes constitutes acceptance of the new terms.',
-              ),
+              _buildSection(context, l10n.changesToTerms, l10n.changesToTermsContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Governing Law',
-                'These terms shall be governed by and construed in accordance with applicable laws, '
-                    'without regard to its conflict of law provisions.',
-              ),
+              _buildSection(context, l10n.governingLaw, l10n.governingLawContent),
               const SizedBox(height: 24),
-              _buildSection(
-                context,
-                'Contact Information',
-                'If you have any questions about these Terms of Service, please contact us through the app settings.',
-              ),
+              _buildSection(context, l10n.contactInformation, l10n.contactInformationContent),
               const SizedBox(height: 32),
               Center(
                 child: Text(
-                  'Last Updated: January 2026',
+                  l10n.lastUpdated('January 2026'),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                     fontStyle: FontStyle.italic,
