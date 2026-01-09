@@ -60,8 +60,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registrationSuccess => 'Registration successful!';
 
   @override
-  String get checkEmailToConfirm =>
-      'Please check your email to confirm your account before logging in.';
+  String get checkEmailToConfirm => 'Please check your email to confirm your account before logging in.';
 
   @override
   String get createAccount => 'Create Account';
@@ -184,8 +183,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordsDoNotMatch => 'Passwords do not match';
 
   @override
-  String get newPasswordMustBeDifferent =>
-      'New password must be different from current password';
+  String get newPasswordMustBeDifferent => 'New password must be different from current password';
 
   @override
   String get pleaseEnterEmail => 'Please enter your email';
@@ -323,14 +321,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noRecordsYet => 'No records yet. Be the first to play!';
 
   @override
+  String get loadMore => 'Load More';
+
+  @override
   String get gameConfiguration => 'Game Configuration';
 
   @override
   String get exitGame => 'Exit Game?';
 
   @override
-  String get exitGameConfirmation =>
-      'Are you sure you want to exit? Your current progress will be lost.';
+  String get exitGameConfirmation => 'Are you sure you want to exit? Your current progress will be lost.';
 
   @override
   String get exit => 'Exit';
