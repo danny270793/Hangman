@@ -112,7 +112,7 @@ class _AboutPageState extends State<AboutPage> {
 
                     // Tagline
                     Text(
-                      'Challenge your vocabulary!',
+                      l10n.challengeYourVocabulary,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                         fontStyle: FontStyle.italic,
@@ -132,28 +132,28 @@ class _AboutPageState extends State<AboutPage> {
                             _buildInfoRow(
                               context,
                               Icons.info_outline,
-                              'Version',
+                              l10n.appVersion,
                               _packageInfo?.version ?? '1.0.0',
                             ),
                             const Divider(height: 24),
                             _buildInfoRow(
                               context,
                               Icons.tag,
-                              'Build Number',
+                              l10n.buildNumber,
                               _packageInfo?.buildNumber ?? '1',
                             ),
                             const Divider(height: 24),
                             _buildInfoRow(
                               context,
                               Icons.devices,
-                              'Platform',
+                              l10n.platform,
                               _getPlatformName(),
                             ),
                             const Divider(height: 24),
                             _buildInfoRow(
                               context,
                               Icons.apps,
-                              'Package Name',
+                              l10n.packageName,
                               _packageInfo?.packageName ??
                                   'com.example.hangman',
                             ),
@@ -166,9 +166,7 @@ class _AboutPageState extends State<AboutPage> {
 
                     // Description
                     Text(
-                      'Hangman is a classic word-guessing game reimagined for the modern era. '
-                      'Test your vocabulary, compete on leaderboards, and enjoy customizable gameplay '
-                      'with multiple difficulty levels, timed challenges, and personalized settings.',
+                      l10n.appDescription(l10n.hangmanGame),
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         height: 1.6,
                         color: Theme.of(context).colorScheme.onSurface,
@@ -190,7 +188,7 @@ class _AboutPageState extends State<AboutPage> {
 
                     // Credits
                     Text(
-                      'Made with ❤️ using Flutter',
+                      l10n.madeWithLove,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -201,7 +199,7 @@ class _AboutPageState extends State<AboutPage> {
 
                     // Copyright
                     Text(
-                      '© 2026 Hangman Game',
+                      l10n.copyright,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -211,7 +209,7 @@ class _AboutPageState extends State<AboutPage> {
                     const SizedBox(height: 8),
 
                     Text(
-                      'All rights reserved',
+                      l10n.allRightsReserved,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -260,16 +258,17 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   Widget _buildFeaturesList(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final features = [
       {
         'icon': Icons.translate,
-        'text': 'Multilingual support (English & Spanish)',
+        'text': l10n.featureMultilingual,
       },
-      {'icon': Icons.emoji_events, 'text': 'Global leaderboards'},
-      {'icon': Icons.tune, 'text': 'Customizable difficulty levels'},
-      {'icon': Icons.timer, 'text': 'Optional timed challenges'},
-      {'icon': Icons.dark_mode, 'text': 'Dark mode support'},
-      {'icon': Icons.person, 'text': 'User profiles and statistics'},
+      {'icon': Icons.emoji_events, 'text': l10n.featureLeaderboards},
+      {'icon': Icons.tune, 'text': l10n.featureDifficulty},
+      {'icon': Icons.timer, 'text': l10n.featureTimed},
+      {'icon': Icons.dark_mode, 'text': l10n.featureDarkMode},
+      {'icon': Icons.person, 'text': l10n.featureProfiles},
     ];
 
     return Card(
@@ -280,7 +279,7 @@ class _AboutPageState extends State<AboutPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Features',
+              l10n.features,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.primary,
@@ -315,11 +314,12 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   Widget _buildTechStack(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final techStack = [
-      {'name': 'Flutter', 'desc': 'UI Framework'},
-      {'name': 'Supabase', 'desc': 'Backend & Authentication'},
-      {'name': 'Provider', 'desc': 'State Management'},
-      {'name': 'GoRouter', 'desc': 'Navigation'},
+      {'text': l10n.techFlutter, 'initial': 'F'},
+      {'text': l10n.techSupabase, 'initial': 'S'},
+      {'text': l10n.techProvider, 'initial': 'P'},
+      {'text': l10n.techGoRouter, 'initial': 'G'},
     ];
 
     return Card(
@@ -337,7 +337,7 @@ class _AboutPageState extends State<AboutPage> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Built With',
+                  l10n.builtWith,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary,
@@ -355,14 +355,14 @@ class _AboutPageState extends State<AboutPage> {
                       avatar: CircleAvatar(
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         child: Text(
-                          (tech['name'] as String)[0],
+                          tech['initial'] as String,
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.onPrimary,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      label: Text('${tech['name']}: ${tech['desc']}'),
+                      label: Text(tech['text'] as String),
                       backgroundColor: Theme.of(
                         context,
                       ).colorScheme.secondaryContainer,
