@@ -7639,6 +7639,2776 @@
         "nevertheless",
         "still"
       ]
+    },
+    {
+      "word": "anywhere",
+      "tags": [
+        "any place",
+        "everywhere",
+        "wherever",
+        "some location",
+        "no specific place"
+      ]
+    },
+    {
+      "word": "apart",
+      "tags": [
+        "separated",
+        "away",
+        "distinct",
+        "divided",
+        "disconnected"
+      ]
+    },
+    {
+      "word": "apartment",
+      "tags": [
+        "flat",
+        "residence",
+        "rental unit",
+        "dwelling",
+        "living space"
+      ]
+    },
+    {
+      "word": "apathy",
+      "tags": [
+        "indifference",
+        "lack of interest",
+        "unconcern",
+        "listlessness",
+        "passivity"
+      ]
+    },
+    {
+      "word": "aperture",
+      "tags": [
+        "opening",
+        "hole",
+        "gap",
+        "camera setting",
+        "lens opening"
+      ]
+    },
+    {
+      "word": "apex",
+      "tags": [
+        "top",
+        "peak",
+        "summit",
+        "highest point",
+        "pinnacle"
+      ]
+    },
+    {
+      "word": "apology",
+      "tags": [
+        "sorry statement",
+        "regret expression",
+        "excuse",
+        "remorse",
+        "amends"
+      ]
+    },
+    {
+      "word": "apostle",
+      "tags": [
+        "religious follower",
+        "disciple",
+        "messenger",
+        "early Christian",
+        "devoted supporter"
+      ]
+    },
+    {
+      "word": "appal",
+      "tags": [
+        "horrify",
+        "shock",
+        "dismay",
+        "disgust",
+        "outrage"
+      ]
+    },
+    {
+      "word": "apparatus",
+      "tags": [
+        "equipment",
+        "device",
+        "machinery",
+        "system",
+        "mechanism"
+      ]
+    },
+    {
+      "word": "apparel",
+      "tags": [
+        "clothing",
+        "garments",
+        "attire",
+        "dress",
+        "outfit"
+      ]
+    },
+    {
+      "word": "apparent",
+      "tags": [
+        "obvious",
+        "clear",
+        "evident",
+        "visible",
+        "plain"
+      ]
+    },
+    {
+      "word": "appeal",
+      "tags": [
+        "request",
+        "attraction",
+        "plea",
+        "charm",
+        "entreat"
+      ]
+    },
+    {
+      "word": "appear",
+      "tags": [
+        "become visible",
+        "seem",
+        "show up",
+        "emerge",
+        "materialize"
+      ]
+    },
+    {
+      "word": "appearance",
+      "tags": [
+        "look",
+        "showing up",
+        "aspect",
+        "arrival",
+        "semblance"
+      ]
+    },
+    {
+      "word": "appease",
+      "tags": [
+        "calm",
+        "pacify",
+        "soothe",
+        "placate",
+        "satisfy"
+      ]
+    },
+    {
+      "word": "append",
+      "tags": [
+        "add to end",
+        "attach",
+        "affix",
+        "adjoin",
+        "supplement"
+      ]
+    },
+    {
+      "word": "appendix",
+      "tags": [
+        "body organ",
+        "added section",
+        "supplement",
+        "attachment",
+        "end matter"
+      ]
+    },
+    {
+      "word": "appetite",
+      "tags": [
+        "hunger",
+        "desire for food",
+        "craving",
+        "longing",
+        "taste"
+      ]
+    },
+    {
+      "word": "appetizer",
+      "tags": [
+        "starter",
+        "first course",
+        "hors d'oeuvre",
+        "snack",
+        "small dish"
+      ]
+    },
+    {
+      "word": "applaud",
+      "tags": [
+        "clap hands",
+        "praise",
+        "commend",
+        "approve",
+        "cheer"
+      ]
+    },
+    {
+      "word": "applause",
+      "tags": [
+        "clapping",
+        "approval",
+        "ovation",
+        "acclaim",
+        "cheers"
+      ]
+    },
+    {
+      "word": "applicable",
+      "tags": [
+        "relevant",
+        "appropriate",
+        "suitable",
+        "pertinent",
+        "usable"
+      ]
+    },
+    {
+      "word": "applicant",
+      "tags": [
+        "candidate",
+        "job seeker",
+        "petitioner",
+        "aspirant",
+        "prospect"
+      ]
+    },
+    {
+      "word": "application",
+      "tags": [
+        "request form",
+        "software program",
+        "use",
+        "implementation",
+        "applying"
+      ]
+    },
+    {
+      "word": "apply",
+      "tags": [
+        "put on",
+        "request",
+        "use",
+        "be relevant",
+        "implement"
+      ]
+    },
+    {
+      "word": "appoint",
+      "tags": [
+        "designate",
+        "assign",
+        "name to position",
+        "choose",
+        "select"
+      ]
+    },
+    {
+      "word": "appointment",
+      "tags": [
+        "scheduled meeting",
+        "position",
+        "engagement",
+        "arrangement",
+        "assignment"
+      ]
+    },
+    {
+      "word": "appraise",
+      "tags": [
+        "evaluate",
+        "assess value",
+        "estimate",
+        "judge worth",
+        "rate"
+      ]
+    },
+    {
+      "word": "appreciate",
+      "tags": [
+        "value",
+        "be grateful",
+        "understand",
+        "increase in value",
+        "recognize"
+      ]
+    },
+    {
+      "word": "apprehend",
+      "tags": [
+        "arrest",
+        "catch",
+        "understand",
+        "grasp",
+        "perceive"
+      ]
+    },
+    {
+      "word": "apprentice",
+      "tags": [
+        "learner",
+        "trainee",
+        "novice",
+        "student",
+        "beginner"
+      ]
+    },
+    {
+      "word": "approach",
+      "tags": [
+        "come near",
+        "method",
+        "way",
+        "move toward",
+        "access"
+      ]
+    },
+    {
+      "word": "appropriate",
+      "tags": [
+        "suitable",
+        "proper",
+        "fitting",
+        "take for use",
+        "relevant"
+      ]
+    },
+    {
+      "word": "approval",
+      "tags": [
+        "acceptance",
+        "consent",
+        "permission",
+        "endorsement",
+        "agreement"
+      ]
+    },
+    {
+      "word": "approve",
+      "tags": [
+        "accept",
+        "agree to",
+        "endorse",
+        "sanction",
+        "authorize"
+      ]
+    },
+    {
+      "word": "approximate",
+      "tags": [
+        "rough estimate",
+        "near",
+        "close to",
+        "about",
+        "around"
+      ]
+    },
+    {
+      "word": "apricot",
+      "tags": [
+        "orange fruit",
+        "stone fruit",
+        "sweet",
+        "small peach",
+        "summer fruit"
+      ]
+    },
+    {
+      "word": "april",
+      "tags": [
+        "fourth month",
+        "spring",
+        "after march",
+        "before may",
+        "showers"
+      ]
+    },
+    {
+      "word": "apt",
+      "tags": [
+        "appropriate",
+        "likely",
+        "suitable",
+        "quick to learn",
+        "fitting"
+      ]
+    },
+    {
+      "word": "aptitude",
+      "tags": [
+        "natural ability",
+        "talent",
+        "skill",
+        "capability",
+        "gift"
+      ]
+    },
+    {
+      "word": "aquarium",
+      "tags": [
+        "fish tank",
+        "water display",
+        "marine exhibit",
+        "glass container",
+        "aquatic habitat"
+      ]
+    },
+    {
+      "word": "aquatic",
+      "tags": [
+        "water related",
+        "marine",
+        "living in water",
+        "underwater",
+        "oceanic"
+      ]
+    },
+    {
+      "word": "aqueduct",
+      "tags": [
+        "water channel",
+        "bridge structure",
+        "Roman engineering",
+        "conveys water",
+        "elevated conduit"
+      ]
+    },
+    {
+      "word": "arabesque",
+      "tags": [
+        "ornate design",
+        "ballet position",
+        "decorative pattern",
+        "intricate motif",
+        "artistic flourish"
+      ]
+    },
+    {
+      "word": "arbiter",
+      "tags": [
+        "judge",
+        "mediator",
+        "umpire",
+        "referee",
+        "decision maker"
+      ]
+    },
+    {
+      "word": "arbitrary",
+      "tags": [
+        "random",
+        "based on whim",
+        "unreasoned",
+        "capricious",
+        "discretionary"
+      ]
+    },
+    {
+      "word": "arbitration",
+      "tags": [
+        "mediation",
+        "dispute resolution",
+        "settlement",
+        "judgment",
+        "negotiation"
+      ]
+    },
+    {
+      "word": "arbor",
+      "tags": [
+        "garden structure",
+        "covered walkway",
+        "vine support",
+        "bower",
+        "pergola"
+      ]
+    },
+    {
+      "word": "arcade",
+      "tags": [
+        "covered passage",
+        "game hall",
+        "arched walkway",
+        "shopping area",
+        "video games"
+      ]
+    },
+    {
+      "word": "arch",
+      "tags": [
+        "curved structure",
+        "supports weight",
+        "doorway shape",
+        "arc",
+        "bridge design"
+      ]
+    },
+    {
+      "word": "archaeology",
+      "tags": [
+        "study of past",
+        "excavation",
+        "ancient artifacts",
+        "human history",
+        "dig sites"
+      ]
+    },
+    {
+      "word": "archaic",
+      "tags": [
+        "ancient",
+        "outdated",
+        "old fashioned",
+        "obsolete",
+        "antiquated"
+      ]
+    },
+    {
+      "word": "archbishop",
+      "tags": [
+        "high church official",
+        "senior bishop",
+        "religious leader",
+        "prelate",
+        "ecclesiastical"
+      ]
+    },
+    {
+      "word": "archipelago",
+      "tags": [
+        "island group",
+        "chain of islands",
+        "scattered islands",
+        "atoll cluster",
+        "oceanic formation"
+      ]
+    },
+    {
+      "word": "archives",
+      "tags": [
+        "historical records",
+        "document storage",
+        "preserved files",
+        "library",
+        "repository"
+      ]
+    },
+    {
+      "word": "arctic",
+      "tags": [
+        "far north",
+        "polar region",
+        "very cold",
+        "ice covered",
+        "frozen"
+      ]
+    },
+    {
+      "word": "ardent",
+      "tags": [
+        "passionate",
+        "enthusiastic",
+        "fervent",
+        "intense",
+        "eager"
+      ]
+    },
+    {
+      "word": "arduous",
+      "tags": [
+        "difficult",
+        "strenuous",
+        "laborious",
+        "hard",
+        "demanding"
+      ]
+    },
+    {
+      "word": "area",
+      "tags": [
+        "region",
+        "space",
+        "zone",
+        "territory",
+        "section"
+      ]
+    },
+    {
+      "word": "arena",
+      "tags": [
+        "stadium",
+        "sports venue",
+        "circular space",
+        "performance area",
+        "coliseum"
+      ]
+    },
+    {
+      "word": "argue",
+      "tags": [
+        "debate",
+        "disagree",
+        "dispute",
+        "contend",
+        "quarrel"
+      ]
+    },
+    {
+      "word": "argument",
+      "tags": [
+        "disagreement",
+        "debate",
+        "reasoning",
+        "quarrel",
+        "discussion"
+      ]
+    },
+    {
+      "word": "arid",
+      "tags": [
+        "dry",
+        "parched",
+        "desert like",
+        "no rain",
+        "barren"
+      ]
+    },
+    {
+      "word": "arise",
+      "tags": [
+        "get up",
+        "occur",
+        "emerge",
+        "come about",
+        "stand"
+      ]
+    },
+    {
+      "word": "aristocracy",
+      "tags": [
+        "nobility",
+        "upper class",
+        "elite",
+        "privileged group",
+        "high society"
+      ]
+    },
+    {
+      "word": "arithmetic",
+      "tags": [
+        "math calculations",
+        "numbers",
+        "addition subtraction",
+        "computation",
+        "basic math"
+      ]
+    },
+    {
+      "word": "armada",
+      "tags": [
+        "fleet of ships",
+        "naval force",
+        "war ships",
+        "maritime power",
+        "Spanish fleet"
+      ]
+    },
+    {
+      "word": "armament",
+      "tags": [
+        "weapons",
+        "military equipment",
+        "arms",
+        "weaponry",
+        "munitions"
+      ]
+    },
+    {
+      "word": "armchair",
+      "tags": [
+        "comfortable seat",
+        "has armrests",
+        "living room furniture",
+        "padded chair",
+        "relaxing"
+      ]
+    },
+    {
+      "word": "armistice",
+      "tags": [
+        "truce",
+        "ceasefire",
+        "peace agreement",
+        "halt fighting",
+        "temporary peace"
+      ]
+    },
+    {
+      "word": "armor",
+      "tags": [
+        "protective covering",
+        "metal suit",
+        "knight's wear",
+        "defense",
+        "shield"
+      ]
+    },
+    {
+      "word": "armory",
+      "tags": [
+        "weapons storage",
+        "arsenal",
+        "military depot",
+        "arms warehouse",
+        "ammunition store"
+      ]
+    },
+    {
+      "word": "armpit",
+      "tags": [
+        "underarm",
+        "body part",
+        "under shoulder",
+        "sweaty area",
+        "axilla"
+      ]
+    },
+    {
+      "word": "army",
+      "tags": [
+        "military force",
+        "soldiers",
+        "ground troops",
+        "armed forces",
+        "battalion"
+      ]
+    },
+    {
+      "word": "aroma",
+      "tags": [
+        "pleasant smell",
+        "fragrance",
+        "scent",
+        "odor",
+        "perfume"
+      ]
+    },
+    {
+      "word": "aromatic",
+      "tags": [
+        "fragrant",
+        "flavorful",
+        "smells good",
+        "scented",
+        "spicy"
+      ]
+    },
+    {
+      "word": "around",
+      "tags": [
+        "surrounding",
+        "approximately",
+        "encircling",
+        "nearby",
+        "about"
+      ]
+    },
+    {
+      "word": "arouse",
+      "tags": [
+        "awaken",
+        "stir up",
+        "excite",
+        "stimulate",
+        "provoke"
+      ]
+    },
+    {
+      "word": "arraign",
+      "tags": [
+        "charge in court",
+        "accuse",
+        "indict",
+        "bring to trial",
+        "prosecute"
+      ]
+    },
+    {
+      "word": "arrange",
+      "tags": [
+        "organize",
+        "set up",
+        "plan",
+        "order",
+        "prepare"
+      ]
+    },
+    {
+      "word": "arrangement",
+      "tags": [
+        "organization",
+        "setup",
+        "plan",
+        "agreement",
+        "layout"
+      ]
+    },
+    {
+      "word": "array",
+      "tags": [
+        "arrangement",
+        "display",
+        "collection",
+        "assortment",
+        "lineup"
+      ]
+    },
+    {
+      "word": "arrears",
+      "tags": [
+        "overdue payment",
+        "debt",
+        "late fees",
+        "unpaid amount",
+        "backlog"
+      ]
+    },
+    {
+      "word": "arrest",
+      "tags": [
+        "detain",
+        "capture",
+        "apprehend",
+        "stop",
+        "seize"
+      ]
+    },
+    {
+      "word": "arrival",
+      "tags": [
+        "coming",
+        "reaching destination",
+        "appearance",
+        "advent",
+        "entry"
+      ]
+    },
+    {
+      "word": "arrive",
+      "tags": [
+        "reach",
+        "come",
+        "get to",
+        "show up",
+        "land"
+      ]
+    },
+    {
+      "word": "arrogance",
+      "tags": [
+        "pride",
+        "conceit",
+        "hubris",
+        "haughtiness",
+        "superiority"
+      ]
+    },
+    {
+      "word": "arrogant",
+      "tags": [
+        "conceited",
+        "proud",
+        "haughty",
+        "superior",
+        "overbearing"
+      ]
+    },
+    {
+      "word": "arrow",
+      "tags": [
+        "pointed projectile",
+        "shot from bow",
+        "direction pointer",
+        "straight shaft",
+        "archery weapon"
+      ]
+    },
+    {
+      "word": "arsenal",
+      "tags": [
+        "weapon storage",
+        "armory",
+        "military depot",
+        "stockpile",
+        "repository"
+      ]
+    },
+    {
+      "word": "arsenic",
+      "tags": [
+        "toxic element",
+        "poison",
+        "metallic substance",
+        "chemical element",
+        "rat poison"
+      ]
+    },
+    {
+      "word": "arson",
+      "tags": [
+        "intentional fire",
+        "burning crime",
+        "illegal burning",
+        "fire setting",
+        "property destruction"
+      ]
+    },
+    {
+      "word": "artery",
+      "tags": [
+        "blood vessel",
+        "carries oxygen",
+        "from heart",
+        "pulsates",
+        "circulatory system"
+      ]
+    },
+    {
+      "word": "arthritis",
+      "tags": [
+        "joint inflammation",
+        "painful condition",
+        "stiffness",
+        "swelling",
+        "chronic pain"
+      ]
+    },
+    {
+      "word": "artichoke",
+      "tags": [
+        "thistle vegetable",
+        "edible flower",
+        "green layers",
+        "Mediterranean",
+        "heart is best"
+      ]
+    },
+    {
+      "word": "article",
+      "tags": [
+        "written piece",
+        "item",
+        "object",
+        "news story",
+        "grammar word"
+      ]
+    },
+    {
+      "word": "articulate",
+      "tags": [
+        "speak clearly",
+        "express well",
+        "eloquent",
+        "pronounce",
+        "fluent"
+      ]
+    },
+    {
+      "word": "artifact",
+      "tags": [
+        "historical object",
+        "made item",
+        "relic",
+        "ancient creation",
+        "cultural object"
+      ]
+    },
+    {
+      "word": "artificial",
+      "tags": [
+        "man made",
+        "synthetic",
+        "fake",
+        "not natural",
+        "manufactured"
+      ]
+    },
+    {
+      "word": "artillery",
+      "tags": [
+        "large guns",
+        "cannons",
+        "heavy weapons",
+        "military equipment",
+        "bombardment"
+      ]
+    },
+    {
+      "word": "artisan",
+      "tags": [
+        "craftsperson",
+        "skilled worker",
+        "maker",
+        "tradesperson",
+        "craftsman"
+      ]
+    },
+    {
+      "word": "artistic",
+      "tags": [
+        "creative",
+        "aesthetic",
+        "talented",
+        "beautiful",
+        "expressive"
+      ]
+    },
+    {
+      "word": "artistry",
+      "tags": [
+        "creative skill",
+        "artistic ability",
+        "craftsmanship",
+        "talent",
+        "mastery"
+      ]
+    },
+    {
+      "word": "ascend",
+      "tags": [
+        "go up",
+        "climb",
+        "rise",
+        "mount",
+        "elevate"
+      ]
+    },
+    {
+      "word": "ascent",
+      "tags": [
+        "upward climb",
+        "rising",
+        "going up",
+        "increase",
+        "elevation"
+      ]
+    },
+    {
+      "word": "ascertain",
+      "tags": [
+        "find out",
+        "determine",
+        "discover",
+        "verify",
+        "establish"
+      ]
+    },
+    {
+      "word": "ascetic",
+      "tags": [
+        "self denying",
+        "austere",
+        "simple living",
+        "abstinent",
+        "spartan"
+      ]
+    },
+    {
+      "word": "ascribe",
+      "tags": [
+        "attribute",
+        "credit to",
+        "assign",
+        "impute",
+        "chalk up"
+      ]
+    },
+    {
+      "word": "ashamed",
+      "tags": [
+        "embarrassed",
+        "guilty",
+        "mortified",
+        "humiliated",
+        "chagrined"
+      ]
+    },
+    {
+      "word": "ashore",
+      "tags": [
+        "on land",
+        "to shore",
+        "beached",
+        "grounded",
+        "not at sea"
+      ]
+    },
+    {
+      "word": "aside",
+      "tags": [
+        "to the side",
+        "apart",
+        "away",
+        "separately",
+        "notwithstanding"
+      ]
+    },
+    {
+      "word": "asinine",
+      "tags": [
+        "stupid",
+        "foolish",
+        "silly",
+        "idiotic",
+        "absurd"
+      ]
+    },
+    {
+      "word": "asleep",
+      "tags": [
+        "sleeping",
+        "dozing",
+        "resting",
+        "slumbering",
+        "unconscious"
+      ]
+    },
+    {
+      "word": "aspect",
+      "tags": [
+        "feature",
+        "facet",
+        "side",
+        "angle",
+        "element"
+      ]
+    },
+    {
+      "word": "aspen",
+      "tags": [
+        "tree type",
+        "quaking leaves",
+        "white bark",
+        "mountain tree",
+        "slender trunk"
+      ]
+    },
+    {
+      "word": "aspersion",
+      "tags": [
+        "slander",
+        "false claim",
+        "damaging remark",
+        "defamation",
+        "insult"
+      ]
+    },
+    {
+      "word": "asphalt",
+      "tags": [
+        "paving material",
+        "black surface",
+        "road covering",
+        "tar like",
+        "bitumen"
+      ]
+    },
+    {
+      "word": "asphyxiate",
+      "tags": [
+        "suffocate",
+        "choke",
+        "deprive oxygen",
+        "strangle",
+        "smother"
+      ]
+    },
+    {
+      "word": "aspiration",
+      "tags": [
+        "goal",
+        "ambition",
+        "dream",
+        "hope",
+        "aim"
+      ]
+    },
+    {
+      "word": "aspire",
+      "tags": [
+        "desire",
+        "aim",
+        "strive for",
+        "hope",
+        "seek"
+      ]
+    },
+    {
+      "word": "aspirin",
+      "tags": [
+        "pain reliever",
+        "medicine",
+        "reduces fever",
+        "headache pill",
+        "anti inflammatory"
+      ]
+    },
+    {
+      "word": "ass",
+      "tags": [
+        "donkey",
+        "fool",
+        "buttocks",
+        "stubborn animal",
+        "hinny"
+      ]
+    },
+    {
+      "word": "assail",
+      "tags": [
+        "attack",
+        "assault",
+        "criticize",
+        "beset",
+        "strike"
+      ]
+    },
+    {
+      "word": "assailant",
+      "tags": [
+        "attacker",
+        "aggressor",
+        "assaulter",
+        "offender",
+        "perpetrator"
+      ]
+    },
+    {
+      "word": "assassin",
+      "tags": [
+        "hired killer",
+        "murderer",
+        "hit man",
+        "political killer",
+        "liquidator"
+      ]
+    },
+    {
+      "word": "assassinate",
+      "tags": [
+        "murder politically",
+        "kill leader",
+        "eliminate",
+        "execute",
+        "liquidate"
+      ]
+    },
+    {
+      "word": "assault",
+      "tags": [
+        "attack",
+        "violence",
+        "battery",
+        "strike",
+        "aggression"
+      ]
+    },
+    {
+      "word": "assay",
+      "tags": [
+        "test",
+        "analyze",
+        "evaluate",
+        "assess",
+        "examine"
+      ]
+    },
+    {
+      "word": "assemble",
+      "tags": [
+        "gather",
+        "put together",
+        "construct",
+        "meet",
+        "convene"
+      ]
+    },
+    {
+      "word": "assembly",
+      "tags": [
+        "gathering",
+        "group meeting",
+        "putting together",
+        "legislature",
+        "congregation"
+      ]
+    },
+    {
+      "word": "assent",
+      "tags": [
+        "agree",
+        "consent",
+        "approve",
+        "concur",
+        "accept"
+      ]
+    },
+    {
+      "word": "assert",
+      "tags": [
+        "state firmly",
+        "declare",
+        "maintain",
+        "insist",
+        "affirm"
+      ]
+    },
+    {
+      "word": "assertion",
+      "tags": [
+        "claim",
+        "declaration",
+        "statement",
+        "affirmation",
+        "allegation"
+      ]
+    },
+    {
+      "word": "assertive",
+      "tags": [
+        "confident",
+        "self assured",
+        "forceful",
+        "decisive",
+        "bold"
+      ]
+    },
+    {
+      "word": "assess",
+      "tags": [
+        "evaluate",
+        "judge",
+        "estimate",
+        "appraise",
+        "rate"
+      ]
+    },
+    {
+      "word": "assessment",
+      "tags": [
+        "evaluation",
+        "appraisal",
+        "judgment",
+        "test",
+        "valuation"
+      ]
+    },
+    {
+      "word": "assessor",
+      "tags": [
+        "evaluator",
+        "appraiser",
+        "valuer",
+        "examiner",
+        "estimator"
+      ]
+    },
+    {
+      "word": "asset",
+      "tags": [
+        "valuable thing",
+        "resource",
+        "property",
+        "possession",
+        "advantage"
+      ]
+    },
+    {
+      "word": "assign",
+      "tags": [
+        "allocate",
+        "appoint",
+        "give task",
+        "designate",
+        "distribute"
+      ]
+    },
+    {
+      "word": "assignment",
+      "tags": [
+        "task",
+        "homework",
+        "duty",
+        "job",
+        "mission"
+      ]
+    },
+    {
+      "word": "assimilate",
+      "tags": [
+        "absorb",
+        "integrate",
+        "take in",
+        "adapt",
+        "incorporate"
+      ]
+    },
+    {
+      "word": "assist",
+      "tags": [
+        "help",
+        "aid",
+        "support",
+        "facilitate",
+        "contribute"
+      ]
+    },
+    {
+      "word": "assistance",
+      "tags": [
+        "help",
+        "aid",
+        "support",
+        "service",
+        "backing"
+      ]
+    },
+    {
+      "word": "associate",
+      "tags": [
+        "connect",
+        "link",
+        "partner",
+        "colleague",
+        "relate"
+      ]
+    },
+    {
+      "word": "association",
+      "tags": [
+        "organization",
+        "group",
+        "connection",
+        "society",
+        "alliance"
+      ]
+    },
+    {
+      "word": "assorted",
+      "tags": [
+        "various",
+        "mixed",
+        "diverse",
+        "miscellaneous",
+        "varied"
+      ]
+    },
+    {
+      "word": "assortment",
+      "tags": [
+        "variety",
+        "mixture",
+        "collection",
+        "selection",
+        "array"
+      ]
+    },
+    {
+      "word": "assume",
+      "tags": [
+        "suppose",
+        "presume",
+        "take on",
+        "believe",
+        "adopt"
+      ]
+    },
+    {
+      "word": "assumption",
+      "tags": [
+        "supposition",
+        "presumption",
+        "belief",
+        "hypothesis",
+        "premise"
+      ]
+    },
+    {
+      "word": "assurance",
+      "tags": [
+        "guarantee",
+        "confidence",
+        "promise",
+        "certainty",
+        "insurance"
+      ]
+    },
+    {
+      "word": "assure",
+      "tags": [
+        "guarantee",
+        "promise",
+        "ensure",
+        "reassure",
+        "confirm"
+      ]
+    },
+    {
+      "word": "asterisk",
+      "tags": [
+        "star symbol",
+        "reference mark",
+        "footnote indicator",
+        "asterisk mark",
+        "special character"
+      ]
+    },
+    {
+      "word": "asteroid",
+      "tags": [
+        "space rock",
+        "minor planet",
+        "orbits sun",
+        "rocky body",
+        "between Mars and Jupiter"
+      ]
+    },
+    {
+      "word": "asthma",
+      "tags": [
+        "breathing disorder",
+        "lung condition",
+        "wheezing",
+        "shortness of breath",
+        "respiratory problem"
+      ]
+    },
+    {
+      "word": "astonish",
+      "tags": [
+        "amaze",
+        "surprise",
+        "astound",
+        "shock",
+        "stun"
+      ]
+    },
+    {
+      "word": "astound",
+      "tags": [
+        "amaze",
+        "astonish",
+        "shock",
+        "stun",
+        "surprise"
+      ]
+    },
+    {
+      "word": "astray",
+      "tags": [
+        "off course",
+        "lost",
+        "wrong direction",
+        "misled",
+        "wandering"
+      ]
+    },
+    {
+      "word": "astride",
+      "tags": [
+        "straddling",
+        "legs on both sides",
+        "across",
+        "mounted on",
+        "spanning"
+      ]
+    },
+    {
+      "word": "astringent",
+      "tags": [
+        "causes contraction",
+        "tightening",
+        "harsh",
+        "severe",
+        "constricting"
+      ]
+    },
+    {
+      "word": "astrology",
+      "tags": [
+        "star interpretation",
+        "zodiac signs",
+        "horoscopes",
+        "celestial influence",
+        "birth charts"
+      ]
+    },
+    {
+      "word": "astronomy",
+      "tags": [
+        "study of space",
+        "stars and planets",
+        "celestial science",
+        "universe study",
+        "cosmology"
+      ]
+    },
+    {
+      "word": "astute",
+      "tags": [
+        "shrewd",
+        "clever",
+        "perceptive",
+        "sharp",
+        "keen"
+      ]
+    },
+    {
+      "word": "asunder",
+      "tags": [
+        "apart",
+        "into pieces",
+        "separated",
+        "torn apart",
+        "divided"
+      ]
+    },
+    {
+      "word": "asylum",
+      "tags": [
+        "sanctuary",
+        "refuge",
+        "protection",
+        "mental hospital",
+        "safe haven"
+      ]
+    },
+    {
+      "word": "asymmetry",
+      "tags": [
+        "lack of balance",
+        "imbalance",
+        "unevenness",
+        "irregularity",
+        "disproportion"
+      ]
+    },
+    {
+      "word": "atheist",
+      "tags": [
+        "non believer",
+        "denies god",
+        "no religion",
+        "secular",
+        "godless"
+      ]
+    },
+    {
+      "word": "athletic",
+      "tags": [
+        "sporty",
+        "fit",
+        "strong",
+        "muscular",
+        "active"
+      ]
+    },
+    {
+      "word": "athletics",
+      "tags": [
+        "sports",
+        "track and field",
+        "physical competitions",
+        "games",
+        "sporting events"
+      ]
+    },
+    {
+      "word": "atlas",
+      "tags": [
+        "map book",
+        "collection of maps",
+        "geographic reference",
+        "world charts",
+        "cartography"
+      ]
+    },
+    {
+      "word": "atmosphere",
+      "tags": [
+        "air layer",
+        "mood",
+        "ambiance",
+        "gases around earth",
+        "environment"
+      ]
+    },
+    {
+      "word": "atom",
+      "tags": [
+        "tiny particle",
+        "basic unit",
+        "matter building block",
+        "nucleus and electrons",
+        "microscopic"
+      ]
+    },
+    {
+      "word": "atomic",
+      "tags": [
+        "nuclear",
+        "very small",
+        "related to atoms",
+        "powerful",
+        "microscopic"
+      ]
+    },
+    {
+      "word": "atone",
+      "tags": [
+        "make amends",
+        "compensate",
+        "apologize",
+        "make up for",
+        "expiate"
+      ]
+    },
+    {
+      "word": "atonement",
+      "tags": [
+        "reparation",
+        "amends",
+        "compensation",
+        "penance",
+        "redemption"
+      ]
+    },
+    {
+      "word": "atrocious",
+      "tags": [
+        "horrible",
+        "terrible",
+        "appalling",
+        "dreadful",
+        "awful"
+      ]
+    },
+    {
+      "word": "atrocity",
+      "tags": [
+        "brutal act",
+        "cruelty",
+        "horror",
+        "barbarity",
+        "outrage"
+      ]
+    },
+    {
+      "word": "atrophy",
+      "tags": [
+        "waste away",
+        "wither",
+        "degenerate",
+        "shrink",
+        "decline"
+      ]
+    },
+    {
+      "word": "attach",
+      "tags": [
+        "fasten",
+        "connect",
+        "affix",
+        "join",
+        "link"
+      ]
+    },
+    {
+      "word": "attachment",
+      "tags": [
+        "affection",
+        "connection",
+        "accessory",
+        "fastening",
+        "bond"
+      ]
+    },
+    {
+      "word": "attack",
+      "tags": [
+        "assault",
+        "strike",
+        "offense",
+        "aggression",
+        "onslaught"
+      ]
+    },
+    {
+      "word": "attain",
+      "tags": [
+        "achieve",
+        "reach",
+        "accomplish",
+        "obtain",
+        "gain"
+      ]
+    },
+    {
+      "word": "attainment",
+      "tags": [
+        "achievement",
+        "accomplishment",
+        "acquisition",
+        "skill",
+        "success"
+      ]
+    },
+    {
+      "word": "attempt",
+      "tags": [
+        "try",
+        "effort",
+        "endeavor",
+        "strive",
+        "undertake"
+      ]
+    },
+    {
+      "word": "attend",
+      "tags": [
+        "be present",
+        "go to",
+        "pay attention",
+        "take care of",
+        "participate"
+      ]
+    },
+    {
+      "word": "attendance",
+      "tags": [
+        "presence",
+        "turnout",
+        "showing up",
+        "participation",
+        "assembly"
+      ]
+    },
+    {
+      "word": "attendant",
+      "tags": [
+        "assistant",
+        "helper",
+        "accompanying",
+        "present",
+        "steward"
+      ]
+    },
+    {
+      "word": "attention",
+      "tags": [
+        "focus",
+        "awareness",
+        "concentration",
+        "notice",
+        "heed"
+      ]
+    },
+    {
+      "word": "attentive",
+      "tags": [
+        "alert",
+        "focused",
+        "observant",
+        "mindful",
+        "watchful"
+      ]
+    },
+    {
+      "word": "attest",
+      "tags": [
+        "certify",
+        "verify",
+        "confirm",
+        "testify",
+        "witness"
+      ]
+    },
+    {
+      "word": "attic",
+      "tags": [
+        "top floor space",
+        "under roof",
+        "storage area",
+        "upper room",
+        "loft"
+      ]
+    },
+    {
+      "word": "attire",
+      "tags": [
+        "clothing",
+        "dress",
+        "outfit",
+        "apparel",
+        "garments"
+      ]
+    },
+    {
+      "word": "attitude",
+      "tags": [
+        "mindset",
+        "disposition",
+        "outlook",
+        "demeanor",
+        "stance"
+      ]
+    },
+    {
+      "word": "attorney",
+      "tags": [
+        "lawyer",
+        "legal representative",
+        "advocate",
+        "counsel",
+        "barrister"
+      ]
+    },
+    {
+      "word": "attract",
+      "tags": [
+        "draw toward",
+        "appeal to",
+        "entice",
+        "lure",
+        "pull"
+      ]
+    },
+    {
+      "word": "attraction",
+      "tags": [
+        "appeal",
+        "draw",
+        "interest",
+        "allure",
+        "magnetism"
+      ]
+    },
+    {
+      "word": "attractive",
+      "tags": [
+        "appealing",
+        "good looking",
+        "beautiful",
+        "charming",
+        "desirable"
+      ]
+    },
+    {
+      "word": "attribute",
+      "tags": [
+        "quality",
+        "characteristic",
+        "trait",
+        "feature",
+        "credit to"
+      ]
+    },
+    {
+      "word": "auction",
+      "tags": [
+        "public sale",
+        "bidding",
+        "highest bidder",
+        "gavel",
+        "selling event"
+      ]
+    },
+    {
+      "word": "auctioneer",
+      "tags": [
+        "sale conductor",
+        "bidding host",
+        "sells items",
+        "rapid talker",
+        "gavel user"
+      ]
+    },
+    {
+      "word": "audacious",
+      "tags": [
+        "bold",
+        "daring",
+        "fearless",
+        "impudent",
+        "brave"
+      ]
+    },
+    {
+      "word": "audacity",
+      "tags": [
+        "boldness",
+        "daring",
+        "nerve",
+        "guts",
+        "brazenness"
+      ]
+    },
+    {
+      "word": "audible",
+      "tags": [
+        "can be heard",
+        "loud enough",
+        "hearable",
+        "perceivable",
+        "sonic"
+      ]
+    },
+    {
+      "word": "audience",
+      "tags": [
+        "spectators",
+        "listeners",
+        "crowd",
+        "viewers",
+        "attendees"
+      ]
+    },
+    {
+      "word": "audio",
+      "tags": [
+        "sound",
+        "hearing",
+        "acoustic",
+        "auditory",
+        "recorded sound"
+      ]
+    },
+    {
+      "word": "audit",
+      "tags": [
+        "financial examination",
+        "review accounts",
+        "inspection",
+        "check records",
+        "verification"
+      ]
+    },
+    {
+      "word": "audition",
+      "tags": [
+        "tryout",
+        "performance test",
+        "casting",
+        "screen test",
+        "trial"
+      ]
+    },
+    {
+      "word": "auditor",
+      "tags": [
+        "financial examiner",
+        "accounts checker",
+        "inspector",
+        "verifier",
+        "reviewer"
+      ]
+    },
+    {
+      "word": "auditorium",
+      "tags": [
+        "large hall",
+        "theater",
+        "assembly room",
+        "concert venue",
+        "lecture hall"
+      ]
+    },
+    {
+      "word": "auditory",
+      "tags": [
+        "related to hearing",
+        "sound perception",
+        "acoustic",
+        "aural",
+        "ear function"
+      ]
+    },
+    {
+      "word": "augment",
+      "tags": [
+        "increase",
+        "enlarge",
+        "add to",
+        "enhance",
+        "expand"
+      ]
+    },
+    {
+      "word": "august",
+      "tags": [
+        "eighth month",
+        "summer",
+        "majestic",
+        "dignified",
+        "after July"
+      ]
+    },
+    {
+      "word": "aunt",
+      "tags": [
+        "parent's sister",
+        "female relative",
+        "uncle's wife",
+        "family member",
+        "auntie"
+      ]
+    },
+    {
+      "word": "aura",
+      "tags": [
+        "atmosphere",
+        "emanation",
+        "energy field",
+        "glow",
+        "distinctive quality"
+      ]
+    },
+    {
+      "word": "aural",
+      "tags": [
+        "related to hearing",
+        "auditory",
+        "ear related",
+        "acoustic",
+        "sound"
+      ]
+    },
+    {
+      "word": "auspices",
+      "tags": [
+        "sponsorship",
+        "protection",
+        "patronage",
+        "support",
+        "guidance"
+      ]
+    },
+    {
+      "word": "auspicious",
+      "tags": [
+        "favorable",
+        "promising",
+        "lucky",
+        "propitious",
+        "fortunate"
+      ]
+    },
+    {
+      "word": "austere",
+      "tags": [
+        "severe",
+        "stern",
+        "simple",
+        "harsh",
+        "ascetic"
+      ]
+    },
+    {
+      "word": "austerity",
+      "tags": [
+        "severity",
+        "simplicity",
+        "harshness",
+        "frugality",
+        "asceticism"
+      ]
+    },
+    {
+      "word": "authentic",
+      "tags": [
+        "genuine",
+        "real",
+        "legitimate",
+        "true",
+        "bona fide"
+      ]
+    },
+    {
+      "word": "authenticate",
+      "tags": [
+        "verify",
+        "validate",
+        "confirm genuineness",
+        "certify",
+        "prove real"
+      ]
+    },
+    {
+      "word": "author",
+      "tags": [
+        "writer",
+        "creator",
+        "novelist",
+        "penman",
+        "composer"
+      ]
+    },
+    {
+      "word": "authoritarian",
+      "tags": [
+        "strict",
+        "dictatorial",
+        "controlling",
+        "tyrannical",
+        "autocratic"
+      ]
+    },
+    {
+      "word": "authoritative",
+      "tags": [
+        "official",
+        "commanding",
+        "reliable",
+        "definitive",
+        "expert"
+      ]
+    },
+    {
+      "word": "authority",
+      "tags": [
+        "power",
+        "control",
+        "expert",
+        "government",
+        "jurisdiction"
+      ]
+    },
+    {
+      "word": "authorization",
+      "tags": [
+        "permission",
+        "approval",
+        "sanction",
+        "clearance",
+        "mandate"
+      ]
+    },
+    {
+      "word": "authorize",
+      "tags": [
+        "permit",
+        "approve",
+        "empower",
+        "sanction",
+        "allow"
+      ]
+    },
+    {
+      "word": "autobiography",
+      "tags": [
+        "life story",
+        "self written memoir",
+        "personal history",
+        "own account",
+        "biography"
+      ]
+    },
+    {
+      "word": "autocracy",
+      "tags": [
+        "dictatorship",
+        "absolute rule",
+        "tyranny",
+        "totalitarian",
+        "despotism"
+      ]
+    },
+    {
+      "word": "autocrat",
+      "tags": [
+        "dictator",
+        "tyrant",
+        "absolute ruler",
+        "despot",
+        "authoritarian"
+      ]
+    },
+    {
+      "word": "autograph",
+      "tags": [
+        "signature",
+        "signed name",
+        "celebrity sign",
+        "personal mark",
+        "inscription"
+      ]
+    },
+    {
+      "word": "automate",
+      "tags": [
+        "make automatic",
+        "mechanize",
+        "computerize",
+        "robotize",
+        "systematize"
+      ]
+    },
+    {
+      "word": "automatic",
+      "tags": [
+        "self acting",
+        "mechanical",
+        "involuntary",
+        "autopilot",
+        "programmed"
+      ]
+    },
+    {
+      "word": "automation",
+      "tags": [
+        "mechanization",
+        "technology",
+        "automatic operation",
+        "robotics",
+        "computerization"
+      ]
+    },
+    {
+      "word": "automobile",
+      "tags": [
+        "car",
+        "vehicle",
+        "motor vehicle",
+        "auto",
+        "transport"
+      ]
+    },
+    {
+      "word": "autonomous",
+      "tags": [
+        "independent",
+        "self governing",
+        "free",
+        "self sufficient",
+        "sovereign"
+      ]
+    },
+    {
+      "word": "autonomy",
+      "tags": [
+        "independence",
+        "self rule",
+        "freedom",
+        "self government",
+        "sovereignty"
+      ]
+    },
+    {
+      "word": "autopsy",
+      "tags": [
+        "postmortem exam",
+        "body examination",
+        "death investigation",
+        "medical examination",
+        "necropsy"
+      ]
+    },
+    {
+      "word": "autumn",
+      "tags": [
+        "fall season",
+        "between summer and winter",
+        "leaves fall",
+        "harvest time",
+        "cooler weather"
+      ]
+    },
+    {
+      "word": "auxiliary",
+      "tags": [
+        "helper",
+        "assistant",
+        "supplementary",
+        "backup",
+        "supporting"
+      ]
+    },
+    {
+      "word": "avail",
+      "tags": [
+        "benefit",
+        "use",
+        "advantage",
+        "help",
+        "utilize"
+      ]
+    },
+    {
+      "word": "available",
+      "tags": [
+        "accessible",
+        "obtainable",
+        "free",
+        "ready",
+        "at hand"
+      ]
+    },
+    {
+      "word": "avalanche",
+      "tags": [
+        "snow slide",
+        "mountain cascade",
+        "mass descent",
+        "overwhelming rush",
+        "deluge"
+      ]
+    },
+    {
+      "word": "avarice",
+      "tags": [
+        "greed",
+        "cupidity",
+        "covetousness",
+        "materialism",
+        "rapacity"
+      ]
+    },
+    {
+      "word": "avenge",
+      "tags": [
+        "get revenge",
+        "retaliate",
+        "payback",
+        "vindicate",
+        "punish"
+      ]
+    },
+    {
+      "word": "avenue",
+      "tags": [
+        "street",
+        "road",
+        "pathway",
+        "method",
+        "approach"
+      ]
+    },
+    {
+      "word": "average",
+      "tags": [
+        "mean",
+        "typical",
+        "ordinary",
+        "middling",
+        "normal"
+      ]
+    },
+    {
+      "word": "averse",
+      "tags": [
+        "opposed",
+        "reluctant",
+        "disinclined",
+        "unwilling",
+        "against"
+      ]
+    },
+    {
+      "word": "aversion",
+      "tags": [
+        "dislike",
+        "antipathy",
+        "repugnance",
+        "distaste",
+        "loathing"
+      ]
+    },
+    {
+      "word": "avert",
+      "tags": [
+        "prevent",
+        "avoid",
+        "turn away",
+        "ward off",
+        "deflect"
+      ]
+    },
+    {
+      "word": "aviation",
+      "tags": [
+        "flying",
+        "aircraft industry",
+        "air travel",
+        "aeronautics",
+        "piloting"
+      ]
+    },
+    {
+      "word": "aviator",
+      "tags": [
+        "pilot",
+        "flyer",
+        "airman",
+        "aeronaut",
+        "aircraft operator"
+      ]
+    },
+    {
+      "word": "avid",
+      "tags": [
+        "eager",
+        "enthusiastic",
+        "keen",
+        "passionate",
+        "ardent"
+      ]
+    },
+    {
+      "word": "avocado",
+      "tags": [
+        "green fruit",
+        "creamy",
+        "high in fats",
+        "guacamole",
+        "tropical"
+      ]
+    },
+    {
+      "word": "avocation",
+      "tags": [
+        "hobby",
+        "pastime",
+        "sideline",
+        "secondary occupation",
+        "leisure activity"
+      ]
+    },
+    {
+      "word": "avoid",
+      "tags": [
+        "evade",
+        "shun",
+        "dodge",
+        "escape",
+        "bypass"
+      ]
+    },
+    {
+      "word": "avoidable",
+      "tags": [
+        "preventable",
+        "evitable",
+        "escapable",
+        "unnecessary",
+        "stoppable"
+      ]
+    },
+    {
+      "word": "avow",
+      "tags": [
+        "declare",
+        "admit",
+        "confess",
+        "acknowledge",
+        "affirm"
+      ]
+    },
+    {
+      "word": "await",
+      "tags": [
+        "wait for",
+        "expect",
+        "anticipate",
+        "be in store",
+        "stay for"
+      ]
+    },
+    {
+      "word": "awake",
+      "tags": [
+        "conscious",
+        "alert",
+        "not sleeping",
+        "aroused",
+        "vigilant"
+      ]
+    },
+    {
+      "word": "awaken",
+      "tags": [
+        "wake up",
+        "rouse",
+        "stir",
+        "activate",
+        "arouse"
+      ]
+    },
+    {
+      "word": "award",
+      "tags": [
+        "prize",
+        "honor",
+        "give",
+        "grant",
+        "bestow"
+      ]
+    },
+    {
+      "word": "aware",
+      "tags": [
+        "conscious",
+        "knowledgeable",
+        "informed",
+        "cognizant",
+        "mindful"
+      ]
+    },
+    {
+      "word": "awareness",
+      "tags": [
+        "consciousness",
+        "knowledge",
+        "understanding",
+        "perception",
+        "cognizance"
+      ]
+    },
+    {
+      "word": "away",
+      "tags": [
+        "at a distance",
+        "absent",
+        "gone",
+        "elsewhere",
+        "off"
+      ]
+    },
+    {
+      "word": "awe",
+      "tags": [
+        "wonder",
+        "amazement",
+        "reverence",
+        "admiration",
+        "astonishment"
+      ]
+    },
+    {
+      "word": "awesome",
+      "tags": [
+        "amazing",
+        "impressive",
+        "wonderful",
+        "remarkable",
+        "magnificent"
+      ]
+    },
+    {
+      "word": "awful",
+      "tags": [
+        "terrible",
+        "dreadful",
+        "horrible",
+        "bad",
+        "atrocious"
+      ]
+    },
+    {
+      "word": "awhile",
+      "tags": [
+        "for a time",
+        "briefly",
+        "temporarily",
+        "short period",
+        "momentarily"
+      ]
+    },
+    {
+      "word": "awkward",
+      "tags": [
+        "clumsy",
+        "uncomfortable",
+        "ungainly",
+        "embarrassing",
+        "difficult"
+      ]
+    },
+    {
+      "word": "awning",
+      "tags": [
+        "canopy",
+        "shade cover",
+        "outdoor covering",
+        "sun protection",
+        "retractable shelter"
+      ]
+    },
+    {
+      "word": "awoke",
+      "tags": [
+        "woke up",
+        "became conscious",
+        "roused",
+        "past tense awake",
+        "stopped sleeping"
+      ]
+    },
+    {
+      "word": "awry",
+      "tags": [
+        "crooked",
+        "wrong",
+        "amiss",
+        "askew",
+        "off course"
+      ]
+    },
+    {
+      "word": "axiom",
+      "tags": [
+        "self evident truth",
+        "principle",
+        "maxim",
+        "fundamental rule",
+        "accepted statement"
+      ]
+    },
+    {
+      "word": "axis",
+      "tags": [
+        "center line",
+        "rotation point",
+        "reference line",
+        "central shaft",
+        "coordinate line"
+      ]
+    },
+    {
+      "word": "axle",
+      "tags": [
+        "wheel shaft",
+        "rotating rod",
+        "vehicle part",
+        "connects wheels",
+        "spindle"
+      ]
+    },
+    {
+      "word": "azure",
+      "tags": [
+        "sky blue",
+        "bright blue color",
+        "cerulean",
+        "deep blue",
+        "vivid blue"
+      ]
     }
   ]
 }
