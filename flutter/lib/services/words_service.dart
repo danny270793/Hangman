@@ -58,36 +58,15 @@ class WordsService {
     if (_isLoaded && _currentLocale == locale) return;
 
     try {
-      // Query words for the specified locale
-      final wordsResponse = await _supabase
-          .from('words')
-          .select('id, word, difficulty_value, locale')
+      // Query words_with_tags view for the specified locale (single fetch)
+      final response = await _supabase
+          .from('words_with_tags')
+          .select()
           .eq('locale', locale);
 
-      final List<Word> loadedWords = [];
-
-      // For each word, fetch its tags
-      for (final wordJson in wordsResponse as List<dynamic>) {
-        final wordId = wordJson['id'] as int;
-
-        // Query tags through the junction table
-        final tagsResponse = await _supabase
-            .from('word_tags')
-            .select('tag_id, tags(tag)')
-            .eq('word_id', wordId);
-
-        final tags = <String>[];
-        for (final tagData in tagsResponse as List<dynamic>) {
-          final tagInfo = tagData['tags'] as Map<String, dynamic>?;
-          if (tagInfo != null && tagInfo['tag'] != null) {
-            tags.add(tagInfo['tag'] as String);
-          }
-        }
-
-        // Add tags to word data
-        wordJson['tags'] = tags;
-        loadedWords.add(Word.fromJson(wordJson as Map<String, dynamic>));
-      }
+      final List<Word> loadedWords = (response as List<dynamic>)
+          .map((json) => Word.fromJson(json as Map<String, dynamic>))
+          .toList();
 
       _words = loadedWords.isEmpty ? _getFallbackWords() : loadedWords;
       _currentLocale = locale;
