@@ -15,6 +15,10 @@ class _RecordsPageState extends State<RecordsPage> {
   final GameRecordService _gameRecordService = GameRecordService();
   List<Map<String, dynamic>> _records = [];
   bool _isLoading = true;
+  bool _isLoadingMore = false;
+  bool _hasMoreRecords = true;
+  static const int _pageSize = 20;
+  int _currentOffset = 0;
 
   @override
   void initState() {
@@ -25,13 +29,40 @@ class _RecordsPageState extends State<RecordsPage> {
   Future<void> _loadRecords() async {
     setState(() {
       _isLoading = true;
+      _currentOffset = 0;
+      _hasMoreRecords = true;
     });
 
-    final records = await _gameRecordService.getAllGameRecords(limit: 100);
+    final records = await _gameRecordService.getAllGameRecords(
+      limit: _pageSize,
+      offset: 0,
+    );
 
     setState(() {
       _records = records;
       _isLoading = false;
+      _hasMoreRecords = records.length == _pageSize;
+    });
+  }
+
+  Future<void> _loadMoreRecords() async {
+    if (_isLoadingMore || !_hasMoreRecords) return;
+
+    setState(() {
+      _isLoadingMore = true;
+    });
+
+    _currentOffset += _pageSize;
+
+    final newRecords = await _gameRecordService.getAllGameRecords(
+      limit: _pageSize,
+      offset: _currentOffset,
+    );
+
+    setState(() {
+      _records.addAll(newRecords);
+      _isLoadingMore = false;
+      _hasMoreRecords = newRecords.length == _pageSize;
     });
   }
 
@@ -102,8 +133,30 @@ class _RecordsPageState extends State<RecordsPage> {
               )
             : ListView.builder(
                 padding: const EdgeInsets.all(16),
-                itemCount: _records.length,
+                itemCount: _records.length + (_hasMoreRecords ? 1 : 0),
                 itemBuilder: (context, index) {
+                  // Show "Load More" button at the end
+                  if (index == _records.length) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: Center(
+                        child: _isLoadingMore
+                            ? const CircularProgressIndicator()
+                            : ElevatedButton.icon(
+                                onPressed: _loadMoreRecords,
+                                icon: const Icon(Icons.expand_more),
+                                label: Text(l10n.loadMore),
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 24,
+                                    vertical: 12,
+                                  ),
+                                ),
+                              ),
+                      ),
+                    );
+                  }
+
                   final record = _records[index];
                   final rank = index + 1;
                   final username = record['username'] as String? ?? 'Player';
