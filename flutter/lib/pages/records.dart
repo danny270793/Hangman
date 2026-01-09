@@ -113,10 +113,15 @@ class _RecordsPageState extends State<RecordsPage> {
                   final difficulty = record['difficulty'] as String;
                   final hasTimedMode = record['has_timed_mode_enabled'] as bool;
 
-                  return Card(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    elevation: rank <= 3 ? 4 : 2,
-                    child: Container(
+                  return SafeArea(
+                    top: false,
+                    left: true,
+                    right: true,
+                    bottom: false,
+                    child: Card(
+                      margin: const EdgeInsets.only(bottom: 12),
+                      elevation: rank <= 3 ? 4 : 2,
+                      child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         gradient: rank <= 3
@@ -196,6 +201,7 @@ class _RecordsPageState extends State<RecordsPage> {
                         ),
                       ),
                     ),
+                  ),
                   );
                 },
               ),
