@@ -66,33 +66,30 @@ CREATE TABLE public.word_tags (
 - `tag_id`: Foreign key to tags table
 - Composite primary key on (word_id, tag_id)
 
-## View
+## Querying Words with Tags
 
-### `public.words_with_tags`
+To fetch words with their tags, query the tables with joins:
 
-A convenient view that returns words with their associated tags as an array.
-
-```sql
-CREATE VIEW public.words_with_tags AS
-SELECT 
-    w.id,
-    w.word,
-    w.difficulty_value,
-    w.locale,
-    w.created_at,
-    ARRAY_AGG(t.tag ORDER BY t.tag) FILTER (WHERE t.tag IS NOT NULL) as tags
-FROM public.words w
-LEFT JOIN public.word_tags wt ON w.id = wt.word_id
-LEFT JOIN public.tags t ON wt.tag_id = t.id
-GROUP BY w.id, w.word, w.difficulty_value, w.locale, w.created_at;
-```
-
-**Usage in Flutter:**
 ```dart
-final response = await supabase
-    .from('words_with_tags')
-    .select()
+// Fetch words
+final wordsResponse = await supabase
+    .from('words')
+    .select('id, word, difficulty_value, locale')
     .eq('locale', 'en');
+
+// For each word, fetch tags
+for (final wordData in wordsResponse) {
+  final wordId = wordData['id'];
+  final tagsResponse = await supabase
+      .from('word_tags')
+      .select('tag_id, tags(tag)')
+      .eq('word_id', wordId);
+  
+  // Extract tag strings
+  final tags = tagsResponse
+      .map((t) => t['tags']['tag'] as String)
+      .toList();
+}
 ```
 
 ## Indexes
@@ -200,8 +197,8 @@ When adding words, use these guidelines for assigning difficulty values:
 ### Get random word by difficulty range
 ```dart
 final response = await supabase
-    .from('words_with_tags')
-    .select()
+    .from('words')
+    .select('id, word, difficulty_value, locale')
     .eq('locale', 'en')
     .gte('difficulty_value', 34)
     .lte('difficulty_value', 66)  // Medium
@@ -210,11 +207,28 @@ final response = await supabase
 
 ### Search words by tag
 ```dart
-final response = await supabase
-    .from('words_with_tags')
-    .select()
+// First find tag IDs matching the search
+final tagResponse = await supabase
+    .from('tags')
+    .select('id')
     .eq('locale', 'es')
-    .textSearch('tags', 'animal');
+    .ilike('tag', '%animal%');
+
+final tagIds = tagResponse.map((t) => t['id']).toList();
+
+// Then find words associated with those tags
+final wordIds = await supabase
+    .from('word_tags')
+    .select('word_id')
+    .in_('tag_id', tagIds);
+
+final wordIdList = wordIds.map((w) => w['word_id']).toList();
+
+// Finally get the words
+final words = await supabase
+    .from('words')
+    .select()
+    .in_('id', wordIdList);
 ```
 
 ### Get word count by difficulty
