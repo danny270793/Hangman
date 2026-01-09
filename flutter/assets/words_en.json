@@ -5139,6 +5139,1006 @@
         "runs in herds",
         "herbivore"
       ]
+    },
+    {
+      "word": "abbey",
+      "tags": [
+        "religious building",
+        "monastery",
+        "stone structure",
+        "historic site",
+        "peaceful place"
+      ]
+    },
+    {
+      "word": "abacus",
+      "tags": [
+        "counting tool",
+        "beads on rods",
+        "ancient calculator",
+        "mathematical aid",
+        "frame device"
+      ]
+    },
+    {
+      "word": "abdomen",
+      "tags": [
+        "body part",
+        "between chest and pelvis",
+        "contains organs",
+        "stomach area",
+        "torso section"
+      ]
+    },
+    {
+      "word": "ablaze",
+      "tags": [
+        "on fire",
+        "burning brightly",
+        "flames visible",
+        "intense heat",
+        "glowing"
+      ]
+    },
+    {
+      "word": "abnormal",
+      "tags": [
+        "not typical",
+        "unusual",
+        "deviates from norm",
+        "irregular",
+        "atypical"
+      ]
+    },
+    {
+      "word": "abolish",
+      "tags": [
+        "end completely",
+        "eliminate",
+        "do away with",
+        "cancel",
+        "remove"
+      ]
+    },
+    {
+      "word": "abort",
+      "tags": [
+        "cancel mission",
+        "stop process",
+        "terminate early",
+        "discontinue",
+        "halt"
+      ]
+    },
+    {
+      "word": "abound",
+      "tags": [
+        "exist in large numbers",
+        "plentiful",
+        "be full of",
+        "overflow",
+        "teem"
+      ]
+    },
+    {
+      "word": "abrasive",
+      "tags": [
+        "rough surface",
+        "grinds away",
+        "sandpaper like",
+        "harsh",
+        "coarse"
+      ]
+    },
+    {
+      "word": "abridge",
+      "tags": [
+        "shorten text",
+        "condense",
+        "reduce length",
+        "summarize",
+        "abbreviate"
+      ]
+    },
+    {
+      "word": "abroad",
+      "tags": [
+        "in foreign country",
+        "overseas",
+        "international travel",
+        "away from home",
+        "distant land"
+      ]
+    },
+    {
+      "word": "abrupt",
+      "tags": [
+        "sudden",
+        "unexpected",
+        "sharp change",
+        "without warning",
+        "quick"
+      ]
+    },
+    {
+      "word": "abscess",
+      "tags": [
+        "pus pocket",
+        "infection",
+        "swollen area",
+        "painful lump",
+        "medical issue"
+      ]
+    },
+    {
+      "word": "absence",
+      "tags": [
+        "not being present",
+        "missing",
+        "away from place",
+        "lack of",
+        "nonattendance"
+      ]
+    },
+    {
+      "word": "absorb",
+      "tags": [
+        "soak up",
+        "take in",
+        "sponge action",
+        "integrate",
+        "assimilate"
+      ]
+    },
+    {
+      "word": "abstract",
+      "tags": [
+        "theoretical",
+        "not concrete",
+        "conceptual",
+        "difficult to understand",
+        "summary"
+      ]
+    },
+    {
+      "word": "absurd",
+      "tags": [
+        "ridiculous",
+        "nonsensical",
+        "illogical",
+        "unreasonable",
+        "silly"
+      ]
+    },
+    {
+      "word": "abundant",
+      "tags": [
+        "plentiful",
+        "more than enough",
+        "ample supply",
+        "copious",
+        "rich"
+      ]
+    },
+    {
+      "word": "abuse",
+      "tags": [
+        "mistreatment",
+        "wrong use",
+        "harm",
+        "cruel treatment",
+        "misuse"
+      ]
+    },
+    {
+      "word": "abyss",
+      "tags": [
+        "deep chasm",
+        "bottomless pit",
+        "vast depth",
+        "endless void",
+        "gorge"
+      ]
+    },
+    {
+      "word": "academic",
+      "tags": [
+        "related to school",
+        "scholarly",
+        "educational",
+        "intellectual",
+        "theoretical"
+      ]
+    },
+    {
+      "word": "academy",
+      "tags": [
+        "school",
+        "educational institution",
+        "learning place",
+        "training center",
+        "college"
+      ]
+    },
+    {
+      "word": "accelerate",
+      "tags": [
+        "speed up",
+        "go faster",
+        "increase pace",
+        "hasten",
+        "quicken"
+      ]
+    },
+    {
+      "word": "accent",
+      "tags": [
+        "pronunciation style",
+        "speech pattern",
+        "regional dialect",
+        "emphasis",
+        "inflection"
+      ]
+    },
+    {
+      "word": "accept",
+      "tags": [
+        "agree to receive",
+        "approve",
+        "take willingly",
+        "consent",
+        "embrace"
+      ]
+    },
+    {
+      "word": "access",
+      "tags": [
+        "entry way",
+        "permission to enter",
+        "reach",
+        "approach",
+        "admission"
+      ]
+    },
+    {
+      "word": "accident",
+      "tags": [
+        "unplanned event",
+        "mishap",
+        "collision",
+        "unexpected incident",
+        "unfortunate occurrence"
+      ]
+    },
+    {
+      "word": "acclaim",
+      "tags": [
+        "praise",
+        "applause",
+        "recognition",
+        "admiration",
+        "approval"
+      ]
+    },
+    {
+      "word": "accommodate",
+      "tags": [
+        "provide lodging",
+        "adapt",
+        "make room for",
+        "help",
+        "adjust"
+      ]
+    },
+    {
+      "word": "accompany",
+      "tags": [
+        "go with",
+        "escort",
+        "be with",
+        "join",
+        "attend"
+      ]
+    },
+    {
+      "word": "accomplice",
+      "tags": [
+        "crime partner",
+        "helper in wrongdoing",
+        "confederate",
+        "associate",
+        "collaborator"
+      ]
+    },
+    {
+      "word": "accomplish",
+      "tags": [
+        "achieve",
+        "complete successfully",
+        "finish",
+        "attain",
+        "realize"
+      ]
+    },
+    {
+      "word": "accord",
+      "tags": [
+        "agreement",
+        "harmony",
+        "treaty",
+        "settlement",
+        "pact"
+      ]
+    },
+    {
+      "word": "accrue",
+      "tags": [
+        "accumulate",
+        "build up",
+        "gather",
+        "increase",
+        "grow"
+      ]
+    },
+    {
+      "word": "accumulate",
+      "tags": [
+        "gather together",
+        "collect",
+        "amass",
+        "pile up",
+        "stockpile"
+      ]
+    },
+    {
+      "word": "accurate",
+      "tags": [
+        "correct",
+        "precise",
+        "exact",
+        "right",
+        "true"
+      ]
+    },
+    {
+      "word": "accuse",
+      "tags": [
+        "blame",
+        "charge with fault",
+        "point finger",
+        "allege",
+        "indict"
+      ]
+    },
+    {
+      "word": "ache",
+      "tags": [
+        "dull pain",
+        "hurt",
+        "sore feeling",
+        "throb",
+        "discomfort"
+      ]
+    },
+    {
+      "word": "achieve",
+      "tags": [
+        "accomplish",
+        "succeed in",
+        "attain",
+        "reach goal",
+        "realize"
+      ]
+    },
+    {
+      "word": "acid",
+      "tags": [
+        "sour substance",
+        "corrosive liquid",
+        "low pH",
+        "chemical",
+        "tart"
+      ]
+    },
+    {
+      "word": "acknowledge",
+      "tags": [
+        "admit",
+        "recognize",
+        "accept",
+        "confirm",
+        "concede"
+      ]
+    },
+    {
+      "word": "acne",
+      "tags": [
+        "skin condition",
+        "pimples",
+        "teen problem",
+        "facial blemishes",
+        "breakouts"
+      ]
+    },
+    {
+      "word": "acorn",
+      "tags": [
+        "oak seed",
+        "nut from tree",
+        "squirrel food",
+        "small and brown",
+        "cap on top"
+      ]
+    },
+    {
+      "word": "acoustic",
+      "tags": [
+        "sound related",
+        "not electric",
+        "natural audio",
+        "unplugged",
+        "hearing"
+      ]
+    },
+    {
+      "word": "acquaint",
+      "tags": [
+        "make familiar",
+        "introduce",
+        "inform",
+        "familiarize",
+        "meet"
+      ]
+    },
+    {
+      "word": "acquire",
+      "tags": [
+        "obtain",
+        "get",
+        "gain possession",
+        "buy",
+        "procure"
+      ]
+    },
+    {
+      "word": "acre",
+      "tags": [
+        "land measurement",
+        "area unit",
+        "farm size",
+        "property measure",
+        "land parcel"
+      ]
+    },
+    {
+      "word": "acrobat",
+      "tags": [
+        "circus performer",
+        "gymnast",
+        "tumbler",
+        "flexible athlete",
+        "aerial artist"
+      ]
+    },
+    {
+      "word": "acronym",
+      "tags": [
+        "abbreviation",
+        "word from initials",
+        "shortened form",
+        "letters combined",
+        "NASA or FBI"
+      ]
+    },
+    {
+      "word": "action",
+      "tags": [
+        "activity",
+        "deed",
+        "movement",
+        "doing something",
+        "behavior"
+      ]
+    },
+    {
+      "word": "activate",
+      "tags": [
+        "make active",
+        "turn on",
+        "enable",
+        "start",
+        "trigger"
+      ]
+    },
+    {
+      "word": "actual",
+      "tags": [
+        "real",
+        "existing",
+        "true",
+        "genuine",
+        "factual"
+      ]
+    },
+    {
+      "word": "acute",
+      "tags": [
+        "sharp",
+        "severe",
+        "intense",
+        "critical",
+        "pointed"
+      ]
+    },
+    {
+      "word": "adapt",
+      "tags": [
+        "adjust",
+        "modify",
+        "change",
+        "accommodate",
+        "alter"
+      ]
+    },
+    {
+      "word": "addicted",
+      "tags": [
+        "dependent",
+        "hooked",
+        "habituated",
+        "compulsive",
+        "obsessed"
+      ]
+    },
+    {
+      "word": "addition",
+      "tags": [
+        "adding numbers",
+        "extra thing",
+        "supplement",
+        "increase",
+        "appendix"
+      ]
+    },
+    {
+      "word": "address",
+      "tags": [
+        "location",
+        "street number",
+        "speak to",
+        "deal with",
+        "residence"
+      ]
+    },
+    {
+      "word": "adequate",
+      "tags": [
+        "sufficient",
+        "enough",
+        "acceptable",
+        "satisfactory",
+        "suitable"
+      ]
+    },
+    {
+      "word": "adhere",
+      "tags": [
+        "stick to",
+        "follow",
+        "comply",
+        "attach",
+        "observe"
+      ]
+    },
+    {
+      "word": "adjacent",
+      "tags": [
+        "next to",
+        "neighboring",
+        "adjoining",
+        "bordering",
+        "beside"
+      ]
+    },
+    {
+      "word": "adjective",
+      "tags": [
+        "describing word",
+        "modifies noun",
+        "grammar term",
+        "quality word",
+        "descriptive"
+      ]
+    },
+    {
+      "word": "adjourn",
+      "tags": [
+        "postpone",
+        "suspend",
+        "delay",
+        "pause meeting",
+        "recess"
+      ]
+    },
+    {
+      "word": "adjust",
+      "tags": [
+        "modify",
+        "adapt",
+        "fine tune",
+        "change",
+        "alter"
+      ]
+    },
+    {
+      "word": "administer",
+      "tags": [
+        "manage",
+        "oversee",
+        "give medicine",
+        "govern",
+        "direct"
+      ]
+    },
+    {
+      "word": "admirable",
+      "tags": [
+        "worthy of respect",
+        "commendable",
+        "praiseworthy",
+        "excellent",
+        "impressive"
+      ]
+    },
+    {
+      "word": "admiral",
+      "tags": [
+        "navy leader",
+        "high rank",
+        "fleet commander",
+        "maritime officer",
+        "naval authority"
+      ]
+    },
+    {
+      "word": "admire",
+      "tags": [
+        "respect",
+        "look up to",
+        "appreciate",
+        "esteem",
+        "regard"
+      ]
+    },
+    {
+      "word": "admission",
+      "tags": [
+        "entry",
+        "confession",
+        "acknowledgment",
+        "access",
+        "acceptance"
+      ]
+    },
+    {
+      "word": "admit",
+      "tags": [
+        "confess",
+        "allow entry",
+        "acknowledge",
+        "accept",
+        "concede"
+      ]
+    },
+    {
+      "word": "adolescent",
+      "tags": [
+        "teenager",
+        "young person",
+        "youth",
+        "teen years",
+        "puberty stage"
+      ]
+    },
+    {
+      "word": "adopt",
+      "tags": [
+        "take as own",
+        "accept",
+        "embrace",
+        "choose",
+        "take in child"
+      ]
+    },
+    {
+      "word": "adore",
+      "tags": [
+        "love deeply",
+        "worship",
+        "cherish",
+        "admire greatly",
+        "treasure"
+      ]
+    },
+    {
+      "word": "adorn",
+      "tags": [
+        "decorate",
+        "embellish",
+        "beautify",
+        "ornament",
+        "enhance"
+      ]
+    },
+    {
+      "word": "adrenaline",
+      "tags": [
+        "stress hormone",
+        "fight or flight",
+        "energy surge",
+        "excitement chemical",
+        "body stimulant"
+      ]
+    },
+    {
+      "word": "adrift",
+      "tags": [
+        "floating aimlessly",
+        "without direction",
+        "lost at sea",
+        "unanchored",
+        "drifting"
+      ]
+    },
+    {
+      "word": "adroit",
+      "tags": [
+        "skillful",
+        "clever",
+        "dexterous",
+        "adept",
+        "nimble"
+      ]
+    },
+    {
+      "word": "adult",
+      "tags": [
+        "grown person",
+        "mature",
+        "over eighteen",
+        "not child",
+        "full grown"
+      ]
+    },
+    {
+      "word": "advance",
+      "tags": [
+        "move forward",
+        "progress",
+        "improve",
+        "develop",
+        "proceed"
+      ]
+    },
+    {
+      "word": "advantage",
+      "tags": [
+        "benefit",
+        "favorable position",
+        "edge",
+        "superiority",
+        "asset"
+      ]
+    },
+    {
+      "word": "adventure",
+      "tags": [
+        "exciting experience",
+        "risky journey",
+        "exploration",
+        "bold undertaking",
+        "quest"
+      ]
+    },
+    {
+      "word": "adverb",
+      "tags": [
+        "modifies verb",
+        "grammar term",
+        "describes how",
+        "ends in ly",
+        "manner word"
+      ]
+    },
+    {
+      "word": "adversary",
+      "tags": [
+        "opponent",
+        "enemy",
+        "rival",
+        "foe",
+        "antagonist"
+      ]
+    },
+    {
+      "word": "adverse",
+      "tags": [
+        "unfavorable",
+        "harmful",
+        "negative",
+        "detrimental",
+        "contrary"
+      ]
+    },
+    {
+      "word": "advertise",
+      "tags": [
+        "promote",
+        "publicize",
+        "market",
+        "announce",
+        "commercial"
+      ]
+    },
+    {
+      "word": "advice",
+      "tags": [
+        "recommendation",
+        "guidance",
+        "suggestion",
+        "counsel",
+        "tip"
+      ]
+    },
+    {
+      "word": "advise",
+      "tags": [
+        "give advice",
+        "recommend",
+        "counsel",
+        "suggest",
+        "guide"
+      ]
+    },
+    {
+      "word": "advocate",
+      "tags": [
+        "support",
+        "promote",
+        "champion",
+        "defend",
+        "recommend"
+      ]
+    },
+    {
+      "word": "aerial",
+      "tags": [
+        "in air",
+        "from above",
+        "antenna",
+        "flying",
+        "overhead"
+      ]
+    },
+    {
+      "word": "aesthetic",
+      "tags": [
+        "artistic",
+        "beautiful",
+        "pleasing appearance",
+        "visual appeal",
+        "tasteful"
+      ]
+    },
+    {
+      "word": "affair",
+      "tags": [
+        "matter",
+        "situation",
+        "event",
+        "romantic relationship",
+        "concern"
+      ]
+    },
+    {
+      "word": "affect",
+      "tags": [
+        "influence",
+        "impact",
+        "change",
+        "alter",
+        "modify"
+      ]
+    },
+    {
+      "word": "affection",
+      "tags": [
+        "fondness",
+        "love",
+        "warmth",
+        "tenderness",
+        "attachment"
+      ]
+    },
+    {
+      "word": "affidavit",
+      "tags": [
+        "sworn statement",
+        "legal document",
+        "written testimony",
+        "notarized",
+        "official declaration"
+      ]
+    },
+    {
+      "word": "affiliate",
+      "tags": [
+        "associate",
+        "partner",
+        "branch",
+        "connect",
+        "ally"
+      ]
+    },
+    {
+      "word": "affinity",
+      "tags": [
+        "natural attraction",
+        "liking",
+        "kinship",
+        "similarity",
+        "connection"
+      ]
+    },
+    {
+      "word": "affirm",
+      "tags": [
+        "state positively",
+        "confirm",
+        "assert",
+        "declare",
+        "validate"
+      ]
+    },
+    {
+      "word": "affix",
+      "tags": [
+        "attach",
+        "append",
+        "add to",
+        "fasten",
+        "stick on"
+      ]
+    },
+    {
+      "word": "afflict",
+      "tags": [
+        "cause suffering",
+        "torment",
+        "trouble",
+        "plague",
+        "distress"
+      ]
+    },
+    {
+      "word": "affluent",
+      "tags": [
+        "wealthy",
+        "prosperous",
+        "rich",
+        "well off",
+        "abundant"
+      ]
+    },
+    {
+      "word": "afford",
+      "tags": [
+        "have money for",
+        "provide",
+        "can pay",
+        "supply",
+        "yield"
+      ]
     }
   ]
 }
