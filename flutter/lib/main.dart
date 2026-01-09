@@ -66,15 +66,15 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-    final protectedPages = const [
-      HomePage.routeName,
-      GamePage.routeName,
-      SettingsPage.routeName,
-      RecordsPage.routeName,
-      PrivacyPage.routeName,
-      TermsPage.routeName,
-      AboutPage.routeName,
-    ];
+  final protectedPages = const [
+    HomePage.routeName,
+    GamePage.routeName,
+    SettingsPage.routeName,
+    RecordsPage.routeName,
+    PrivacyPage.routeName,
+    TermsPage.routeName,
+    AboutPage.routeName,
+  ];
   final publicPages = const [
     SplashPage.routeName,
     LoginPage.routeName,
