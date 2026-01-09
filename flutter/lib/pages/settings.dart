@@ -246,8 +246,7 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSettingsTile(
             context,
             icon: Icons.info_outline,
-            title: l10n.appVersion,
-            subtitle: '1.0.0',
+            title: l10n.about,
             onTap: () {
               context.push(AboutPage.routeName);
             },

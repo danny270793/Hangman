@@ -75,11 +75,7 @@ class MyApp extends StatelessWidget {
     TermsPage.routeName,
     AboutPage.routeName,
   ];
-  final publicPages = const [
-    SplashPage.routeName,
-    LoginPage.routeName,
-    RegisterPage.routeName,
-  ];
+  final publicPages = const [LoginPage.routeName, RegisterPage.routeName];
 
   const MyApp({super.key});
 

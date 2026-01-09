@@ -477,16 +477,19 @@ class _GamePageState extends State<GamePage> {
         ),
 
         // Fixed Keyboard at bottom with card elevation
-        Card(
-          margin: EdgeInsets.zero,
-          elevation: 8,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24),
-              topRight: Radius.circular(24),
+        SafeArea(
+          top: false,
+          child: Card(
+            margin: EdgeInsets.zero,
+            elevation: 8,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(24),
+                topRight: Radius.circular(24),
+              ),
             ),
+            child: _buildKeyboard(),
           ),
-          child: _buildKeyboard(),
         ),
       ],
     );
@@ -851,24 +854,24 @@ class _GamePageState extends State<GamePage> {
   Widget _buildKeyboard() {
     const letters = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-      ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+      ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ'],
       ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: letters.map((row) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: row.map((letter) {
                 final isGuessed = _guessedLetters.contains(letter);
                 final isCorrect = _word.contains(letter);
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 1.5),
                   child: ElevatedButton(
                     onPressed: isGuessed || _isGameWon || _isGameLost
                         ? null
@@ -886,13 +889,13 @@ class _GamePageState extends State<GamePage> {
                                 ? Theme.of(context).colorScheme.onPrimary
                                 : Theme.of(context).colorScheme.onError)
                           : Theme.of(context).colorScheme.onSurface,
-                      minimumSize: const Size(32, 42),
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      minimumSize: const Size(30, 40),
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
                     ),
                     child: Text(
                       letter,
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

@@ -52,7 +52,8 @@ class GameRecordService {
   }
 
   Future<List<Map<String, dynamic>>> getAllGameRecords({
-    int limit = 100,
+    int limit = 20,
+    int offset = 0,
   }) async {
     try {
       // Query from the view that joins with auth.users to get usernames
@@ -60,7 +61,7 @@ class GameRecordService {
           .from('game_records_with_usernames')
           .select()
           .order('points', ascending: false)
-          .limit(limit);
+          .range(offset, offset + limit - 1);
 
       return List<Map<String, dynamic>>.from(response);
     } catch (e) {
