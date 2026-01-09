@@ -748,6 +748,390 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Exit'**
   String get exit;
+
+  /// No description provided for @infoWeCollect.
+  ///
+  /// In en, this message translates to:
+  /// **'Information We Collect'**
+  String get infoWeCollect;
+
+  /// No description provided for @infoWeCollectContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This app collects minimal information to provide the game experience:\n\n• Email address and username for account creation\n• Game statistics (scores, words solved, time played)\n• User preferences (language, theme, difficulty settings)\n• Profile photo (stored locally on your device)'**
+  String get infoWeCollectContent;
+
+  /// No description provided for @howWeUseInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'How We Use Your Information'**
+  String get howWeUseInfo;
+
+  /// No description provided for @howWeUseInfoContent.
+  ///
+  /// In en, this message translates to:
+  /// **'We use the collected information to:\n\n• Authenticate your account\n• Store your game progress and statistics\n• Personalize your game experience\n• Display leaderboards with usernames\n• Save your preferences across sessions'**
+  String get howWeUseInfoContent;
+
+  /// No description provided for @dataStorageSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Storage and Security'**
+  String get dataStorageSecurity;
+
+  /// No description provided for @dataStorageSecurityContent.
+  ///
+  /// In en, this message translates to:
+  /// **'• All user data is stored securely using Supabase\n• Passwords are encrypted and never stored in plain text\n• Profile photos are stored locally on your device\n• Game records are associated with your account\n• We implement industry-standard security measures'**
+  String get dataStorageSecurityContent;
+
+  /// No description provided for @dataSharing.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Sharing'**
+  String get dataSharing;
+
+  /// No description provided for @dataSharingContent.
+  ///
+  /// In en, this message translates to:
+  /// **'We do not sell or share your personal information with third parties. Game statistics (username, scores) are visible to other players on leaderboards.'**
+  String get dataSharingContent;
+
+  /// No description provided for @yourRights.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rights'**
+  String get yourRights;
+
+  /// No description provided for @yourRightsContent.
+  ///
+  /// In en, this message translates to:
+  /// **'You have the right to:\n\n• Access your personal data\n• Update your account information\n• Change your email and password\n• Delete your account and associated data\n• Export your game statistics'**
+  String get yourRightsContent;
+
+  /// No description provided for @childrensPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Children\'s Privacy'**
+  String get childrensPrivacy;
+
+  /// No description provided for @childrensPrivacyContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This app is suitable for all ages. We do not knowingly collect personal information from children under 13 without parental consent.'**
+  String get childrensPrivacyContent;
+
+  /// No description provided for @changesToPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes to This Policy'**
+  String get changesToPolicy;
+
+  /// No description provided for @changesToPolicyContent.
+  ///
+  /// In en, this message translates to:
+  /// **'We may update this privacy policy from time to time. We will notify you of any changes by updating the \"Last Updated\" date.'**
+  String get changesToPolicyContent;
+
+  /// No description provided for @contactUs.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Us'**
+  String get contactUs;
+
+  /// No description provided for @contactUsContent.
+  ///
+  /// In en, this message translates to:
+  /// **'If you have questions about this privacy policy, please contact us through the app settings.'**
+  String get contactUsContent;
+
+  /// No description provided for @lastUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Updated: {date}'**
+  String lastUpdated(String date);
+
+  /// No description provided for @acceptanceOfTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Acceptance of Terms'**
+  String get acceptanceOfTerms;
+
+  /// No description provided for @acceptanceOfTermsContent.
+  ///
+  /// In en, this message translates to:
+  /// **'By accessing and using this Hangman game app, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this app.'**
+  String get acceptanceOfTermsContent;
+
+  /// No description provided for @userAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'User Account'**
+  String get userAccount;
+
+  /// No description provided for @userAccountContent.
+  ///
+  /// In en, this message translates to:
+  /// **'To access certain features of the app, you must create an account by providing:\n\n• A valid email address\n• A unique username\n• A secure password\n\nYou are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.'**
+  String get userAccountContent;
+
+  /// No description provided for @userConduct.
+  ///
+  /// In en, this message translates to:
+  /// **'User Conduct'**
+  String get userConduct;
+
+  /// No description provided for @userConductContent.
+  ///
+  /// In en, this message translates to:
+  /// **'You agree to use the app only for lawful purposes. You must not:\n\n• Use offensive or inappropriate usernames\n• Attempt to manipulate game scores or statistics\n• Interfere with other users\' experience\n• Attempt to gain unauthorized access to the app or its systems\n• Upload malicious code or content\n• Violate any applicable laws or regulations'**
+  String get userConductContent;
+
+  /// No description provided for @gameRulesFairPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Game Rules and Fair Play'**
+  String get gameRulesFairPlay;
+
+  /// No description provided for @gameRulesFairPlayContent.
+  ///
+  /// In en, this message translates to:
+  /// **'The game is intended for entertainment purposes. We expect all users to play fairly:\n\n• Do not use automated tools or scripts\n• Play the game as intended\n• Respect the leaderboard and competition\n• We reserve the right to remove records that appear to be fraudulent'**
+  String get gameRulesFairPlayContent;
+
+  /// No description provided for @intellectualProperty.
+  ///
+  /// In en, this message translates to:
+  /// **'Intellectual Property'**
+  String get intellectualProperty;
+
+  /// No description provided for @intellectualPropertyContent.
+  ///
+  /// In en, this message translates to:
+  /// **'All content, features, and functionality of this app, including but not limited to text, graphics, logos, and software, are owned by the app developers and are protected by copyright, trademark, and other intellectual property laws.'**
+  String get intellectualPropertyContent;
+
+  /// No description provided for @userGeneratedContent.
+  ///
+  /// In en, this message translates to:
+  /// **'User-Generated Content'**
+  String get userGeneratedContent;
+
+  /// No description provided for @userGeneratedContentContent.
+  ///
+  /// In en, this message translates to:
+  /// **'You retain ownership of your game statistics and profile information. By using the app, you grant us a license to display your username and game scores on leaderboards visible to other users.'**
+  String get userGeneratedContentContent;
+
+  /// No description provided for @serviceAvailability.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Availability'**
+  String get serviceAvailability;
+
+  /// No description provided for @serviceAvailabilityContent.
+  ///
+  /// In en, this message translates to:
+  /// **'We strive to keep the app available 24/7, but we do not guarantee uninterrupted access. We reserve the right to:\n\n• Modify or discontinue features\n• Perform maintenance and updates\n• Suspend access for violations of these terms'**
+  String get serviceAvailabilityContent;
+
+  /// No description provided for @accountTermination.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Termination'**
+  String get accountTermination;
+
+  /// No description provided for @accountTerminationContent.
+  ///
+  /// In en, this message translates to:
+  /// **'We reserve the right to suspend or terminate your account if:\n\n• You violate these terms of service\n• You engage in fraudulent activity\n• We receive valid legal requests\n\nYou may also delete your account at any time through the app settings.'**
+  String get accountTerminationContent;
+
+  /// No description provided for @disclaimerWarranties.
+  ///
+  /// In en, this message translates to:
+  /// **'Disclaimer of Warranties'**
+  String get disclaimerWarranties;
+
+  /// No description provided for @disclaimerWarrantiesContent.
+  ///
+  /// In en, this message translates to:
+  /// **'The app is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. We do not warrant that the app will be error-free or that defects will be corrected.'**
+  String get disclaimerWarrantiesContent;
+
+  /// No description provided for @limitationLiability.
+  ///
+  /// In en, this message translates to:
+  /// **'Limitation of Liability'**
+  String get limitationLiability;
+
+  /// No description provided for @limitationLiabilityContent.
+  ///
+  /// In en, this message translates to:
+  /// **'To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the app.'**
+  String get limitationLiabilityContent;
+
+  /// No description provided for @changesToTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes to Terms'**
+  String get changesToTerms;
+
+  /// No description provided for @changesToTermsContent.
+  ///
+  /// In en, this message translates to:
+  /// **'We reserve the right to modify these terms at any time. We will notify users of significant changes. Continued use of the app after changes constitutes acceptance of the new terms.'**
+  String get changesToTermsContent;
+
+  /// No description provided for @governingLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'Governing Law'**
+  String get governingLaw;
+
+  /// No description provided for @governingLawContent.
+  ///
+  /// In en, this message translates to:
+  /// **'These terms shall be governed by and construed in accordance with applicable laws, without regard to its conflict of law provisions.'**
+  String get governingLawContent;
+
+  /// No description provided for @contactInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contactInformation;
+
+  /// No description provided for @contactInformationContent.
+  ///
+  /// In en, this message translates to:
+  /// **'If you have any questions about these Terms of Service, please contact us through the app settings.'**
+  String get contactInformationContent;
+
+  /// No description provided for @challengeYourVocabulary.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge your vocabulary!'**
+  String get challengeYourVocabulary;
+
+  /// No description provided for @versionInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Version Information'**
+  String get versionInfo;
+
+  /// No description provided for @buildNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Build Number'**
+  String get buildNumber;
+
+  /// No description provided for @platform.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform'**
+  String get platform;
+
+  /// No description provided for @packageName.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Name'**
+  String get packageName;
+
+  /// No description provided for @appDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'{appName} is a fun and engaging word guessing game that helps you expand your vocabulary while having fun. Test your skills across different difficulty levels and compete with players worldwide!'**
+  String appDescription(String appName);
+
+  /// No description provided for @features.
+  ///
+  /// In en, this message translates to:
+  /// **'Features'**
+  String get features;
+
+  /// No description provided for @featureMultilingual.
+  ///
+  /// In en, this message translates to:
+  /// **'Multilingual support (English & Spanish)'**
+  String get featureMultilingual;
+
+  /// No description provided for @featureLeaderboards.
+  ///
+  /// In en, this message translates to:
+  /// **'Global leaderboards'**
+  String get featureLeaderboards;
+
+  /// No description provided for @featureDifficulty.
+  ///
+  /// In en, this message translates to:
+  /// **'Customizable difficulty levels'**
+  String get featureDifficulty;
+
+  /// No description provided for @featureTimed.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional timed challenges'**
+  String get featureTimed;
+
+  /// No description provided for @featureDarkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode support'**
+  String get featureDarkMode;
+
+  /// No description provided for @featureProfiles.
+  ///
+  /// In en, this message translates to:
+  /// **'User profiles and statistics'**
+  String get featureProfiles;
+
+  /// No description provided for @builtWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Built With'**
+  String get builtWith;
+
+  /// No description provided for @techFlutter.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter: UI Framework'**
+  String get techFlutter;
+
+  /// No description provided for @techSupabase.
+  ///
+  /// In en, this message translates to:
+  /// **'Supabase: Backend & Auth'**
+  String get techSupabase;
+
+  /// No description provided for @techProvider.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider: State Management'**
+  String get techProvider;
+
+  /// No description provided for @techGoRouter.
+  ///
+  /// In en, this message translates to:
+  /// **'GoRouter: Navigation'**
+  String get techGoRouter;
+
+  /// No description provided for @madeWithLove.
+  ///
+  /// In en, this message translates to:
+  /// **'Made with ❤️ using Flutter'**
+  String get madeWithLove;
+
+  /// No description provided for @copyright.
+  ///
+  /// In en, this message translates to:
+  /// **'© 2026 Hangman Game'**
+  String get copyright;
+
+  /// No description provided for @allRightsReserved.
+  ///
+  /// In en, this message translates to:
+  /// **'All rights reserved'**
+  String get allRightsReserved;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
