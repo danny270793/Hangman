@@ -66,31 +66,50 @@ CREATE TABLE public.word_tags (
 - `tag_id`: Foreign key to tags table
 - Composite primary key on (word_id, tag_id)
 
-## Querying Words with Tags
+## View
 
-To fetch words with their tags, query the tables with joins:
+### `public.words_with_tags`
 
+A convenient view that returns words with their associated tags as an array in a single query.
+
+**Schema:**
+```sql
+CREATE VIEW public.words_with_tags AS
+SELECT 
+    w.id,
+    w.word,
+    w.difficulty_value,
+    w.locale,
+    w.created_at,
+    COALESCE(
+        ARRAY_AGG(t.tag ORDER BY t.tag) FILTER (WHERE t.tag IS NOT NULL),
+        ARRAY[]::TEXT[]
+    ) as tags
+FROM public.words w
+LEFT JOIN public.word_tags wt ON w.id = wt.word_id
+LEFT JOIN public.tags t ON wt.tag_id = t.id
+GROUP BY w.id, w.word, w.difficulty_value, w.locale, w.created_at;
+```
+
+**Usage:**
 ```dart
-// Fetch words
-final wordsResponse = await supabase
-    .from('words')
-    .select('id, word, difficulty_value, locale')
+// Fetch all words with tags in a single query
+final response = await supabase
+    .from('words_with_tags')
+    .select()
     .eq('locale', 'en');
 
-// For each word, fetch tags
-for (final wordData in wordsResponse) {
-  final wordId = wordData['id'];
-  final tagsResponse = await supabase
-      .from('word_tags')
-      .select('tag_id, tags(tag)')
-      .eq('word_id', wordId);
-  
-  // Extract tag strings
-  final tags = tagsResponse
-      .map((t) => t['tags']['tag'] as String)
-      .toList();
+// Each row contains: id, word, difficulty_value, locale, created_at, tags[]
+for (final wordData in response) {
+  print('${wordData['word']}: ${wordData['tags']}');
 }
 ```
+
+**Benefits:**
+- ✅ Single query instead of N+1 queries
+- ✅ Better performance for fetching multiple words
+- ✅ Tags are automatically aggregated as an array
+- ✅ Empty tags array for words without tags
 
 ## Indexes
 
@@ -196,27 +215,35 @@ When adding words, use these guidelines for assigning difficulty values:
 
 ### Get random word by difficulty range
 ```dart
+// Using the view for efficient single query
 final response = await supabase
-    .from('words')
-    .select('id, word, difficulty_value, locale')
+    .from('words_with_tags')
+    .select()
     .eq('locale', 'en')
     .gte('difficulty_value', 34)
     .lte('difficulty_value', 66)  // Medium
     .limit(50);
+
+// Response includes id, word, difficulty_value, locale, created_at, tags[]
 ```
 
 ### Search words by tag
 ```dart
-// First find tag IDs matching the search
+// Option 1: Using view with text search (if tags is searchable)
+final response = await supabase
+    .from('words_with_tags')
+    .select()
+    .eq('locale', 'es')
+    .textSearch('tags', 'animal');
+
+// Option 2: Using joins (more precise control)
 final tagResponse = await supabase
     .from('tags')
     .select('id')
-    .eq('locale', 'es')
     .ilike('tag', '%animal%');
 
 final tagIds = tagResponse.map((t) => t['id']).toList();
 
-// Then find words associated with those tags
 final wordIds = await supabase
     .from('word_tags')
     .select('word_id')
@@ -224,9 +251,8 @@ final wordIds = await supabase
 
 final wordIdList = wordIds.map((w) => w['word_id']).toList();
 
-// Finally get the words
 final words = await supabase
-    .from('words')
+    .from('words_with_tags')
     .select()
     .in_('id', wordIdList);
 ```
@@ -234,7 +260,7 @@ final words = await supabase
 ### Get word count by difficulty
 ```dart
 final response = await supabase
-    .from('words')
+    .from('words')  // Use words table for counts
     .select('difficulty_value', const FetchOptions(count: CountOption.exact))
     .eq('locale', 'en')
     .gte('difficulty_value', 1)
