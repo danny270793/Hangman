@@ -91,6 +91,91 @@ If you need to update MAJOR or MINOR versions manually:
 
 ---
 
+## Script: `seed_words.dart`
+
+### What it does:
+- Syncs words between local JSON files and Supabase database
+- Downloads existing words from database for comparison
+- Inserts new words that only exist in JSON
+- Updates tags for existing words
+- Deletes words from database that no longer exist in JSON
+
+### Usage:
+
+```bash
+# From the project root
+dart scripts/seed_words.dart
+```
+
+### Requirements:
+- `.env` file with `SUPABASE_URL` and `SUPABASE_SERVICE_KEY`
+- Supabase database with words tables (see `WORDS_SCHEMA.md`)
+- `supabase` package in `dev_dependencies`
+
+### Example Output:
+
+```bash
+$ dart scripts/seed_words.dart
+
+🔄 Words Database Sync
+======================
+
+📖 Syncing en words from assets/words_en.json...
+  📊 Local: 500 words
+  ⬇️  Downloading existing words from database...
+  📊 Database: 480 words
+
+  📈 Analysis:
+     ➕ To insert: 25
+     🔄 To update: 475
+     ➖ To delete: 5
+
+  ➕ Inserting new words...
+     ✅ Inserted: 25 words
+  🔄 Updating existing words...
+     Progress: 50/475
+     Progress: 100/475
+     ...
+     ✅ Updated: 475 words
+  ➖ Deleting removed words...
+     ✅ Deleted: 5 words
+
+  ✅ en sync complete: ➕25 ➖5 🔄475
+
+📖 Syncing es words from assets/words_es.json...
+  ...
+
+✅ Sync complete!
+```
+
+### Sync Logic:
+
+1. **Download Phase**: Fetches all words from database for the locale
+2. **Compare Phase**: Compares local JSON with database words
+3. **Insert Phase**: Adds words that exist in JSON but not in database
+4. **Update Phase**: Updates tags for words that exist in both
+   - Deletes old tag associations
+   - Inserts new tags from JSON
+5. **Delete Phase**: Removes words from database that no longer exist in JSON
+
+### When to Use:
+
+- Initial database setup
+- After adding/removing words in JSON files
+- After modifying tags for existing words
+- To clean up orphaned words in database
+- Regular maintenance to keep database in sync
+
+### Notes:
+
+- Uses service role key for admin operations (INSERT, UPDATE, DELETE)
+- Deletes cascade to `word_tags` table automatically
+- Progress shown every 50 words for large operations
+- Skips files if they don't exist
+- All words are normalized to UPPERCASE for comparison
+
+---
+
 ## Script: `group_words.dart`
 
 ### What it does:
