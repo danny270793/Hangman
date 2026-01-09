@@ -48,7 +48,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get pleaseEnterPassword => 'Por favor ingresa tu contraseña';
 
   @override
-  String get passwordMinLength => 'La contraseña debe tener al menos 6 caracteres';
+  String get passwordMinLength =>
+      'La contraseña debe tener al menos 6 caracteres';
 
   @override
   String get login => 'Iniciar Sesión';
@@ -60,7 +61,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get registrationSuccess => '¡Registro exitoso!';
 
   @override
-  String get checkEmailToConfirm => 'Por favor revisa tu correo para confirmar tu cuenta antes de iniciar sesión.';
+  String get checkEmailToConfirm =>
+      'Por favor revisa tu correo para confirmar tu cuenta antes de iniciar sesión.';
 
   @override
   String get createAccount => 'Crear Cuenta';
@@ -183,7 +185,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get passwordsDoNotMatch => 'Las contraseñas no coinciden';
 
   @override
-  String get newPasswordMustBeDifferent => 'La nueva contraseña debe ser diferente de la actual';
+  String get newPasswordMustBeDifferent =>
+      'La nueva contraseña debe ser diferente de la actual';
 
   @override
   String get pleaseEnterEmail => 'Por favor ingresa tu correo';
@@ -246,7 +249,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get comingSoon => '¡Próximamente!';
 
   @override
-  String get logoutConfirmation => '¿Estás seguro de que quieres cerrar sesión?';
+  String get logoutConfirmation =>
+      '¿Estás seguro de que quieres cerrar sesión?';
 
   @override
   String get cancel => 'Cancelar';
@@ -330,7 +334,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get exitGame => '¿Salir del Juego?';
 
   @override
-  String get exitGameConfirmation => '¿Estás seguro de que quieres salir? Se perderá tu progreso actual.';
+  String get exitGameConfirmation =>
+      '¿Estás seguro de que quieres salir? Se perderá tu progreso actual.';
 
   @override
   String get exit => 'Salir';
@@ -339,49 +344,57 @@ class AppLocalizationsEs extends AppLocalizations {
   String get infoWeCollect => 'Información que Recopilamos';
 
   @override
-  String get infoWeCollectContent => 'Esta aplicación recopila información mínima para proporcionar la experiencia de juego:\n\n• Dirección de correo electrónico y nombre de usuario para la creación de cuenta\n• Estadísticas del juego (puntuaciones, palabras resueltas, tiempo jugado)\n• Preferencias del usuario (idioma, tema, configuración de dificultad)\n• Foto de perfil (almacenada localmente en tu dispositivo)';
+  String get infoWeCollectContent =>
+      'Esta aplicación recopila información mínima para proporcionar la experiencia de juego:\n\n• Dirección de correo electrónico y nombre de usuario para la creación de cuenta\n• Estadísticas del juego (puntuaciones, palabras resueltas, tiempo jugado)\n• Preferencias del usuario (idioma, tema, configuración de dificultad)\n• Foto de perfil (almacenada localmente en tu dispositivo)';
 
   @override
   String get howWeUseInfo => 'Cómo Usamos tu Información';
 
   @override
-  String get howWeUseInfoContent => 'Usamos la información recopilada para:\n\n• Autenticar tu cuenta\n• Almacenar tu progreso y estadísticas del juego\n• Personalizar tu experiencia de juego\n• Mostrar tablas de clasificación con nombres de usuario\n• Guardar tus preferencias entre sesiones';
+  String get howWeUseInfoContent =>
+      'Usamos la información recopilada para:\n\n• Autenticar tu cuenta\n• Almacenar tu progreso y estadísticas del juego\n• Personalizar tu experiencia de juego\n• Mostrar tablas de clasificación con nombres de usuario\n• Guardar tus preferencias entre sesiones';
 
   @override
   String get dataStorageSecurity => 'Almacenamiento y Seguridad de Datos';
 
   @override
-  String get dataStorageSecurityContent => '• Todos los datos de usuario se almacenan de forma segura usando Supabase\n• Las contraseñas están encriptadas y nunca se almacenan en texto plano\n• Las fotos de perfil se almacenan localmente en tu dispositivo\n• Los registros del juego están asociados con tu cuenta\n• Implementamos medidas de seguridad estándar de la industria';
+  String get dataStorageSecurityContent =>
+      '• Todos los datos de usuario se almacenan de forma segura usando Supabase\n• Las contraseñas están encriptadas y nunca se almacenan en texto plano\n• Las fotos de perfil se almacenan localmente en tu dispositivo\n• Los registros del juego están asociados con tu cuenta\n• Implementamos medidas de seguridad estándar de la industria';
 
   @override
   String get dataSharing => 'Compartir Datos';
 
   @override
-  String get dataSharingContent => 'No vendemos ni compartimos tu información personal con terceros. Las estadísticas del juego (nombre de usuario, puntuaciones) son visibles para otros jugadores en las tablas de clasificación.';
+  String get dataSharingContent =>
+      'No vendemos ni compartimos tu información personal con terceros. Las estadísticas del juego (nombre de usuario, puntuaciones) son visibles para otros jugadores en las tablas de clasificación.';
 
   @override
   String get yourRights => 'Tus Derechos';
 
   @override
-  String get yourRightsContent => 'Tienes derecho a:\n\n• Acceder a tus datos personales\n• Actualizar la información de tu cuenta\n• Cambiar tu correo electrónico y contraseña\n• Eliminar tu cuenta y datos asociados\n• Exportar tus estadísticas del juego';
+  String get yourRightsContent =>
+      'Tienes derecho a:\n\n• Acceder a tus datos personales\n• Actualizar la información de tu cuenta\n• Cambiar tu correo electrónico y contraseña\n• Eliminar tu cuenta y datos asociados\n• Exportar tus estadísticas del juego';
 
   @override
   String get childrensPrivacy => 'Privacidad de los Niños';
 
   @override
-  String get childrensPrivacyContent => 'Esta aplicación es adecuada para todas las edades. No recopilamos intencionalmente información personal de niños menores de 13 años sin el consentimiento de los padres.';
+  String get childrensPrivacyContent =>
+      'Esta aplicación es adecuada para todas las edades. No recopilamos intencionalmente información personal de niños menores de 13 años sin el consentimiento de los padres.';
 
   @override
   String get changesToPolicy => 'Cambios a Esta Política';
 
   @override
-  String get changesToPolicyContent => 'Podemos actualizar esta política de privacidad de vez en cuando. Te notificaremos de cualquier cambio actualizando la fecha de \"Última Actualización\".';
+  String get changesToPolicyContent =>
+      'Podemos actualizar esta política de privacidad de vez en cuando. Te notificaremos de cualquier cambio actualizando la fecha de \"Última Actualización\".';
 
   @override
   String get contactUs => 'Contáctanos';
 
   @override
-  String get contactUsContent => 'Si tienes preguntas sobre esta política de privacidad, contáctanos a través de la configuración de la aplicación.';
+  String get contactUsContent =>
+      'Si tienes preguntas sobre esta política de privacidad, contáctanos a través de la configuración de la aplicación.';
 
   @override
   String lastUpdated(String date) {
@@ -392,79 +405,92 @@ class AppLocalizationsEs extends AppLocalizations {
   String get acceptanceOfTerms => 'Aceptación de Términos';
 
   @override
-  String get acceptanceOfTermsContent => 'Al acceder y usar esta aplicación de juego Ahorcado, aceptas y estás de acuerdo en estar sujeto a los términos y disposiciones de este acuerdo. Si no estás de acuerdo en cumplir con estos términos, por favor no uses esta aplicación.';
+  String get acceptanceOfTermsContent =>
+      'Al acceder y usar esta aplicación de juego Ahorcado, aceptas y estás de acuerdo en estar sujeto a los términos y disposiciones de este acuerdo. Si no estás de acuerdo en cumplir con estos términos, por favor no uses esta aplicación.';
 
   @override
   String get userAccount => 'Cuenta de Usuario';
 
   @override
-  String get userAccountContent => 'Para acceder a ciertas funciones de la aplicación, debes crear una cuenta proporcionando:\n\n• Una dirección de correo electrónico válida\n• Un nombre de usuario único\n• Una contraseña segura\n\nEres responsable de mantener la confidencialidad de las credenciales de tu cuenta y de todas las actividades que ocurran bajo tu cuenta.';
+  String get userAccountContent =>
+      'Para acceder a ciertas funciones de la aplicación, debes crear una cuenta proporcionando:\n\n• Una dirección de correo electrónico válida\n• Un nombre de usuario único\n• Una contraseña segura\n\nEres responsable de mantener la confidencialidad de las credenciales de tu cuenta y de todas las actividades que ocurran bajo tu cuenta.';
 
   @override
   String get userConduct => 'Conducta del Usuario';
 
   @override
-  String get userConductContent => 'Aceptas usar la aplicación solo para fines legales. No debes:\n\n• Usar nombres de usuario ofensivos o inapropiados\n• Intentar manipular las puntuaciones o estadísticas del juego\n• Interferir con la experiencia de otros usuarios\n• Intentar obtener acceso no autorizado a la aplicación o sus sistemas\n• Subir código o contenido malicioso\n• Violar cualquier ley o regulación aplicable';
+  String get userConductContent =>
+      'Aceptas usar la aplicación solo para fines legales. No debes:\n\n• Usar nombres de usuario ofensivos o inapropiados\n• Intentar manipular las puntuaciones o estadísticas del juego\n• Interferir con la experiencia de otros usuarios\n• Intentar obtener acceso no autorizado a la aplicación o sus sistemas\n• Subir código o contenido malicioso\n• Violar cualquier ley o regulación aplicable';
 
   @override
   String get gameRulesFairPlay => 'Reglas del Juego y Juego Limpio';
 
   @override
-  String get gameRulesFairPlayContent => 'El juego está destinado para fines de entretenimiento. Esperamos que todos los usuarios jueguen de manera justa:\n\n• No uses herramientas automatizadas o scripts\n• Juega el juego como está destinado\n• Respeta la tabla de clasificación y la competencia\n• Nos reservamos el derecho de eliminar registros que parezcan fraudulentos';
+  String get gameRulesFairPlayContent =>
+      'El juego está destinado para fines de entretenimiento. Esperamos que todos los usuarios jueguen de manera justa:\n\n• No uses herramientas automatizadas o scripts\n• Juega el juego como está destinado\n• Respeta la tabla de clasificación y la competencia\n• Nos reservamos el derecho de eliminar registros que parezcan fraudulentos';
 
   @override
   String get intellectualProperty => 'Propiedad Intelectual';
 
   @override
-  String get intellectualPropertyContent => 'Todo el contenido, características y funcionalidad de esta aplicación, incluyendo pero no limitado a texto, gráficos, logos y software, son propiedad de los desarrolladores de la aplicación y están protegidos por derechos de autor, marca registrada y otras leyes de propiedad intelectual.';
+  String get intellectualPropertyContent =>
+      'Todo el contenido, características y funcionalidad de esta aplicación, incluyendo pero no limitado a texto, gráficos, logos y software, son propiedad de los desarrolladores de la aplicación y están protegidos por derechos de autor, marca registrada y otras leyes de propiedad intelectual.';
 
   @override
   String get userGeneratedContent => 'Contenido Generado por el Usuario';
 
   @override
-  String get userGeneratedContentContent => 'Conservas la propiedad de tus estadísticas del juego e información de perfil. Al usar la aplicación, nos otorgas una licencia para mostrar tu nombre de usuario y puntuaciones del juego en las tablas de clasificación visibles para otros usuarios.';
+  String get userGeneratedContentContent =>
+      'Conservas la propiedad de tus estadísticas del juego e información de perfil. Al usar la aplicación, nos otorgas una licencia para mostrar tu nombre de usuario y puntuaciones del juego en las tablas de clasificación visibles para otros usuarios.';
 
   @override
   String get serviceAvailability => 'Disponibilidad del Servicio';
 
   @override
-  String get serviceAvailabilityContent => 'Nos esforzamos por mantener la aplicación disponible 24/7, pero no garantizamos acceso ininterrumpido. Nos reservamos el derecho de:\n\n• Modificar o descontinuar funciones\n• Realizar mantenimiento y actualizaciones\n• Suspender el acceso por violaciones de estos términos';
+  String get serviceAvailabilityContent =>
+      'Nos esforzamos por mantener la aplicación disponible 24/7, pero no garantizamos acceso ininterrumpido. Nos reservamos el derecho de:\n\n• Modificar o descontinuar funciones\n• Realizar mantenimiento y actualizaciones\n• Suspender el acceso por violaciones de estos términos';
 
   @override
   String get accountTermination => 'Terminación de Cuenta';
 
   @override
-  String get accountTerminationContent => 'Nos reservamos el derecho de suspender o terminar tu cuenta si:\n\n• Violas estos términos de servicio\n• Participas en actividades fraudulentas\n• Recibimos solicitudes legales válidas\n\nTambién puedes eliminar tu cuenta en cualquier momento a través de la configuración de la aplicación.';
+  String get accountTerminationContent =>
+      'Nos reservamos el derecho de suspender o terminar tu cuenta si:\n\n• Violas estos términos de servicio\n• Participas en actividades fraudulentas\n• Recibimos solicitudes legales válidas\n\nTambién puedes eliminar tu cuenta en cualquier momento a través de la configuración de la aplicación.';
 
   @override
   String get disclaimerWarranties => 'Descargo de Garantías';
 
   @override
-  String get disclaimerWarrantiesContent => 'La aplicación se proporciona \"tal cual\" y \"según disponibilidad\" sin garantías de ningún tipo, ya sean expresas o implícitas. No garantizamos que la aplicación esté libre de errores o que los defectos sean corregidos.';
+  String get disclaimerWarrantiesContent =>
+      'La aplicación se proporciona \"tal cual\" y \"según disponibilidad\" sin garantías de ningún tipo, ya sean expresas o implícitas. No garantizamos que la aplicación esté libre de errores o que los defectos sean corregidos.';
 
   @override
   String get limitationLiability => 'Limitación de Responsabilidad';
 
   @override
-  String get limitationLiabilityContent => 'En la máxima medida permitida por la ley, no seremos responsables de ningún daño indirecto, incidental, especial, consecuente o punitivo que resulte de tu uso o incapacidad de usar la aplicación.';
+  String get limitationLiabilityContent =>
+      'En la máxima medida permitida por la ley, no seremos responsables de ningún daño indirecto, incidental, especial, consecuente o punitivo que resulte de tu uso o incapacidad de usar la aplicación.';
 
   @override
   String get changesToTerms => 'Cambios a los Términos';
 
   @override
-  String get changesToTermsContent => 'Nos reservamos el derecho de modificar estos términos en cualquier momento. Notificaremos a los usuarios de cambios significativos. El uso continuado de la aplicación después de los cambios constituye la aceptación de los nuevos términos.';
+  String get changesToTermsContent =>
+      'Nos reservamos el derecho de modificar estos términos en cualquier momento. Notificaremos a los usuarios de cambios significativos. El uso continuado de la aplicación después de los cambios constituye la aceptación de los nuevos términos.';
 
   @override
   String get governingLaw => 'Ley Aplicable';
 
   @override
-  String get governingLawContent => 'Estos términos se regirán e interpretarán de acuerdo con las leyes aplicables, sin tener en cuenta sus disposiciones sobre conflictos de leyes.';
+  String get governingLawContent =>
+      'Estos términos se regirán e interpretarán de acuerdo con las leyes aplicables, sin tener en cuenta sus disposiciones sobre conflictos de leyes.';
 
   @override
   String get contactInformation => 'Información de Contacto';
 
   @override
-  String get contactInformationContent => 'Si tienes alguna pregunta sobre estos Términos de Servicio, contáctanos a través de la configuración de la aplicación.';
+  String get contactInformationContent =>
+      'Si tienes alguna pregunta sobre estos Términos de Servicio, contáctanos a través de la configuración de la aplicación.';
 
   @override
   String get challengeYourVocabulary => '¡Desafía tu vocabulario!';
