@@ -61,9 +61,7 @@ class AuthService extends ChangeNotifier {
   Future<String?> updateUsername(String newUsername) async {
     try {
       await Supabase.instance.client.auth.updateUser(
-        UserAttributes(
-          data: {'username': newUsername},
-        ),
+        UserAttributes(data: {'username': newUsername}),
       );
       notifyListeners();
       return null; // Success
@@ -77,9 +75,7 @@ class AuthService extends ChangeNotifier {
   Future<String?> updateEmail(String newEmail) async {
     try {
       await Supabase.instance.client.auth.updateUser(
-        UserAttributes(
-          email: newEmail,
-        ),
+        UserAttributes(email: newEmail),
       );
       notifyListeners();
       return null; // Success
@@ -112,9 +108,7 @@ class AuthService extends ChangeNotifier {
 
       // If verification successful, update to new password
       await Supabase.instance.client.auth.updateUser(
-        UserAttributes(
-          password: newPassword,
-        ),
+        UserAttributes(password: newPassword),
       );
       notifyListeners();
       return null; // Success
