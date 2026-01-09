@@ -7,12 +7,12 @@ class Word {
 
   Word({required this.word, required this.tags});
 
-  /// Remove accents from a string
-  /// Example: "café" -> "cafe", "árbol" -> "arbol"
+  /// Remove accents from a string, but keep Ñ/ñ
+  /// Example: "café" -> "cafe", "árbol" -> "arbol", "niño" -> "niño"
   static String _removeAccents(String text) {
-    const withAccents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ';
+    const withAccents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿ';
     const withoutAccents =
-        'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn';
+        'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuy';
 
     String result = text;
     for (int i = 0; i < withAccents.length; i++) {

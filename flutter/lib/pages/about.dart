@@ -63,160 +63,162 @@ class _AboutPageState extends State<AboutPage> {
       appBar: AppBar(title: Text(l10n.about)),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 16),
+          : SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 16),
 
-                  // App Icon
-                  Container(
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Image.asset(
-                        'assets/icons/icon.png',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  // App Name
-                  Text(
-                    _packageInfo?.appName ?? l10n.hangmanGame,
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  // Tagline
-                  Text(
-                    'Challenge your vocabulary!',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      fontStyle: FontStyle.italic,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  const SizedBox(height: 32),
-
-                  // Version Information Card
-                  Card(
-                    elevation: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          _buildInfoRow(
-                            context,
-                            Icons.info_outline,
-                            'Version',
-                            _packageInfo?.version ?? '1.0.0',
-                          ),
-                          const Divider(height: 24),
-                          _buildInfoRow(
-                            context,
-                            Icons.tag,
-                            'Build Number',
-                            _packageInfo?.buildNumber ?? '1',
-                          ),
-                          const Divider(height: 24),
-                          _buildInfoRow(
-                            context,
-                            Icons.devices,
-                            'Platform',
-                            _getPlatformName(),
-                          ),
-                          const Divider(height: 24),
-                          _buildInfoRow(
-                            context,
-                            Icons.apps,
-                            'Package Name',
-                            _packageInfo?.packageName ?? 'com.example.hangman',
+                    // App Icon
+                    Container(
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            spreadRadius: 2,
                           ),
                         ],
                       ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Image.asset(
+                          'assets/icons/icon.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                     ),
-                  ),
 
-                  const SizedBox(height: 32),
+                    const SizedBox(height: 24),
 
-                  // Description
-                  Text(
-                    'Hangman is a classic word-guessing game reimagined for the modern era. '
-                    'Test your vocabulary, compete on leaderboards, and enjoy customizable gameplay '
-                    'with multiple difficulty levels, timed challenges, and personalized settings.',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      height: 1.6,
-                      color: Theme.of(context).colorScheme.onSurface,
+                    // App Name
+                    Text(
+                      _packageInfo?.appName ?? l10n.hangmanGame,
+                      style: Theme.of(context).textTheme.headlineMedium
+                          ?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
 
-                  const SizedBox(height: 32),
+                    const SizedBox(height: 8),
 
-                  // Features
-                  _buildFeaturesList(context),
-
-                  const SizedBox(height: 32),
-
-                  // Tech Stack
-                  _buildTechStack(context),
-
-                  const SizedBox(height: 32),
-
-                  // Credits
-                  Text(
-                    'Made with ❤️ using Flutter',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    // Tagline
+                    Text(
+                      l10n.challengeYourVocabulary,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
 
-                  const SizedBox(height: 16),
+                    const SizedBox(height: 32),
 
-                  // Copyright
-                  Text(
-                    '© 2026 Hangman Game',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    // Version Information Card
+                    Card(
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            _buildInfoRow(
+                              context,
+                              Icons.info_outline,
+                              l10n.appVersion,
+                              _packageInfo?.version ?? '1.0.0',
+                            ),
+                            const Divider(height: 24),
+                            _buildInfoRow(
+                              context,
+                              Icons.tag,
+                              l10n.buildNumber,
+                              _packageInfo?.buildNumber ?? '1',
+                            ),
+                            const Divider(height: 24),
+                            _buildInfoRow(
+                              context,
+                              Icons.devices,
+                              l10n.platform,
+                              _getPlatformName(),
+                            ),
+                            const Divider(height: 24),
+                            _buildInfoRow(
+                              context,
+                              Icons.apps,
+                              l10n.packageName,
+                              _packageInfo?.packageName ??
+                                  'com.example.hangman',
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    textAlign: TextAlign.center,
-                  ),
 
-                  const SizedBox(height: 8),
+                    const SizedBox(height: 32),
 
-                  Text(
-                    'All rights reserved',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    // Description
+                    Text(
+                      l10n.appDescription(l10n.hangmanGame),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        height: 1.6,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
 
-                  const SizedBox(height: 32),
-                ],
+                    const SizedBox(height: 32),
+
+                    // Features
+                    _buildFeaturesList(context),
+
+                    const SizedBox(height: 32),
+
+                    // Tech Stack
+                    _buildTechStack(context),
+
+                    const SizedBox(height: 32),
+
+                    // Credits
+                    Text(
+                      l10n.madeWithLove,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // Copyright
+                    Text(
+                      l10n.copyright,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    Text(
+                      l10n.allRightsReserved,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    const SizedBox(height: 32),
+                  ],
+                ),
               ),
             ),
     );
@@ -256,16 +258,14 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   Widget _buildFeaturesList(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final features = [
-      {
-        'icon': Icons.translate,
-        'text': 'Multilingual support (English & Spanish)',
-      },
-      {'icon': Icons.emoji_events, 'text': 'Global leaderboards'},
-      {'icon': Icons.tune, 'text': 'Customizable difficulty levels'},
-      {'icon': Icons.timer, 'text': 'Optional timed challenges'},
-      {'icon': Icons.dark_mode, 'text': 'Dark mode support'},
-      {'icon': Icons.person, 'text': 'User profiles and statistics'},
+      {'icon': Icons.translate, 'text': l10n.featureMultilingual},
+      {'icon': Icons.emoji_events, 'text': l10n.featureLeaderboards},
+      {'icon': Icons.tune, 'text': l10n.featureDifficulty},
+      {'icon': Icons.timer, 'text': l10n.featureTimed},
+      {'icon': Icons.dark_mode, 'text': l10n.featureDarkMode},
+      {'icon': Icons.person, 'text': l10n.featureProfiles},
     ];
 
     return Card(
@@ -276,7 +276,7 @@ class _AboutPageState extends State<AboutPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Features',
+              l10n.features,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.primary,
@@ -311,11 +311,12 @@ class _AboutPageState extends State<AboutPage> {
   }
 
   Widget _buildTechStack(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final techStack = [
-      {'name': 'Flutter', 'desc': 'UI Framework'},
-      {'name': 'Supabase', 'desc': 'Backend & Authentication'},
-      {'name': 'Provider', 'desc': 'State Management'},
-      {'name': 'GoRouter', 'desc': 'Navigation'},
+      {'text': l10n.techFlutter, 'initial': 'F'},
+      {'text': l10n.techSupabase, 'initial': 'S'},
+      {'text': l10n.techProvider, 'initial': 'P'},
+      {'text': l10n.techGoRouter, 'initial': 'G'},
     ];
 
     return Card(
@@ -333,7 +334,7 @@ class _AboutPageState extends State<AboutPage> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Built With',
+                  l10n.builtWith,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary,
@@ -351,14 +352,14 @@ class _AboutPageState extends State<AboutPage> {
                       avatar: CircleAvatar(
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         child: Text(
-                          (tech['name'] as String)[0],
+                          tech['initial'] as String,
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.onPrimary,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      label: Text('${tech['name']}: ${tech['desc']}'),
+                      label: Text(tech['text'] as String),
                       backgroundColor: Theme.of(
                         context,
                       ).colorScheme.secondaryContainer,
