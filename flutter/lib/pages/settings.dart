@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hangman/l10n/app_localizations.dart';
+import 'package:hangman/pages/privacy.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
@@ -251,9 +253,7 @@ class _SettingsPageState extends State<SettingsPage> {
             icon: Icons.privacy_tip_outlined,
             title: l10n.privacyPolicy,
             onTap: () {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(l10n.comingSoon)));
+              context.push(PrivacyPage.routeName);
             },
           ),
           _buildSettingsTile(
