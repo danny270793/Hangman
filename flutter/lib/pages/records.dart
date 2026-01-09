@@ -122,86 +122,88 @@ class _RecordsPageState extends State<RecordsPage> {
                       margin: const EdgeInsets.only(bottom: 12),
                       elevation: rank <= 3 ? 4 : 2,
                       child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: rank <= 3
-                            ? LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  _getRankColor(rank).withOpacity(0.1),
-                                  Colors.transparent,
-                                ],
-                              )
-                            : null,
-                      ),
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          gradient: rank <= 3
+                              ? LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    _getRankColor(rank).withOpacity(0.1),
+                                    Colors.transparent,
+                                  ],
+                                )
+                              : null,
                         ),
-                        leading: _buildRankBadge(rank),
-                        title: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                username,
-                                style: TextStyle(
-                                  fontWeight: rank <= 3
-                                      ? FontWeight.bold
-                                      : FontWeight.w500,
-                                  fontSize: 18,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              decoration: BoxDecoration(
-                                color: _getDifficultyColor(difficulty),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Text(
-                                _getDifficultyText(difficulty, l10n),
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        subtitle: Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Row(
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          leading: _buildRankBadge(rank),
+                          title: Row(
                             children: [
-                              _buildStatChip(
-                                Icons.star,
-                                '$points ${l10n.points}',
-                                Colors.amber,
+                              Expanded(
+                                child: Text(
+                                  username,
+                                  style: TextStyle(
+                                    fontWeight: rank <= 3
+                                        ? FontWeight.bold
+                                        : FontWeight.w500,
+                                    fontSize: 18,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
-                              const SizedBox(width: 8),
-                              _buildStatChip(
-                                Icons.check_circle,
-                                '$words ${l10n.wordsSolved}',
-                                Colors.green,
-                              ),
-                              const SizedBox(width: 8),
-                              _buildStatChip(
-                                hasTimedMode ? Icons.timer : Icons.access_time,
-                                '${time}s',
-                                hasTimedMode ? Colors.orange : Colors.purple,
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 4,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: _getDifficultyColor(difficulty),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Text(
+                                  _getDifficultyText(difficulty, l10n),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                             ],
+                          ),
+                          subtitle: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Row(
+                              children: [
+                                _buildStatChip(
+                                  Icons.star,
+                                  '$points ${l10n.points}',
+                                  Colors.amber,
+                                ),
+                                const SizedBox(width: 8),
+                                _buildStatChip(
+                                  Icons.check_circle,
+                                  '$words ${l10n.wordsSolved}',
+                                  Colors.green,
+                                ),
+                                const SizedBox(width: 8),
+                                _buildStatChip(
+                                  hasTimedMode
+                                      ? Icons.timer
+                                      : Icons.access_time,
+                                  '${time}s',
+                                  hasTimedMode ? Colors.orange : Colors.purple,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
                   );
                 },
               ),
