@@ -179,27 +179,33 @@ class _LoginPageState extends State<LoginPage>
           ),
         ),
         child: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: SlideTransition(
-                  position: _slideAnimation,
-                  child: OrientationBuilder(
-                    builder: (context, orientation) {
-                      final isLandscape = orientation == Orientation.landscape;
+          child: OrientationBuilder(
+            builder: (context, orientation) {
+              final isLandscape = orientation == Orientation.landscape;
 
-                      if (isLandscape) {
-                        return _buildLandscapeLayout(context, l10n);
-                      } else {
-                        return _buildPortraitLayout(context, l10n);
-                      }
-                    },
+              if (isLandscape) {
+                return FadeTransition(
+                  opacity: _fadeAnimation,
+                  child: SlideTransition(
+                    position: _slideAnimation,
+                    child: _buildLandscapeLayout(context, l10n),
                   ),
-                ),
-              ),
-            ),
+                );
+              } else {
+                return Center(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(24.0),
+                    child: FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: SlideTransition(
+                        position: _slideAnimation,
+                        child: _buildPortraitLayout(context, l10n),
+                      ),
+                    ),
+                  ),
+                );
+              }
+            },
           ),
         ),
       ),
@@ -224,7 +230,7 @@ class _LoginPageState extends State<LoginPage>
           width: 100,
           height: 100,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
+            color: Colors.white,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
@@ -234,10 +240,12 @@ class _LoginPageState extends State<LoginPage>
               ),
             ],
           ),
-          child: Icon(
-            Icons.sports_esports,
-            size: 50,
-            color: Theme.of(context).colorScheme.primary,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset(
+              'assets/icons/icon.png',
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         const SizedBox(height: 24),
@@ -295,19 +303,21 @@ class _LoginPageState extends State<LoginPage>
   }
 
   Widget _buildLandscapeLayout(BuildContext context, AppLocalizations l10n) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // Left side - Logo and Welcome
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Left side - Logo and Welcome
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
               Container(
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: Colors.white,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -317,10 +327,12 @@ class _LoginPageState extends State<LoginPage>
                     ),
                   ],
                 ),
-                child: Icon(
-                  Icons.sports_esports,
-                  size: 40,
-                  color: Theme.of(context).colorScheme.primary,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Image.asset(
+                    'assets/icons/icon.png',
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -360,7 +372,6 @@ class _LoginPageState extends State<LoginPage>
         // Right side - Login Form
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -394,6 +405,7 @@ class _LoginPageState extends State<LoginPage>
           ),
         ),
       ],
+    ),
     );
   }
 
@@ -403,29 +415,32 @@ class _LoginPageState extends State<LoginPage>
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Container(
         padding: const EdgeInsets.all(32),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Email Field
-              TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: l10n.email,
-                  hintText: l10n.enterEmail,
-                  prefixIcon: const Icon(Icons.email_outlined),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+        child: AutofillGroup(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Email Field
+                TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: l10n.email,
+                    hintText: l10n.enterEmail,
+                    prefixIcon: const Icon(Icons.email_outlined),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    filled: true,
+                    fillColor: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
                   ),
-                  filled: true,
-                  fillColor: Theme.of(
-                    context,
-                  ).colorScheme.surfaceContainerHighest,
-                ),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  autofillHints: const [AutofillHints.email],
+                  validator: (value) {
                   if (value == null || value.isEmpty) {
                     return l10n.pleaseEnterEmail;
                   }
@@ -453,7 +468,7 @@ class _LoginPageState extends State<LoginPage>
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                     ),
-                    onPressed: () {
+          onPressed: () {
                       setState(() {
                         _obscurePassword = !_obscurePassword;
                       });
@@ -467,6 +482,9 @@ class _LoginPageState extends State<LoginPage>
                     context,
                   ).colorScheme.surfaceContainerHighest,
                 ),
+                textInputAction: TextInputAction.done,
+                autofillHints: const [AutofillHints.password],
+                onFieldSubmitted: (_) => _handleLogin(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return l10n.pleaseEnterPassword;
@@ -520,6 +538,7 @@ class _LoginPageState extends State<LoginPage>
               const SizedBox(height: 24),
             ],
           ),
+        ),
         ),
       ),
     );
