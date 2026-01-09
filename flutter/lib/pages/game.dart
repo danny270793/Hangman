@@ -261,7 +261,7 @@ class _GamePageState extends State<GamePage> {
       _wrongGuesses = 0;
       _isTimedOut = false;
       _currentWordStartTime = 0;
-      
+
       // Reset all accumulated statistics when starting a new game
       _totalScore = 0;
       _lastRoundPoints = 0;
@@ -291,7 +291,7 @@ class _GamePageState extends State<GamePage> {
         final shouldPop = await _showExitConfirmationDialog(context, l10n);
         if (shouldPop == true && context.mounted) {
           // Save record if not already saved (in case user is exiting mid-game)
-          if (!_hasGameRecordBeenSaved && 
+          if (!_hasGameRecordBeenSaved &&
               (_totalSecondsPlayed > 0 || _wordsSolved > 0)) {
             await _saveGameRecordOnGameEnd();
           }
@@ -311,7 +311,7 @@ class _GamePageState extends State<GamePage> {
               );
               if (shouldExit == true && context.mounted) {
                 // Save record if not already saved (in case user is exiting mid-game)
-                if (!_hasGameRecordBeenSaved && 
+                if (!_hasGameRecordBeenSaved &&
                     (_totalSecondsPlayed > 0 || _wordsSolved > 0)) {
                   await _saveGameRecordOnGameEnd();
                 }
@@ -503,53 +503,53 @@ class _GamePageState extends State<GamePage> {
               // Score Cards - Vertical
               SingleChildScrollView(
                 child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildScoreCard(
-                    l10n.guessesLeft,
-                    '${_maxWrongGuesses - _wrongGuesses}',
-                    Icons.favorite,
-                    Colors.red,
-                  ),
-                  const SizedBox(height: 8),
-                  if (timedModeService.isEnabled) ...[
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     _buildScoreCard(
-                      l10n.time,
-                      '${_remainingSeconds}s',
-                      Icons.timer,
-                      _remainingSeconds <= 10 ? Colors.red : Colors.orange,
+                      l10n.guessesLeft,
+                      '${_maxWrongGuesses - _wrongGuesses}',
+                      Icons.favorite,
+                      Colors.red,
                     ),
                     const SizedBox(height: 8),
+                    if (timedModeService.isEnabled) ...[
+                      _buildScoreCard(
+                        l10n.time,
+                        '${_remainingSeconds}s',
+                        Icons.timer,
+                        _remainingSeconds <= 10 ? Colors.red : Colors.orange,
+                      ),
+                      const SizedBox(height: 8),
+                    ],
+                    _buildScoreCard(
+                      l10n.lettersUsed,
+                      '${_guessedLetters.length}',
+                      Icons.text_fields,
+                      Colors.blue,
+                    ),
+                    const SizedBox(height: 8),
+                    _buildScoreCard(
+                      l10n.score,
+                      '$_totalScore',
+                      Icons.star,
+                      Colors.amber,
+                    ),
+                    const SizedBox(height: 8),
+                    _buildScoreCard(
+                      l10n.wordsSolved,
+                      '$_wordsSolved',
+                      Icons.check_circle,
+                      Colors.green,
+                    ),
+                    const SizedBox(height: 8),
+                    _buildScoreCard(
+                      l10n.totalTime,
+                      '${_totalSecondsPlayed}s',
+                      Icons.access_time,
+                      Colors.purple,
+                    ),
                   ],
-                  _buildScoreCard(
-                    l10n.lettersUsed,
-                    '${_guessedLetters.length}',
-                    Icons.text_fields,
-                    Colors.blue,
-                  ),
-                  const SizedBox(height: 8),
-                  _buildScoreCard(
-                    l10n.score,
-                    '$_totalScore',
-                    Icons.star,
-                    Colors.amber,
-                  ),
-                  const SizedBox(height: 8),
-                  _buildScoreCard(
-                    l10n.wordsSolved,
-                    '$_wordsSolved',
-                    Icons.check_circle,
-                    Colors.green,
-                  ),
-                  const SizedBox(height: 8),
-                  _buildScoreCard(
-                    l10n.totalTime,
-                    '${_totalSecondsPlayed}s',
-                    Icons.access_time,
-                    Colors.purple,
-                  )
-                ],
-              ),
+                ),
               ),
 
               const SizedBox(width: 16),
@@ -643,7 +643,9 @@ class _GamePageState extends State<GamePage> {
           ),
           const SizedBox(height: 8),
           ElevatedButton.icon(
-            onPressed: _isGameWon ? _continueToNextWord : _playAgainAfterGameOver,
+            onPressed: _isGameWon
+                ? _continueToNextWord
+                : _playAgainAfterGameOver,
             icon: Icon(_isGameWon ? Icons.arrow_forward : Icons.refresh),
             label: Text(_isGameWon ? l10n.nextWord : l10n.playAgain),
             style: ElevatedButton.styleFrom(
