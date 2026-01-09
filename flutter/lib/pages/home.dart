@@ -67,20 +67,20 @@ class HomePage extends StatelessWidget {
                     top: 8,
                     right: 8,
                     child: IconButton(
-                  icon: const Icon(Icons.settings),
-                  iconSize: 28,
-                  onPressed: () {
-                    context.push(SettingsPage.routeName);
-                  },
-                  tooltip: l10n.settings,
-                  style: IconButton.styleFrom(
-                    backgroundColor: Theme.of(
-                      context,
-                    ).colorScheme.surface.withOpacity(0.9),
-                    foregroundColor: Theme.of(context).colorScheme.primary,
+                      icon: const Icon(Icons.settings),
+                      iconSize: 28,
+                      onPressed: () {
+                        context.push(SettingsPage.routeName);
+                      },
+                      tooltip: l10n.settings,
+                      style: IconButton.styleFrom(
+                        backgroundColor: Theme.of(
+                          context,
+                        ).colorScheme.surface.withOpacity(0.9),
+                        foregroundColor: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
                   ),
-                ),
-              ),
                 ],
               );
             },
@@ -116,10 +116,7 @@ class HomePage extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Image.asset(
-              'assets/icons/icon.png',
-              fit: BoxFit.contain,
-            ),
+            child: Image.asset('assets/icons/icon.png', fit: BoxFit.contain),
           ),
         ),
         const SizedBox(height: 24),
@@ -206,20 +203,20 @@ class HomePage extends StatelessWidget {
         Expanded(
           child: SingleChildScrollView(
             child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildConfigurationCard(
-                context,
-                l10n,
-                difficultyService,
-                timedModeService,
-              ),
-              const SizedBox(height: 24),
-              _buildPlayButton(context, l10n),
-              const SizedBox(height: 16),
-              _buildRecordsButton(context, l10n),
-            ],
-          ),
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildConfigurationCard(
+                  context,
+                  l10n,
+                  difficultyService,
+                  timedModeService,
+                ),
+                const SizedBox(height: 24),
+                _buildPlayButton(context, l10n),
+                const SizedBox(height: 16),
+                _buildRecordsButton(context, l10n),
+              ],
+            ),
           ),
         ),
       ],
@@ -311,7 +308,7 @@ class HomePage extends StatelessWidget {
       width: double.infinity,
       height: 50,
       child: OutlinedButton.icon(
-          onPressed: () {
+        onPressed: () {
           context.push(RecordsPage.routeName);
         },
         icon: const Icon(Icons.emoji_events, size: 24),
