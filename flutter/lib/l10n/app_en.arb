@@ -105,6 +105,7 @@
   "rank": "Rank",
   "player": "Player",
   "noRecordsYet": "No records yet. Be the first to play!",
+  "loadMore": "Load More",
   "gameConfiguration": "Game Configuration",
   "exitGame": "Exit Game?",
   "exitGameConfirmation": "Are you sure you want to exit? Your current progress will be lost.",
