@@ -63,9 +63,10 @@ class _AboutPageState extends State<AboutPage> {
       appBar: AppBar(title: Text(l10n.about)),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
+          : SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 16),
@@ -219,6 +220,7 @@ class _AboutPageState extends State<AboutPage> {
                 ],
               ),
             ),
+              ),
     );
   }
 
