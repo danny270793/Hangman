@@ -9939,6 +9939,106 @@
         "alimentar",
         "guardar"
       ]
+    },
+    {
+      "word": "apacible",
+      "tags": [
+        "tranquilo",
+        "sosegado",
+        "calmo",
+        "sereno",
+        "plácido"
+      ]
+    },
+    {
+      "word": "apaciguar",
+      "tags": [
+        "calmar",
+        "tranquilizar",
+        "sosegar",
+        "pacificar",
+        "aplacar"
+      ]
+    },
+    {
+      "word": "apadrinar",
+      "tags": [
+        "patrocinar",
+        "proteger",
+        "amadrinar",
+        "respaldar",
+        "tutelar"
+      ]
+    },
+    {
+      "word": "apagar",
+      "tags": [
+        "extinguir",
+        "desconectar",
+        "cesar",
+        "eliminar",
+        "oscurecer"
+      ]
+    },
+    {
+      "word": "apagón",
+      "tags": [
+        "corte luz",
+        "falla eléctrica",
+        "oscuridad súbita",
+        "blackout",
+        "interrupción"
+      ]
+    },
+    {
+      "word": "apalabrar",
+      "tags": [
+        "convenir",
+        "concertar",
+        "acordar",
+        "pactar",
+        "comprometer"
+      ]
+    },
+    {
+      "word": "apalear",
+      "tags": [
+        "golpear palo",
+        "zurrar",
+        "tundir",
+        "vapulear",
+        "batir"
+      ]
+    },
+    {
+      "word": "apañar",
+      "tags": [
+        "arreglar",
+        "componer",
+        "reparar",
+        "remediar",
+        "solucionar"
+      ]
+    },
+    {
+      "word": "aparador",
+      "tags": [
+        "mueble cocina",
+        "vitrina",
+        "alacena",
+        "escaparate",
+        "credenza"
+      ]
+    },
+    {
+      "word": "aparato",
+      "tags": [
+        "equipo",
+        "dispositivo",
+        "máquina",
+        "sistema",
+        "mecanismo"
+      ]
     }
   ]
 }
