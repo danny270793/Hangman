@@ -41,7 +41,11 @@ class HomePage extends StatelessWidget {
                   // Main content
                   if (isLandscape)
                     Padding(
-                      padding: const EdgeInsets.all(24.0),
+                      padding: const EdgeInsets.only(
+                        top: 24.0,
+                        left: 24.0,
+                        bottom: 24.0,
+                      ),
                       child: _buildLandscapeLayout(
                         context,
                         l10n,
@@ -202,6 +206,7 @@ class HomePage extends StatelessWidget {
         // Right side - Configuration and Play Button
         Expanded(
           child: SingleChildScrollView(
+            padding: const EdgeInsets.only(right: 24.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
