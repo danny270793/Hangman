@@ -1,11 +1,19 @@
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Word {
+  final int id;
   final String word;
+  final int difficultyValue;
+  final String locale;
   final List<String> tags;
 
-  Word({required this.word, required this.tags});
+  Word({
+    required this.id,
+    required this.word,
+    required this.difficultyValue,
+    required this.locale,
+    required this.tags,
+  });
 
   /// Remove accents from a string, but keep Ñ/ñ
   /// Example: "café" -> "cafe", "árbol" -> "arbol", "niño" -> "niño"
@@ -25,14 +33,22 @@ class Word {
     final originalWord = json['word'] as String;
     final wordWithoutAccents = _removeAccents(originalWord);
 
+    // Parse tags array from JSON
+    final tagsList = json['tags'] as List<dynamic>?;
+    final tags = tagsList?.map((e) => e as String).toList() ?? [];
+
     return Word(
+      id: json['id'] as int,
       word: wordWithoutAccents,
-      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+      difficultyValue: json['difficulty_value'] as int,
+      locale: json['locale'] as String,
+      tags: tags,
     );
   }
 }
 
 class WordsService {
+  final SupabaseClient _supabase = Supabase.instance.client;
   List<Word>? _words;
   bool _isLoaded = false;
   String _currentLocale = 'en';
@@ -42,49 +58,38 @@ class WordsService {
     if (_isLoaded && _currentLocale == locale) return;
 
     try {
-      final String jsonString = await rootBundle.loadString(
-        'assets/words_$locale.json',
-      );
-      final Map<String, dynamic> jsonData = json.decode(jsonString);
+      // Query words for the specified locale
+      final wordsResponse = await _supabase
+          .from('words')
+          .select('id, word, difficulty_value, locale')
+          .eq('locale', locale);
 
-      // Combine words from all difficulty levels
-      final List<Word> allWords = [];
+      final List<Word> loadedWords = [];
 
-      // Load easy words
-      if (jsonData.containsKey('easy') && jsonData['easy']['words'] != null) {
-        final List<dynamic> easyWords =
-            jsonData['easy']['words'] as List<dynamic>;
-        allWords.addAll(
-          easyWords.map(
-            (wordJson) => Word.fromJson(wordJson as Map<String, dynamic>),
-          ),
-        );
+      // For each word, fetch its tags
+      for (final wordJson in wordsResponse as List<dynamic>) {
+        final wordId = wordJson['id'] as int;
+
+        // Query tags through the junction table
+        final tagsResponse = await _supabase
+            .from('word_tags')
+            .select('tag_id, tags(tag)')
+            .eq('word_id', wordId);
+
+        final tags = <String>[];
+        for (final tagData in tagsResponse as List<dynamic>) {
+          final tagInfo = tagData['tags'] as Map<String, dynamic>?;
+          if (tagInfo != null && tagInfo['tag'] != null) {
+            tags.add(tagInfo['tag'] as String);
+          }
+        }
+
+        // Add tags to word data
+        wordJson['tags'] = tags;
+        loadedWords.add(Word.fromJson(wordJson as Map<String, dynamic>));
       }
 
-      // Load medium words
-      if (jsonData.containsKey('medium') &&
-          jsonData['medium']['words'] != null) {
-        final List<dynamic> mediumWords =
-            jsonData['medium']['words'] as List<dynamic>;
-        allWords.addAll(
-          mediumWords.map(
-            (wordJson) => Word.fromJson(wordJson as Map<String, dynamic>),
-          ),
-        );
-      }
-
-      // Load hard words
-      if (jsonData.containsKey('hard') && jsonData['hard']['words'] != null) {
-        final List<dynamic> hardWords =
-            jsonData['hard']['words'] as List<dynamic>;
-        allWords.addAll(
-          hardWords.map(
-            (wordJson) => Word.fromJson(wordJson as Map<String, dynamic>),
-          ),
-        );
-      }
-
-      _words = allWords;
+      _words = loadedWords.isEmpty ? _getFallbackWords() : loadedWords;
       _currentLocale = locale;
       _isLoaded = true;
     } catch (e) {
@@ -105,11 +110,34 @@ class WordsService {
   }
 
   /// Get a random word filtered by difficulty category
+  /// Easy: 1-33, Medium: 34-66, Hard: 67-100
   Word getRandomWordByDifficulty(String difficultyCategory) {
     final allWords = getAllWords();
+    
+    // Convert category to difficulty range
+    int minDifficulty, maxDifficulty;
+    switch (difficultyCategory.toLowerCase()) {
+      case 'easy':
+        minDifficulty = 1;
+        maxDifficulty = 33;
+        break;
+      case 'medium':
+        minDifficulty = 34;
+        maxDifficulty = 66;
+        break;
+      case 'hard':
+        minDifficulty = 67;
+        maxDifficulty = 100;
+        break;
+      default:
+        minDifficulty = 1;
+        maxDifficulty = 100;
+    }
+
     final filteredWords = allWords
         .where(
-          (word) => getWordDifficultyCategory(word.word) == difficultyCategory,
+          (word) => word.difficultyValue >= minDifficulty && 
+                    word.difficultyValue <= maxDifficulty,
         )
         .toList();
 
@@ -177,11 +205,14 @@ class WordsService {
     return word.toUpperCase().split('').toSet().length;
   }
 
-  // Fallback words in case JSON fails to load
+  // Fallback words in case database loading fails
   List<Word> _getFallbackWords() {
     return [
       Word(
+        id: 1,
         word: 'piano',
+        difficultyValue: 45,
+        locale: 'en',
         tags: [
           'musical instrument',
           'keyboard instrument',
@@ -191,7 +222,10 @@ class WordsService {
         ],
       ),
       Word(
+        id: 2,
         word: 'guitar',
+        difficultyValue: 40,
+        locale: 'en',
         tags: [
           'musical instrument',
           'string instrument',
@@ -201,7 +235,10 @@ class WordsService {
         ],
       ),
       Word(
+        id: 3,
         word: 'elephant',
+        difficultyValue: 60,
+        locale: 'en',
         tags: [
           'large mammal',
           'has a trunk',
@@ -211,7 +248,10 @@ class WordsService {
         ],
       ),
       Word(
+        id: 4,
         word: 'dolphin',
+        difficultyValue: 55,
+        locale: 'en',
         tags: [
           'marine mammal',
           'intelligent creature',
@@ -221,7 +261,10 @@ class WordsService {
         ],
       ),
       Word(
+        id: 5,
         word: 'apple',
+        difficultyValue: 25,
+        locale: 'en',
         tags: [
           'fruit',
           'grows on trees',
@@ -231,7 +274,10 @@ class WordsService {
         ],
       ),
       Word(
+        id: 6,
         word: 'banana',
+        difficultyValue: 30,
+        locale: 'en',
         tags: [
           'tropical fruit',
           'yellow when ripe',
@@ -241,7 +287,10 @@ class WordsService {
         ],
       ),
       Word(
+        id: 7,
         word: 'doctor',
+        difficultyValue: 40,
+        locale: 'en',
         tags: [
           'medical professional',
           'treats patients',
@@ -251,7 +300,10 @@ class WordsService {
         ],
       ),
       Word(
+        id: 8,
         word: 'teacher',
+        difficultyValue: 50,
+        locale: 'en',
         tags: [
           'educator',
           'works in school',
