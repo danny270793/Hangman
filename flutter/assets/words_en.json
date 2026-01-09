@@ -6139,6 +6139,1506 @@
         "supply",
         "yield"
       ]
+    },
+    {
+      "word": "afghan",
+      "tags": [
+        "knitted blanket",
+        "warm cover",
+        "colorful pattern",
+        "handmade",
+        "cozy"
+      ]
+    },
+    {
+      "word": "afraid",
+      "tags": [
+        "fearful",
+        "scared",
+        "frightened",
+        "nervous",
+        "worried"
+      ]
+    },
+    {
+      "word": "after",
+      "tags": [
+        "following",
+        "later than",
+        "behind",
+        "subsequent",
+        "next"
+      ]
+    },
+    {
+      "word": "afternoon",
+      "tags": [
+        "time of day",
+        "after noon",
+        "before evening",
+        "pm hours",
+        "midday to dusk"
+      ]
+    },
+    {
+      "word": "again",
+      "tags": [
+        "once more",
+        "repeat",
+        "another time",
+        "anew",
+        "repeatedly"
+      ]
+    },
+    {
+      "word": "against",
+      "tags": [
+        "opposed to",
+        "contrary",
+        "versus",
+        "touching",
+        "in opposition"
+      ]
+    },
+    {
+      "word": "agency",
+      "tags": [
+        "organization",
+        "business",
+        "bureau",
+        "firm",
+        "office"
+      ]
+    },
+    {
+      "word": "agenda",
+      "tags": [
+        "schedule",
+        "plan",
+        "list of items",
+        "program",
+        "topics"
+      ]
+    },
+    {
+      "word": "agent",
+      "tags": [
+        "representative",
+        "intermediary",
+        "broker",
+        "operative",
+        "proxy"
+      ]
+    },
+    {
+      "word": "aggravate",
+      "tags": [
+        "make worse",
+        "irritate",
+        "annoy",
+        "worsen",
+        "exacerbate"
+      ]
+    },
+    {
+      "word": "aggregate",
+      "tags": [
+        "total",
+        "sum",
+        "combined",
+        "collective",
+        "accumulated"
+      ]
+    },
+    {
+      "word": "aggressive",
+      "tags": [
+        "forceful",
+        "assertive",
+        "hostile",
+        "violent",
+        "combative"
+      ]
+    },
+    {
+      "word": "agile",
+      "tags": [
+        "nimble",
+        "quick",
+        "flexible",
+        "dexterous",
+        "spry"
+      ]
+    },
+    {
+      "word": "agitate",
+      "tags": [
+        "disturb",
+        "shake",
+        "stir up",
+        "upset",
+        "provoke"
+      ]
+    },
+    {
+      "word": "agony",
+      "tags": [
+        "extreme pain",
+        "suffering",
+        "torment",
+        "anguish",
+        "distress"
+      ]
+    },
+    {
+      "word": "agree",
+      "tags": [
+        "consent",
+        "concur",
+        "accept",
+        "approve",
+        "accord"
+      ]
+    },
+    {
+      "word": "agriculture",
+      "tags": [
+        "farming",
+        "cultivation",
+        "growing crops",
+        "rural industry",
+        "food production"
+      ]
+    },
+    {
+      "word": "ahead",
+      "tags": [
+        "in front",
+        "forward",
+        "before",
+        "in advance",
+        "leading"
+      ]
+    },
+    {
+      "word": "aid",
+      "tags": [
+        "help",
+        "assist",
+        "support",
+        "relief",
+        "assistance"
+      ]
+    },
+    {
+      "word": "aim",
+      "tags": [
+        "goal",
+        "target",
+        "objective",
+        "point",
+        "purpose"
+      ]
+    },
+    {
+      "word": "aircraft",
+      "tags": [
+        "flying machine",
+        "plane",
+        "helicopter",
+        "aviation vehicle",
+        "airborne craft"
+      ]
+    },
+    {
+      "word": "aisle",
+      "tags": [
+        "walkway",
+        "passage",
+        "corridor",
+        "row path",
+        "between seats"
+      ]
+    },
+    {
+      "word": "alarm",
+      "tags": [
+        "warning signal",
+        "alert",
+        "fear",
+        "startles",
+        "bell or siren"
+      ]
+    },
+    {
+      "word": "album",
+      "tags": [
+        "photo collection",
+        "music record",
+        "scrapbook",
+        "compilation",
+        "portfolio"
+      ]
+    },
+    {
+      "word": "alcohol",
+      "tags": [
+        "intoxicating liquid",
+        "spirits",
+        "ethanol",
+        "beverage",
+        "drink"
+      ]
+    },
+    {
+      "word": "alert",
+      "tags": [
+        "watchful",
+        "attentive",
+        "warning",
+        "aware",
+        "vigilant"
+      ]
+    },
+    {
+      "word": "algebra",
+      "tags": [
+        "math branch",
+        "equations",
+        "variables",
+        "x and y",
+        "mathematical"
+      ]
+    },
+    {
+      "word": "alibi",
+      "tags": [
+        "excuse",
+        "defense",
+        "elsewhere proof",
+        "explanation",
+        "justification"
+      ]
+    },
+    {
+      "word": "alien",
+      "tags": [
+        "extraterrestrial",
+        "foreign",
+        "from another place",
+        "outsider",
+        "different"
+      ]
+    },
+    {
+      "word": "align",
+      "tags": [
+        "arrange",
+        "line up",
+        "position",
+        "straighten",
+        "adjust"
+      ]
+    },
+    {
+      "word": "alike",
+      "tags": [
+        "similar",
+        "same",
+        "equal",
+        "comparable",
+        "matching"
+      ]
+    },
+    {
+      "word": "alive",
+      "tags": [
+        "living",
+        "breathing",
+        "existing",
+        "animate",
+        "vital"
+      ]
+    },
+    {
+      "word": "allege",
+      "tags": [
+        "claim",
+        "assert",
+        "declare",
+        "state",
+        "accuse"
+      ]
+    },
+    {
+      "word": "allegiance",
+      "tags": [
+        "loyalty",
+        "devotion",
+        "faithfulness",
+        "commitment",
+        "dedication"
+      ]
+    },
+    {
+      "word": "allergy",
+      "tags": [
+        "immune reaction",
+        "sensitivity",
+        "intolerance",
+        "adverse response",
+        "histamine"
+      ]
+    },
+    {
+      "word": "alleviate",
+      "tags": [
+        "relieve",
+        "ease",
+        "reduce",
+        "lessen",
+        "mitigate"
+      ]
+    },
+    {
+      "word": "alley",
+      "tags": [
+        "narrow street",
+        "lane",
+        "passage",
+        "backstreet",
+        "pathway"
+      ]
+    },
+    {
+      "word": "alliance",
+      "tags": [
+        "partnership",
+        "coalition",
+        "union",
+        "pact",
+        "agreement"
+      ]
+    },
+    {
+      "word": "allocate",
+      "tags": [
+        "assign",
+        "distribute",
+        "allot",
+        "designate",
+        "apportion"
+      ]
+    },
+    {
+      "word": "allow",
+      "tags": [
+        "permit",
+        "let",
+        "enable",
+        "authorize",
+        "approve"
+      ]
+    },
+    {
+      "word": "allowance",
+      "tags": [
+        "money given",
+        "payment",
+        "stipend",
+        "quota",
+        "allocation"
+      ]
+    },
+    {
+      "word": "alloy",
+      "tags": [
+        "metal mixture",
+        "combined metals",
+        "blend",
+        "compound",
+        "brass or bronze"
+      ]
+    },
+    {
+      "word": "allude",
+      "tags": [
+        "refer to",
+        "hint",
+        "suggest",
+        "imply",
+        "mention"
+      ]
+    },
+    {
+      "word": "allure",
+      "tags": [
+        "attract",
+        "charm",
+        "fascinate",
+        "tempt",
+        "appeal"
+      ]
+    },
+    {
+      "word": "ally",
+      "tags": [
+        "partner",
+        "friend",
+        "supporter",
+        "associate",
+        "confederate"
+      ]
+    },
+    {
+      "word": "almanac",
+      "tags": [
+        "yearly calendar",
+        "reference book",
+        "data compilation",
+        "farmers guide",
+        "annual publication"
+      ]
+    },
+    {
+      "word": "almighty",
+      "tags": [
+        "all powerful",
+        "supreme",
+        "omnipotent",
+        "unlimited power",
+        "divine"
+      ]
+    },
+    {
+      "word": "almond",
+      "tags": [
+        "tree nut",
+        "oval shape",
+        "healthy snack",
+        "brown shell",
+        "mild flavor"
+      ]
+    },
+    {
+      "word": "almost",
+      "tags": [
+        "nearly",
+        "not quite",
+        "close to",
+        "practically",
+        "virtually"
+      ]
+    },
+    {
+      "word": "alone",
+      "tags": [
+        "by oneself",
+        "solitary",
+        "isolated",
+        "without others",
+        "solo"
+      ]
+    },
+    {
+      "word": "along",
+      "tags": [
+        "beside",
+        "with",
+        "together",
+        "by the side",
+        "in line"
+      ]
+    },
+    {
+      "word": "aloof",
+      "tags": [
+        "distant",
+        "detached",
+        "reserved",
+        "unfriendly",
+        "remote"
+      ]
+    },
+    {
+      "word": "aloud",
+      "tags": [
+        "audibly",
+        "out loud",
+        "vocally",
+        "spoken",
+        "not silent"
+      ]
+    },
+    {
+      "word": "alphabet",
+      "tags": [
+        "letters",
+        "ABC",
+        "writing system",
+        "characters",
+        "from A to Z"
+      ]
+    },
+    {
+      "word": "alpine",
+      "tags": [
+        "mountain",
+        "high altitude",
+        "snowy peaks",
+        "mountainous",
+        "elevated"
+      ]
+    },
+    {
+      "word": "already",
+      "tags": [
+        "by now",
+        "previously",
+        "before now",
+        "so soon",
+        "earlier"
+      ]
+    },
+    {
+      "word": "also",
+      "tags": [
+        "too",
+        "as well",
+        "in addition",
+        "besides",
+        "furthermore"
+      ]
+    },
+    {
+      "word": "altar",
+      "tags": [
+        "sacred table",
+        "worship place",
+        "church feature",
+        "religious platform",
+        "holy space"
+      ]
+    },
+    {
+      "word": "alter",
+      "tags": [
+        "change",
+        "modify",
+        "adjust",
+        "transform",
+        "revise"
+      ]
+    },
+    {
+      "word": "alternate",
+      "tags": [
+        "take turns",
+        "substitute",
+        "every other",
+        "rotate",
+        "switch"
+      ]
+    },
+    {
+      "word": "alternative",
+      "tags": [
+        "option",
+        "choice",
+        "other way",
+        "substitute",
+        "different route"
+      ]
+    },
+    {
+      "word": "altitude",
+      "tags": [
+        "height",
+        "elevation",
+        "above sea level",
+        "vertical distance",
+        "high up"
+      ]
+    },
+    {
+      "word": "alto",
+      "tags": [
+        "low female voice",
+        "vocal range",
+        "choir part",
+        "singing voice",
+        "between soprano and tenor"
+      ]
+    },
+    {
+      "word": "altogether",
+      "tags": [
+        "completely",
+        "entirely",
+        "totally",
+        "in all",
+        "wholly"
+      ]
+    },
+    {
+      "word": "aluminum",
+      "tags": [
+        "light metal",
+        "silver colored",
+        "cans made from",
+        "recyclable",
+        "element"
+      ]
+    },
+    {
+      "word": "always",
+      "tags": [
+        "forever",
+        "constantly",
+        "every time",
+        "perpetually",
+        "invariably"
+      ]
+    },
+    {
+      "word": "amateur",
+      "tags": [
+        "non professional",
+        "hobbyist",
+        "beginner",
+        "novice",
+        "enthusiast"
+      ]
+    },
+    {
+      "word": "amaze",
+      "tags": [
+        "astonish",
+        "surprise",
+        "astound",
+        "wow",
+        "impress"
+      ]
+    },
+    {
+      "word": "amazing",
+      "tags": [
+        "wonderful",
+        "incredible",
+        "astonishing",
+        "remarkable",
+        "spectacular"
+      ]
+    },
+    {
+      "word": "ambassador",
+      "tags": [
+        "diplomat",
+        "envoy",
+        "representative",
+        "emissary",
+        "official"
+      ]
+    },
+    {
+      "word": "amber",
+      "tags": [
+        "yellow orange",
+        "fossilized resin",
+        "traffic light color",
+        "golden brown",
+        "gem"
+      ]
+    },
+    {
+      "word": "ambiguous",
+      "tags": [
+        "unclear",
+        "vague",
+        "uncertain",
+        "confusing",
+        "open to interpretation"
+      ]
+    },
+    {
+      "word": "ambition",
+      "tags": [
+        "drive",
+        "goal",
+        "aspiration",
+        "determination",
+        "motivation"
+      ]
+    },
+    {
+      "word": "ambitious",
+      "tags": [
+        "driven",
+        "motivated",
+        "determined",
+        "aspiring",
+        "goal oriented"
+      ]
+    },
+    {
+      "word": "amble",
+      "tags": [
+        "stroll",
+        "walk slowly",
+        "saunter",
+        "wander",
+        "ramble"
+      ]
+    },
+    {
+      "word": "ambush",
+      "tags": [
+        "surprise attack",
+        "trap",
+        "lying in wait",
+        "hidden assault",
+        "sneak attack"
+      ]
+    },
+    {
+      "word": "amend",
+      "tags": [
+        "correct",
+        "revise",
+        "improve",
+        "modify",
+        "change"
+      ]
+    },
+    {
+      "word": "amendment",
+      "tags": [
+        "change",
+        "addition",
+        "modification",
+        "revision",
+        "alteration"
+      ]
+    },
+    {
+      "word": "amenity",
+      "tags": [
+        "convenience",
+        "facility",
+        "feature",
+        "service",
+        "comfort"
+      ]
+    },
+    {
+      "word": "amiable",
+      "tags": [
+        "friendly",
+        "pleasant",
+        "likable",
+        "agreeable",
+        "good natured"
+      ]
+    },
+    {
+      "word": "amicable",
+      "tags": [
+        "friendly",
+        "peaceful",
+        "harmonious",
+        "cordial",
+        "cooperative"
+      ]
+    },
+    {
+      "word": "amid",
+      "tags": [
+        "among",
+        "surrounded by",
+        "in the middle of",
+        "between",
+        "during"
+      ]
+    },
+    {
+      "word": "amiss",
+      "tags": [
+        "wrong",
+        "improper",
+        "faulty",
+        "incorrect",
+        "out of place"
+      ]
+    },
+    {
+      "word": "ammonia",
+      "tags": [
+        "cleaning chemical",
+        "pungent smell",
+        "household cleaner",
+        "nitrogen compound",
+        "strong odor"
+      ]
+    },
+    {
+      "word": "ammunition",
+      "tags": [
+        "bullets",
+        "shells",
+        "rounds",
+        "cartridges",
+        "projectiles"
+      ]
+    },
+    {
+      "word": "amnesia",
+      "tags": [
+        "memory loss",
+        "forgetfulness",
+        "cannot remember",
+        "blank mind",
+        "lost memories"
+      ]
+    },
+    {
+      "word": "amnesty",
+      "tags": [
+        "pardon",
+        "forgiveness",
+        "exemption",
+        "clemency",
+        "immunity"
+      ]
+    },
+    {
+      "word": "among",
+      "tags": [
+        "amid",
+        "surrounded by",
+        "in the midst of",
+        "between",
+        "within"
+      ]
+    },
+    {
+      "word": "amount",
+      "tags": [
+        "quantity",
+        "sum",
+        "total",
+        "volume",
+        "measure"
+      ]
+    },
+    {
+      "word": "amphibian",
+      "tags": [
+        "frog or salamander",
+        "lives water and land",
+        "cold blooded",
+        "metamorphosis",
+        "vertebrate"
+      ]
+    },
+    {
+      "word": "amphitheater",
+      "tags": [
+        "round theater",
+        "arena",
+        "outdoor venue",
+        "circular seating",
+        "ancient structure"
+      ]
+    },
+    {
+      "word": "ample",
+      "tags": [
+        "plenty",
+        "sufficient",
+        "abundant",
+        "generous",
+        "enough"
+      ]
+    },
+    {
+      "word": "amplify",
+      "tags": [
+        "make louder",
+        "increase",
+        "expand",
+        "magnify",
+        "boost"
+      ]
+    },
+    {
+      "word": "amputate",
+      "tags": [
+        "cut off limb",
+        "remove surgically",
+        "sever",
+        "medical removal",
+        "surgical procedure"
+      ]
+    },
+    {
+      "word": "amulet",
+      "tags": [
+        "good luck charm",
+        "protective talisman",
+        "magical object",
+        "worn jewelry",
+        "superstitious item"
+      ]
+    },
+    {
+      "word": "amuse",
+      "tags": [
+        "entertain",
+        "make laugh",
+        "delight",
+        "divert",
+        "please"
+      ]
+    },
+    {
+      "word": "amusement",
+      "tags": [
+        "entertainment",
+        "fun",
+        "enjoyment",
+        "recreation",
+        "pleasure"
+      ]
+    },
+    {
+      "word": "analogy",
+      "tags": [
+        "comparison",
+        "similarity",
+        "parallel",
+        "likeness",
+        "metaphor"
+      ]
+    },
+    {
+      "word": "analyze",
+      "tags": [
+        "examine",
+        "study",
+        "investigate",
+        "evaluate",
+        "assess"
+      ]
+    },
+    {
+      "word": "anarchy",
+      "tags": [
+        "no government",
+        "chaos",
+        "disorder",
+        "lawlessness",
+        "pandemonium"
+      ]
+    },
+    {
+      "word": "anatomy",
+      "tags": [
+        "body structure",
+        "physical makeup",
+        "biological organization",
+        "organs and systems",
+        "bodily composition"
+      ]
+    },
+    {
+      "word": "ancestor",
+      "tags": [
+        "forefather",
+        "foremother",
+        "progenitor",
+        "predecessor",
+        "forebear"
+      ]
+    },
+    {
+      "word": "anchor",
+      "tags": [
+        "boat stabilizer",
+        "heavy weight",
+        "news presenter",
+        "holds in place",
+        "secures vessel"
+      ]
+    },
+    {
+      "word": "ancient",
+      "tags": [
+        "very old",
+        "from long ago",
+        "antique",
+        "aged",
+        "historical"
+      ]
+    },
+    {
+      "word": "anecdote",
+      "tags": [
+        "short story",
+        "amusing tale",
+        "brief narrative",
+        "personal account",
+        "interesting incident"
+      ]
+    },
+    {
+      "word": "anemia",
+      "tags": [
+        "low blood",
+        "iron deficiency",
+        "tired condition",
+        "pale skin",
+        "weakness"
+      ]
+    },
+    {
+      "word": "anesthetic",
+      "tags": [
+        "numbing drug",
+        "pain blocker",
+        "surgical medicine",
+        "renders unconscious",
+        "dulls sensation"
+      ]
+    },
+    {
+      "word": "angel",
+      "tags": [
+        "heavenly being",
+        "divine messenger",
+        "celestial creature",
+        "good person",
+        "spiritual entity"
+      ]
+    },
+    {
+      "word": "anger",
+      "tags": [
+        "rage",
+        "fury",
+        "wrath",
+        "annoyance",
+        "ire"
+      ]
+    },
+    {
+      "word": "angle",
+      "tags": [
+        "corner",
+        "viewpoint",
+        "slant",
+        "perspective",
+        "geometric figure"
+      ]
+    },
+    {
+      "word": "angry",
+      "tags": [
+        "mad",
+        "furious",
+        "irate",
+        "annoyed",
+        "enraged"
+      ]
+    },
+    {
+      "word": "anguish",
+      "tags": [
+        "severe pain",
+        "torment",
+        "agony",
+        "distress",
+        "suffering"
+      ]
+    },
+    {
+      "word": "angular",
+      "tags": [
+        "sharp cornered",
+        "having angles",
+        "bony",
+        "thin",
+        "geometric"
+      ]
+    },
+    {
+      "word": "animal",
+      "tags": [
+        "living creature",
+        "beast",
+        "organism",
+        "fauna",
+        "non human being"
+      ]
+    },
+    {
+      "word": "animate",
+      "tags": [
+        "bring to life",
+        "make lively",
+        "energize",
+        "living",
+        "moving"
+      ]
+    },
+    {
+      "word": "animation",
+      "tags": [
+        "cartoon",
+        "movement",
+        "liveliness",
+        "moving pictures",
+        "vitality"
+      ]
+    },
+    {
+      "word": "animosity",
+      "tags": [
+        "hostility",
+        "hatred",
+        "ill will",
+        "enmity",
+        "antagonism"
+      ]
+    },
+    {
+      "word": "ankle",
+      "tags": [
+        "foot joint",
+        "between leg and foot",
+        "lower leg",
+        "bone area",
+        "can twist"
+      ]
+    },
+    {
+      "word": "annex",
+      "tags": [
+        "add on",
+        "attachment",
+        "building addition",
+        "appropriate",
+        "acquire"
+      ]
+    },
+    {
+      "word": "anniversary",
+      "tags": [
+        "yearly date",
+        "celebration",
+        "commemoration",
+        "special date",
+        "annual event"
+      ]
+    },
+    {
+      "word": "announce",
+      "tags": [
+        "declare",
+        "proclaim",
+        "make known",
+        "broadcast",
+        "state"
+      ]
+    },
+    {
+      "word": "annoy",
+      "tags": [
+        "irritate",
+        "bother",
+        "vex",
+        "pester",
+        "disturb"
+      ]
+    },
+    {
+      "word": "annual",
+      "tags": [
+        "yearly",
+        "every year",
+        "once per year",
+        "seasonal",
+        "recurring"
+      ]
+    },
+    {
+      "word": "annul",
+      "tags": [
+        "cancel",
+        "invalidate",
+        "void",
+        "nullify",
+        "revoke"
+      ]
+    },
+    {
+      "word": "anoint",
+      "tags": [
+        "apply oil",
+        "consecrate",
+        "bless",
+        "make sacred",
+        "smear with oil"
+      ]
+    },
+    {
+      "word": "anomaly",
+      "tags": [
+        "abnormality",
+        "irregularity",
+        "deviation",
+        "oddity",
+        "exception"
+      ]
+    },
+    {
+      "word": "anonymous",
+      "tags": [
+        "unnamed",
+        "unknown author",
+        "nameless",
+        "unidentified",
+        "incognito"
+      ]
+    },
+    {
+      "word": "another",
+      "tags": [
+        "one more",
+        "different",
+        "additional",
+        "alternative",
+        "extra"
+      ]
+    },
+    {
+      "word": "answer",
+      "tags": [
+        "response",
+        "reply",
+        "solution",
+        "retort",
+        "reaction"
+      ]
+    },
+    {
+      "word": "antenna",
+      "tags": [
+        "aerial",
+        "receiver",
+        "insect feeler",
+        "radio rod",
+        "signal detector"
+      ]
+    },
+    {
+      "word": "anthem",
+      "tags": [
+        "national song",
+        "hymn",
+        "patriotic music",
+        "ceremonial song",
+        "official tune"
+      ]
+    },
+    {
+      "word": "anthology",
+      "tags": [
+        "collection",
+        "compilation",
+        "selection",
+        "assortment",
+        "gathered works"
+      ]
+    },
+    {
+      "word": "anthropology",
+      "tags": [
+        "study of humans",
+        "cultural science",
+        "human behavior study",
+        "society research",
+        "mankind study"
+      ]
+    },
+    {
+      "word": "antibiotic",
+      "tags": [
+        "germ fighter",
+        "medicine",
+        "infection treatment",
+        "bacterial killer",
+        "penicillin type"
+      ]
+    },
+    {
+      "word": "antibody",
+      "tags": [
+        "immune protein",
+        "disease fighter",
+        "immune system",
+        "protection",
+        "viral defense"
+      ]
+    },
+    {
+      "word": "anticipate",
+      "tags": [
+        "expect",
+        "foresee",
+        "predict",
+        "look forward",
+        "await"
+      ]
+    },
+    {
+      "word": "antidote",
+      "tags": [
+        "remedy",
+        "cure",
+        "counteragent",
+        "poison neutralizer",
+        "treatment"
+      ]
+    },
+    {
+      "word": "antique",
+      "tags": [
+        "old object",
+        "vintage",
+        "aged item",
+        "collectible",
+        "ancient artifact"
+      ]
+    },
+    {
+      "word": "antiseptic",
+      "tags": [
+        "germ killing",
+        "disinfectant",
+        "sterilizing",
+        "clean",
+        "prevents infection"
+      ]
+    },
+    {
+      "word": "antisocial",
+      "tags": [
+        "unfriendly",
+        "withdrawn",
+        "against society",
+        "hermit like",
+        "unsociable"
+      ]
+    },
+    {
+      "word": "antler",
+      "tags": [
+        "deer horn",
+        "branched growth",
+        "bony projection",
+        "seasonal growth",
+        "trophy"
+      ]
+    },
+    {
+      "word": "antonym",
+      "tags": [
+        "opposite word",
+        "contrary meaning",
+        "reverse term",
+        "contrasting word",
+        "opposing sense"
+      ]
+    },
+    {
+      "word": "anxiety",
+      "tags": [
+        "worry",
+        "nervousness",
+        "unease",
+        "apprehension",
+        "concern"
+      ]
+    },
+    {
+      "word": "anxious",
+      "tags": [
+        "worried",
+        "nervous",
+        "uneasy",
+        "concerned",
+        "apprehensive"
+      ]
+    },
+    {
+      "word": "any",
+      "tags": [
+        "some",
+        "whichever",
+        "at all",
+        "one or more",
+        "every"
+      ]
+    },
+    {
+      "word": "anybody",
+      "tags": [
+        "anyone",
+        "any person",
+        "whoever",
+        "some person",
+        "everybody"
+      ]
+    },
+    {
+      "word": "anymore",
+      "tags": [
+        "any longer",
+        "now",
+        "at present",
+        "still",
+        "from now on"
+      ]
+    },
+    {
+      "word": "anyone",
+      "tags": [
+        "anybody",
+        "any person",
+        "whoever",
+        "someone",
+        "one"
+      ]
+    },
+    {
+      "word": "anything",
+      "tags": [
+        "whatever",
+        "all things",
+        "any object",
+        "something",
+        "any matter"
+      ]
+    },
+    {
+      "word": "anyway",
+      "tags": [
+        "anyhow",
+        "regardless",
+        "in any case",
+        "nevertheless",
+        "still"
+      ]
     }
   ]
 }
