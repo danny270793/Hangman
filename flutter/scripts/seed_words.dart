@@ -137,37 +137,78 @@ Future<void> syncWordsForLocale(
   // Step 2: Download existing words from database with their tags
   print('  ⬇️  Downloading existing words from database...');
   
-  final wordsResponse = await supabase
-      .from('words')
-      .select('id, word')
-      .eq('locale', locale);
-
   final existingWords = <String, int>{}; // word -> id
   final wordIds = <int>[];
   
-  for (final row in wordsResponse as List<dynamic>) {
-    final word = (row['word'] as String).toUpperCase();
-    final id = row['id'] as int;
-    existingWords[word] = id;
-    wordIds.add(id);
+  // Fetch all words using pagination (1000 records per batch)
+  int offset = 0;
+  const int batchSize = 1000;
+  
+  while (true) {
+      final wordsResponse = await supabase
+          .from('words')
+          .select('id, word')
+          .eq('locale', locale)
+          .range(offset, offset + batchSize - 1);
+      
+      if ((wordsResponse as List<dynamic>).isEmpty) {
+        break;
+      }
+    
+    for (final row in wordsResponse) {
+      final word = (row['word'] as String).toUpperCase();
+      final id = row['id'] as int;
+      existingWords[word] = id;
+      wordIds.add(id);
+    }
+    
+    if ((wordsResponse as List<dynamic>).length < batchSize) {
+      break;
+    }
+    
+    offset += batchSize;
   }
 
   // Download all word-tag relationships for this locale's words
   final existingWordTags = <int, List<String>>{}; // wordId -> [tagNames]
   
   if (wordIds.isNotEmpty) {
-    final wordTagsResponse = await supabase
-        .from('word_tags')
-        .select('word_id, tags(tag)')
-        .inFilter('word_id', wordIds);
+    // Fetch word-tags in batches (Supabase .in() filter with pagination)
+    // Process wordIds in chunks to avoid URL length limits
+    const int chunkSize = 500;
     
-    for (final row in wordTagsResponse as List<dynamic>) {
-      final wordId = row['word_id'] as int;
-      final tagInfo = row['tags'] as Map<String, dynamic>?;
+    for (int i = 0; i < wordIds.length; i += chunkSize) {
+      final chunk = wordIds.skip(i).take(chunkSize).toList();
       
-      if (tagInfo != null && tagInfo['tag'] != null) {
-        final tagName = tagInfo['tag'] as String;
-        existingWordTags.putIfAbsent(wordId, () => []).add(tagName);
+      int offset = 0;
+      const int batchSize = 1000;
+      
+      while (true) {
+        final wordTagsResponse = await supabase
+            .from('word_tags')
+            .select('word_id, tags(tag)')
+            .inFilter('word_id', chunk)
+            .range(offset, offset + batchSize - 1);
+        
+        if ((wordTagsResponse as List<dynamic>).isEmpty) {
+          break;
+        }
+        
+        for (final row in wordTagsResponse) {
+          final wordId = row['word_id'] as int;
+          final tagInfo = row['tags'] as Map<String, dynamic>?;
+          
+          if (tagInfo != null && tagInfo['tag'] != null) {
+            final tagName = tagInfo['tag'] as String;
+            existingWordTags.putIfAbsent(wordId, () => []).add(tagName);
+          }
+        }
+        
+        if ((wordTagsResponse as List<dynamic>).length < batchSize) {
+          break;
+        }
+        
+        offset += batchSize;
       }
     }
   }
@@ -313,27 +354,45 @@ Future<void> syncWordsForLocale(
   // Step 7: Clean up orphaned tags (tags not associated with any words for this locale)
   print('  🧹 Cleaning up orphaned tags...');
   try {
-    // Get all tags for this locale
-    final allTagsResponse = await supabase
-        .from('tags')
-        .select('id, tag')
-        .eq('locale', locale);
-    
+    // Get all tags for this locale using pagination
+    int offset = 0;
+    const int batchSize = 1000;
     int orphanedCount = 0;
-    for (final tagRow in allTagsResponse as List<dynamic>) {
-      final tagId = tagRow['id'] as int;
+    
+    while (true) {
+      final allTagsResponse = await supabase
+          .from('tags')
+          .select('id, tag')
+          .eq('locale', locale)
+          .range(offset, offset + batchSize - 1);
       
-      // Check if this tag is associated with any words
-      final wordTagsCount = await supabase
-          .from('word_tags')
-          .select('word_id')
-          .eq('tag_id', tagId)
-          .count();
-      
-      if (wordTagsCount == 0) {
-        await supabase.from('tags').delete().eq('id', tagId);
-        orphanedCount++;
+      if ((allTagsResponse as List<dynamic>).isEmpty) {
+        break;
       }
+      
+      for (final tagRow in allTagsResponse) {
+        final tagId = tagRow['id'] as int;
+        
+        // Check if this tag is associated with any words
+        final wordTagsResponse = await supabase
+            .from('word_tags')
+            .select('word_id')
+            .eq('tag_id', tagId)
+            .limit(1);
+        
+        final count = (wordTagsResponse as List<dynamic>).length;
+        
+        if (count == 0) {
+          await supabase.from('tags').delete().eq('id', tagId);
+          orphanedCount++;
+        }
+      }
+      
+      if ((allTagsResponse as List<dynamic>).length < batchSize) {
+        break;
+      }
+      
+      offset += batchSize;
     }
     
     if (orphanedCount > 0) {
