@@ -260,10 +260,7 @@ class _AboutPageState extends State<AboutPage> {
   Widget _buildFeaturesList(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final features = [
-      {
-        'icon': Icons.translate,
-        'text': l10n.featureMultilingual,
-      },
+      {'icon': Icons.translate, 'text': l10n.featureMultilingual},
       {'icon': Icons.emoji_events, 'text': l10n.featureLeaderboards},
       {'icon': Icons.tune, 'text': l10n.featureDifficulty},
       {'icon': Icons.timer, 'text': l10n.featureTimed},
