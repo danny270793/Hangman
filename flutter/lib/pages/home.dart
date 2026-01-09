@@ -67,20 +67,20 @@ class HomePage extends StatelessWidget {
                     top: 8,
                     right: 8,
                     child: IconButton(
-                  icon: const Icon(Icons.settings),
-                  iconSize: 28,
-                  onPressed: () {
-                    context.push(SettingsPage.routeName);
-                  },
-                  tooltip: l10n.settings,
-                  style: IconButton.styleFrom(
-                    backgroundColor: Theme.of(
-                      context,
-                    ).colorScheme.surface.withOpacity(0.9),
-                    foregroundColor: Theme.of(context).colorScheme.primary,
+                      icon: const Icon(Icons.settings),
+                      iconSize: 28,
+                      onPressed: () {
+                        context.push(SettingsPage.routeName);
+                      },
+                      tooltip: l10n.settings,
+                      style: IconButton.styleFrom(
+                        backgroundColor: Theme.of(
+                          context,
+                        ).colorScheme.surface.withOpacity(0.9),
+                        foregroundColor: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
                   ),
-                ),
-              ),
                 ],
               );
             },
@@ -101,15 +101,22 @@ class HomePage extends StatelessWidget {
       children: [
         // Logo/Title Section
         Container(
-          padding: const EdgeInsets.all(24),
+          width: 120,
+          height: 120,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            color: Colors.white,
             shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 10,
+                spreadRadius: 2,
+              ),
+            ],
           ),
-          child: Icon(
-            Icons.games_outlined,
-            size: 80,
-            color: Theme.of(context).colorScheme.primary,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Image.asset('assets/icons/icon.png', fit: BoxFit.contain),
           ),
         ),
         const SizedBox(height: 24),
@@ -157,15 +164,25 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(20),
+                width: 100,
+                height: 100,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                  color: Colors.white,
                   shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                    ),
+                  ],
                 ),
-                child: Icon(
-                  Icons.games_outlined,
-                  size: 60,
-                  color: Theme.of(context).colorScheme.primary,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Image.asset(
+                    'assets/icons/icon.png',
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -186,20 +203,20 @@ class HomePage extends StatelessWidget {
         Expanded(
           child: SingleChildScrollView(
             child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildConfigurationCard(
-                context,
-                l10n,
-                difficultyService,
-                timedModeService,
-              ),
-              const SizedBox(height: 24),
-              _buildPlayButton(context, l10n),
-              const SizedBox(height: 16),
-              _buildRecordsButton(context, l10n),
-            ],
-          ),
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildConfigurationCard(
+                  context,
+                  l10n,
+                  difficultyService,
+                  timedModeService,
+                ),
+                const SizedBox(height: 24),
+                _buildPlayButton(context, l10n),
+                const SizedBox(height: 16),
+                _buildRecordsButton(context, l10n),
+              ],
+            ),
           ),
         ),
       ],
@@ -291,7 +308,7 @@ class HomePage extends StatelessWidget {
       width: double.infinity,
       height: 50,
       child: OutlinedButton.icon(
-          onPressed: () {
+        onPressed: () {
           context.push(RecordsPage.routeName);
         },
         icon: const Icon(Icons.emoji_events, size: 24),
