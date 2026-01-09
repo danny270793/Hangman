@@ -351,56 +351,56 @@ Future<void> syncWordsForLocale(
     print('     ✅ Deleted: $deletedCount words');
   }
 
-  // Step 7: Clean up orphaned tags (tags not associated with any words for this locale)
-  print('  🧹 Cleaning up orphaned tags...');
-  try {
-    // Get all tags for this locale using pagination
-    int offset = 0;
-    const int batchSize = 1000;
-    int orphanedCount = 0;
+  // // Step 7: Clean up orphaned tags (tags not associated with any words for this locale)
+  // print('  🧹 Cleaning up orphaned tags...');
+  // try {
+  //   // Get all tags for this locale using pagination
+  //   int offset = 0;
+  //   const int batchSize = 1000;
+  //   int orphanedCount = 0;
     
-    while (true) {
-      final allTagsResponse = await supabase
-          .from('tags')
-          .select('id, tag')
-          .eq('locale', locale)
-          .range(offset, offset + batchSize - 1);
+  //   while (true) {
+  //     final allTagsResponse = await supabase
+  //         .from('tags')
+  //         .select('id, tag')
+  //         .eq('locale', locale)
+  //         .range(offset, offset + batchSize - 1);
       
-      if ((allTagsResponse as List<dynamic>).isEmpty) {
-        break;
-      }
+  //     if ((allTagsResponse as List<dynamic>).isEmpty) {
+  //       break;
+  //     }
       
-      for (final tagRow in allTagsResponse) {
-        final tagId = tagRow['id'] as int;
+  //     for (final tagRow in allTagsResponse) {
+  //       final tagId = tagRow['id'] as int;
         
-        // Check if this tag is associated with any words
-        final wordTagsResponse = await supabase
-            .from('word_tags')
-            .select('word_id')
-            .eq('tag_id', tagId)
-            .limit(1);
+  //       // Check if this tag is associated with any words
+  //       final wordTagsResponse = await supabase
+  //           .from('word_tags')
+  //           .select('word_id')
+  //           .eq('tag_id', tagId)
+  //           .limit(1);
         
-        final count = (wordTagsResponse as List<dynamic>).length;
+  //       final count = (wordTagsResponse as List<dynamic>).length;
         
-        if (count == 0) {
-          await supabase.from('tags').delete().eq('id', tagId);
-          orphanedCount++;
-        }
-      }
+  //       if (count == 0) {
+  //         await supabase.from('tags').delete().eq('id', tagId);
+  //         orphanedCount++;
+  //       }
+  //     }
       
-      if ((allTagsResponse as List<dynamic>).length < batchSize) {
-        break;
-      }
+  //     if ((allTagsResponse as List<dynamic>).length < batchSize) {
+  //       break;
+  //     }
       
-      offset += batchSize;
-    }
+  //     offset += batchSize;
+  //   }
     
-    if (orphanedCount > 0) {
-      print('     ✅ Cleaned up: $orphanedCount orphaned tags');
-    }
-  } catch (e) {
-    print('     ⚠️  Warning: Could not clean up orphaned tags: $e');
-  }
+  //   if (orphanedCount > 0) {
+  //     print('     ✅ Cleaned up: $orphanedCount orphaned tags');
+  //   }
+  // } catch (e) {
+  //   print('     ⚠️  Warning: Could not clean up orphaned tags: $e');
+  // }
 
   print('');
   print('  ✅ $locale sync complete: ➕$insertedCount ➖$deletedCount 🔄$updatedCount\n');
