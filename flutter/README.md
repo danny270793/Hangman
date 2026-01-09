@@ -38,13 +38,20 @@ dart run flutter_launcher_icons
 flutter gen-l10n
 ```
 
-### Seed words database
+### Sync words database
 
-To populate the Supabase database with words from JSON files:
+To sync words between local JSON files and Supabase database:
 
 ```bash
 dart scripts/seed_words.dart
 ```
+
+**What it does:**
+1. Downloads existing words from Supabase for each locale
+2. Compares with local JSON files (`assets/words_en.json`, `assets/words_es.json`)
+3. **Inserts** words that are in JSON but not in database
+4. **Updates** tags for words that exist in both
+5. **Deletes** words that are in database but not in JSON
 
 **Note**: Requires `SUPABASE_SERVICE_KEY` in your `.env` file (available in your Supabase project settings).
 
