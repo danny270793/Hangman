@@ -192,24 +192,52 @@ VALUES
   (1, 3);  -- elephant -> largest land animal
 ```
 
-## Difficulty Value Guidelines
+## Difficulty Value System
 
-When adding words, use these guidelines for assigning difficulty values:
+The `difficulty_value` field is an integer between 0-100 representing word difficulty. This value is **automatically calculated** using a sophisticated algorithm.
 
-- **1-20**: Very Easy (3-4 letters, common words)
-  - Example: "cat", "dog", "sun"
-  
-- **21-40**: Easy (5-6 letters, simple words)
-  - Example: "apple", "house", "water"
-  
-- **41-60**: Medium (7-8 letters, moderate complexity)
-  - Example: "elephant", "computer", "mountain"
-  
-- **61-80**: Hard (9-10 letters, complex words)
-  - Example: "basketball", "helicopter", "philosophy"
-  
-- **81-100**: Very Hard (11+ letters, rare/complex words)
-  - Example: "extraordinary", "photosynthesis", "cryptocurrency"
+### Automatic Calculation
+
+Difficulty is calculated automatically based on three factors:
+
+1. **Unique Letter Ratio (40%)**: Fewer repeated letters = harder
+2. **Letter Rarity (35%)**: Uncommon letters = harder (language-specific)
+3. **Word Length (25%)**: Longer words = harder
+
+### Difficulty Categories
+
+- **Easy (0-33)**: Short words, common letters, many repeats
+- **Medium (34-66)**: Moderate length, mixed letter frequency
+- **Hard (67-100)**: Long words, rare letters, few repeats
+
+### Database Functions
+
+#### Calculate Difficulty for Any Word
+```sql
+SELECT calculate_word_difficulty('DEVELOPER', 'en');
+-- Returns: 0.58 (stored as 58 in difficulty_value)
+```
+
+#### Update All Word Difficulties
+```sql
+SELECT update_all_word_difficulties();
+-- Recalculates difficulty for all words
+```
+
+#### Update by Locale
+```sql
+SELECT update_word_difficulties_by_locale('en');
+-- Recalculates only English words
+```
+
+### Automatic Updates
+
+Words automatically recalculate difficulty when:
+- ✅ New word is inserted
+- ✅ Existing word text is updated
+- ✅ Word locale is changed
+
+**Note:** See `DIFFICULTY_CALCULATION.md` for complete documentation on the difficulty algorithm, letter frequency tables, and customization options.
 
 ## Querying Examples
 
