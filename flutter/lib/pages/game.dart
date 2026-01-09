@@ -406,7 +406,9 @@ class _GamePageState extends State<GamePage> {
                             l10n.time,
                             '${_remainingSeconds}s',
                             Icons.timer,
-                            _remainingSeconds <= 10 ? Colors.red : Colors.orange,
+                            _remainingSeconds <= 10
+                                ? Colors.red
+                                : Colors.orange,
                           ),
                         _buildScoreCard(
                           l10n.lettersUsed,
