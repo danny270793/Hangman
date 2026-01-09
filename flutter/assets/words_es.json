@@ -4669,6 +4669,486 @@
         "sujeto",
         "varón"
       ]
+    },
+    {
+      "word": "abadía",
+      "tags": [
+        "edificio religioso",
+        "monasterio",
+        "estructura piedra",
+        "sitio histórico",
+        "lugar pacífico"
+      ]
+    },
+    {
+      "word": "ábaco",
+      "tags": [
+        "herramienta contar",
+        "cuentas en varillas",
+        "calculadora antigua",
+        "ayuda matemática",
+        "dispositivo marco"
+      ]
+    },
+    {
+      "word": "abdomen",
+      "tags": [
+        "parte cuerpo",
+        "entre pecho y pelvis",
+        "contiene órganos",
+        "área estómago",
+        "sección torso"
+      ]
+    },
+    {
+      "word": "abertura",
+      "tags": [
+        "agujero",
+        "espacio abierto",
+        "entrada",
+        "brecha",
+        "hueco"
+      ]
+    },
+    {
+      "word": "abierto",
+      "tags": [
+        "no cerrado",
+        "accesible",
+        "disponible",
+        "sin tapa",
+        "franco"
+      ]
+    },
+    {
+      "word": "abismo",
+      "tags": [
+        "sima profunda",
+        "pozo sin fondo",
+        "profundidad vasta",
+        "vacío infinito",
+        "garganta"
+      ]
+    },
+    {
+      "word": "abnegación",
+      "tags": [
+        "sacrificio",
+        "renuncia",
+        "desinterés",
+        "altruismo",
+        "generosidad"
+      ]
+    },
+    {
+      "word": "abolir",
+      "tags": [
+        "terminar completamente",
+        "eliminar",
+        "deshacerse",
+        "cancelar",
+        "quitar"
+      ]
+    },
+    {
+      "word": "abordar",
+      "tags": [
+        "subir a vehículo",
+        "tratar tema",
+        "acercarse",
+        "enfrentar",
+        "empezar"
+      ]
+    },
+    {
+      "word": "abrasar",
+      "tags": [
+        "quemar",
+        "calcinar",
+        "chamuscar",
+        "tostar",
+        "incinerar"
+      ]
+    },
+    {
+      "word": "abrazo",
+      "tags": [
+        "gesto afectivo",
+        "rodear con brazos",
+        "muestra cariño",
+        "saludo cálido",
+        "apretón"
+      ]
+    },
+    {
+      "word": "abrelatas",
+      "tags": [
+        "abre latas",
+        "herramienta cocina",
+        "utensilio",
+        "cortador metal",
+        "manual o eléctrico"
+      ]
+    },
+    {
+      "word": "abrigo",
+      "tags": [
+        "prenda exterior",
+        "clima frío",
+        "mangas largas",
+        "botones o cremallera",
+        "cálido"
+      ]
+    },
+    {
+      "word": "abrir",
+      "tags": [
+        "hacer accesible",
+        "descubrir",
+        "iniciar",
+        "desplegar",
+        "develar"
+      ]
+    },
+    {
+      "word": "abrupto",
+      "tags": [
+        "repentino",
+        "inesperado",
+        "cambio brusco",
+        "sin aviso",
+        "rápido"
+      ]
+    },
+    {
+      "word": "absoluto",
+      "tags": [
+        "total",
+        "completo",
+        "sin restricción",
+        "incondicional",
+        "definitivo"
+      ]
+    },
+    {
+      "word": "absorber",
+      "tags": [
+        "empapar",
+        "tomar",
+        "acción esponja",
+        "integrar",
+        "asimilar"
+      ]
+    },
+    {
+      "word": "abstinencia",
+      "tags": [
+        "privación voluntaria",
+        "no consumir",
+        "renuncia",
+        "autocontrol",
+        "ayuno"
+      ]
+    },
+    {
+      "word": "abstracto",
+      "tags": [
+        "teórico",
+        "no concreto",
+        "conceptual",
+        "difícil entender",
+        "resumen"
+      ]
+    },
+    {
+      "word": "absurdo",
+      "tags": [
+        "ridículo",
+        "sin sentido",
+        "ilógico",
+        "irrazonable",
+        "tonto"
+      ]
+    },
+    {
+      "word": "abuela",
+      "tags": [
+        "madre del padre",
+        "mayor familia",
+        "cocina rico",
+        "cariñosa",
+        "sabia"
+      ]
+    },
+    {
+      "word": "abuelo",
+      "tags": [
+        "padre del padre",
+        "mayor familia",
+        "cuenta historias",
+        "cariñoso",
+        "sabio"
+      ]
+    },
+    {
+      "word": "abundancia",
+      "tags": [
+        "mucho de algo",
+        "más que suficiente",
+        "amplio suministro",
+        "copioso",
+        "rico"
+      ]
+    },
+    {
+      "word": "aburrido",
+      "tags": [
+        "sin interés",
+        "tedioso",
+        "monótono",
+        "fastidioso",
+        "cansado"
+      ]
+    },
+    {
+      "word": "abusar",
+      "tags": [
+        "maltrato",
+        "uso incorrecto",
+        "dañar",
+        "trato cruel",
+        "excederse"
+      ]
+    },
+    {
+      "word": "academia",
+      "tags": [
+        "escuela",
+        "institución educativa",
+        "lugar aprendizaje",
+        "centro entrenamiento",
+        "colegio"
+      ]
+    },
+    {
+      "word": "académico",
+      "tags": [
+        "relacionado escuela",
+        "erudito",
+        "educativo",
+        "intelectual",
+        "teórico"
+      ]
+    },
+    {
+      "word": "acariciar",
+      "tags": [
+        "tocar suavemente",
+        "mostrar afecto",
+        "pasar mano",
+        "mimar",
+        "abrazar"
+      ]
+    },
+    {
+      "word": "acaso",
+      "tags": [
+        "quizás",
+        "tal vez",
+        "posiblemente",
+        "casualidad",
+        "eventualmente"
+      ]
+    },
+    {
+      "word": "acceder",
+      "tags": [
+        "permitir entrada",
+        "consentir",
+        "aceptar",
+        "dar paso",
+        "autorizar"
+      ]
+    },
+    {
+      "word": "acceso",
+      "tags": [
+        "entrada",
+        "permiso entrar",
+        "alcance",
+        "aproximación",
+        "admisión"
+      ]
+    },
+    {
+      "word": "accidente",
+      "tags": [
+        "evento no planeado",
+        "percance",
+        "colisión",
+        "incidente inesperado",
+        "ocurrencia desafortunada"
+      ]
+    },
+    {
+      "word": "acción",
+      "tags": [
+        "actividad",
+        "hecho",
+        "movimiento",
+        "hacer algo",
+        "comportamiento"
+      ]
+    },
+    {
+      "word": "aceite",
+      "tags": [
+        "líquido graso",
+        "cocinar",
+        "oliva o vegetal",
+        "lubricante",
+        "comestible"
+      ]
+    },
+    {
+      "word": "aceituna",
+      "tags": [
+        "fruta mediterránea",
+        "verde o negra",
+        "para aceite",
+        "aperitivo",
+        "árbol olivo"
+      ]
+    },
+    {
+      "word": "acelerar",
+      "tags": [
+        "aumentar velocidad",
+        "ir más rápido",
+        "incrementar ritmo",
+        "apresurar",
+        "avivar"
+      ]
+    },
+    {
+      "word": "acento",
+      "tags": [
+        "estilo pronunciación",
+        "patrón habla",
+        "dialecto regional",
+        "énfasis",
+        "inflexión"
+      ]
+    },
+    {
+      "word": "aceptar",
+      "tags": [
+        "estar de acuerdo",
+        "aprobar",
+        "tomar voluntariamente",
+        "consentir",
+        "admitir"
+      ]
+    },
+    {
+      "word": "acera",
+      "tags": [
+        "camino peatones",
+        "al lado calle",
+        "pavimento",
+        "vereda",
+        "banqueta"
+      ]
+    },
+    {
+      "word": "acerca",
+      "tags": [
+        "sobre tema",
+        "relacionado con",
+        "respecto a",
+        "en cuanto a",
+        "referente"
+      ]
+    },
+    {
+      "word": "acercar",
+      "tags": [
+        "traer cerca",
+        "aproximar",
+        "mover hacia",
+        "juntar",
+        "arrimar"
+      ]
+    },
+    {
+      "word": "acero",
+      "tags": [
+        "metal fuerte",
+        "aleación hierro",
+        "construcción",
+        "duro",
+        "resistente"
+      ]
+    },
+    {
+      "word": "acertijo",
+      "tags": [
+        "enigma",
+        "pregunta difícil",
+        "rompecabezas",
+        "adivinanza",
+        "misterio"
+      ]
+    },
+    {
+      "word": "achicar",
+      "tags": [
+        "hacer más pequeño",
+        "reducir tamaño",
+        "encoger",
+        "disminuir",
+        "comprimir"
+      ]
+    },
+    {
+      "word": "ácido",
+      "tags": [
+        "sustancia agria",
+        "líquido corrosivo",
+        "pH bajo",
+        "químico",
+        "ácido"
+      ]
+    },
+    {
+      "word": "aclamar",
+      "tags": [
+        "alabar",
+        "aplaudir",
+        "reconocimiento",
+        "admiración",
+        "ovación"
+      ]
+    },
+    {
+      "word": "aclarar",
+      "tags": [
+        "hacer claro",
+        "explicar",
+        "eliminar dudas",
+        "iluminar",
+        "esclarecer"
+      ]
+    },
+    {
+      "word": "acomodar",
+      "tags": [
+        "ordenar",
+        "arreglar",
+        "ajustar",
+        "colocar",
+        "organizar"
+      ]
     }
   ]
 }
