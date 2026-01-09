@@ -1,8 +1,8 @@
 # iOS Version Update Script
 
-This directory contains a script to automate version updates for the iOS app using semantic versioning.
+This directory contains scripts to automate version updates for the iOS app using semantic versioning.
 
-## Script: `update_ios_version.sh`
+## Script: `update_ios_version.dart` (Recommended)
 
 ### What it does:
 - Reads the current version from `pubspec.yaml`
@@ -15,16 +15,27 @@ This directory contains a script to automate version updates for the iOS app usi
 
 ```bash
 # From the project root
-./scripts/update_ios_version.sh
+dart scripts/update_ios_version.dart
+
+# Or make it executable and run directly
+./scripts/update_ios_version.dart
 
 # Or from anywhere
-/path/to/flutter/scripts/update_ios_version.sh
+dart /path/to/flutter/scripts/update_ios_version.dart
+```
+
+### Legacy Bash Version:
+
+A bash version (`update_ios_version.sh`) is also available for compatibility:
+
+```bash
+./scripts/update_ios_version.sh
 ```
 
 ### Example:
 
 ```bash
-$ ./scripts/update_ios_version.sh
+$ dart scripts/update_ios_version.dart
 
 📱 iOS Version Updater
 =======================
