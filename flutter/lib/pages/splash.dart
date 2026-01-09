@@ -99,7 +99,7 @@ class _SplashPageState extends State<SplashPage>
                         width: 120,
                         height: 120,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.surface,
+                          color: Colors.white,
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
@@ -109,10 +109,12 @@ class _SplashPageState extends State<SplashPage>
                             ),
                           ],
                         ),
-                        child: Icon(
-                          Icons.sports_esports,
-                          size: 60,
-                          color: Theme.of(context).colorScheme.primary,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Image.asset(
+                            'assets/icons/icon.png',
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 40),
