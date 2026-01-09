@@ -38,17 +38,17 @@ ALTER TABLE public.tags ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.word_tags ENABLE ROW LEVEL SECURITY;
 
 -- RLS Policies: Everyone can read words, tags, and word_tags (authenticated users)
-CREATE POLICY "Anyone authneticated can view words"
+CREATE POLICY "Anyone authenticated can view words"
 ON public.words FOR SELECT
 TO authenticated
 USING (true);
 
-CREATE POLICY "Anyone authneticated can view tags"
+CREATE POLICY "Anyone authenticated can view tags"
 ON public.tags FOR SELECT
 TO authenticated
 USING (true);
 
-CREATE POLICY "Anyone authneticated can view word_tags"
+CREATE POLICY "Anyone authenticated can view word_tags"
 ON public.word_tags FOR SELECT
 TO authenticated
 USING (true);
