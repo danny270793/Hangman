@@ -76,7 +76,6 @@ class MyApp extends StatelessWidget {
     AboutPage.routeName,
   ];
   final publicPages = const [
-    SplashPage.routeName,
     LoginPage.routeName,
     RegisterPage.routeName,
   ];
