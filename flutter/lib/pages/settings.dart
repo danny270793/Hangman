@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hangman/l10n/app_localizations.dart';
 import 'package:hangman/pages/privacy.dart';
+import 'package:hangman/pages/terms.dart';
 import 'package:hangman/services/auth_service.dart';
 import 'package:hangman/services/locale_service.dart';
 import 'package:hangman/services/theme_service.dart';
@@ -261,9 +262,7 @@ class _SettingsPageState extends State<SettingsPage> {
             icon: Icons.description_outlined,
             title: l10n.termsOfService,
             onTap: () {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(l10n.comingSoon)));
+              context.push(TermsPage.routeName);
             },
           ),
 
