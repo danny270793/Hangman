@@ -11,7 +11,8 @@ class Word {
   /// Example: "café" -> "cafe", "árbol" -> "arbol"
   static String _removeAccents(String text) {
     const withAccents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ';
-    const withoutAccents = 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn';
+    const withoutAccents =
+        'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn';
 
     String result = text;
     for (int i = 0; i < withAccents.length; i++) {
@@ -23,7 +24,7 @@ class Word {
   factory Word.fromJson(Map<String, dynamic> json) {
     final originalWord = json['word'] as String;
     final wordWithoutAccents = _removeAccents(originalWord);
-    
+
     return Word(
       word: wordWithoutAccents,
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),

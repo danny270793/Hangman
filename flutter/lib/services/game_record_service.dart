@@ -51,7 +51,9 @@ class GameRecordService {
     }
   }
 
-  Future<List<Map<String, dynamic>>> getAllGameRecords({int limit = 100}) async {
+  Future<List<Map<String, dynamic>>> getAllGameRecords({
+    int limit = 100,
+  }) async {
     try {
       // Query from the view that joins with auth.users to get usernames
       final response = await _supabase
@@ -66,4 +68,3 @@ class GameRecordService {
     }
   }
 }
-
