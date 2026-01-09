@@ -57,25 +57,7 @@ USING (true);
 -- These policies are intentionally not created to restrict modifications
 -- Use service role or admin panel for data management
 
--- Create a view to fetch words with their tags
-CREATE OR REPLACE VIEW public.words_with_tags AS
-SELECT 
-    w.id,
-    w.word,
-    w.difficulty_value,
-    w.locale,
-    w.created_at,
-    ARRAY_AGG(t.tag ORDER BY t.tag) FILTER (WHERE t.tag IS NOT NULL) as tags
-FROM public.words w
-LEFT JOIN public.word_tags wt ON w.id = wt.word_id
-LEFT JOIN public.tags t ON wt.tag_id = t.id
-GROUP BY w.id, w.word, w.difficulty_value, w.locale, w.created_at;
-
--- Grant SELECT permission on the view
-GRANT SELECT ON public.words_with_tags TO authenticated;
-
 COMMENT ON TABLE public.words IS 'Stores words for the Hangman game with difficulty values and locale';
 COMMENT ON TABLE public.tags IS 'Stores descriptive tags/hints for words';
 COMMENT ON TABLE public.word_tags IS 'Junction table linking words to their tags';
-COMMENT ON VIEW public.words_with_tags IS 'View that returns words with their associated tags as an array';
 
