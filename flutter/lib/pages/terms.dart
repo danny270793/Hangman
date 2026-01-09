@@ -11,9 +11,7 @@ class TermsPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.termsOfService),
-      ),
+      appBar: AppBar(title: Text(l10n.termsOfService)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -130,9 +128,9 @@ class TermsPage extends StatelessWidget {
               child: Text(
                 'Last Updated: January 2026',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      fontStyle: FontStyle.italic,
-                    ),
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -149,20 +147,19 @@ class TermsPage extends StatelessWidget {
         Text(
           title,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
         const SizedBox(height: 12),
         Text(
           content,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                height: 1.6,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
+            height: 1.6,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
         ),
       ],
     );
   }
 }
-
