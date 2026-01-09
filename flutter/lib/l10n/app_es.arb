@@ -105,6 +105,7 @@
   "rank": "Rango",
   "player": "Jugador",
   "noRecordsYet": "¡Aún no hay récords. Sé el primero en jugar!",
+  "loadMore": "Cargar Más",
   "gameConfiguration": "Configuración del Juego",
   "exitGame": "¿Salir del Juego?",
   "exitGameConfirmation": "¿Estás seguro de que quieres salir? Se perderá tu progreso actual.",
