@@ -6629,6 +6629,3316 @@
         "frita o cocida",
         "plato tradicional"
       ]
+    },
+    {
+      "word": "álbum",
+      "tags": [
+        "colección fotos",
+        "disco música",
+        "scrapbook",
+        "compilación",
+        "portafolio"
+      ]
+    },
+    {
+      "word": "alcohol",
+      "tags": [
+        "líquido intoxicante",
+        "bebida",
+        "etanol",
+        "licor",
+        "espirituoso"
+      ]
+    },
+    {
+      "word": "alboroto",
+      "tags": [
+        "disturbio",
+        "ruido",
+        "escándalo",
+        "jaleo",
+        "tumulto"
+      ]
+    },
+    {
+      "word": "alborozo",
+      "tags": [
+        "júbilo",
+        "alegría extrema",
+        "regocijo",
+        "euforia",
+        "felicidad intensa"
+      ]
+    },
+    {
+      "word": "alcance",
+      "tags": [
+        "extensión",
+        "rango",
+        "límite",
+        "capacidad llegar",
+        "amplitud"
+      ]
+    },
+    {
+      "word": "alcanzar",
+      "tags": [
+        "llegar a",
+        "conseguir",
+        "lograr",
+        "obtener",
+        "tocar"
+      ]
+    },
+    {
+      "word": "alcoba",
+      "tags": [
+        "dormitorio",
+        "habitación dormir",
+        "cuarto",
+        "recámara",
+        "aposento"
+      ]
+    },
+    {
+      "word": "alcohol",
+      "tags": [
+        "sustancia embriagante",
+        "etanol",
+        "licor",
+        "bebida",
+        "espirituoso"
+      ]
+    },
+    {
+      "word": "aldea",
+      "tags": [
+        "pueblo pequeño",
+        "poblado rural",
+        "caserio",
+        "villorrio",
+        "comunidad"
+      ]
+    },
+    {
+      "word": "aleación",
+      "tags": [
+        "mezcla metales",
+        "combinado",
+        "compuesto",
+        "bronce o latón",
+        "fusión"
+      ]
+    },
+    {
+      "word": "alegar",
+      "tags": [
+        "argumentar",
+        "defender",
+        "afirmar",
+        "sostener",
+        "aducir"
+      ]
+    },
+    {
+      "word": "alegato",
+      "tags": [
+        "argumento",
+        "defensa",
+        "exposición",
+        "razonamiento",
+        "discurso"
+      ]
+    },
+    {
+      "word": "alegoría",
+      "tags": [
+        "metáfora extendida",
+        "símbolo",
+        "representación",
+        "figura literaria",
+        "parábola"
+      ]
+    },
+    {
+      "word": "alegrar",
+      "tags": [
+        "dar alegría",
+        "animar",
+        "contentar",
+        "regocijar",
+        "hacer feliz"
+      ]
+    },
+    {
+      "word": "alegre",
+      "tags": [
+        "feliz",
+        "contento",
+        "animado",
+        "gozoso",
+        "jovial"
+      ]
+    },
+    {
+      "word": "alegría",
+      "tags": [
+        "felicidad",
+        "contento",
+        "gozo",
+        "júbilo",
+        "satisfacción"
+      ]
+    },
+    {
+      "word": "alejar",
+      "tags": [
+        "apartar",
+        "distanciar",
+        "separar",
+        "retirar",
+        "desplazar"
+      ]
+    },
+    {
+      "word": "alemán",
+      "tags": [
+        "de Alemania",
+        "idioma germano",
+        "lengua europea",
+        "Berlin",
+        "teutónico"
+      ]
+    },
+    {
+      "word": "alentar",
+      "tags": [
+        "animar",
+        "motivar",
+        "estimular",
+        "dar aliento",
+        "apoyar"
+      ]
+    },
+    {
+      "word": "alergia",
+      "tags": [
+        "reacción inmune",
+        "sensibilidad",
+        "intolerancia",
+        "respuesta adversa",
+        "histamina"
+      ]
+    },
+    {
+      "word": "alero",
+      "tags": [
+        "borde techo",
+        "voladizo",
+        "parte saliente",
+        "protección",
+        "cornisa"
+      ]
+    },
+    {
+      "word": "alerta",
+      "tags": [
+        "atento",
+        "vigilante",
+        "aviso",
+        "alarma",
+        "prevenido"
+      ]
+    },
+    {
+      "word": "alertar",
+      "tags": [
+        "avisar",
+        "advertir",
+        "prevenir",
+        "notificar",
+        "llamar atención"
+      ]
+    },
+    {
+      "word": "aleta",
+      "tags": [
+        "miembro natatorio",
+        "para nadar",
+        "en peces",
+        "buceo",
+        "propulsión"
+      ]
+    },
+    {
+      "word": "alfabeto",
+      "tags": [
+        "letras",
+        "ABC",
+        "sistema escritura",
+        "caracteres",
+        "de A a Z"
+      ]
+    },
+    {
+      "word": "alfalfa",
+      "tags": [
+        "planta forrajera",
+        "leguminosa",
+        "alimento ganado",
+        "forraje verde",
+        "nutritiva"
+      ]
+    },
+    {
+      "word": "alfiler",
+      "tags": [
+        "aguja pequeña",
+        "sujeta tela",
+        "cabeza",
+        "puntiagudo",
+        "fijador"
+      ]
+    },
+    {
+      "word": "alfombra",
+      "tags": [
+        "tapete",
+        "cubre piso",
+        "decorativa",
+        "mullida",
+        "textil"
+      ]
+    },
+    {
+      "word": "alforja",
+      "tags": [
+        "bolsa doble",
+        "saco viaje",
+        "carga animales",
+        "morral",
+        "bolso"
+      ]
+    },
+    {
+      "word": "algodón",
+      "tags": [
+        "fibra textil",
+        "planta",
+        "suave",
+        "absorbente",
+        "tela natural"
+      ]
+    },
+    {
+      "word": "alguacil",
+      "tags": [
+        "oficial justicia",
+        "policía rural",
+        "ejecutor órdenes",
+        "autoridad",
+        "funcionario"
+      ]
+    },
+    {
+      "word": "alguien",
+      "tags": [
+        "alguna persona",
+        "cualquiera",
+        "alguno",
+        "persona indeterminada",
+        "quienquiera"
+      ]
+    },
+    {
+      "word": "algún",
+      "tags": [
+        "uno",
+        "cierto",
+        "cualquier",
+        "indeterminado",
+        "algunos"
+      ]
+    },
+    {
+      "word": "alguno",
+      "tags": [
+        "uno o más",
+        "cierto",
+        "algunos",
+        "cualquiera",
+        "determinado"
+      ]
+    },
+    {
+      "word": "alhaja",
+      "tags": [
+        "joya",
+        "objeto valioso",
+        "adorno precioso",
+        "prenda",
+        "tesoro"
+      ]
+    },
+    {
+      "word": "aliado",
+      "tags": [
+        "socio",
+        "amigo",
+        "compañero",
+        "asociado",
+        "confederado"
+      ]
+    },
+    {
+      "word": "alianza",
+      "tags": [
+        "pacto",
+        "unión",
+        "coalición",
+        "acuerdo",
+        "confederación"
+      ]
+    },
+    {
+      "word": "aliar",
+      "tags": [
+        "unir",
+        "asociar",
+        "confederar",
+        "juntar fuerzas",
+        "coalicionar"
+      ]
+    },
+    {
+      "word": "alicates",
+      "tags": [
+        "herramienta",
+        "pinzas",
+        "agarra",
+        "corta alambre",
+        "electricista"
+      ]
+    },
+    {
+      "word": "aliciente",
+      "tags": [
+        "atractivo",
+        "incentivo",
+        "estímulo",
+        "motivación",
+        "razón"
+      ]
+    },
+    {
+      "word": "alienar",
+      "tags": [
+        "enajenar",
+        "apartar",
+        "separar",
+        "hacer ajeno",
+        "distanciar"
+      ]
+    },
+    {
+      "word": "aliento",
+      "tags": [
+        "respiración",
+        "aire exhalado",
+        "ánimo",
+        "soplo",
+        "vaho"
+      ]
+    },
+    {
+      "word": "aligerar",
+      "tags": [
+        "hacer ligero",
+        "aliviar",
+        "acelerar",
+        "reducir peso",
+        "descargar"
+      ]
+    },
+    {
+      "word": "alimentar",
+      "tags": [
+        "dar comida",
+        "nutrir",
+        "sustentar",
+        "proveer alimento",
+        "mantener"
+      ]
+    },
+    {
+      "word": "alimento",
+      "tags": [
+        "comida",
+        "nutriente",
+        "sustento",
+        "provisión",
+        "víveres"
+      ]
+    },
+    {
+      "word": "alinear",
+      "tags": [
+        "poner en línea",
+        "ordenar",
+        "colocar recto",
+        "nivelar",
+        "organizar"
+      ]
+    },
+    {
+      "word": "aliñar",
+      "tags": [
+        "condimentar",
+        "sazonar",
+        "aderezar",
+        "dar sabor",
+        "preparar"
+      ]
+    },
+    {
+      "word": "alisar",
+      "tags": [
+        "hacer liso",
+        "aplanar",
+        "nivelar",
+        "pulir",
+        "emparejar"
+      ]
+    },
+    {
+      "word": "alistar",
+      "tags": [
+        "preparar",
+        "aprontar",
+        "disponer",
+        "enlistar",
+        "reclutar"
+      ]
+    },
+    {
+      "word": "aliviar",
+      "tags": [
+        "calmar",
+        "mitigar",
+        "reducir dolor",
+        "consolar",
+        "suavizar"
+      ]
+    },
+    {
+      "word": "alivio",
+      "tags": [
+        "calma",
+        "descanso",
+        "consuelo",
+        "reducción dolor",
+        "mejora"
+      ]
+    },
+    {
+      "word": "aljibe",
+      "tags": [
+        "cisterna",
+        "depósito agua",
+        "tanque subterráneo",
+        "pozo",
+        "almacén líquido"
+      ]
+    },
+    {
+      "word": "allá",
+      "tags": [
+        "en aquel lugar",
+        "lejos",
+        "ese sitio",
+        "distante",
+        "más allá"
+      ]
+    },
+    {
+      "word": "allí",
+      "tags": [
+        "en ese lugar",
+        "ahí",
+        "ese punto",
+        "esa ubicación",
+        "en eso"
+      ]
+    },
+    {
+      "word": "alma",
+      "tags": [
+        "espíritu",
+        "esencia",
+        "ser interno",
+        "ánima",
+        "psique"
+      ]
+    },
+    {
+      "word": "almacén",
+      "tags": [
+        "bodega",
+        "depósito",
+        "tienda grande",
+        "guardadero",
+        "warehouse"
+      ]
+    },
+    {
+      "word": "almacenar",
+      "tags": [
+        "guardar",
+        "acopiar",
+        "depositar",
+        "acumular",
+        "conservar"
+      ]
+    },
+    {
+      "word": "almanaque",
+      "tags": [
+        "calendario anual",
+        "libro referencia",
+        "compilación datos",
+        "guía",
+        "anuario"
+      ]
+    },
+    {
+      "word": "almendra",
+      "tags": [
+        "fruto seco",
+        "ovalada",
+        "saludable",
+        "cáscara marrón",
+        "sabor suave"
+      ]
+    },
+    {
+      "word": "almíbar",
+      "tags": [
+        "jarabe azúcar",
+        "líquido dulce",
+        "conservante",
+        "espeso",
+        "confitado"
+      ]
+    },
+    {
+      "word": "almidón",
+      "tags": [
+        "carbohidrato",
+        "en cereales",
+        "engrudo",
+        "espesante",
+        "fécula"
+      ]
+    },
+    {
+      "word": "almirante",
+      "tags": [
+        "líder naval",
+        "alto rango",
+        "comandante flota",
+        "oficial marítimo",
+        "autoridad naval"
+      ]
+    },
+    {
+      "word": "almohada",
+      "tags": [
+        "cojín cabeza",
+        "en cama",
+        "relleno suave",
+        "descansa cuello",
+        "confortable"
+      ]
+    },
+    {
+      "word": "almohadón",
+      "tags": [
+        "cojín grande",
+        "para sentarse",
+        "mullido",
+        "decorativo",
+        "acolchado"
+      ]
+    },
+    {
+      "word": "almorzar",
+      "tags": [
+        "comer mediodía",
+        "tomar almuerzo",
+        "alimentarse",
+        "comida del día",
+        "lunch"
+      ]
+    },
+    {
+      "word": "almuerzo",
+      "tags": [
+        "comida mediodía",
+        "lunch",
+        "refrigerio",
+        "entre desayuno y cena",
+        "ágape"
+      ]
+    },
+    {
+      "word": "alocado",
+      "tags": [
+        "imprudente",
+        "impulsivo",
+        "loco",
+        "irreflexivo",
+        "atolondrado"
+      ]
+    },
+    {
+      "word": "alojamiento",
+      "tags": [
+        "hospedaje",
+        "vivienda temporal",
+        "acomodo",
+        "posada",
+        "estancia"
+      ]
+    },
+    {
+      "word": "alojar",
+      "tags": [
+        "hospedar",
+        "dar albergue",
+        "acoger",
+        "recibir huéspedes",
+        "acomodar"
+      ]
+    },
+    {
+      "word": "alondra",
+      "tags": [
+        "pájaro cantor",
+        "canta al volar",
+        "campo abierto",
+        "madrugador",
+        "alegre"
+      ]
+    },
+    {
+      "word": "alpaca",
+      "tags": [
+        "animal andino",
+        "lana suave",
+        "pariente llama",
+        "fibra fina",
+        "Sudamérica"
+      ]
+    },
+    {
+      "word": "alpinismo",
+      "tags": [
+        "escalada montañas",
+        "deporte altura",
+        "cuerdas y picos",
+        "alta montaña",
+        "expediciones"
+      ]
+    },
+    {
+      "word": "alpino",
+      "tags": [
+        "de montaña",
+        "gran altura",
+        "picos nevados",
+        "montañoso",
+        "elevado"
+      ]
+    },
+    {
+      "word": "alquilar",
+      "tags": [
+        "arrendar",
+        "rentar",
+        "tomar en alquiler",
+        "dar en renta",
+        "pagar uso"
+      ]
+    },
+    {
+      "word": "alquiler",
+      "tags": [
+        "renta",
+        "arriendo",
+        "pago uso",
+        "canon",
+        "leasing"
+      ]
+    },
+    {
+      "word": "alquimia",
+      "tags": [
+        "proto química",
+        "transformar metales",
+        "medieval",
+        "esotérica",
+        "oro de plomo"
+      ]
+    },
+    {
+      "word": "alrededor",
+      "tags": [
+        "en torno a",
+        "cerca",
+        "circundante",
+        "aproximadamente",
+        "en derredor"
+      ]
+    },
+    {
+      "word": "alta",
+      "tags": [
+        "elevada",
+        "grande altura",
+        "superior",
+        "noble",
+        "arriba"
+      ]
+    },
+    {
+      "word": "altar",
+      "tags": [
+        "mesa sagrada",
+        "lugar culto",
+        "iglesia",
+        "plataforma religiosa",
+        "espacio santo"
+      ]
+    },
+    {
+      "word": "alteración",
+      "tags": [
+        "cambio",
+        "modificación",
+        "perturbación",
+        "disturbio",
+        "variación"
+      ]
+    },
+    {
+      "word": "alterar",
+      "tags": [
+        "cambiar",
+        "modificar",
+        "perturbar",
+        "transformar",
+        "variar"
+      ]
+    },
+    {
+      "word": "alternar",
+      "tags": [
+        "turnar",
+        "intercalar",
+        "sustituir",
+        "rotar",
+        "cambiar"
+      ]
+    },
+    {
+      "word": "alternativa",
+      "tags": [
+        "opción",
+        "elección",
+        "otro camino",
+        "sustituto",
+        "ruta diferente"
+      ]
+    },
+    {
+      "word": "alterno",
+      "tags": [
+        "uno sí uno no",
+        "cada dos",
+        "alternado",
+        "rotativo",
+        "intercalado"
+      ]
+    },
+    {
+      "word": "alteza",
+      "tags": [
+        "título nobiliario",
+        "príncipe o princesa",
+        "tratamiento",
+        "realeza",
+        "majestad"
+      ]
+    },
+    {
+      "word": "altibajos",
+      "tags": [
+        "variaciones",
+        "subidas y bajadas",
+        "cambios",
+        "fluctuaciones",
+        "vicisitudes"
+      ]
+    },
+    {
+      "word": "altiplano",
+      "tags": [
+        "meseta alta",
+        "planicie elevada",
+        "altura considerable",
+        "terreno plano",
+        "andino"
+      ]
+    },
+    {
+      "word": "altitud",
+      "tags": [
+        "altura",
+        "elevación",
+        "sobre nivel mar",
+        "distancia vertical",
+        "alto"
+      ]
+    },
+    {
+      "word": "altivo",
+      "tags": [
+        "orgulloso",
+        "arrogante",
+        "soberbio",
+        "presumido",
+        "engreído"
+      ]
+    },
+    {
+      "word": "alto",
+      "tags": [
+        "elevado",
+        "grande altura",
+        "detener",
+        "parada",
+        "superior"
+      ]
+    },
+    {
+      "word": "altruismo",
+      "tags": [
+        "desinterés",
+        "generosidad",
+        "ayuda otros",
+        "abnegación",
+        "filantropía"
+      ]
+    },
+    {
+      "word": "altura",
+      "tags": [
+        "elevación",
+        "distancia vertical",
+        "estatura",
+        "nivel",
+        "altitud"
+      ]
+    },
+    {
+      "word": "alubia",
+      "tags": [
+        "judía",
+        "frijol",
+        "legumbre",
+        "vaina",
+        "nutritiva"
+      ]
+    },
+    {
+      "word": "alucinación",
+      "tags": [
+        "visión irreal",
+        "percepción falsa",
+        "ilusión",
+        "espejismo sensorial",
+        "engaño sentidos"
+      ]
+    },
+    {
+      "word": "alud",
+      "tags": [
+        "avalancha",
+        "deslizamiento nieve",
+        "cascada montaña",
+        "descenso masivo",
+        "precipitación"
+      ]
+    },
+    {
+      "word": "aludir",
+      "tags": [
+        "referirse",
+        "mencionar",
+        "insinuar",
+        "citar",
+        "hacer alusión"
+      ]
+    },
+    {
+      "word": "alumbrado",
+      "tags": [
+        "iluminación",
+        "luces públicas",
+        "sistema lumínico",
+        "luminarias",
+        "farolas"
+      ]
+    },
+    {
+      "word": "alumbrar",
+      "tags": [
+        "iluminar",
+        "dar luz",
+        "aclarar",
+        "parir",
+        "esclarecer"
+      ]
+    },
+    {
+      "word": "aluminio",
+      "tags": [
+        "metal ligero",
+        "color plateado",
+        "latas fabricadas",
+        "reciclable",
+        "elemento"
+      ]
+    },
+    {
+      "word": "alumno",
+      "tags": [
+        "estudiante",
+        "escolar",
+        "aprendiz",
+        "discípulo",
+        "educando"
+      ]
+    },
+    {
+      "word": "alusión",
+      "tags": [
+        "referencia",
+        "mención indirecta",
+        "insinuación",
+        "cita",
+        "sugerencia"
+      ]
+    },
+    {
+      "word": "aluvión",
+      "tags": [
+        "inundación",
+        "riada",
+        "torrente",
+        "avalancha",
+        "gran cantidad"
+      ]
+    },
+    {
+      "word": "alzar",
+      "tags": [
+        "levantar",
+        "elevar",
+        "subir",
+        "izar",
+        "erguir"
+      ]
+    },
+    {
+      "word": "amabilidad",
+      "tags": [
+        "gentileza",
+        "cortesía",
+        "bondad",
+        "afabilidad",
+        "simpatía"
+      ]
+    },
+    {
+      "word": "amable",
+      "tags": [
+        "gentil",
+        "cortés",
+        "bondadoso",
+        "simpático",
+        "afable"
+      ]
+    },
+    {
+      "word": "amaestrar",
+      "tags": [
+        "entrenar animal",
+        "domesticar",
+        "enseñar",
+        "domar",
+        "instruir"
+      ]
+    },
+    {
+      "word": "amagar",
+      "tags": [
+        "amenazar",
+        "fingir ataque",
+        "mostrar intención",
+        "hacer ademán",
+        "intimidar"
+      ]
+    },
+    {
+      "word": "amanecer",
+      "tags": [
+        "alba",
+        "aurora",
+        "salir sol",
+        "madrugada",
+        "despertar día"
+      ]
+    },
+    {
+      "word": "amante",
+      "tags": [
+        "persona enamorada",
+        "querido",
+        "aficionado",
+        "apasionado",
+        "amador"
+      ]
+    },
+    {
+      "word": "amapola",
+      "tags": [
+        "flor roja",
+        "campo",
+        "delicada",
+        "opio fuente",
+        "primavera"
+      ]
+    },
+    {
+      "word": "amar",
+      "tags": [
+        "querer",
+        "sentir amor",
+        "adorar",
+        "estimar",
+        "apreciar"
+      ]
+    },
+    {
+      "word": "amargo",
+      "tags": [
+        "sabor desagradable",
+        "no dulce",
+        "ácido",
+        "acre",
+        "resentido"
+      ]
+    },
+    {
+      "word": "amargura",
+      "tags": [
+        "sabor amargo",
+        "tristeza",
+        "pena",
+        "aflicción",
+        "resentimiento"
+      ]
+    },
+    {
+      "word": "amarillo",
+      "tags": [
+        "color",
+        "como sol",
+        "limón",
+        "oro",
+        "bandera"
+      ]
+    },
+    {
+      "word": "amarrar",
+      "tags": [
+        "atar",
+        "sujetar",
+        "asegurar",
+        "ligar",
+        "anclar"
+      ]
+    },
+    {
+      "word": "amasar",
+      "tags": [
+        "trabajar masa",
+        "mezclar harina",
+        "preparar pan",
+        "manipular",
+        "moldear"
+      ]
+    },
+    {
+      "word": "amatista",
+      "tags": [
+        "piedra violeta",
+        "cuarzo púrpura",
+        "gema",
+        "semipreciosa",
+        "joyería"
+      ]
+    },
+    {
+      "word": "amazona",
+      "tags": [
+        "mujer guerrera",
+        "hábil jinete",
+        "selvática",
+        "valiente",
+        "mítica"
+      ]
+    },
+    {
+      "word": "ámbar",
+      "tags": [
+        "naranja amarillento",
+        "resina fosilizada",
+        "color semáforo",
+        "dorado marrón",
+        "gema"
+      ]
+    },
+    {
+      "word": "ambición",
+      "tags": [
+        "impulso",
+        "meta",
+        "aspiración",
+        "determinación",
+        "motivación"
+      ]
+    },
+    {
+      "word": "ambicionar",
+      "tags": [
+        "desear",
+        "anhelar",
+        "aspirar",
+        "codiciar",
+        "querer lograr"
+      ]
+    },
+    {
+      "word": "ambicioso",
+      "tags": [
+        "con metas",
+        "motivado",
+        "determinado",
+        "aspirante",
+        "orientado objetivos"
+      ]
+    },
+    {
+      "word": "ambiental",
+      "tags": [
+        "del entorno",
+        "ecológico",
+        "atmosférico",
+        "contextual",
+        "circundante"
+      ]
+    },
+    {
+      "word": "ambiente",
+      "tags": [
+        "entorno",
+        "atmósfera",
+        "medio",
+        "clima",
+        "contexto"
+      ]
+    },
+    {
+      "word": "ambigüedad",
+      "tags": [
+        "falta claridad",
+        "vaguedad",
+        "incertidumbre",
+        "confusión",
+        "interpretación abierta"
+      ]
+    },
+    {
+      "word": "ambiguo",
+      "tags": [
+        "poco claro",
+        "vago",
+        "incierto",
+        "confuso",
+        "interpretable"
+      ]
+    },
+    {
+      "word": "ámbito",
+      "tags": [
+        "campo",
+        "área",
+        "esfera",
+        "alcance",
+        "entorno"
+      ]
+    },
+    {
+      "word": "ambos",
+      "tags": [
+        "los dos",
+        "uno y otro",
+        "cada uno",
+        "par",
+        "entrambos"
+      ]
+    },
+    {
+      "word": "ambulante",
+      "tags": [
+        "que va de lugar",
+        "móvil",
+        "itinerante",
+        "nómada",
+        "viajero"
+      ]
+    },
+    {
+      "word": "ambulatorio",
+      "tags": [
+        "clínica externa",
+        "no hospitalización",
+        "consulta médica",
+        "atención diurna",
+        "centro salud"
+      ]
+    },
+    {
+      "word": "amedrentar",
+      "tags": [
+        "intimidar",
+        "atemorizar",
+        "asustar",
+        "amilanar",
+        "acobardar"
+      ]
+    },
+    {
+      "word": "amenaza",
+      "tags": [
+        "advertencia peligro",
+        "intimidación",
+        "riesgo",
+        "peligro inminente",
+        "ultimátum"
+      ]
+    },
+    {
+      "word": "amenazar",
+      "tags": [
+        "intimidar",
+        "advertir peligro",
+        "prometer daño",
+        "coaccionar",
+        "presagiar"
+      ]
+    },
+    {
+      "word": "amenidad",
+      "tags": [
+        "agradabilidad",
+        "entretenimiento",
+        "placer",
+        "diversión",
+        "amabilidad"
+      ]
+    },
+    {
+      "word": "ameno",
+      "tags": [
+        "agradable",
+        "entretenido",
+        "grato",
+        "placentero",
+        "divertido"
+      ]
+    },
+    {
+      "word": "americano",
+      "tags": [
+        "de América",
+        "continente",
+        "estadounidense",
+        "del hemisferio",
+        "occidental"
+      ]
+    },
+    {
+      "word": "ametralladora",
+      "tags": [
+        "arma automática",
+        "disparo rápido",
+        "fuego continuo",
+        "militar",
+        "alta cadencia"
+      ]
+    },
+    {
+      "word": "amianto",
+      "tags": [
+        "asbesto",
+        "mineral fibroso",
+        "tóxico",
+        "material construcción",
+        "prohibido"
+      ]
+    },
+    {
+      "word": "amigable",
+      "tags": [
+        "amistoso",
+        "cordial",
+        "afable",
+        "simpático",
+        "sociable"
+      ]
+    },
+    {
+      "word": "amígdala",
+      "tags": [
+        "glándula garganta",
+        "órgano",
+        "anginas",
+        "sistema inmune",
+        "linfático"
+      ]
+    },
+    {
+      "word": "amigo",
+      "tags": [
+        "compañero",
+        "camarada",
+        "amigote",
+        "colega",
+        "conocido cercano"
+      ]
+    },
+    {
+      "word": "amistad",
+      "tags": [
+        "relación afectiva",
+        "compañerismo",
+        "camaradería",
+        "vínculo",
+        "aprecio mutuo"
+      ]
+    },
+    {
+      "word": "amnesia",
+      "tags": [
+        "pérdida memoria",
+        "olvido",
+        "no recuerda",
+        "mente blanco",
+        "memorias perdidas"
+      ]
+    },
+    {
+      "word": "amnistía",
+      "tags": [
+        "perdón",
+        "indulto",
+        "exención",
+        "clemencia",
+        "inmunidad"
+      ]
+    },
+    {
+      "word": "amo",
+      "tags": [
+        "dueño",
+        "señor",
+        "propietario",
+        "patrón",
+        "jefe"
+      ]
+    },
+    {
+      "word": "amolar",
+      "tags": [
+        "afilar",
+        "dar filo",
+        "molestar",
+        "fastidiar",
+        "aguzar"
+      ]
+    },
+    {
+      "word": "amoldar",
+      "tags": [
+        "adaptar",
+        "ajustar",
+        "conformar",
+        "modelar",
+        "acomodar"
+      ]
+    },
+    {
+      "word": "amontonar",
+      "tags": [
+        "apilar",
+        "acumular",
+        "juntar",
+        "hacinar",
+        "agrupar"
+      ]
+    },
+    {
+      "word": "amor",
+      "tags": [
+        "sentimiento afecto",
+        "cariño",
+        "pasión",
+        "enamoramiento",
+        "ternura"
+      ]
+    },
+    {
+      "word": "amorfo",
+      "tags": [
+        "sin forma",
+        "informe",
+        "indefinido",
+        "desorganizado",
+        "irregular"
+      ]
+    },
+    {
+      "word": "amoroso",
+      "tags": [
+        "cariñoso",
+        "tierno",
+        "afectuoso",
+        "amorfo",
+        "romántico"
+      ]
+    },
+    {
+      "word": "amortajar",
+      "tags": [
+        "envolver muerto",
+        "preparar cadáver",
+        "mortaja",
+        "vestir difunto",
+        "funeral"
+      ]
+    },
+    {
+      "word": "amortiguador",
+      "tags": [
+        "reduce impacto",
+        "suspensión",
+        "absorbe golpes",
+        "auto parte",
+        "suaviza"
+      ]
+    },
+    {
+      "word": "amortiguar",
+      "tags": [
+        "suavizar",
+        "atenuar",
+        "reducir impacto",
+        "mitigar",
+        "aplacar"
+      ]
+    },
+    {
+      "word": "amortizar",
+      "tags": [
+        "pagar deuda",
+        "recuperar inversión",
+        "liquidar",
+        "saldar",
+        "reembolsar"
+      ]
+    },
+    {
+      "word": "amotinar",
+      "tags": [
+        "rebelar",
+        "sublevar",
+        "alzar",
+        "insurreccionar",
+        "revoltar"
+      ]
+    },
+    {
+      "word": "amparar",
+      "tags": [
+        "proteger",
+        "defender",
+        "resguardar",
+        "auxiliar",
+        "acoger"
+      ]
+    },
+    {
+      "word": "amparo",
+      "tags": [
+        "protección",
+        "defensa",
+        "refugio",
+        "auxilio",
+        "cobijo"
+      ]
+    },
+    {
+      "word": "ampliación",
+      "tags": [
+        "aumento",
+        "expansión",
+        "agrandamiento",
+        "extensión",
+        "desarrollo"
+      ]
+    },
+    {
+      "word": "ampliar",
+      "tags": [
+        "agrandar",
+        "extender",
+        "expandir",
+        "aumentar",
+        "ensanchar"
+      ]
+    },
+    {
+      "word": "amplificar",
+      "tags": [
+        "hacer más fuerte",
+        "aumentar",
+        "expandir",
+        "magnificar",
+        "potenciar"
+      ]
+    },
+    {
+      "word": "amplio",
+      "tags": [
+        "espacioso",
+        "grande",
+        "extenso",
+        "holgado",
+        "ancho"
+      ]
+    },
+    {
+      "word": "amplitud",
+      "tags": [
+        "extensión",
+        "anchura",
+        "magnitud",
+        "envergadura",
+        "tamaño"
+      ]
+    },
+    {
+      "word": "ampolla",
+      "tags": [
+        "burbuja piel",
+        "recipiente vidrio",
+        "vejiga",
+        "frasco sellado",
+        "lesión"
+      ]
+    },
+    {
+      "word": "amputar",
+      "tags": [
+        "cortar miembro",
+        "extirpar quirúrgicamente",
+        "cercenar",
+        "eliminación médica",
+        "procedimiento quirúrgico"
+      ]
+    },
+    {
+      "word": "amueblar",
+      "tags": [
+        "poner muebles",
+        "equipar",
+        "decorar",
+        "proveer mobiliario",
+        "instalar"
+      ]
+    },
+    {
+      "word": "amuleto",
+      "tags": [
+        "talismán suerte",
+        "protector mágico",
+        "objeto mágico",
+        "joyería usada",
+        "superstici objeto"
+      ]
+    },
+    {
+      "word": "anaconda",
+      "tags": [
+        "serpiente grande",
+        "boa acuática",
+        "América Sur",
+        "constrictora",
+        "gigante"
+      ]
+    },
+    {
+      "word": "anacrónico",
+      "tags": [
+        "fuera tiempo",
+        "anticuado",
+        "desfasado",
+        "impropio época",
+        "atemporal"
+      ]
+    },
+    {
+      "word": "analfabeto",
+      "tags": [
+        "no lee",
+        "no escribe",
+        "sin educación básica",
+        "iletrado",
+        "ignorante"
+      ]
+    },
+    {
+      "word": "analgésico",
+      "tags": [
+        "calma dolor",
+        "medicamento",
+        "reduce malestar",
+        "aspirina tipo",
+        "antiinflamatorio"
+      ]
+    },
+    {
+      "word": "análisis",
+      "tags": [
+        "examen",
+        "estudio",
+        "investigación",
+        "evaluación",
+        "descomposición"
+      ]
+    },
+    {
+      "word": "analizar",
+      "tags": [
+        "examinar",
+        "estudiar",
+        "investigar",
+        "evaluar",
+        "descomponer"
+      ]
+    },
+    {
+      "word": "analogía",
+      "tags": [
+        "comparación",
+        "similitud",
+        "paralelo",
+        "semejanza",
+        "metáfora"
+      ]
+    },
+    {
+      "word": "análogo",
+      "tags": [
+        "similar",
+        "parecido",
+        "comparable",
+        "equivalente",
+        "semejante"
+      ]
+    },
+    {
+      "word": "ananás",
+      "tags": [
+        "piña tropical",
+        "exterior espinoso",
+        "dulce ácido",
+        "pulpa amarilla",
+        "corona arriba"
+      ]
+    },
+    {
+      "word": "anaquel",
+      "tags": [
+        "estante",
+        "repisa",
+        "tabla",
+        "entrepaño",
+        "balda"
+      ]
+    },
+    {
+      "word": "anaranjado",
+      "tags": [
+        "color naranja",
+        "entre rojo amarillo",
+        "cítrico",
+        "atardecer",
+        "otoñal"
+      ]
+    },
+    {
+      "word": "anarquía",
+      "tags": [
+        "sin gobierno",
+        "caos",
+        "desorden",
+        "falta ley",
+        "pandemonium"
+      ]
+    },
+    {
+      "word": "anarquista",
+      "tags": [
+        "contra gobierno",
+        "libertario",
+        "revolucionario",
+        "rebelde",
+        "antiautoritario"
+      ]
+    },
+    {
+      "word": "anatema",
+      "tags": [
+        "maldición",
+        "condena",
+        "excomunión",
+        "repudio",
+        "execración"
+      ]
+    },
+    {
+      "word": "anatomía",
+      "tags": [
+        "estructura cuerpo",
+        "composición física",
+        "organización biológica",
+        "órganos sistemas",
+        "conformación corporal"
+      ]
+    },
+    {
+      "word": "ancestral",
+      "tags": [
+        "antiguo",
+        "tradicional",
+        "heredado",
+        "de antepasados",
+        "milenario"
+      ]
+    },
+    {
+      "word": "ancestro",
+      "tags": [
+        "antepasado",
+        "progenitor",
+        "antecesor",
+        "ascendiente",
+        "predecesor"
+      ]
+    },
+    {
+      "word": "ancho",
+      "tags": [
+        "amplio",
+        "extenso",
+        "espacioso",
+        "holgado",
+        "grande"
+      ]
+    },
+    {
+      "word": "anchoa",
+      "tags": [
+        "pez pequeño",
+        "salado",
+        "conserva aceite",
+        "sabor fuerte",
+        "boquerón"
+      ]
+    },
+    {
+      "word": "anchura",
+      "tags": [
+        "amplitud",
+        "extensión",
+        "ancho",
+        "envergadura",
+        "latitud"
+      ]
+    },
+    {
+      "word": "anciano",
+      "tags": [
+        "viejo",
+        "mayor edad",
+        "abuelo",
+        "veterano",
+        "longevo"
+      ]
+    },
+    {
+      "word": "ancla",
+      "tags": [
+        "estabilizador barco",
+        "peso grande",
+        "sostiene lugar",
+        "asegura embarcación",
+        "fondo marino"
+      ]
+    },
+    {
+      "word": "anclar",
+      "tags": [
+        "fijar ancla",
+        "asegurar",
+        "sujetar",
+        "amarrar",
+        "fondear"
+      ]
+    },
+    {
+      "word": "andamio",
+      "tags": [
+        "estructura temporal",
+        "construcción",
+        "plataforma elevada",
+        "obra",
+        "andamiaje"
+      ]
+    },
+    {
+      "word": "andante",
+      "tags": [
+        "caminante",
+        "errante",
+        "vagabundo",
+        "ritmo musical",
+        "tranquilo"
+      ]
+    },
+    {
+      "word": "andar",
+      "tags": [
+        "caminar",
+        "moverse",
+        "ir",
+        "transitar",
+        "desplazarse"
+      ]
+    },
+    {
+      "word": "andén",
+      "tags": [
+        "plataforma tren",
+        "borde elevado",
+        "estación",
+        "muelle",
+        "acera"
+      ]
+    },
+    {
+      "word": "andino",
+      "tags": [
+        "de Andes",
+        "montañoso",
+        "alta cordillera",
+        "Sudamericano",
+        "elevado"
+      ]
+    },
+    {
+      "word": "andrajo",
+      "tags": [
+        "harapo",
+        "trapo viejo",
+        "ropa rota",
+        "jirones",
+        "guiñapo"
+      ]
+    },
+    {
+      "word": "anécdota",
+      "tags": [
+        "historia corta",
+        "relato divertido",
+        "narración breve",
+        "cuenta personal",
+        "incidente interesante"
+      ]
+    },
+    {
+      "word": "anegar",
+      "tags": [
+        "inundar",
+        "llenar agua",
+        "sumergir",
+        "ahogar",
+        "cubrir líquido"
+      ]
+    },
+    {
+      "word": "anemia",
+      "tags": [
+        "sangre baja",
+        "deficiencia hierro",
+        "condición cansada",
+        "piel pálida",
+        "debilidad"
+      ]
+    },
+    {
+      "word": "anestesia",
+      "tags": [
+        "adormecimiento",
+        "bloqueo dolor",
+        "medicina quirúrgica",
+        "inconsciencia",
+        "insensibilidad"
+      ]
+    },
+    {
+      "word": "anestesiar",
+      "tags": [
+        "adormecer",
+        "quitar sensación",
+        "insensibilizar",
+        "narcotizar",
+        "sedar"
+      ]
+    },
+    {
+      "word": "anexar",
+      "tags": [
+        "agregar",
+        "unir",
+        "incorporar",
+        "adjuntar",
+        "adicionar"
+      ]
+    },
+    {
+      "word": "anexión",
+      "tags": [
+        "incorporación",
+        "agregación",
+        "unión",
+        "adición",
+        "suma"
+      ]
+    },
+    {
+      "word": "anexo",
+      "tags": [
+        "añadido",
+        "adjunto",
+        "suplemento",
+        "apéndice",
+        "complemento"
+      ]
+    },
+    {
+      "word": "anfibio",
+      "tags": [
+        "rana o salamandra",
+        "vive agua tierra",
+        "sangre fría",
+        "metamorfosis",
+        "vertebrado"
+      ]
+    },
+    {
+      "word": "anfiteatro",
+      "tags": [
+        "teatro redondo",
+        "arena",
+        "recinto exterior",
+        "asientos circulares",
+        "estructura antigua"
+      ]
+    },
+    {
+      "word": "ánfora",
+      "tags": [
+        "vasija antigua",
+        "dos asas",
+        "cuello estrecho",
+        "cerámica",
+        "almacenaje líquidos"
+      ]
+    },
+    {
+      "word": "anfitrión",
+      "tags": [
+        "hospedador",
+        "organizador fiesta",
+        "recibe invitados",
+        "dueño casa",
+        "host"
+      ]
+    },
+    {
+      "word": "ángel",
+      "tags": [
+        "ser celestial",
+        "mensajero divino",
+        "criatura espiritual",
+        "buena persona",
+        "entidad angelical"
+      ]
+    },
+    {
+      "word": "angina",
+      "tags": [
+        "dolor garganta",
+        "amígdalas inflamadas",
+        "infección",
+        "malestar",
+        "faringitis"
+      ]
+    },
+    {
+      "word": "anglicano",
+      "tags": [
+        "iglesia Inglaterra",
+        "protestantismo",
+        "religión británica",
+        "episcopal",
+        "reformado"
+      ]
+    },
+    {
+      "word": "angosto",
+      "tags": [
+        "estrecho",
+        "reducido",
+        "ajustado",
+        "apretado",
+        "ceñido"
+      ]
+    },
+    {
+      "word": "angula",
+      "tags": [
+        "cría anguila",
+        "pez pequeño",
+        "delicadeza",
+        "transparente",
+        "alargado"
+      ]
+    },
+    {
+      "word": "angular",
+      "tags": [
+        "esquinado",
+        "con ángulos",
+        "huesudo",
+        "delgado",
+        "geométrico"
+      ]
+    },
+    {
+      "word": "ángulo",
+      "tags": [
+        "esquina",
+        "punto vista",
+        "inclinación",
+        "perspectiva",
+        "figura geométrica"
+      ]
+    },
+    {
+      "word": "angustia",
+      "tags": [
+        "dolor severo",
+        "tormento",
+        "agonía",
+        "aflicción",
+        "sufrimiento"
+      ]
+    },
+    {
+      "word": "angustiar",
+      "tags": [
+        "afligir",
+        "atormentar",
+        "preocupar",
+        "acongojar",
+        "inquietar"
+      ]
+    },
+    {
+      "word": "anhelo",
+      "tags": [
+        "deseo intenso",
+        "aspiración",
+        "ansia",
+        "ambición",
+        "ilusión"
+      ]
+    },
+    {
+      "word": "anhídrido",
+      "tags": [
+        "compuesto químico",
+        "sin agua",
+        "óxido",
+        "gas",
+        "dióxido"
+      ]
+    },
+    {
+      "word": "anidar",
+      "tags": [
+        "hacer nido",
+        "establecerse",
+        "instalarse",
+        "residir",
+        "alojarse"
+      ]
+    },
+    {
+      "word": "anilina",
+      "tags": [
+        "colorante químico",
+        "tinte sintético",
+        "compuesto orgánico",
+        "industrial",
+        "pigmento"
+      ]
+    },
+    {
+      "word": "anillo",
+      "tags": [
+        "aro dedo",
+        "banda circular",
+        "boda moda",
+        "varios materiales",
+        "decorativo"
+      ]
+    },
+    {
+      "word": "ánima",
+      "tags": [
+        "alma",
+        "espíritu",
+        "esencia",
+        "ser interno",
+        "psique"
+      ]
+    },
+    {
+      "word": "animación",
+      "tags": [
+        "dibujos animados",
+        "movimiento",
+        "vivacidad",
+        "imágenes móviles",
+        "vitalidad"
+      ]
+    },
+    {
+      "word": "animado",
+      "tags": [
+        "alegre",
+        "vivaz",
+        "activo",
+        "entusiasta",
+        "enérgico"
+      ]
+    },
+    {
+      "word": "animador",
+      "tags": [
+        "entretiene",
+        "presenta show",
+        "modera",
+        "dinamiza",
+        "anima"
+      ]
+    },
+    {
+      "word": "animal",
+      "tags": [
+        "criatura viviente",
+        "bestia",
+        "organismo",
+        "fauna",
+        "ser no humano"
+      ]
+    },
+    {
+      "word": "animar",
+      "tags": [
+        "alentar",
+        "motivar",
+        "estimular",
+        "dar ánimo",
+        "avivar"
+      ]
+    },
+    {
+      "word": "ánimo",
+      "tags": [
+        "espíritu",
+        "valor",
+        "energía",
+        "temple",
+        "disposición"
+      ]
+    },
+    {
+      "word": "animosidad",
+      "tags": [
+        "hostilidad",
+        "odio",
+        "mala voluntad",
+        "enemistad",
+        "antagonismo"
+      ]
+    },
+    {
+      "word": "animoso",
+      "tags": [
+        "valiente",
+        "decidido",
+        "brioso",
+        "esforzado",
+        "resuelto"
+      ]
+    },
+    {
+      "word": "aniñado",
+      "tags": [
+        "infantil",
+        "pueril",
+        "inmaduro",
+        "como niño",
+        "juvenil"
+      ]
+    },
+    {
+      "word": "aniquilar",
+      "tags": [
+        "destruir completamente",
+        "exterminar",
+        "eliminar",
+        "arrasar",
+        "devastar"
+      ]
+    },
+    {
+      "word": "anís",
+      "tags": [
+        "hierba aromática",
+        "sabor licoroso",
+        "semillas",
+        "digestivo",
+        "dulce especiado"
+      ]
+    },
+    {
+      "word": "aniversario",
+      "tags": [
+        "fecha anual",
+        "celebración",
+        "conmemoración",
+        "fecha especial",
+        "evento anual"
+      ]
+    },
+    {
+      "word": "ano",
+      "tags": [
+        "apertura final",
+        "orificio digestivo",
+        "parte cuerpo",
+        "evacuación",
+        "recto"
+      ]
+    },
+    {
+      "word": "anoche",
+      "tags": [
+        "noche pasada",
+        "ayer noche",
+        "última noche",
+        "oscurecer previo",
+        "ayer tarde"
+      ]
+    },
+    {
+      "word": "anochecer",
+      "tags": [
+        "caer noche",
+        "atardecer",
+        "oscurecer",
+        "crepúsculo",
+        "ponerse sol"
+      ]
+    },
+    {
+      "word": "anodino",
+      "tags": [
+        "insípido",
+        "aburrido",
+        "sin gracia",
+        "insulso",
+        "mediocre"
+      ]
+    },
+    {
+      "word": "anomalía",
+      "tags": [
+        "anormalidad",
+        "irregularidad",
+        "desviación",
+        "rareza",
+        "excepción"
+      ]
+    },
+    {
+      "word": "anómalo",
+      "tags": [
+        "anormal",
+        "irregular",
+        "atípico",
+        "extraño",
+        "desviado"
+      ]
+    },
+    {
+      "word": "anónimo",
+      "tags": [
+        "sin nombre",
+        "autor desconocido",
+        "innominado",
+        "no identificado",
+        "incógnito"
+      ]
+    },
+    {
+      "word": "anorak",
+      "tags": [
+        "chaqueta impermeable",
+        "abrigo capucha",
+        "prenda exterior",
+        "deportiva",
+        "polar"
+      ]
+    },
+    {
+      "word": "anormal",
+      "tags": [
+        "no típico",
+        "inusual",
+        "desviado norma",
+        "irregular",
+        "atípico"
+      ]
+    },
+    {
+      "word": "anotación",
+      "tags": [
+        "nota",
+        "apunte",
+        "registro",
+        "comentario",
+        "observación"
+      ]
+    },
+    {
+      "word": "anotar",
+      "tags": [
+        "escribir",
+        "registrar",
+        "apuntar",
+        "tomar nota",
+        "consignar"
+      ]
+    },
+    {
+      "word": "anquilosar",
+      "tags": [
+        "entumecerse",
+        "inmovilizar",
+        "paralizar",
+        "rigidizar",
+        "endurecer"
+      ]
+    },
+    {
+      "word": "ansia",
+      "tags": [
+        "deseo intenso",
+        "anhelo",
+        "angustia",
+        "congoja",
+        "avidez"
+      ]
+    },
+    {
+      "word": "ansiar",
+      "tags": [
+        "desear intensamente",
+        "anhelar",
+        "codiciar",
+        "ambicionar",
+        "apetecer"
+      ]
+    },
+    {
+      "word": "ansiedad",
+      "tags": [
+        "preocupación",
+        "nerviosismo",
+        "inquietud",
+        "aprensión",
+        "tensión"
+      ]
+    },
+    {
+      "word": "ansioso",
+      "tags": [
+        "preocupado",
+        "nervioso",
+        "inquieto",
+        "angustiado",
+        "aprensivo"
+      ]
+    },
+    {
+      "word": "anta",
+      "tags": [
+        "tapir",
+        "mamífero",
+        "hocico alargado",
+        "América del Sur",
+        "ungulado"
+      ]
+    },
+    {
+      "word": "antagonismo",
+      "tags": [
+        "oposición",
+        "rivalidad",
+        "hostilidad",
+        "conflicto",
+        "enemistad"
+      ]
+    },
+    {
+      "word": "antagonista",
+      "tags": [
+        "oponente",
+        "rival",
+        "adversario",
+        "contrario",
+        "enemigo"
+      ]
+    },
+    {
+      "word": "antaño",
+      "tags": [
+        "antiguamente",
+        "en el pasado",
+        "hace tiempo",
+        "antes",
+        "otrora"
+      ]
+    },
+    {
+      "word": "antártico",
+      "tags": [
+        "polo sur",
+        "región polar",
+        "muy frío",
+        "cubierto hielo",
+        "congelado"
+      ]
+    },
+    {
+      "word": "ante",
+      "tags": [
+        "delante de",
+        "frente a",
+        "gamuza",
+        "piel suave",
+        "enfrente"
+      ]
+    },
+    {
+      "word": "anteayer",
+      "tags": [
+        "dos días antes",
+        "hace dos días",
+        "antes de ayer",
+        "día previo",
+        "trasanteayer"
+      ]
+    },
+    {
+      "word": "antebrazo",
+      "tags": [
+        "entre codo y muñeca",
+        "parte brazo",
+        "forearm",
+        "zona media",
+        "extremidad"
+      ]
+    },
+    {
+      "word": "antecedente",
+      "tags": [
+        "previo",
+        "anterior",
+        "precedente",
+        "historial",
+        "pasado"
+      ]
+    },
+    {
+      "word": "anteceder",
+      "tags": [
+        "ir antes",
+        "preceder",
+        "anticiparse",
+        "adelantarse",
+        "ser anterior"
+      ]
+    },
+    {
+      "word": "antecesor",
+      "tags": [
+        "predecesor",
+        "antepasado",
+        "anterior",
+        "previo",
+        "precedente"
+      ]
+    },
+    {
+      "word": "antedicho",
+      "tags": [
+        "mencionado antes",
+        "previamente dicho",
+        "citado",
+        "referido",
+        "anterior"
+      ]
+    },
+    {
+      "word": "antelación",
+      "tags": [
+        "anticipación",
+        "adelanto",
+        "previsión",
+        "con tiempo",
+        "antes"
+      ]
+    },
+    {
+      "word": "antemano",
+      "tags": [
+        "anticipadamente",
+        "antes",
+        "previamente",
+        "con antelación",
+        "por adelantado"
+      ]
+    },
+    {
+      "word": "antena",
+      "tags": [
+        "receptor",
+        "captador",
+        "sensor insecto",
+        "varilla radio",
+        "detector señal"
+      ]
+    },
+    {
+      "word": "anteojo",
+      "tags": [
+        "lente aumento",
+        "telescopio",
+        "catalejo",
+        "óptico",
+        "instrumento visual"
+      ]
+    },
+    {
+      "word": "antepasado",
+      "tags": [
+        "ancestro",
+        "progenitor",
+        "ascendiente",
+        "predecesor",
+        "abuelo lejano"
+      ]
+    },
+    {
+      "word": "antepecho",
+      "tags": [
+        "barandilla",
+        "pretil",
+        "parapeto",
+        "muro bajo",
+        "protección"
+      ]
+    },
+    {
+      "word": "anteponer",
+      "tags": [
+        "poner antes",
+        "preferir",
+        "dar prioridad",
+        "anteceder",
+        "privilegiar"
+      ]
+    },
+    {
+      "word": "anteproyecto",
+      "tags": [
+        "borrador",
+        "proyecto inicial",
+        "esquema",
+        "propuesta preliminar",
+        "diseño previo"
+      ]
+    },
+    {
+      "word": "anterior",
+      "tags": [
+        "previo",
+        "precedente",
+        "pasado",
+        "de antes",
+        "delantero"
+      ]
+    },
+    {
+      "word": "anterioridad",
+      "tags": [
+        "prioridad temporal",
+        "precedencia",
+        "antelación",
+        "antes",
+        "preexistencia"
+      ]
+    },
+    {
+      "word": "antes",
+      "tags": [
+        "previamente",
+        "con anterioridad",
+        "primero",
+        "más temprano",
+        "precedentemente"
+      ]
+    },
+    {
+      "word": "antesala",
+      "tags": [
+        "sala espera",
+        "vestíbulo",
+        "recibidor",
+        "entrada",
+        "previo"
+      ]
+    },
+    {
+      "word": "antiácido",
+      "tags": [
+        "neutraliza acidez",
+        "medicamento",
+        "digestivo",
+        "estómago",
+        "alcalino"
+      ]
+    },
+    {
+      "word": "antiaéreo",
+      "tags": [
+        "contra aviones",
+        "defensa aérea",
+        "misiles",
+        "cañones",
+        "militar"
+      ]
+    },
+    {
+      "word": "antibiótico",
+      "tags": [
+        "combate gérmenes",
+        "medicina",
+        "tratamiento infección",
+        "mata bacterias",
+        "tipo penicilina"
+      ]
+    },
+    {
+      "word": "anticipo",
+      "tags": [
+        "adelanto",
+        "pago previo",
+        "avance",
+        "anticipación",
+        "prepago"
+      ]
+    },
+    {
+      "word": "anticonceptivo",
+      "tags": [
+        "previene embarazo",
+        "método control",
+        "píldora",
+        "condón",
+        "planificación"
+      ]
+    },
+    {
+      "word": "anticuado",
+      "tags": [
+        "pasado moda",
+        "obsoleto",
+        "viejo",
+        "antiguo",
+        "desfasado"
+      ]
+    },
+    {
+      "word": "anticuario",
+      "tags": [
+        "vendedor antigüedades",
+        "coleccionista",
+        "experto objetos viejos",
+        "tienda vintage",
+        "tasador"
+      ]
+    },
+    {
+      "word": "anticuerpo",
+      "tags": [
+        "proteína inmune",
+        "combate enfermedad",
+        "sistema inmune",
+        "protección",
+        "defensa viral"
+      ]
+    },
+    {
+      "word": "antídoto",
+      "tags": [
+        "remedio",
+        "cura",
+        "contraveneno",
+        "neutralizador veneno",
+        "tratamiento"
+      ]
+    },
+    {
+      "word": "antiestético",
+      "tags": [
+        "feo",
+        "desagradable vista",
+        "sin belleza",
+        "poco atractivo",
+        "carente estética"
+      ]
+    },
+    {
+      "word": "antifaz",
+      "tags": [
+        "máscara media",
+        "cubre ojos",
+        "disfraz",
+        "carnaval",
+        "ocultador rostro"
+      ]
+    },
+    {
+      "word": "antigualla",
+      "tags": [
+        "cosa vieja",
+        "antigüedad",
+        "reliquia",
+        "obsoleto",
+        "arcaísmo"
+      ]
+    },
+    {
+      "word": "antiguamente",
+      "tags": [
+        "en pasado",
+        "antes",
+        "hace tiempo",
+        "otrora",
+        "antaño"
+      ]
+    },
+    {
+      "word": "antigüedad",
+      "tags": [
+        "objeto viejo",
+        "época remota",
+        "reliquia",
+        "vejez",
+        "era antigua"
+      ]
+    },
+    {
+      "word": "antiguo",
+      "tags": [
+        "viejo",
+        "de hace tiempo",
+        "pasado",
+        "histórico",
+        "añejo"
+      ]
+    },
+    {
+      "word": "antílope",
+      "tags": [
+        "mamífero veloz",
+        "cuernos",
+        "herbívoro",
+        "sabana africana",
+        "grácil"
+      ]
+    },
+    {
+      "word": "antinatural",
+      "tags": [
+        "contra naturaleza",
+        "artificial",
+        "anormal",
+        "forzado",
+        "no orgánico"
+      ]
+    },
+    {
+      "word": "antipatía",
+      "tags": [
+        "aversión",
+        "desagrado",
+        "rechazo",
+        "repulsión",
+        "animadversión"
+      ]
+    },
+    {
+      "word": "antipático",
+      "tags": [
+        "desagradable",
+        "poco amable",
+        "arisco",
+        "hosco",
+        "repelente"
+      ]
+    },
+    {
+      "word": "antípoda",
+      "tags": [
+        "lado opuesto tierra",
+        "contrario",
+        "opuesto extremo",
+        "reverso",
+        "antagónico"
+      ]
+    },
+    {
+      "word": "antiquísimo",
+      "tags": [
+        "muy antiguo",
+        "milenario",
+        "arcaico",
+        "primigenio",
+        "remotísimo"
+      ]
+    },
+    {
+      "word": "antiséptico",
+      "tags": [
+        "mata gérmenes",
+        "desinfectante",
+        "esterilizante",
+        "limpio",
+        "previene infección"
+      ]
+    },
+    {
+      "word": "antisocial",
+      "tags": [
+        "poco amigable",
+        "retraído",
+        "contra sociedad",
+        "ermitaño",
+        "insociable"
+      ]
+    },
+    {
+      "word": "antítesis",
+      "tags": [
+        "opuesto",
+        "contrario",
+        "inversión",
+        "contraposición",
+        "antagonismo"
+      ]
+    },
+    {
+      "word": "antojadizo",
+      "tags": [
+        "caprichoso",
+        "veleidoso",
+        "inconstante",
+        "mudable",
+        "voluble"
+      ]
+    },
+    {
+      "word": "antojarse",
+      "tags": [
+        "desear",
+        "apetecer",
+        "figurarse",
+        "ocurrirse",
+        "antojar"
+      ]
+    },
+    {
+      "word": "antojo",
+      "tags": [
+        "capricho",
+        "deseo repentino",
+        "impulso",
+        "gana",
+        "apetencia"
+      ]
+    },
+    {
+      "word": "antología",
+      "tags": [
+        "colección",
+        "compilación",
+        "selección",
+        "surtido",
+        "obras reunidas"
+      ]
+    },
+    {
+      "word": "antónimo",
+      "tags": [
+        "palabra opuesta",
+        "significado contrario",
+        "término inverso",
+        "palabra contrastante",
+        "sentido opuesto"
+      ]
+    },
+    {
+      "word": "antorcha",
+      "tags": [
+        "tea",
+        "luz portátil",
+        "llama",
+        "luminaria",
+        "hachón"
+      ]
+    },
+    {
+      "word": "antro",
+      "tags": [
+        "cueva oscura",
+        "local sórdido",
+        "tugurio",
+        "caverna",
+        "sitio oscuro"
+      ]
+    },
+    {
+      "word": "antropología",
+      "tags": [
+        "estudio humanos",
+        "ciencia cultural",
+        "estudio comportamiento",
+        "investigación sociedad",
+        "estudio humanidad"
+      ]
+    },
+    {
+      "word": "antropólogo",
+      "tags": [
+        "estudia culturas",
+        "investigador humano",
+        "científico social",
+        "etnógrafo",
+        "sociólogo"
+      ]
+    },
+    {
+      "word": "anual",
+      "tags": [
+        "cada año",
+        "todos años",
+        "una vez año",
+        "estacional",
+        "recurrente"
+      ]
+    },
+    {
+      "word": "anualidad",
+      "tags": [
+        "pago anual",
+        "renta anual",
+        "ingreso año",
+        "pensión",
+        "cuota"
+      ]
+    },
+    {
+      "word": "anuario",
+      "tags": [
+        "publicación anual",
+        "libro año",
+        "registro anual",
+        "almanaque",
+        "memoria"
+      ]
+    },
+    {
+      "word": "anudar",
+      "tags": [
+        "hacer nudo",
+        "atar",
+        "ligar",
+        "enlazar",
+        "amarrar"
+      ]
+    },
+    {
+      "word": "anuencia",
+      "tags": [
+        "consentimiento",
+        "aprobación",
+        "permiso",
+        "venia",
+        "beneplácito"
+      ]
+    },
+    {
+      "word": "anulación",
+      "tags": [
+        "cancelación",
+        "invalidación",
+        "revocación",
+        "abolición",
+        "supresión"
+      ]
+    },
+    {
+      "word": "anular",
+      "tags": [
+        "cancelar",
+        "invalidar",
+        "revocar",
+        "abolir",
+        "dedo"
+      ]
+    },
+    {
+      "word": "anunciación",
+      "tags": [
+        "aviso ángel",
+        "mensaje divino",
+        "notificación",
+        "proclamación",
+        "anuncio"
+      ]
+    },
+    {
+      "word": "anunciante",
+      "tags": [
+        "publicista",
+        "patrocinador",
+        "auspiciador",
+        "promotor",
+        "comerciante"
+      ]
+    },
+    {
+      "word": "anunciar",
+      "tags": [
+        "declarar",
+        "proclamar",
+        "hacer saber",
+        "difundir",
+        "comunicar"
+      ]
+    },
+    {
+      "word": "anuncio",
+      "tags": [
+        "aviso",
+        "publicidad",
+        "comunicado",
+        "propaganda",
+        "reclamo"
+      ]
+    },
+    {
+      "word": "anverso",
+      "tags": [
+        "cara",
+        "frente",
+        "lado frontal",
+        "faz",
+        "recto"
+      ]
+    },
+    {
+      "word": "anzuelo",
+      "tags": [
+        "gancho pesca",
+        "arponcillo",
+        "señuelo",
+        "trampa",
+        "atrayente"
+      ]
+    },
+    {
+      "word": "añadir",
+      "tags": [
+        "agregar",
+        "sumar",
+        "incorporar",
+        "incluir",
+        "adjuntar"
+      ]
+    },
+    {
+      "word": "añadidura",
+      "tags": [
+        "agregado",
+        "adición",
+        "suplemento",
+        "extra",
+        "complemento"
+      ]
+    },
+    {
+      "word": "añejo",
+      "tags": [
+        "viejo",
+        "antiguo",
+        "envejecido",
+        "curado tiempo",
+        "maduro"
+      ]
+    },
+    {
+      "word": "añicos",
+      "tags": [
+        "pedazos pequeños",
+        "fragmentos",
+        "trizas",
+        "esquirlas",
+        "migas"
+      ]
+    },
+    {
+      "word": "añil",
+      "tags": [
+        "azul oscuro",
+        "índigo",
+        "tinte vegetal",
+        "colorante",
+        "planta"
+      ]
+    },
+    {
+      "word": "añoranza",
+      "tags": [
+        "nostalgia",
+        "melancolía",
+        "recuerdo triste",
+        "extrañar",
+        "ansia"
+      ]
+    },
+    {
+      "word": "añorar",
+      "tags": [
+        "extrañar",
+        "echar de menos",
+        "recordar con pena",
+        "nostalgiar",
+        "suspirar"
+      ]
+    },
+    {
+      "word": "añoso",
+      "tags": [
+        "muy viejo",
+        "antiguo",
+        "veterano",
+        "longevo",
+        "anciano"
+      ]
+    },
+    {
+      "word": "aovar",
+      "tags": [
+        "poner huevos",
+        "ovar",
+        "desovar",
+        "reproducir",
+        "ovíparo"
+      ]
+    },
+    {
+      "word": "apacentar",
+      "tags": [
+        "pastorear",
+        "llevar ganado",
+        "cuidar rebaño",
+        "alimentar",
+        "guardar"
+      ]
     }
   ]
 }
