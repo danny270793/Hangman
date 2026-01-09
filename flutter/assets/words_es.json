@@ -5149,6 +5149,1486 @@
         "colocar",
         "organizar"
       ]
+    },
+    {
+      "word": "acompañar",
+      "tags": [
+        "ir con alguien",
+        "escoltar",
+        "estar junto",
+        "unirse",
+        "asistir"
+      ]
+    },
+    {
+      "word": "aconsejar",
+      "tags": [
+        "dar consejo",
+        "recomendar",
+        "orientar",
+        "sugerir",
+        "guiar"
+      ]
+    },
+    {
+      "word": "acontecimiento",
+      "tags": [
+        "evento",
+        "suceso",
+        "ocurrencia",
+        "hecho",
+        "incidente"
+      ]
+    },
+    {
+      "word": "acordar",
+      "tags": [
+        "estar de acuerdo",
+        "pactar",
+        "convenir",
+        "decidir",
+        "resolver"
+      ]
+    },
+    {
+      "word": "acortar",
+      "tags": [
+        "hacer más corto",
+        "reducir longitud",
+        "abreviar",
+        "disminuir",
+        "recortar"
+      ]
+    },
+    {
+      "word": "acostar",
+      "tags": [
+        "ir a dormir",
+        "tumbar",
+        "recostar",
+        "tender",
+        "yacer"
+      ]
+    },
+    {
+      "word": "acostumbrar",
+      "tags": [
+        "hacer hábito",
+        "habituar",
+        "familiarizar",
+        "soler",
+        "adaptar"
+      ]
+    },
+    {
+      "word": "acrecentar",
+      "tags": [
+        "aumentar",
+        "incrementar",
+        "agrandar",
+        "ampliar",
+        "crecer"
+      ]
+    },
+    {
+      "word": "actitud",
+      "tags": [
+        "disposición",
+        "postura",
+        "comportamiento",
+        "manera ser",
+        "enfoque"
+      ]
+    },
+    {
+      "word": "activar",
+      "tags": [
+        "poner activo",
+        "encender",
+        "habilitar",
+        "iniciar",
+        "accionar"
+      ]
+    },
+    {
+      "word": "actividad",
+      "tags": [
+        "acción",
+        "tarea",
+        "ocupación",
+        "trabajo",
+        "ejercicio"
+      ]
+    },
+    {
+      "word": "activo",
+      "tags": [
+        "energético",
+        "dinámico",
+        "funcionando",
+        "en movimiento",
+        "operativo"
+      ]
+    },
+    {
+      "word": "acto",
+      "tags": [
+        "acción realizada",
+        "hecho",
+        "ceremonia",
+        "evento",
+        "actuación"
+      ]
+    },
+    {
+      "word": "actor",
+      "tags": [
+        "artista escénico",
+        "interpreta personajes",
+        "trabaja teatro",
+        "actuación",
+        "protagonista"
+      ]
+    },
+    {
+      "word": "actriz",
+      "tags": [
+        "artista femenina",
+        "actúa películas",
+        "intérprete",
+        "estrella",
+        "protagonista"
+      ]
+    },
+    {
+      "word": "actual",
+      "tags": [
+        "presente",
+        "corriente",
+        "contemporáneo",
+        "vigente",
+        "moderno"
+      ]
+    },
+    {
+      "word": "actualizar",
+      "tags": [
+        "poner al día",
+        "modernizar",
+        "renovar",
+        "mejorar",
+        "refrescar"
+      ]
+    },
+    {
+      "word": "actuar",
+      "tags": [
+        "hacer",
+        "obrar",
+        "interpretar papel",
+        "representar",
+        "funcionar"
+      ]
+    },
+    {
+      "word": "acudir",
+      "tags": [
+        "ir a lugar",
+        "asistir",
+        "presentarse",
+        "comparecer",
+        "concurrir"
+      ]
+    },
+    {
+      "word": "acuerdo",
+      "tags": [
+        "pacto",
+        "convenio",
+        "consenso",
+        "trato",
+        "arreglo"
+      ]
+    },
+    {
+      "word": "acumular",
+      "tags": [
+        "juntar",
+        "amontonar",
+        "reunir",
+        "apilar",
+        "almacenar"
+      ]
+    },
+    {
+      "word": "acuoso",
+      "tags": [
+        "con agua",
+        "líquido",
+        "aguado",
+        "húmedo",
+        "diluido"
+      ]
+    },
+    {
+      "word": "acusar",
+      "tags": [
+        "culpar",
+        "imputar",
+        "denunciar",
+        "señalar",
+        "inculpar"
+      ]
+    },
+    {
+      "word": "acústico",
+      "tags": [
+        "relacionado sonido",
+        "sin electricidad",
+        "audio natural",
+        "sin amplificar",
+        "auditivo"
+      ]
+    },
+    {
+      "word": "adaptar",
+      "tags": [
+        "ajustar",
+        "modificar",
+        "cambiar",
+        "acomodar",
+        "alterar"
+      ]
+    },
+    {
+      "word": "adecuado",
+      "tags": [
+        "apropiado",
+        "correcto",
+        "conveniente",
+        "idóneo",
+        "suficiente"
+      ]
+    },
+    {
+      "word": "adelantar",
+      "tags": [
+        "mover adelante",
+        "avanzar",
+        "anticipar",
+        "sobrepasar",
+        "progresar"
+      ]
+    },
+    {
+      "word": "adelante",
+      "tags": [
+        "hacia frente",
+        "más allá",
+        "por delante",
+        "en futuro",
+        "siguiente"
+      ]
+    },
+    {
+      "word": "adelgazar",
+      "tags": [
+        "perder peso",
+        "enflaquecer",
+        "hacer delgado",
+        "reducir",
+        "bajar kilos"
+      ]
+    },
+    {
+      "word": "además",
+      "tags": [
+        "también",
+        "adicionalmente",
+        "igualmente",
+        "asimismo",
+        "aparte"
+      ]
+    },
+    {
+      "word": "adentro",
+      "tags": [
+        "hacia interior",
+        "dentro",
+        "en interior",
+        "interiormente",
+        "por dentro"
+      ]
+    },
+    {
+      "word": "adherir",
+      "tags": [
+        "pegar",
+        "unir",
+        "fijar",
+        "adjuntar",
+        "anexar"
+      ]
+    },
+    {
+      "word": "adicción",
+      "tags": [
+        "dependencia",
+        "hábito fuerte",
+        "compulsión",
+        "vicio",
+        "obsesión"
+      ]
+    },
+    {
+      "word": "adicional",
+      "tags": [
+        "extra",
+        "suplementario",
+        "más",
+        "complementario",
+        "agregado"
+      ]
+    },
+    {
+      "word": "adiestrar",
+      "tags": [
+        "entrenar",
+        "enseñar",
+        "preparar",
+        "instruir",
+        "capacitar"
+      ]
+    },
+    {
+      "word": "adiós",
+      "tags": [
+        "despedida",
+        "hasta luego",
+        "chao",
+        "nos vemos",
+        "saludo final"
+      ]
+    },
+    {
+      "word": "adivinar",
+      "tags": [
+        "predecir",
+        "suponer",
+        "conjeturar",
+        "intuir",
+        "descifrar"
+      ]
+    },
+    {
+      "word": "adjetivo",
+      "tags": [
+        "palabra descriptiva",
+        "modifica sustantivo",
+        "término gramatical",
+        "calificativo",
+        "cualidad"
+      ]
+    },
+    {
+      "word": "adjuntar",
+      "tags": [
+        "anexar",
+        "agregar",
+        "incluir",
+        "añadir",
+        "acompañar"
+      ]
+    },
+    {
+      "word": "administrar",
+      "tags": [
+        "gestionar",
+        "dirigir",
+        "manejar",
+        "organizar",
+        "gobernar"
+      ]
+    },
+    {
+      "word": "admirar",
+      "tags": [
+        "respetar",
+        "apreciar",
+        "estimar",
+        "valorar",
+        "contemplar"
+      ]
+    },
+    {
+      "word": "admitir",
+      "tags": [
+        "aceptar",
+        "reconocer",
+        "permitir entrada",
+        "confesar",
+        "conceder"
+      ]
+    },
+    {
+      "word": "adolescencia",
+      "tags": [
+        "juventud",
+        "pubertad",
+        "años jóvenes",
+        "etapa teen",
+        "desarrollo"
+      ]
+    },
+    {
+      "word": "adolorido",
+      "tags": [
+        "con dolor",
+        "dolorido",
+        "lastimado",
+        "adolorido",
+        "resentido"
+      ]
+    },
+    {
+      "word": "adoptar",
+      "tags": [
+        "tomar como propio",
+        "aceptar",
+        "acoger hijo",
+        "elegir",
+        "asumir"
+      ]
+    },
+    {
+      "word": "adorar",
+      "tags": [
+        "amar profundamente",
+        "venerar",
+        "idolatrar",
+        "rendir culto",
+        "querer mucho"
+      ]
+    },
+    {
+      "word": "adornar",
+      "tags": [
+        "decorar",
+        "embellecer",
+        "engalanar",
+        "ornamentar",
+        "hermosear"
+      ]
+    },
+    {
+      "word": "adquirir",
+      "tags": [
+        "obtener",
+        "conseguir",
+        "comprar",
+        "ganar",
+        "lograr"
+      ]
+    },
+    {
+      "word": "aduana",
+      "tags": [
+        "control fronterizo",
+        "inspección equipaje",
+        "oficina aduanas",
+        "revisión mercancías",
+        "impuestos"
+      ]
+    },
+    {
+      "word": "adulto",
+      "tags": [
+        "persona mayor",
+        "maduro",
+        "mayor de edad",
+        "no niño",
+        "crecido"
+      ]
+    },
+    {
+      "word": "adverbio",
+      "tags": [
+        "modifica verbo",
+        "término gramatical",
+        "describe cómo",
+        "termina en mente",
+        "palabra manera"
+      ]
+    },
+    {
+      "word": "adversario",
+      "tags": [
+        "oponente",
+        "enemigo",
+        "rival",
+        "contrincante",
+        "antagonista"
+      ]
+    },
+    {
+      "word": "adverso",
+      "tags": [
+        "desfavorable",
+        "dañino",
+        "negativo",
+        "perjudicial",
+        "contrario"
+      ]
+    },
+    {
+      "word": "advertir",
+      "tags": [
+        "avisar",
+        "alertar",
+        "prevenir",
+        "notar",
+        "señalar"
+      ]
+    },
+    {
+      "word": "aéreo",
+      "tags": [
+        "en aire",
+        "desde arriba",
+        "antena",
+        "volando",
+        "sobre cabeza"
+      ]
+    },
+    {
+      "word": "aerolínea",
+      "tags": [
+        "compañía vuelos",
+        "transporte aéreo",
+        "aviación comercial",
+        "vuela pasajeros",
+        "línea aérea"
+      ]
+    },
+    {
+      "word": "afable",
+      "tags": [
+        "amigable",
+        "cordial",
+        "amable",
+        "simpático",
+        "sociable"
+      ]
+    },
+    {
+      "word": "afán",
+      "tags": [
+        "deseo intenso",
+        "empeño",
+        "anhelo",
+        "esfuerzo",
+        "interés"
+      ]
+    },
+    {
+      "word": "afectar",
+      "tags": [
+        "influir",
+        "impactar",
+        "cambiar",
+        "alterar",
+        "modificar"
+      ]
+    },
+    {
+      "word": "afecto",
+      "tags": [
+        "cariño",
+        "amor",
+        "ternura",
+        "apego",
+        "sentimiento"
+      ]
+    },
+    {
+      "word": "afeitar",
+      "tags": [
+        "rasurar",
+        "quitar barba",
+        "cortar vello",
+        "usar navaja",
+        "barba suave"
+      ]
+    },
+    {
+      "word": "aferrar",
+      "tags": [
+        "agarrar fuerte",
+        "sujetar",
+        "asir",
+        "sostener",
+        "adherir"
+      ]
+    },
+    {
+      "word": "afición",
+      "tags": [
+        "hobby",
+        "pasatiempo",
+        "interés",
+        "gusto",
+        "inclinación"
+      ]
+    },
+    {
+      "word": "aficionado",
+      "tags": [
+        "no profesional",
+        "entusiasta",
+        "principiante",
+        "novato",
+        "amateur"
+      ]
+    },
+    {
+      "word": "afilar",
+      "tags": [
+        "hacer filoso",
+        "amolar",
+        "aguzar",
+        "dar filo",
+        "sacar punta"
+      ]
+    },
+    {
+      "word": "afiliado",
+      "tags": [
+        "asociado",
+        "miembro",
+        "socio",
+        "adherente",
+        "vinculado"
+      ]
+    },
+    {
+      "word": "afín",
+      "tags": [
+        "similar",
+        "parecido",
+        "relacionado",
+        "semejante",
+        "análogo"
+      ]
+    },
+    {
+      "word": "afinar",
+      "tags": [
+        "ajustar tono",
+        "perfeccionar",
+        "pulir",
+        "mejorar",
+        "precisar"
+      ]
+    },
+    {
+      "word": "afirmar",
+      "tags": [
+        "asegurar",
+        "confirmar",
+        "sostener",
+        "declarar",
+        "aseverar"
+      ]
+    },
+    {
+      "word": "aflicción",
+      "tags": [
+        "pena",
+        "tristeza",
+        "dolor",
+        "sufrimiento",
+        "angustia"
+      ]
+    },
+    {
+      "word": "afligir",
+      "tags": [
+        "causar pena",
+        "entristecer",
+        "apenar",
+        "angustiar",
+        "lastimar"
+      ]
+    },
+    {
+      "word": "aflojar",
+      "tags": [
+        "soltar",
+        "relajar",
+        "desapretar",
+        "ceder",
+        "disminuir"
+      ]
+    },
+    {
+      "word": "afluente",
+      "tags": [
+        "rico",
+        "próspero",
+        "adinerado",
+        "abundante",
+        "acomodado"
+      ]
+    },
+    {
+      "word": "afortunado",
+      "tags": [
+        "con suerte",
+        "dichoso",
+        "bendecido",
+        "venturoso",
+        "favorecido"
+      ]
+    },
+    {
+      "word": "afrontar",
+      "tags": [
+        "enfrentar",
+        "encarar",
+        "hacer frente",
+        "confrontar",
+        "lidiar"
+      ]
+    },
+    {
+      "word": "afuera",
+      "tags": [
+        "exterior",
+        "fuera",
+        "al aire libre",
+        "externamente",
+        "outdoor"
+      ]
+    },
+    {
+      "word": "agachar",
+      "tags": [
+        "bajar cuerpo",
+        "inclinar",
+        "doblar",
+        "encorvar",
+        "poner bajo"
+      ]
+    },
+    {
+      "word": "agarrar",
+      "tags": [
+        "tomar",
+        "asir",
+        "sujetar",
+        "coger",
+        "empuñar"
+      ]
+    },
+    {
+      "word": "agasajar",
+      "tags": [
+        "atender bien",
+        "tratar amablemente",
+        "festejar",
+        "honrar",
+        "obsequiar"
+      ]
+    },
+    {
+      "word": "agencia",
+      "tags": [
+        "organización",
+        "negocio",
+        "oficina",
+        "empresa",
+        "bureau"
+      ]
+    },
+    {
+      "word": "agenda",
+      "tags": [
+        "horario",
+        "plan",
+        "lista tareas",
+        "programa",
+        "calendario"
+      ]
+    },
+    {
+      "word": "agente",
+      "tags": [
+        "representante",
+        "intermediario",
+        "corredor",
+        "operativo",
+        "delegado"
+      ]
+    },
+    {
+      "word": "ágil",
+      "tags": [
+        "rápido",
+        "veloz",
+        "diestro",
+        "flexible",
+        "hábil"
+      ]
+    },
+    {
+      "word": "agitar",
+      "tags": [
+        "mover",
+        "sacudir",
+        "menear",
+        "revolver",
+        "perturbar"
+      ]
+    },
+    {
+      "word": "aglomerar",
+      "tags": [
+        "juntar",
+        "apiñar",
+        "amontonar",
+        "acumular",
+        "congregar"
+      ]
+    },
+    {
+      "word": "agonía",
+      "tags": [
+        "dolor extremo",
+        "sufrimiento",
+        "tormento",
+        "angustia",
+        "agonía"
+      ]
+    },
+    {
+      "word": "agotar",
+      "tags": [
+        "cansar mucho",
+        "terminar",
+        "consumir",
+        "fatigar",
+        "acabar"
+      ]
+    },
+    {
+      "word": "agradable",
+      "tags": [
+        "grato",
+        "placentero",
+        "ameno",
+        "satisfactorio",
+        "gustoso"
+      ]
+    },
+    {
+      "word": "agradar",
+      "tags": [
+        "gustar",
+        "complacer",
+        "satisfacer",
+        "deleitar",
+        "contentar"
+      ]
+    },
+    {
+      "word": "agradecer",
+      "tags": [
+        "dar gracias",
+        "reconocer favor",
+        "apreciar",
+        "valorar",
+        "mostrar gratitud"
+      ]
+    },
+    {
+      "word": "agrandar",
+      "tags": [
+        "hacer más grande",
+        "ampliar",
+        "expandir",
+        "aumentar",
+        "extender"
+      ]
+    },
+    {
+      "word": "agrario",
+      "tags": [
+        "del campo",
+        "rural",
+        "agrícola",
+        "campesino",
+        "tierra"
+      ]
+    },
+    {
+      "word": "agravar",
+      "tags": [
+        "empeorar",
+        "deteriorar",
+        "complicar",
+        "intensificar",
+        "exacerbar"
+      ]
+    },
+    {
+      "word": "agregar",
+      "tags": [
+        "añadir",
+        "sumar",
+        "incorporar",
+        "incluir",
+        "adjuntar"
+      ]
+    },
+    {
+      "word": "agresión",
+      "tags": [
+        "ataque",
+        "violencia",
+        "acometida",
+        "asalto",
+        "hostilidad"
+      ]
+    },
+    {
+      "word": "agresivo",
+      "tags": [
+        "violento",
+        "hostil",
+        "combativo",
+        "ofensivo",
+        "beligerante"
+      ]
+    },
+    {
+      "word": "agriar",
+      "tags": [
+        "poner ácido",
+        "amargar",
+        "echar a perder",
+        "acidular",
+        "fermentar"
+      ]
+    },
+    {
+      "word": "agricultor",
+      "tags": [
+        "campesino",
+        "granjero",
+        "labrador",
+        "cultivador",
+        "productor"
+      ]
+    },
+    {
+      "word": "agricultura",
+      "tags": [
+        "cultivo tierra",
+        "labranza",
+        "siembra",
+        "producción alimentos",
+        "industria rural"
+      ]
+    },
+    {
+      "word": "agrio",
+      "tags": [
+        "ácido",
+        "amargo",
+        "sour",
+        "áspero",
+        "avinagrado"
+      ]
+    },
+    {
+      "word": "agrupar",
+      "tags": [
+        "juntar",
+        "reunir",
+        "clasificar",
+        "organizar",
+        "congregar"
+      ]
+    },
+    {
+      "word": "aguacate",
+      "tags": [
+        "fruta verde",
+        "cremosa",
+        "rico en grasas",
+        "guacamole",
+        "tropical"
+      ]
+    },
+    {
+      "word": "aguacero",
+      "tags": [
+        "lluvia fuerte",
+        "chaparrón",
+        "precipitación intensa",
+        "diluvio",
+        "temporal"
+      ]
+    },
+    {
+      "word": "aguantar",
+      "tags": [
+        "soportar",
+        "tolerar",
+        "resistir",
+        "sostener",
+        "sufrir"
+      ]
+    },
+    {
+      "word": "aguardar",
+      "tags": [
+        "esperar",
+        "permanecer",
+        "quedarse",
+        "acechar",
+        "estar a la espera"
+      ]
+    },
+    {
+      "word": "agudizar",
+      "tags": [
+        "hacer agudo",
+        "afinar",
+        "intensificar",
+        "agravar",
+        "empeorar"
+      ]
+    },
+    {
+      "word": "agudo",
+      "tags": [
+        "afilado",
+        "puntiagudo",
+        "penetrante",
+        "perspicaz",
+        "intenso"
+      ]
+    },
+    {
+      "word": "águila",
+      "tags": [
+        "ave rapaz",
+        "gran envergadura",
+        "vista aguda",
+        "pico curvo",
+        "símbolo fuerza"
+      ]
+    },
+    {
+      "word": "aguja",
+      "tags": [
+        "herramienta coser",
+        "puntiaguda",
+        "fina",
+        "para hilo",
+        "inyección"
+      ]
+    },
+    {
+      "word": "agujero",
+      "tags": [
+        "hoyo",
+        "perforación",
+        "cavidad",
+        "abertura",
+        "hueco"
+      ]
+    },
+    {
+      "word": "ahí",
+      "tags": [
+        "en ese lugar",
+        "allí",
+        "ese sitio",
+        "ese punto",
+        "esa ubicación"
+      ]
+    },
+    {
+      "word": "ahijado",
+      "tags": [
+        "hijo adoptivo",
+        "protegido",
+        "patrocinado",
+        "apadrinado",
+        "bajo tutela"
+      ]
+    },
+    {
+      "word": "ahogar",
+      "tags": [
+        "asfixiar",
+        "sofocar",
+        "sumergir",
+        "apagar",
+        "suprimir"
+      ]
+    },
+    {
+      "word": "ahondar",
+      "tags": [
+        "profundizar",
+        "cavar hondo",
+        "penetrar",
+        "investigar",
+        "explorar"
+      ]
+    },
+    {
+      "word": "ahora",
+      "tags": [
+        "en este momento",
+        "actualmente",
+        "presente",
+        "hoy",
+        "ya"
+      ]
+    },
+    {
+      "word": "ahorcar",
+      "tags": [
+        "colgar",
+        "ejecutar",
+        "suspender del cuello",
+        "ajusticiar",
+        "linchar"
+      ]
+    },
+    {
+      "word": "ahorrar",
+      "tags": [
+        "guardar dinero",
+        "economizar",
+        "reservar",
+        "no gastar",
+        "acumular"
+      ]
+    },
+    {
+      "word": "ahorro",
+      "tags": [
+        "dinero guardado",
+        "economía",
+        "reserva",
+        "fondo",
+        "capital"
+      ]
+    },
+    {
+      "word": "ahumar",
+      "tags": [
+        "exponer a humo",
+        "curar con humo",
+        "sahum",
+        "preservar",
+        "dar sabor"
+      ]
+    },
+    {
+      "word": "ahuyentar",
+      "tags": [
+        "espantar",
+        "alejar",
+        "hacer huir",
+        "intimidar",
+        "expulsar"
+      ]
+    },
+    {
+      "word": "aire",
+      "tags": [
+        "gas respirable",
+        "atmósfera",
+        "viento",
+        "brisa",
+        "ambiente"
+      ]
+    },
+    {
+      "word": "airear",
+      "tags": [
+        "ventilar",
+        "exponer al aire",
+        "orear",
+        "refrescar",
+        "oxigenar"
+      ]
+    },
+    {
+      "word": "aislado",
+      "tags": [
+        "solo",
+        "separado",
+        "apartado",
+        "solitario",
+        "incomunicado"
+      ]
+    },
+    {
+      "word": "aislar",
+      "tags": [
+        "separar",
+        "apartar",
+        "incomunicar",
+        "desconectar",
+        "segregar"
+      ]
+    },
+    {
+      "word": "ajedrez",
+      "tags": [
+        "juego estrategia",
+        "tablero cuadriculado",
+        "piezas blancas negras",
+        "rey reina",
+        "jaque mate"
+      ]
+    },
+    {
+      "word": "ajeno",
+      "tags": [
+        "de otro",
+        "extraño",
+        "diferente",
+        "no propio",
+        "externo"
+      ]
+    },
+    {
+      "word": "ajetreado",
+      "tags": [
+        "ocupado",
+        "atareado",
+        "activo",
+        "con prisa",
+        "lleno trabajo"
+      ]
+    },
+    {
+      "word": "ajustar",
+      "tags": [
+        "adaptar",
+        "modificar",
+        "acomodar",
+        "regular",
+        "calibrar"
+      ]
+    },
+    {
+      "word": "ajuste",
+      "tags": [
+        "adaptación",
+        "modificación",
+        "arreglo",
+        "regulación",
+        "acuerdo"
+      ]
+    },
+    {
+      "word": "alabar",
+      "tags": [
+        "elogiar",
+        "loar",
+        "halagar",
+        "enaltecer",
+        "glorificar"
+      ]
+    },
+    {
+      "word": "alabanza",
+      "tags": [
+        "elogio",
+        "loa",
+        "halago",
+        "reconocimiento",
+        "cumplido"
+      ]
+    },
+    {
+      "word": "alacena",
+      "tags": [
+        "armario cocina",
+        "despensa",
+        "gabinete",
+        "estante",
+        "mueble almacenaje"
+      ]
+    },
+    {
+      "word": "alacrán",
+      "tags": [
+        "escorpión",
+        "arácnido",
+        "cola venenosa",
+        "pinzas",
+        "desierto"
+      ]
+    },
+    {
+      "word": "alambrada",
+      "tags": [
+        "cerca alambre",
+        "valla metálica",
+        "barrera",
+        "protección",
+        "perímetro"
+      ]
+    },
+    {
+      "word": "alambre",
+      "tags": [
+        "hilo metal",
+        "cable delgado",
+        "flexible",
+        "conductor",
+        "cobre o acero"
+      ]
+    },
+    {
+      "word": "álamo",
+      "tags": [
+        "árbol alto",
+        "hojas temblorosas",
+        "madera blanda",
+        "ribera",
+        "sauce familia"
+      ]
+    },
+    {
+      "word": "alargar",
+      "tags": [
+        "hacer más largo",
+        "extender",
+        "prolongar",
+        "estirar",
+        "ampliar"
+      ]
+    },
+    {
+      "word": "alarido",
+      "tags": [
+        "grito fuerte",
+        "chillido",
+        "aullido",
+        "bramido",
+        "clamor"
+      ]
+    },
+    {
+      "word": "alarma",
+      "tags": [
+        "aviso peligro",
+        "señal advertencia",
+        "sirena",
+        "alerta",
+        "dispositivo"
+      ]
+    },
+    {
+      "word": "alarmar",
+      "tags": [
+        "asustar",
+        "inquietar",
+        "alertar",
+        "preocupar",
+        "sobresaltar"
+      ]
+    },
+    {
+      "word": "alba",
+      "tags": [
+        "amanecer",
+        "aurora",
+        "madrugada",
+        "primeras luces",
+        "despertar día"
+      ]
+    },
+    {
+      "word": "albañil",
+      "tags": [
+        "constructor",
+        "trabaja ladrillos",
+        "levanta muros",
+        "obra",
+        "maestro construcción"
+      ]
+    },
+    {
+      "word": "albaricoque",
+      "tags": [
+        "fruta naranja",
+        "durazno pequeño",
+        "hueso dentro",
+        "dulce",
+        "temporada verano"
+      ]
+    },
+    {
+      "word": "alberca",
+      "tags": [
+        "piscina",
+        "estanque",
+        "pileta",
+        "natación",
+        "agua recreativa"
+      ]
+    },
+    {
+      "word": "albergue",
+      "tags": [
+        "refugio",
+        "hospedaje",
+        "posada",
+        "lugar temporal",
+        "acogida"
+      ]
+    },
+    {
+      "word": "albergar",
+      "tags": [
+        "alojar",
+        "hospedar",
+        "dar refugio",
+        "acoger",
+        "proteger"
+      ]
+    },
+    {
+      "word": "albino",
+      "tags": [
+        "sin pigmento",
+        "piel muy blanca",
+        "pelo blanco",
+        "ojos claros",
+        "falta melanina"
+      ]
+    },
+    {
+      "word": "albóndiga",
+      "tags": [
+        "bola carne",
+        "carne molida",
+        "con salsa",
+        "frita o cocida",
+        "plato tradicional"
+      ]
     }
   ]
 }
