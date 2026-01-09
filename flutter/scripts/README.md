@@ -1,6 +1,6 @@
-# iOS Version Update Script
+# Utility Scripts
 
-This directory contains scripts to automate version updates for the iOS app using semantic versioning.
+This directory contains utility scripts for the Hangman Flutter project.
 
 ## Script: `update_ios_version.dart` (Recommended)
 
@@ -88,4 +88,104 @@ If you need to update MAJOR or MINOR versions manually:
 - Always commit version changes to git
 - The build number should always increment, never reset
 - iOS uses both `CFBundleShortVersionString` (version name) and `CFBundleVersion` (build number)
+
+---
+
+## Script: `group_words.dart`
+
+### What it does:
+- Reads words from `assets/words_en.json` and `assets/words_es.json`
+- Calculates difficulty for each word using Supabase's `calculate_word_difficulty` function
+- Groups words by difficulty: easy (0-33), medium (34-66), hard (67-100)
+- Saves the reorganized structure back to the JSON files
+
+### Usage:
+
+```bash
+# From the project root
+dart scripts/group_words.dart
+```
+
+### Requirements:
+- `.env` file with `SUPABASE_URL` and `SUPABASE_SERVICE_KEY`
+- Supabase database with `calculate_word_difficulty` function
+- `supabase` package in `dev_dependencies`
+- Words migration must be applied (see `DIFFICULTY_CALCULATION.md`)
+
+### Example Output:
+
+```bash
+$ dart scripts/group_words.dart
+
+🎯 Words Difficulty Grouping Script
+====================================
+
+✅ Connected to Supabase
+
+📂 Processing: assets/words_en.json
+─────────────────────────────────
+📊 Found 500 words
+🔢 Calculating difficulties...
+   Progress: 50/500 words
+   Progress: 100/500 words
+   Progress: 150/500 words
+   ...
+   Progress: 500/500 words
+
+📈 Difficulty Distribution:
+   Easy (0-33):     167 words
+   Medium (34-66):  166 words
+   Hard (67-100):   167 words
+💾 Saved updated file: assets/words_en.json
+
+📂 Processing: assets/words_es.json
+─────────────────────────────────
+📊 Found 501 words
+🔢 Calculating difficulties...
+   Progress: 50/501 words
+   ...
+   Progress: 501/501 words
+
+📈 Difficulty Distribution:
+   Easy (0-33):     170 words
+   Medium (34-66):  165 words
+   Hard (67-100):   166 words
+💾 Saved updated file: assets/words_es.json
+
+✅ All files processed successfully!
+```
+
+### How Difficulty is Calculated:
+
+The script uses Supabase's `calculate_word_difficulty` function which considers:
+
+1. **Unique Letter Ratio (40%)**: Fewer repeated letters = harder
+2. **Letter Rarity (35%)**: Uncommon letters = harder (language-specific)
+3. **Word Length (25%)**: Longer words = harder
+
+**Formula:**
+```
+difficulty = (unique_ratio × 0.40) + (letter_rarity × 0.35) + (length × 0.25)
+```
+
+**Examples:**
+- `CAT` (English): 0.23 → **Easy**
+- `PIANO` (English): 0.45 → **Medium**
+- `DEVELOPER` (English): 0.58 → **Medium**
+- `SAXOPHONE` (English): 0.72 → **Hard**
+
+### When to Use:
+
+- After adding new words to JSON files
+- When changing the difficulty calculation algorithm
+- To rebalance difficulty categories
+- To ensure consistent difficulty across languages
+
+### Notes:
+
+- The script maintains the JSON structure with `easy`, `medium`, and `hard` categories
+- Each category contains a `words` array with word objects
+- Original tags are preserved during reorganization
+- The script handles errors gracefully and defaults problematic words to medium difficulty
+- See `DIFFICULTY_CALCULATION.md` for detailed documentation on the algorithm
 
