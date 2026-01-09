@@ -94,11 +94,12 @@ If you need to update MAJOR or MINOR versions manually:
 ## Script: `seed_words.dart`
 
 ### What it does:
-- Syncs words between local JSON files and Supabase database
-- Downloads existing words from database for comparison
+- **Complete sync** between local JSON files and Supabase database
+- Downloads existing words, tags, and relationships from Supabase
 - Inserts new words that only exist in JSON
-- Updates tags for existing words
+- Updates tags for existing words when they change
 - Deletes words from database that no longer exist in JSON
+- Cleans up orphaned tags (tags not linked to any words)
 
 ### Usage:
 
@@ -111,6 +112,7 @@ dart scripts/seed_words.dart
 - `.env` file with `SUPABASE_URL` and `SUPABASE_SERVICE_KEY`
 - Supabase database with words tables (see `WORDS_SCHEMA.md`)
 - `supabase` package in `dev_dependencies`
+- JSON files with flat structure: `{ "words": [{ "word": "...", "tags": [...] }] }`
 
 ### Example Output:
 
@@ -127,20 +129,22 @@ $ dart scripts/seed_words.dart
 
   📈 Analysis:
      ➕ To insert: 25
-     🔄 To update: 475
+     🔄 To update: 10
      ➖ To delete: 5
 
   ➕ Inserting new words...
+     Progress: 25/25
      ✅ Inserted: 25 words
   🔄 Updating existing words...
-     Progress: 50/475
-     Progress: 100/475
-     ...
-     ✅ Updated: 475 words
+     Progress: 10/10
+     ✅ Updated: 10 words
   ➖ Deleting removed words...
+     Progress: 5/5
      ✅ Deleted: 5 words
+  🧹 Cleaning up orphaned tags...
+     ✅ Cleaned up: 3 orphaned tags
 
-  ✅ en sync complete: ➕25 ➖5 🔄475
+  ✅ en sync complete: ➕25 ➖5 🔄10
 
 📖 Syncing es words from assets/words_es.json...
   ...
@@ -150,29 +154,57 @@ $ dart scripts/seed_words.dart
 
 ### Sync Logic:
 
-1. **Download Phase**: Fetches all words from database for the locale
-2. **Compare Phase**: Compares local JSON with database words
-3. **Insert Phase**: Adds words that exist in JSON but not in database
-4. **Update Phase**: Updates tags for words that exist in both
-   - Deletes old tag associations
-   - Inserts new tags from JSON
-5. **Delete Phase**: Removes words from database that no longer exist in JSON
+1. **Download Phase**: 
+   - Fetches all words for the locale
+   - Fetches all word-tag relationships
+   - Builds in-memory map of database state
+
+2. **Compare Phase**: 
+   - Compares local JSON words with database words
+   - Identifies words to insert (new)
+   - Identifies words to update (tags changed)
+   - Identifies words to delete (removed from JSON)
+
+3. **Insert Phase**: 
+   - Adds words that exist in JSON but not in database
+   - Creates tags if they don't exist
+   - Links words to tags via `word_tags` table
+   - Difficulty value auto-calculated by database trigger
+
+4. **Update Phase**: 
+   - Updates tags for words that exist in both
+   - Deletes all old tag associations
+   - Inserts new tag associations from JSON
+   - Only updates words where tags actually changed
+
+5. **Delete Phase**: 
+   - Removes words from database that no longer exist in JSON
+   - Cascading delete removes word_tags automatically
+
+6. **Cleanup Phase**:
+   - Identifies orphaned tags (not linked to any words)
+   - Removes orphaned tags for the locale
 
 ### When to Use:
 
-- Initial database setup
-- After adding/removing words in JSON files
-- After modifying tags for existing words
-- To clean up orphaned words in database
-- Regular maintenance to keep database in sync
+- **Initial database setup**: Populate database from JSON files
+- **After adding words**: New words in JSON → inserted to database
+- **After removing words**: Deleted from JSON → deleted from database
+- **After modifying tags**: Changed tags in JSON → updated in database
+- **Regular maintenance**: Keep database perfectly in sync with JSON
+- **After manual database changes**: Restore JSON as source of truth
 
 ### Notes:
 
-- Uses service role key for admin operations (INSERT, UPDATE, DELETE)
-- Deletes cascade to `word_tags` table automatically
-- Progress shown every 50 words for large operations
-- Skips files if they don't exist
-- All words are normalized to UPPERCASE for comparison
+- **Service role key** required for admin operations (INSERT, UPDATE, DELETE)
+- **Cascading deletes** remove word_tags automatically when words are deleted
+- **Progress indicators** shown every 50 words for large operations
+- **UPPERCASE normalization** for all words to ensure consistent comparison
+- **Tag comparison** uses set difference to detect changes
+- **Orphaned tags** are automatically cleaned up after sync
+- **Difficulty values** are automatically calculated by database trigger
+- **Error handling** continues processing even if individual words fail
+- **Atomic per-word** operations (not transactional across all words)
 
 ---
 
