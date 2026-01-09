@@ -19,3 +19,9 @@ flutter analyze
 ```bash
 dart run flutter_launcher_icons
 ```
+
+### Generate strings classes
+
+```bash
+flutter gen-l10n
+```
