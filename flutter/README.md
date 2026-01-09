@@ -2,6 +2,18 @@
 
 ## Commands
 
+### Get supabase changes
+
+```bash
+supabase db pull
+```
+
+### Upload supabase changes
+
+```bash
+supabase db push
+```
+
 ### Format code
 
 ```bash
