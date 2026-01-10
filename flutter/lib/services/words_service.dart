@@ -82,7 +82,7 @@ class WordsService {
   /// Easy: 1-50, Medium: 51-60, Hard: 61-100
   Word getRandomWordByDifficulty(String difficultyCategory) {
     final allWords = _words ?? _getFallbackWords();
-    
+
     // Convert category to difficulty range
     int minDifficulty, maxDifficulty;
     switch (difficultyCategory.toLowerCase()) {
@@ -105,8 +105,9 @@ class WordsService {
 
     final filteredWords = allWords
         .where(
-          (word) => word.difficultyValue >= minDifficulty && 
-                    word.difficultyValue <= maxDifficulty,
+          (word) =>
+              word.difficultyValue >= minDifficulty &&
+              word.difficultyValue <= maxDifficulty,
         )
         .toList();
 
