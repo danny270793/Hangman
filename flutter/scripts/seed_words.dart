@@ -1,20 +1,55 @@
 #!/usr/bin/env dart
 
-/// Script to seed words from JSON files to Supabase database
+/// Script to sync words from JSON files to Supabase database
 /// 
 /// Usage:
 ///   dart scripts/seed_words.dart
 /// 
-/// This script reads words from assets/words_en.json and assets/words_es.json
-/// and inserts them into the Supabase database.
+/// This script:
+/// 1. Downloads existing words, tags, and relations from Supabase
+/// 2. Compares with local JSON files (assets/words_en.json, assets/words_es.json)
+/// 3. Inserts new words and tags
+/// 4. Updates existing words if tags changed
+/// 5. Deletes words that no longer exist in local JSON
 
 import 'dart:convert';
 import 'dart:io';
 import 'package:supabase/supabase.dart';
 
+class WordData {
+  final String word;
+  final List<String> tags;
+
+  WordData({
+    required this.word,
+    required this.tags,
+  });
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is WordData &&
+          runtimeType == other.runtimeType &&
+          word == other.word &&
+          _listEquals(tags, other.tags);
+
+  @override
+  int get hashCode => word.hashCode ^ tags.hashCode;
+
+  bool _listEquals(List<String> a, List<String> b) {
+    if (a.length != b.length) return false;
+    final sortedA = List<String>.from(a)..sort();
+    final sortedB = List<String>.from(b)..sort();
+    for (int i = 0; i < sortedA.length; i++) {
+      if (sortedA[i] != sortedB[i]) return false;
+    }
+    return true;
+  }
+}
+
 void main(List<String> args) async {
-  print('🌱 Words Database Seeder');
-  print('========================\n');
+  print('🔄 Words Database Sync');
+  print('======================\n');
 
   // Load environment variables from .env file
   final envFile = File('.env');
@@ -40,7 +75,7 @@ void main(List<String> args) async {
   }
 
   final supabaseUrl = envVars['SUPABASE_URL'];
-  final supabaseServiceKey = envVars['SUPABASE_SERVICE_KEY']; // Use service key for admin operations
+  final supabaseServiceKey = envVars['SUPABASE_SERVICE_KEY'];
 
   if (supabaseUrl == null || supabaseServiceKey == null) {
     print('❌ Error: SUPABASE_URL or SUPABASE_SERVICE_KEY not found in .env file');
@@ -51,23 +86,23 @@ void main(List<String> args) async {
   // Initialize Supabase client with service role key
   final supabase = SupabaseClient(supabaseUrl, supabaseServiceKey);
 
-  // Process English words
-  await seedWordsForLocale(supabase, 'en', 'assets/words_en.json');
+  // Sync English words
+  await syncWordsForLocale(supabase, 'en', 'assets/words_en.json');
 
-  // Process Spanish words
-  await seedWordsForLocale(supabase, 'es', 'assets/words_es.json');
+  // Sync Spanish words
+  await syncWordsForLocale(supabase, 'es', 'assets/words_es.json');
 
-  print('\n✅ Seeding complete!');
+  print('\n✅ Sync complete!');
 }
 
-Future<void> seedWordsForLocale(
+Future<void> syncWordsForLocale(
   SupabaseClient supabase,
   String locale,
   String jsonFilePath,
 ) async {
-  print('📖 Processing $locale words from $jsonFilePath...');
+  print('📖 Syncing $locale words from $jsonFilePath...');
 
-  // Read JSON file
+  // Step 1: Read local JSON file
   final file = File(jsonFilePath);
   if (!await file.exists()) {
     print('⚠️  Warning: $jsonFilePath not found, skipping...');
@@ -77,97 +112,298 @@ Future<void> seedWordsForLocale(
   final jsonString = await file.readAsString();
   final jsonData = json.decode(jsonString) as Map<String, dynamic>;
 
-  int totalWords = 0;
-  int successfulInserts = 0;
-  int skippedWords = 0;
+  // Parse local words into a map (word -> tags)
+  final localWords = <String, WordData>{};
+  
+  if (!jsonData.containsKey('words')) {
+    print('⚠️  Warning: No "words" key found in $jsonFilePath, skipping...');
+    return;
+  }
 
-  // Process each difficulty level
-  final difficulties = ['easy', 'medium', 'hard'];
-  final difficultyRanges = {
-    'easy': {'min': 1, 'max': 33},
-    'medium': {'min': 34, 'max': 66},
-    'hard': {'min': 67, 'max': 100},
-  };
+  final wordsArray = jsonData['words'] as List<dynamic>;
+  
+  for (final wordJson in wordsArray) {
+    final wordData = wordJson as Map<String, dynamic>;
+    final word = (wordData['word'] as String).toUpperCase();
+    final tags = (wordData['tags'] as List<dynamic>)
+        .map((e) => e as String)
+        .toList();
+    
+    localWords[word] = WordData(word: word, tags: tags);
+  }
 
-  for (final difficulty in difficulties) {
-    if (!jsonData.containsKey(difficulty)) continue;
+  print('  📊 Local: ${localWords.length} words');
 
-    final difficultyData = jsonData[difficulty] as Map<String, dynamic>?;
-    if (difficultyData == null || !difficultyData.containsKey('words')) {
-      continue;
+  // Step 2: Download existing words from database with their tags
+  print('  ⬇️  Downloading existing words from database...');
+  
+  final existingWords = <String, int>{}; // word -> id
+  final wordIds = <int>[];
+  
+  // Fetch all words using pagination (1000 records per batch)
+  int offset = 0;
+  const int batchSize = 1000;
+  
+  while (true) {
+      final wordsResponse = await supabase
+          .from('words')
+          .select('id, word')
+          .eq('locale', locale)
+          .range(offset, offset + batchSize - 1);
+      
+      if ((wordsResponse as List<dynamic>).isEmpty) {
+        break;
+      }
+    
+    for (final row in wordsResponse) {
+      final word = (row['word'] as String).toUpperCase();
+      final id = row['id'] as int;
+      existingWords[word] = id;
+      wordIds.add(id);
     }
+    
+    if ((wordsResponse as List<dynamic>).length < batchSize) {
+      break;
+    }
+    
+    offset += batchSize;
+  }
 
-    final words = difficultyData['words'] as List<dynamic>;
-    final minDifficulty = difficultyRanges[difficulty]!['min']!;
-    final maxDifficulty = difficultyRanges[difficulty]!['max']!;
-
-    print('  Processing $difficulty words (${words.length} words)...');
-
-    for (var i = 0; i < words.length; i++) {
-      final wordData = words[i] as Map<String, dynamic>;
-      final word = wordData['word'] as String;
-      final tags = (wordData['tags'] as List<dynamic>).map((e) => e as String).toList();
-
-      // Calculate difficulty value based on position in the list
-      // Distribute evenly across the range
-      final difficultyValue = minDifficulty + ((maxDifficulty - minDifficulty) * i / words.length).round();
-
-      try {
-        // Insert or get word
-        final wordId = await insertWord(supabase, word, difficultyValue, locale);
+  // Download all word-tag relationships for this locale's words
+  final existingWordTags = <int, List<String>>{}; // wordId -> [tagNames]
+  
+  if (wordIds.isNotEmpty) {
+    // Fetch word-tags in batches (Supabase .in() filter with pagination)
+    // Process wordIds in chunks to avoid URL length limits
+    const int chunkSize = 500;
+    
+    for (int i = 0; i < wordIds.length; i += chunkSize) {
+      final chunk = wordIds.skip(i).take(chunkSize).toList();
+      
+      int offset = 0;
+      const int batchSize = 1000;
+      
+      while (true) {
+        final wordTagsResponse = await supabase
+            .from('word_tags')
+            .select('word_id, tags(tag)')
+            .inFilter('word_id', chunk)
+            .range(offset, offset + batchSize - 1);
         
-        if (wordId != null) {
-          // Insert tags and link them
-          await insertTagsAndLink(supabase, wordId, tags, locale);
-          successfulInserts++;
-        } else {
-          skippedWords++;
+        if ((wordTagsResponse as List<dynamic>).isEmpty) {
+          break;
         }
-
-        totalWords++;
-      } catch (e) {
-        print('    ❌ Error inserting word "$word": $e');
-        skippedWords++;
+        
+        for (final row in wordTagsResponse) {
+          final wordId = row['word_id'] as int;
+          final tagInfo = row['tags'] as Map<String, dynamic>?;
+          
+          if (tagInfo != null && tagInfo['tag'] != null) {
+            final tagName = tagInfo['tag'] as String;
+            existingWordTags.putIfAbsent(wordId, () => []).add(tagName);
+          }
+        }
+        
+        if ((wordTagsResponse as List<dynamic>).length < batchSize) {
+          break;
+        }
+        
+        offset += batchSize;
       }
     }
   }
 
-  print('  ✅ $locale: $successfulInserts inserted, $skippedWords skipped (out of $totalWords total)\n');
-}
+  print('  📊 Database: ${existingWords.length} words');
 
-Future<int?> insertWord(
-  SupabaseClient supabase,
-  String word,
-  int difficultyValue,
-  String locale,
-) async {
-  try {
-    // Try to insert the word
-    final response = await supabase
-        .from('words')
-        .insert({
-          'word': word,
-          'difficulty_value': difficultyValue,
-          'locale': locale,
-        })
-        .select('id')
-        .single();
+  // Step 3: Determine what to insert, update, and delete
+  final wordsToInsert = <String>[];
+  final wordsToUpdate = <String>[];
+  final wordsToDelete = <String, int>{};
 
-    return response['id'] as int;
-  } on PostgrestException catch (e) {
-    // If word already exists (unique constraint violation), get its ID
-    if (e.code == '23505') {
-      final existing = await supabase
-          .from('words')
-          .select('id')
-          .eq('word', word)
-          .eq('locale', locale)
-          .single();
-
-      return existing['id'] as int;
+  // Find words to insert or update
+  for (final word in localWords.keys) {
+    if (!existingWords.containsKey(word)) {
+      wordsToInsert.add(word);
+    } else {
+      // Check if tags changed
+      final wordId = existingWords[word]!;
+      final localTags = localWords[word]!.tags;
+      final dbTags = existingWordTags[wordId] ?? [];
+      
+      // Compare tags
+      final localTagsSet = Set<String>.from(localTags);
+      final dbTagsSet = Set<String>.from(dbTags);
+      
+      if (!localTagsSet.difference(dbTagsSet).isEmpty ||
+          !dbTagsSet.difference(localTagsSet).isEmpty) {
+        wordsToUpdate.add(word);
+      }
     }
-    rethrow;
   }
+
+  // Find words to delete (in database but not in local)
+  for (final entry in existingWords.entries) {
+    if (!localWords.containsKey(entry.key)) {
+      wordsToDelete[entry.key] = entry.value;
+    }
+  }
+
+  print('');
+  print('  📈 Analysis:');
+  print('     ➕ To insert: ${wordsToInsert.length}');
+  print('     🔄 To update: ${wordsToUpdate.length}');
+  print('     ➖ To delete: ${wordsToDelete.length}');
+  print('');
+
+  // Step 4: Insert new words
+  int insertedCount = 0;
+  if (wordsToInsert.isNotEmpty) {
+    print('  ➕ Inserting new words...');
+    for (final word in wordsToInsert) {
+      try {
+        final wordData = localWords[word]!;
+        
+        // Insert word (difficulty_value will be auto-calculated by trigger)
+        final wordResponse = await supabase
+            .from('words')
+            .insert({
+              'word': wordData.word,
+              'locale': locale,
+              'difficulty_value': 50, // Default, will be recalculated by trigger
+            })
+            .select('id')
+            .single();
+        
+        final wordId = wordResponse['id'] as int;
+        
+        // Insert tags and relationships
+        await insertTagsAndLink(supabase, wordId, wordData.tags, locale);
+        
+        insertedCount++;
+        if (insertedCount % 50 == 0) {
+          stdout.write('\r     Progress: $insertedCount/${wordsToInsert.length}');
+        }
+      } catch (e) {
+        print('\n     ❌ Error inserting "$word": $e');
+      }
+    }
+    if (insertedCount > 0) {
+      stdout.write('\r     Progress: $insertedCount/${wordsToInsert.length}\n');
+    }
+    print('     ✅ Inserted: $insertedCount words');
+  }
+
+  // Step 5: Update existing words (tags)
+  int updatedCount = 0;
+  if (wordsToUpdate.isNotEmpty) {
+    print('  🔄 Updating existing words...');
+    for (final word in wordsToUpdate) {
+      try {
+        final wordId = existingWords[word]!;
+        final wordData = localWords[word]!;
+        
+        // Delete old tag associations
+        await supabase
+            .from('word_tags')
+            .delete()
+            .eq('word_id', wordId);
+        
+        // Insert new tags
+        await insertTagsAndLink(supabase, wordId, wordData.tags, locale);
+        
+        updatedCount++;
+        if (updatedCount % 50 == 0) {
+          stdout.write('\r     Progress: $updatedCount/${wordsToUpdate.length}');
+        }
+      } catch (e) {
+        print('\n     ❌ Error updating "$word": $e');
+      }
+    }
+    if (updatedCount > 0) {
+      stdout.write('\r     Progress: $updatedCount/${wordsToUpdate.length}\n');
+    }
+    print('     ✅ Updated: $updatedCount words');
+  }
+
+  // Step 6: Delete removed words
+  int deletedCount = 0;
+  if (wordsToDelete.isNotEmpty) {
+    print('  ➖ Deleting removed words...');
+    for (final entry in wordsToDelete.entries) {
+      try {
+        // Delete word (cascades to word_tags due to ON DELETE CASCADE)
+        await supabase
+            .from('words')
+            .delete()
+            .eq('id', entry.value);
+        
+        deletedCount++;
+        if (deletedCount % 50 == 0) {
+          stdout.write('\r     Progress: $deletedCount/${wordsToDelete.length}');
+        }
+      } catch (e) {
+        print('\n     ❌ Error deleting "${entry.key}": $e');
+      }
+    }
+    if (deletedCount > 0) {
+      stdout.write('\r     Progress: $deletedCount/${wordsToDelete.length}\n');
+    }
+    print('     ✅ Deleted: $deletedCount words');
+  }
+
+  // // Step 7: Clean up orphaned tags (tags not associated with any words for this locale)
+  // print('  🧹 Cleaning up orphaned tags...');
+  // try {
+  //   // Get all tags for this locale using pagination
+  //   int offset = 0;
+  //   const int batchSize = 1000;
+  //   int orphanedCount = 0;
+    
+  //   while (true) {
+  //     final allTagsResponse = await supabase
+  //         .from('tags')
+  //         .select('id, tag')
+  //         .eq('locale', locale)
+  //         .range(offset, offset + batchSize - 1);
+      
+  //     if ((allTagsResponse as List<dynamic>).isEmpty) {
+  //       break;
+  //     }
+      
+  //     for (final tagRow in allTagsResponse) {
+  //       final tagId = tagRow['id'] as int;
+        
+  //       // Check if this tag is associated with any words
+  //       final wordTagsResponse = await supabase
+  //           .from('word_tags')
+  //           .select('word_id')
+  //           .eq('tag_id', tagId)
+  //           .limit(1);
+        
+  //       final count = (wordTagsResponse as List<dynamic>).length;
+        
+  //       if (count == 0) {
+  //         await supabase.from('tags').delete().eq('id', tagId);
+  //         orphanedCount++;
+  //       }
+  //     }
+      
+  //     if ((allTagsResponse as List<dynamic>).length < batchSize) {
+  //       break;
+  //     }
+      
+  //     offset += batchSize;
+  //   }
+    
+  //   if (orphanedCount > 0) {
+  //     print('     ✅ Cleaned up: $orphanedCount orphaned tags');
+  //   }
+  // } catch (e) {
+  //   print('     ⚠️  Warning: Could not clean up orphaned tags: $e');
+  // }
+
+  print('');
+  print('  ✅ $locale sync complete: ➕$insertedCount ➖$deletedCount 🔄$updatedCount\n');
 }
 
 Future<void> insertTagsAndLink(
