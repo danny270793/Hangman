@@ -98,14 +98,14 @@ class WordsService {
     switch (difficultyCategory.toLowerCase()) {
       case 'easy':
         minDifficulty = 1;
-        maxDifficulty = 33;
+        maxDifficulty = 50;
         break;
       case 'medium':
-        minDifficulty = 34;
-        maxDifficulty = 66;
+        minDifficulty = 51;
+        maxDifficulty = 60;
         break;
       case 'hard':
-        minDifficulty = 67;
+        minDifficulty = 61;
         maxDifficulty = 100;
         break;
       default:
