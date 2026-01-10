@@ -32,25 +32,6 @@ class GameRecordService {
     }
   }
 
-  Future<List<Map<String, dynamic>>> getUserGameRecords() async {
-    try {
-      final userId = _supabase.auth.currentUser?.id;
-      if (userId == null) {
-        return [];
-      }
-
-      final response = await _supabase
-          .from('game_records')
-          .select()
-          .eq('user_id', userId)
-          .order('created_at', ascending: false);
-
-      return List<Map<String, dynamic>>.from(response);
-    } catch (e) {
-      return [];
-    }
-  }
-
   Future<List<Map<String, dynamic>>> getAllGameRecords({
     int limit = 20,
     int offset = 0,

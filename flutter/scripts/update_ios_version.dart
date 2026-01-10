@@ -92,27 +92,28 @@ void main(List<String> args) async {
 
   // Ask if user wants to update iOS Info.plist files
   print(
-      "${blue}Do you want to run 'flutter build ios --config-only' to update iOS Info.plist? (y/n)$reset");
+    "${blue}Do you want to run 'flutter build ios --config-only' to update iOS Info.plist? (y/n)$reset",
+  );
   final response = stdin.readLineSync()?.toLowerCase();
 
   if (response == 'y' || response == 'yes') {
     print('\n${blue}🔄 Running flutter build ios --config-only...$reset');
 
-    final result = await Process.run(
-      'flutter',
-      ['build', 'ios', '--config-only'],
-      workingDirectory: projectRoot.path,
-    );
+    final result = await Process.run('flutter', [
+      'build',
+      'ios',
+      '--config-only',
+    ], workingDirectory: projectRoot.path);
 
     if (result.exitCode == 0) {
       print('${green}✅ iOS configuration updated!$reset\n');
     } else {
-      print(
-          '${red}❌ Error running flutter build: ${result.stderr}$reset\n');
+      print('${red}❌ Error running flutter build: ${result.stderr}$reset\n');
     }
   } else {
     print(
-        "\n${blue}ℹ️  Skipped iOS build. Run 'flutter build ios --config-only' manually to update Info.plist$reset\n");
+      "\n${blue}ℹ️  Skipped iOS build. Run 'flutter build ios --config-only' manually to update Info.plist$reset\n",
+    );
   }
 
   print('${green}🎉 Version update complete!$reset');
@@ -121,4 +122,3 @@ void main(List<String> args) async {
   print('  Build Number: $green$buildNumber → $newBuildNumber$reset');
   print('\n${blue}💡 Don\'t forget to commit these changes!$reset');
 }
-
