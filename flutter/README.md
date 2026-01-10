@@ -2,6 +2,18 @@
 
 ## Commands
 
+### Get supabase changes
+
+```bash
+supabase db pull
+```
+
+### Upload supabase changes
+
+```bash
+supabase db push
+```
+
 ### Format code
 
 ```bash
@@ -25,3 +37,13 @@ dart run flutter_launcher_icons
 ```bash
 flutter gen-l10n
 ```
+
+### Seed words database
+
+To populate the Supabase database with words from JSON files:
+
+```bash
+dart scripts/seed_words.dart
+```
+
+**Note**: Requires `SUPABASE_SERVICE_KEY` in your `.env` file (available in your Supabase project settings).
