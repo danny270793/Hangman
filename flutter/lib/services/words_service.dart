@@ -78,34 +78,24 @@ class WordsService {
     }
   }
 
-  List<Word> getAllWords() {
-    return _words ?? _getFallbackWords();
-  }
-
-  Word getRandomWord() {
-    final words = getAllWords();
-    final random = words.toList()..shuffle();
-    return random.first;
-  }
-
   /// Get a random word filtered by difficulty category
-  /// Easy: 1-33, Medium: 34-66, Hard: 67-100
+  /// Easy: 1-50, Medium: 51-60, Hard: 61-100
   Word getRandomWordByDifficulty(String difficultyCategory) {
-    final allWords = getAllWords();
-    
+    final allWords = _words ?? _getFallbackWords();
+
     // Convert category to difficulty range
     int minDifficulty, maxDifficulty;
     switch (difficultyCategory.toLowerCase()) {
       case 'easy':
         minDifficulty = 1;
-        maxDifficulty = 33;
+        maxDifficulty = 50;
         break;
       case 'medium':
-        minDifficulty = 34;
-        maxDifficulty = 66;
+        minDifficulty = 51;
+        maxDifficulty = 60;
         break;
       case 'hard':
-        minDifficulty = 67;
+        minDifficulty = 61;
         maxDifficulty = 100;
         break;
       default:
@@ -115,8 +105,9 @@ class WordsService {
 
     final filteredWords = allWords
         .where(
-          (word) => word.difficultyValue >= minDifficulty && 
-                    word.difficultyValue <= maxDifficulty,
+          (word) =>
+              word.difficultyValue >= minDifficulty &&
+              word.difficultyValue <= maxDifficulty,
         )
         .toList();
 
@@ -128,60 +119,6 @@ class WordsService {
 
     filteredWords.shuffle();
     return filteredWords.first;
-  }
-
-  List<Word> searchByTag(String tag) {
-    final words = getAllWords();
-    return words
-        .where(
-          (word) =>
-              word.tags.any((t) => t.toLowerCase().contains(tag.toLowerCase())),
-        )
-        .toList();
-  }
-
-  List<Word> getWordsByDifficulty(int minLength, int maxLength) {
-    final words = getAllWords();
-    return words
-        .where(
-          (word) =>
-              word.word.length >= minLength && word.word.length <= maxLength,
-        )
-        .toList();
-  }
-
-  /// Calculate the difficulty of a word based on the number of unique letters
-  /// Returns a value from 0.0 (easiest) to 1.0 (hardest)
-  /// More unique letters = harder to guess
-  double getWordDifficulty(String word) {
-    final uniqueLetters = word.toUpperCase().split('').toSet().length;
-    final totalLetters = word.length;
-
-    // Normalize to 0.0 - 1.0 range
-    // Words with all unique letters are hardest (ratio = 1.0)
-    // Words with many repeated letters are easier (ratio closer to 0)
-    return uniqueLetters / totalLetters;
-  }
-
-  /// Get the difficulty category based on unique letter ratio
-  /// Easy: < 0.65 (many repeated letters)
-  /// Medium: 0.65 - 0.85 (some repeated letters)
-  /// Hard: > 0.85 (mostly unique letters)
-  String getWordDifficultyCategory(String word) {
-    final difficulty = getWordDifficulty(word);
-
-    if (difficulty < 0.65) {
-      return 'easy';
-    } else if (difficulty < 0.85) {
-      return 'medium';
-    } else {
-      return 'hard';
-    }
-  }
-
-  /// Get the count of unique letters in a word
-  int getUniqueLetterCount(String word) {
-    return word.toUpperCase().split('').toSet().length;
   }
 
   // Fallback words in case database loading fails
