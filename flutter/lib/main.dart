@@ -149,7 +149,6 @@ class MyApp extends StatelessWidget {
           ),
         ],
       ),
-      title: 'Flutter Demo',
       locale: localeService.locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
