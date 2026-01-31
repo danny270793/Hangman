@@ -17,7 +17,7 @@ class _RecordsPageState extends State<RecordsPage> {
   bool _isLoading = true;
   bool _isLoadingMore = false;
   bool _hasMoreRecords = true;
-  static const int _pageSize = 20;
+  static const int _pageSize = 10;
   int _currentOffset = 0;
 
   @override
