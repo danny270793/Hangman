@@ -32,6 +32,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         child: SafeArea(
+          bottom: false,
           child: OrientationBuilder(
             builder: (context, orientation) {
               final isLandscape = orientation == Orientation.landscape;
@@ -42,9 +43,7 @@ class HomePage extends StatelessWidget {
                   if (isLandscape)
                     Padding(
                       padding: const EdgeInsets.only(
-                        top: 24.0,
                         left: 24.0,
-                        bottom: 24.0,
                       ),
                       child: _buildLandscapeLayout(
                         context,
@@ -208,8 +207,9 @@ class HomePage extends StatelessWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.only(right: 24.0),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               children: [
+                const SizedBox(height: 24),
                 _buildConfigurationCard(
                   context,
                   l10n,
