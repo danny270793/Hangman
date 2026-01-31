@@ -870,33 +870,35 @@ class _GamePageState extends State<GamePage> {
               children: row.map((letter) {
                 final isGuessed = _guessedLetters.contains(letter);
                 final isCorrect = _word.contains(letter);
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 1.5),
-                  child: ElevatedButton(
-                    onPressed: isGuessed || _isGameWon || _isGameLost
-                        ? null
-                        : () => _guessLetter(letter),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: isGuessed
-                          ? (isCorrect
-                                ? Theme.of(context).colorScheme.primary
-                                : Theme.of(context).colorScheme.error)
-                          : Theme.of(
-                              context,
-                            ).colorScheme.surfaceContainerHighest,
-                      foregroundColor: isGuessed
-                          ? (isCorrect
-                                ? Theme.of(context).colorScheme.onPrimary
-                                : Theme.of(context).colorScheme.onError)
-                          : Theme.of(context).colorScheme.onSurface,
-                      minimumSize: const Size(30, 40),
-                      padding: const EdgeInsets.symmetric(horizontal: 6),
-                    ),
-                    child: Text(
-                      letter,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                return Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.5),
+                    child: ElevatedButton(
+                      onPressed: isGuessed || _isGameWon || _isGameLost
+                          ? null
+                          : () => _guessLetter(letter),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: isGuessed
+                            ? (isCorrect
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Theme.of(context).colorScheme.error)
+                            : Theme.of(
+                                context,
+                              ).colorScheme.surfaceContainerHighest,
+                        foregroundColor: isGuessed
+                            ? (isCorrect
+                                  ? Theme.of(context).colorScheme.onPrimary
+                                  : Theme.of(context).colorScheme.onError)
+                            : Theme.of(context).colorScheme.onSurface,
+                        minimumSize: const Size(0, 40),
+                        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                      ),
+                      child: Text(
+                        letter,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
