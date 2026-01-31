@@ -381,9 +381,7 @@ class _GamePageState extends State<GamePage> {
       children: [
         // Scrollable content
         Expanded(
-          child: SafeArea(
-            bottom: false, // Keyboard card handles bottom
-            child: SingleChildScrollView(
+          child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -473,13 +471,10 @@ class _GamePageState extends State<GamePage> {
                 ],
               ),
             ),
-          ),
         ),
 
         // Fixed Keyboard at bottom with card elevation
-        SafeArea(
-          top: false,
-          child: Card(
+        Card(
             margin: EdgeInsets.zero,
             elevation: 8,
             shape: const RoundedRectangleBorder(
@@ -489,8 +484,7 @@ class _GamePageState extends State<GamePage> {
               ),
             ),
             child: _buildKeyboard(),
-          ),
-        ),
+          )
       ],
     );
   }
