@@ -94,10 +94,11 @@ class _SplashPageState extends State<SplashPage>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const SizedBox(height: 20),
                       // Hangman Icon/Logo
                       Container(
-                        width: 120,
-                        height: 120,
+                        width: 100,
+                        height: 100,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           shape: BoxShape.circle,
@@ -157,6 +158,7 @@ class _SplashPageState extends State<SplashPage>
                           ),
                         ),
                       ),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
