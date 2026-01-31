@@ -353,11 +353,12 @@ class _GamePageState extends State<GamePage> {
                     final isLandscape = orientation == Orientation.landscape;
 
                     if (isLandscape) {
-                      return _buildLandscapeLayout(
+                      return SafeArea(
+                        child: _buildLandscapeLayout(
                         context,
                         l10n,
                         timedModeService,
-                      );
+                      ));
                     } else {
                       return _buildPortraitLayout(
                         context,
