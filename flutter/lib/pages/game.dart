@@ -872,7 +872,7 @@ class _GamePageState extends State<GamePage> {
                 final isCorrect = _word.contains(letter);
                 return Flexible(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 1.5),
+                    padding: const EdgeInsets.symmetric(horizontal: 0.5),
                     child: ElevatedButton(
                       onPressed: isGuessed || _isGameWon || _isGameLost
                           ? null
@@ -890,13 +890,13 @@ class _GamePageState extends State<GamePage> {
                                   ? Theme.of(context).colorScheme.onPrimary
                                   : Theme.of(context).colorScheme.onError)
                             : Theme.of(context).colorScheme.onSurface,
-                        minimumSize: const Size(0, 40),
-                        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                        minimumSize: const Size(0, 48),
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                       ),
                       child: Text(
                         letter,
                         style: const TextStyle(
-                          fontSize: 15,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
