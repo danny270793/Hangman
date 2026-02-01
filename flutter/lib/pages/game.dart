@@ -42,6 +42,10 @@ class _GamePageState extends State<GamePage> {
   int _wordsSolved = 0;
   bool _hasGameRecordBeenSaved = false;
 
+  // Hint navigation
+  int _currentHintIndex = 0;
+  final PageController _hintPageController = PageController();
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -61,6 +65,7 @@ class _GamePageState extends State<GamePage> {
       _currentWord = _wordsService.getRandomWordByDifficulty(difficulty);
       _word = _currentWord.word.toUpperCase();
       _isLoading = false;
+      _currentHintIndex = 0; // Reset hint index
     });
 
     // Start timer if timed mode is enabled
@@ -110,6 +115,7 @@ class _GamePageState extends State<GamePage> {
   @override
   void dispose() {
     _timer?.cancel();
+    _hintPageController.dispose();
     super.dispose();
   }
 
@@ -242,8 +248,12 @@ class _GamePageState extends State<GamePage> {
       _wrongGuesses = 0;
       _isTimedOut = false;
       _currentWordStartTime = 0;
+      _currentHintIndex = 0; // Reset hint index
       // Statistics are preserved - continue accumulating
     });
+
+    // Reset page controller
+    _hintPageController.jumpToPage(0);
 
     // Restart timer if timed mode is enabled, otherwise track playtime
     if (timedModeService.isEnabled) {
@@ -269,6 +279,7 @@ class _GamePageState extends State<GamePage> {
       _wrongGuesses = 0;
       _isTimedOut = false;
       _currentWordStartTime = 0;
+      _currentHintIndex = 0; // Reset hint index
 
       // Reset all accumulated statistics when starting a new game
       _totalScore = 0;
@@ -277,6 +288,9 @@ class _GamePageState extends State<GamePage> {
       _wordsSolved = 0;
       _hasGameRecordBeenSaved = false; // Reset save flag for new session
     });
+
+    // Reset page controller
+    _hintPageController.jumpToPage(0);
 
     // Restart timer if timed mode is enabled, otherwise track playtime
     if (timedModeService.isEnabled) {
@@ -952,47 +966,131 @@ class _GamePageState extends State<GamePage> {
 
   Widget _buildHintDisplay() {
     final l10n = AppLocalizations.of(context)!;
-    final randomTag = _currentWord.tags.isNotEmpty ? _currentWord.tags[0] : '';
+    final hints = _currentWord.tags.isNotEmpty ? _currentWord.tags : [''];
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.tertiaryContainer,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: Theme.of(context).colorScheme.tertiary,
-          width: 2,
+    if (hints.length == 1) {
+      // Single hint - no swipe needed
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.tertiaryContainer,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.tertiary,
+            width: 2,
+          ),
         ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            Icons.lightbulb_outline,
-            color: Theme.of(context).colorScheme.onTertiaryContainer,
-            size: 20,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            '${l10n.hint}: ',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.lightbulb_outline,
               color: Theme.of(context).colorScheme.onTertiaryContainer,
+              size: 20,
             ),
-          ),
-          Flexible(
-            child: Text(
-              randomTag,
+            const SizedBox(width: 8),
+            Text(
+              '${l10n.hint}: ',
               style: TextStyle(
                 fontSize: 14,
+                fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.onTertiaryContainer,
               ),
-              overflow: TextOverflow.ellipsis,
+            ),
+            Flexible(
+              child: Text(
+                hints[0],
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Theme.of(context).colorScheme.onTertiaryContainer,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    // Multiple hints - swipeable
+    return Column(
+      children: [
+        Container(
+          height: 60,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.tertiaryContainer,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: Theme.of(context).colorScheme.tertiary,
+              width: 2,
             ),
           ),
-        ],
-      ),
+          child: PageView.builder(
+            controller: _hintPageController,
+            onPageChanged: (index) {
+              setState(() {
+                _currentHintIndex = index;
+              });
+            },
+            itemCount: hints.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.lightbulb_outline,
+                      color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      size: 20,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      '${l10n.hint}: ',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        hints[index],
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Theme.of(context).colorScheme.onTertiaryContainer,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 8),
+        // Dots indicator
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            hints.length,
+            (index) => Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              width: 8,
+              height: 8,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _currentHintIndex == index
+                    ? Theme.of(context).colorScheme.tertiary
+                    : Theme.of(context).colorScheme.tertiary.withOpacity(0.3),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
