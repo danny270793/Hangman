@@ -124,173 +124,334 @@ class _SettingsPageState extends State<SettingsPage> {
     final localeService = context.watch<LocaleService>();
     final themeService = context.watch<ThemeService>();
     final authService = context.watch<AuthService>();
+    final orientation = MediaQuery.of(context).orientation;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settings)),
-      body: ListView(
-        children: [
-          // Profile Section
-          Container(
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                  Theme.of(context).colorScheme.secondary.withOpacity(0.05),
-                ],
+      body: orientation == Orientation.portrait
+          ? _buildPortraitLayout(context, l10n, localeService, themeService, authService)
+          : _buildLandscapeLayout(context, l10n, localeService, themeService, authService),
+    );
+  }
+
+  Widget _buildPortraitLayout(
+    BuildContext context,
+    AppLocalizations l10n,
+    LocaleService localeService,
+    ThemeService themeService,
+    AuthService authService,
+  ) {
+    return ListView(
+      children: [
+        // Profile Section
+        _buildProfileHeader(context, l10n),
+
+        const SizedBox(height: 8),
+
+        // Profile Section
+        _buildSectionHeader(context, l10n.profile),
+        _buildSettingsTile(
+          context,
+          icon: Icons.email_outlined,
+          title: l10n.changeEmail,
+          subtitle: authService.userEmail ?? l10n.currentEmail,
+          onTap: () {
+            _showChangeEmailDialog(context, l10n);
+          },
+        ),
+        _buildSettingsTile(
+          context,
+          icon: Icons.lock_outlined,
+          title: l10n.changePassword,
+          onTap: () {
+            _showChangePasswordDialog(context, l10n);
+          },
+        ),
+        _buildSettingsTile(
+          context,
+          icon: Icons.person_outlined,
+          title: l10n.changeUsername,
+          subtitle: authService.userName ?? l10n.currentUsername,
+          onTap: () {
+            _showChangeUsernameDialog(context, l10n);
+          },
+        ),
+
+        const Divider(height: 32),
+
+        // General Settings Section
+        _buildSectionHeader(context, l10n.general),
+        _buildSettingsTile(
+          context,
+          icon: Icons.language,
+          title: l10n.language,
+          subtitle: _getLanguageName(localeService.locale.languageCode, l10n),
+          onTap: () {
+            _showLanguagePicker(context, l10n, localeService);
+          },
+        ),
+        _buildSettingsTile(
+          context,
+          icon: Icons.brightness_6,
+          title: l10n.theme,
+          subtitle: _getThemeName(themeService.themeMode, l10n),
+          onTap: () {
+            _showThemePicker(context, l10n, themeService);
+          },
+        ),
+
+        const Divider(height: 32),
+
+        // About Section
+        _buildSectionHeader(context, l10n.about),
+        _buildSettingsTile(
+          context,
+          icon: Icons.info_outline,
+          title: l10n.about,
+          onTap: () {
+            context.push(AboutPage.routeName);
+          },
+        ),
+        _buildSettingsTile(
+          context,
+          icon: Icons.privacy_tip_outlined,
+          title: l10n.privacyPolicy,
+          onTap: () {
+            context.push(PrivacyPage.routeName);
+          },
+        ),
+        _buildSettingsTile(
+          context,
+          icon: Icons.description_outlined,
+          title: l10n.termsOfService,
+          onTap: () {
+            context.push(TermsPage.routeName);
+          },
+        ),
+
+        const Divider(height: 32),
+
+        // Logout Section
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ElevatedButton.icon(
+            onPressed: () {
+              _showLogoutDialog(context, l10n);
+            },
+            icon: const Icon(Icons.logout),
+            label: Text(l10n.logout),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
               ),
             ),
+          ),
+        ),
+
+        const SizedBox(height: 16),
+      ],
+    );
+  }
+
+  Widget _buildLandscapeLayout(
+    BuildContext context,
+    AppLocalizations l10n,
+    LocaleService localeService,
+    ThemeService themeService,
+    AuthService authService,
+  ) {
+    return Row(
+      children: [
+        // Left side - Profile
+        Expanded(
+          flex: 2,
+          child: SingleChildScrollView(
             child: Column(
               children: [
-                GestureDetector(
-                  onTap: () => _showImageSourceDialog(l10n),
-                  child: Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        backgroundImage: _profileImagePath != null
-                            ? FileImage(File(_profileImagePath!))
-                            : null,
-                        child: _profileImagePath == null
-                            ? const Icon(
-                                Icons.person,
-                                size: 40,
-                                color: Colors.white,
-                              )
-                            : null,
+                _buildProfileHeader(context, l10n),
+                const SizedBox(height: 16),
+                
+                // Profile Settings
+                _buildSectionHeader(context, l10n.profile),
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.email_outlined,
+                  title: l10n.changeEmail,
+                  subtitle: authService.userEmail ?? l10n.currentEmail,
+                  onTap: () {
+                    _showChangeEmailDialog(context, l10n);
+                  },
+                ),
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.lock_outlined,
+                  title: l10n.changePassword,
+                  onTap: () {
+                    _showChangePasswordDialog(context, l10n);
+                  },
+                ),
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.person_outlined,
+                  title: l10n.changeUsername,
+                  subtitle: authService.userName ?? l10n.currentUsername,
+                  onTap: () {
+                    _showChangeUsernameDialog(context, l10n);
+                  },
+                ),
+                const SizedBox(height: 24),
+              ],
+            ),
+          ),
+        ),
+
+        // Divider
+        const VerticalDivider(width: 1),
+
+        // Right side - Settings and About
+        Expanded(
+          flex: 3,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 16),
+                
+                // General Settings Section
+                _buildSectionHeader(context, l10n.general),
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.language,
+                  title: l10n.language,
+                  subtitle: _getLanguageName(localeService.locale.languageCode, l10n),
+                  onTap: () {
+                    _showLanguagePicker(context, l10n, localeService);
+                  },
+                ),
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.brightness_6,
+                  title: l10n.theme,
+                  subtitle: _getThemeName(themeService.themeMode, l10n),
+                  onTap: () {
+                    _showThemePicker(context, l10n, themeService);
+                  },
+                ),
+
+                const Divider(height: 32),
+
+                // About Section
+                _buildSectionHeader(context, l10n.about),
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.info_outline,
+                  title: l10n.about,
+                  onTap: () {
+                    context.push(AboutPage.routeName);
+                  },
+                ),
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.privacy_tip_outlined,
+                  title: l10n.privacyPolicy,
+                  onTap: () {
+                    context.push(PrivacyPage.routeName);
+                  },
+                ),
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.description_outlined,
+                  title: l10n.termsOfService,
+                  onTap: () {
+                    context.push(TermsPage.routeName);
+                  },
+                ),
+
+                const Divider(height: 32),
+
+                // Logout Section
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      _showLogoutDialog(context, l10n);
+                    },
+                    icon: const Icon(Icons.logout),
+                    label: Text(l10n.logout),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.secondary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.camera_alt,
-                            size: 16,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProfileHeader(BuildContext context, AppLocalizations l10n) {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            Theme.of(context).colorScheme.secondary.withOpacity(0.05),
+          ],
+        ),
+      ),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () => _showImageSourceDialog(l10n),
+            child: Stack(
+              children: [
+                CircleAvatar(
+                  radius: 40,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  backgroundImage: _profileImagePath != null
+                      ? FileImage(File(_profileImagePath!))
+                      : null,
+                  child: _profileImagePath == null
+                      ? const Icon(
+                          Icons.person,
+                          size: 40,
+                          color: Colors.white,
+                        )
+                      : null,
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.camera_alt,
+                      size: 16,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-
-          const SizedBox(height: 8),
-
-          // Profile Section
-          _buildSectionHeader(context, l10n.profile),
-          _buildSettingsTile(
-            context,
-            icon: Icons.email_outlined,
-            title: l10n.changeEmail,
-            subtitle: authService.userEmail ?? l10n.currentEmail,
-            onTap: () {
-              _showChangeEmailDialog(context, l10n);
-            },
-          ),
-          _buildSettingsTile(
-            context,
-            icon: Icons.lock_outlined,
-            title: l10n.changePassword,
-            onTap: () {
-              _showChangePasswordDialog(context, l10n);
-            },
-          ),
-          _buildSettingsTile(
-            context,
-            icon: Icons.person_outlined,
-            title: l10n.changeUsername,
-            subtitle: authService.userName ?? l10n.currentUsername,
-            onTap: () {
-              _showChangeUsernameDialog(context, l10n);
-            },
-          ),
-
-          const Divider(height: 32),
-
-          // General Settings Section
-          _buildSectionHeader(context, l10n.general),
-          _buildSettingsTile(
-            context,
-            icon: Icons.language,
-            title: l10n.language,
-            subtitle: _getLanguageName(localeService.locale.languageCode, l10n),
-            onTap: () {
-              _showLanguagePicker(context, l10n, localeService);
-            },
-          ),
-          _buildSettingsTile(
-            context,
-            icon: Icons.brightness_6,
-            title: l10n.theme,
-            subtitle: _getThemeName(themeService.themeMode, l10n),
-            onTap: () {
-              _showThemePicker(context, l10n, themeService);
-            },
-          ),
-
-          const Divider(height: 32),
-
-          // About Section
-          _buildSectionHeader(context, l10n.about),
-          _buildSettingsTile(
-            context,
-            icon: Icons.info_outline,
-            title: l10n.about,
-            onTap: () {
-              context.push(AboutPage.routeName);
-            },
-          ),
-          _buildSettingsTile(
-            context,
-            icon: Icons.privacy_tip_outlined,
-            title: l10n.privacyPolicy,
-            onTap: () {
-              context.push(PrivacyPage.routeName);
-            },
-          ),
-          _buildSettingsTile(
-            context,
-            icon: Icons.description_outlined,
-            title: l10n.termsOfService,
-            onTap: () {
-              context.push(TermsPage.routeName);
-            },
-          ),
-
-          const Divider(height: 32),
-
-          // Logout Section
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton.icon(
-              onPressed: () {
-                _showLogoutDialog(context, l10n);
-              },
-              icon: const Icon(Icons.logout),
-              label: Text(l10n.logout),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 16),
         ],
       ),
     );
