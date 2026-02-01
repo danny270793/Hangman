@@ -382,17 +382,16 @@ class _GamePageState extends State<GamePage> {
       children: [
         // Scrollable content
         Expanded(
-          child: SingleChildScrollView(
-              child: Column(
+          child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // Score Cards
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Wrap(
+                    padding: EdgeInsets.only(top: 24, bottom: 24),
+                    child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
                       spacing: 8,
-                      runSpacing: 8,
-                      alignment: WrapAlignment.center,
                       children: [
                         _buildScoreCard(
                           l10n.guessesLeft,
@@ -435,7 +434,7 @@ class _GamePageState extends State<GamePage> {
                         ),
                       ],
                     ),
-                  ),
+                  )),
 
                   // Hangman Drawing
                   Padding(
@@ -471,7 +470,6 @@ class _GamePageState extends State<GamePage> {
                   const SizedBox(height: 8),
                 ],
               ),
-            ),
         ),
 
         // Fixed Keyboard at bottom with card elevation
