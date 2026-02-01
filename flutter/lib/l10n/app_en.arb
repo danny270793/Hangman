@@ -34,6 +34,7 @@
   "lettersUsed": "Letters",
   "youWon": "🎉 You Won!",
   "gameOver": "😢 Game Over!",
+  "theWordWas": "The word was",
   "playAgain": "Play Again",
   "hint": "Hint",
   "settings": "Settings",
