@@ -267,7 +267,7 @@ class _SettingsPageState extends State<SettingsPage> {
       children: [
         // Left side - Profile
         Expanded(
-          flex: 2,
+          flex: 1,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -313,7 +313,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
         // Right side - Settings and About
         Expanded(
-          flex: 3,
+          flex: 1,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -374,7 +374,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 // Logout Section
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton.icon(
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
                     onPressed: () {
                       _showLogoutDialog(context, l10n);
                     },
@@ -388,6 +390,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
+                  ),
                   ),
                 ),
 
