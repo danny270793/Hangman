@@ -34,6 +34,7 @@
   "lettersUsed": "Letras",
   "youWon": "🎉 ¡Ganaste!",
   "gameOver": "😢 ¡Juego Terminado!",
+  "theWordWas": "La palabra era",
   "playAgain": "Jugar de Nuevo",
   "hint": "Pista",
   "settings": "Configuración",
