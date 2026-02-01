@@ -212,11 +212,19 @@ class _GamePageState extends State<GamePage> {
         _wordsSolved++;
         _totalSecondsPlayed += _currentWordStartTime;
       });
+      // Show win modal
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showGameResultModal(true);
+      });
     } else if (_isGameLost) {
       _stopTimer();
       // Still track time even if lost
       setState(() {
         _totalSecondsPlayed += _currentWordStartTime;
+      });
+      // Show lose modal
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showGameResultModal(false);
       });
     }
   }
@@ -465,8 +473,6 @@ class _GamePageState extends State<GamePage> {
                       child: _buildHintDisplay(),
                     ),
 
-                  if (_isGameWon || _isGameLost) _buildGameStatus(l10n),
-
                   const SizedBox(height: 8),
                 ],
               ),
@@ -586,17 +592,14 @@ class _GamePageState extends State<GamePage> {
 
                       const SizedBox(height: 12),
 
-                      // Hint Display or Game Status
-                      if (!_isGameWon && !_isGameLost)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 4.0,
-                          ),
-                          child: _buildHintDisplay(),
+                      // Hint Display
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 4.0,
                         ),
-
-                      if (_isGameWon || _isGameLost) _buildGameStatus(l10n),
+                        child: _buildHintDisplay(),
+                      ),
 
                       const SizedBox(height: 8),
                     ],
@@ -610,51 +613,6 @@ class _GamePageState extends State<GamePage> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildGameStatus(AppLocalizations l10n) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        children: [
-          Wrap(
-            alignment: WrapAlignment.center,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: 8,
-            children: [
-              Text(
-                _isGameWon ? l10n.youWon : l10n.gameOver,
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: _isGameWon ? Colors.green : Colors.red,
-                ),
-              ),
-              if (_isGameWon)
-                Text(
-                  '+$_lastRoundPoints ${l10n.points}',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green.shade700,
-                  ),
-                ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          ElevatedButton.icon(
-            onPressed: _isGameWon
-                ? _continueToNextWord
-                : _playAgainAfterGameOver,
-            icon: Icon(_isGameWon ? Icons.arrow_forward : Icons.refresh),
-            label: Text(_isGameWon ? l10n.nextWord : l10n.playAgain),
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-            ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -684,6 +642,83 @@ class _GamePageState extends State<GamePage> {
                 foregroundColor: Colors.white,
               ),
               child: Text(l10n.exit),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showGameResultModal(bool isWon) {
+    final l10n = AppLocalizations.of(context)!;
+    
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                isWon ? Icons.emoji_events : Icons.sentiment_dissatisfied,
+                color: isWon ? Colors.amber : Colors.red,
+                size: 32,
+              ),
+              const SizedBox(width: 12),
+              Text(
+                isWon ? l10n.youWon : l10n.gameOver,
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: isWon ? Colors.green : Colors.red,
+                ),
+              ),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (isWon)
+                Text(
+                  '+$_lastRoundPoints ${l10n.points}',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green.shade700,
+                  ),
+                ),
+              const SizedBox(height: 16),
+              Text(
+                '${l10n.theWordWas}: $_word',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          actions: [
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.of(dialogContext).pop();
+                  if (isWon) {
+                    _continueToNextWord();
+                  } else {
+                    _playAgainAfterGameOver();
+                  }
+                },
+                icon: Icon(isWon ? Icons.arrow_forward : Icons.refresh),
+                label: Text(isWon ? l10n.nextWord : l10n.playAgain),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  backgroundColor: isWon ? Colors.green : Colors.blue,
+                  foregroundColor: Colors.white,
+                ),
+              ),
             ),
           ],
         );
