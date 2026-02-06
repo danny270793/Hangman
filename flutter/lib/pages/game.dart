@@ -714,10 +714,7 @@ class _GamePageState extends State<GamePage> {
         Widget buildPoints() {
           if (!isWon) return const SizedBox.shrink();
           return Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-              vertical: 12,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -732,11 +729,7 @@ class _GamePageState extends State<GamePage> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  Icons.star,
-                  color: Colors.amber.shade600,
-                  size: 28,
-                ),
+                Icon(Icons.star, color: Colors.amber.shade600, size: 28),
                 const SizedBox(width: 8),
                 Text(
                   '+$_lastRoundPoints',
@@ -749,10 +742,7 @@ class _GamePageState extends State<GamePage> {
                 const SizedBox(width: 4),
                 Text(
                   l10n.points,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.green.shade600,
-                  ),
+                  style: TextStyle(fontSize: 18, color: Colors.green.shade600),
                 ),
               ],
             ),
@@ -830,9 +820,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                   const SizedBox(width: 8),
                   Icon(
-                    isWon
-                        ? Icons.arrow_forward_rounded
-                        : Icons.refresh_rounded,
+                    isWon ? Icons.arrow_forward_rounded : Icons.refresh_rounded,
                     size: 24,
                   ),
                 ],
@@ -899,10 +887,7 @@ class _GamePageState extends State<GamePage> {
                       const SizedBox(height: 24),
                       buildTitle(),
                       const SizedBox(height: 16),
-                      if (isWon) ...[
-                        buildPoints(),
-                        const SizedBox(height: 24),
-                      ],
+                      if (isWon) ...[buildPoints(), const SizedBox(height: 24)],
                       buildWord(),
                       const SizedBox(height: 32),
                       buildButton(),
