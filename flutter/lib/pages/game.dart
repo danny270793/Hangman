@@ -670,14 +670,182 @@ class _GamePageState extends State<GamePage> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext dialogContext) {
+        final orientation = MediaQuery.of(dialogContext).orientation;
+        final isLandscape = orientation == Orientation.landscape;
+
+        // Build icon widget
+        Widget buildIcon() {
+          return Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: isWon ? Colors.green : Colors.red,
+              boxShadow: [
+                BoxShadow(
+                  color: (isWon ? Colors.green : Colors.red).withOpacity(0.3),
+                  blurRadius: 20,
+                  spreadRadius: 5,
+                ),
+              ],
+            ),
+            child: Icon(
+              isWon ? Icons.emoji_events : Icons.close,
+              size: 60,
+              color: Colors.white,
+            ),
+          );
+        }
+
+        // Build title widget
+        Widget buildTitle() {
+          return Text(
+            isWon ? l10n.youWon : l10n.gameOver,
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: isWon ? Colors.green.shade800 : Colors.red.shade800,
+            ),
+            textAlign: TextAlign.center,
+          );
+        }
+
+        // Build points widget
+        Widget buildPoints() {
+          if (!isWon) return const SizedBox.shrink();
+          return Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
+              vertical: 12,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.green.withOpacity(0.2),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.star,
+                  color: Colors.amber.shade600,
+                  size: 28,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  '+$_lastRoundPoints',
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green.shade700,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  l10n.points,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.green.shade600,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
+        // Build word widget
+        Widget buildWord() {
+          return Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.7),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: isWon ? Colors.green.shade300 : Colors.red.shade300,
+                width: 2,
+              ),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  l10n.theWordWas,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey.shade600,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  _word,
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: isWon ? Colors.green.shade900 : Colors.red.shade900,
+                    letterSpacing: 2,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
+        // Build button widget
+        Widget buildButton() {
+          return SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+                if (isWon) {
+                  _continueToNextWord();
+                } else {
+                  _playAgainAfterGameOver();
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: isWon ? Colors.green : Colors.red,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 18),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                elevation: 4,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    isWon ? l10n.nextWord : l10n.playAgain,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Icon(
+                    isWon
+                        ? Icons.arrow_forward_rounded
+                        : Icons.refresh_rounded,
+                    size: 24,
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+
         return Dialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(28),
           ),
           child: Container(
-            constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(dialogContext).size.height * 0.9,
-            ),
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(28),
@@ -689,184 +857,57 @@ class _GamePageState extends State<GamePage> {
                     : [Colors.red.shade50, Colors.red.shade100],
               ),
             ),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                // Icon with circular background
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isWon ? Colors.green : Colors.red,
-                    boxShadow: [
-                      BoxShadow(
-                        color: (isWon ? Colors.green : Colors.red).withOpacity(
-                          0.3,
-                        ),
-                        blurRadius: 20,
-                        spreadRadius: 5,
-                      ),
-                    ],
-                  ),
-                  child: Icon(
-                    isWon ? Icons.emoji_events : Icons.close,
-                    size: 60,
-                    color: Colors.white,
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                // Title
-                Text(
-                  isWon ? l10n.youWon : l10n.gameOver,
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: isWon ? Colors.green.shade800 : Colors.red.shade800,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-
-                const SizedBox(height: 16),
-
-                // Points (only for wins)
-                if (isWon) ...[
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 12,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.green.withOpacity(0.2),
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
+            child: isLandscape
+                ? IntrinsicHeight(
                     child: Row(
-                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.amber.shade600,
-                          size: 28,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          '+$_lastRoundPoints',
-                          style: TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green.shade700,
+                        // Left column
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              buildIcon(),
+                              const SizedBox(height: 24),
+                              buildTitle(),
+                              if (isWon) ...[
+                                const SizedBox(height: 16),
+                                buildPoints(),
+                              ],
+                            ],
                           ),
                         ),
-                        const SizedBox(width: 4),
-                        Text(
-                          l10n.points,
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.green.shade600,
+                        const SizedBox(width: 32),
+                        // Right column
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              buildWord(),
+                              const SizedBox(height: 24),
+                              buildButton(),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 24),
-                ],
-
-                // The word was
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: isWon
-                          ? Colors.green.shade300
-                          : Colors.red.shade300,
-                      width: 2,
-                    ),
-                  ),
-                  child: Column(
+                  )
+                : Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        l10n.theWordWas,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey.shade600,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        _word,
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: isWon
-                              ? Colors.green.shade900
-                              : Colors.red.shade900,
-                          letterSpacing: 2,
-                        ),
-                      ),
+                      buildIcon(),
+                      const SizedBox(height: 24),
+                      buildTitle(),
+                      const SizedBox(height: 16),
+                      if (isWon) ...[
+                        buildPoints(),
+                        const SizedBox(height: 24),
+                      ],
+                      buildWord(),
+                      const SizedBox(height: 32),
+                      buildButton(),
                     ],
                   ),
-                ),
-
-                const SizedBox(height: 32),
-
-                // Action button
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(dialogContext).pop();
-                      if (isWon) {
-                        _continueToNextWord();
-                      } else {
-                        _playAgainAfterGameOver();
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: isWon ? Colors.green : Colors.red,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 18),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      elevation: 4,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          isWon ? l10n.nextWord : l10n.playAgain,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Icon(
-                          isWon
-                              ? Icons.arrow_forward_rounded
-                              : Icons.refresh_rounded,
-                          size: 24,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
           ),
         );
       },
