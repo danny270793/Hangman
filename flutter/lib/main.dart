@@ -34,8 +34,11 @@ void main() async {
   );
 
   // Initialize services and load saved preferences
-  final localeService = LocaleService();
-  await localeService.loadLocale();
+  // Get device locale
+  final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
+  
+  final localeService = LocaleService(initialLocale: deviceLocale);
+  await localeService.loadLocale(deviceLocale: deviceLocale);
 
   final themeService = ThemeService();
   await themeService.loadTheme();
