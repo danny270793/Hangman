@@ -42,9 +42,7 @@ class HomePage extends StatelessWidget {
                   // Main content
                   if (isLandscape)
                     Padding(
-                      padding: const EdgeInsets.only(
-                        left: 24.0,
-                      ),
+                      padding: const EdgeInsets.only(left: 24.0),
                       child: _buildLandscapeLayout(
                         context,
                         l10n,

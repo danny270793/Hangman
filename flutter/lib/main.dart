@@ -34,8 +34,11 @@ void main() async {
   );
 
   // Initialize services and load saved preferences
-  final localeService = LocaleService();
-  await localeService.loadLocale();
+  // Get device locale
+  final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
+  
+  final localeService = LocaleService(initialLocale: deviceLocale);
+  await localeService.loadLocale(deviceLocale: deviceLocale);
 
   final themeService = ThemeService();
   await themeService.loadTheme();
@@ -65,7 +68,17 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  static const String routeName = '/';
+
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late final GoRouter router;
   final protectedPages = const [
     HomePage.routeName,
     GamePage.routeName,
@@ -77,78 +90,82 @@ class MyApp extends StatelessWidget {
   ];
   final publicPages = const [LoginPage.routeName, RegisterPage.routeName];
 
-  const MyApp({super.key});
+  @override
+  void initState() {
+    super.initState();
+    final authService = context.read<AuthService>();
+    router = GoRouter(
+      refreshListenable: authService,
+      initialLocation: SplashPage.routeName,
+      redirect: (context, state) {
+        final isLoggedIn = authService.isAuthenticated;
+        final location = state.matchedLocation;
+
+        final isPublicPage = publicPages.contains(location);
+        final isProtectedPage = protectedPages.contains(location);
+
+        if (!isLoggedIn && isProtectedPage) {
+          return LoginPage.routeName;
+        }
+
+        if (isLoggedIn && isPublicPage) {
+          return HomePage.routeName;
+        }
+
+        return null;
+      },
+      routes: [
+        GoRoute(
+          path: SplashPage.routeName,
+          builder: (context, state) => const SplashPage(),
+        ),
+        GoRoute(
+          path: LoginPage.routeName,
+          builder: (context, state) => const LoginPage(),
+        ),
+        GoRoute(
+          path: RegisterPage.routeName,
+          builder: (context, state) => const RegisterPage(),
+        ),
+        GoRoute(
+          path: HomePage.routeName,
+          builder: (context, state) => const HomePage(),
+        ),
+        GoRoute(
+          path: GamePage.routeName,
+          builder: (context, state) => const GamePage(),
+        ),
+        GoRoute(
+          path: SettingsPage.routeName,
+          builder: (context, state) => const SettingsPage(),
+        ),
+        GoRoute(
+          path: RecordsPage.routeName,
+          builder: (context, state) => const RecordsPage(),
+        ),
+        GoRoute(
+          path: PrivacyPage.routeName,
+          builder: (context, state) => const PrivacyPage(),
+        ),
+        GoRoute(
+          path: TermsPage.routeName,
+          builder: (context, state) => const TermsPage(),
+        ),
+        GoRoute(
+          path: AboutPage.routeName,
+          builder: (context, state) => const AboutPage(),
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final authService = context.read<AuthService>();
     final localeService = context.watch<LocaleService>();
     final themeService = context.watch<ThemeService>();
 
     return MaterialApp.router(
-      routerConfig: GoRouter(
-        refreshListenable: authService,
-        initialLocation: SplashPage.routeName,
-        redirect: (context, state) {
-          final isLoggedIn = authService.isAuthenticated;
-          final location = state.matchedLocation;
-
-          final isPublicPage = publicPages.contains(location);
-          final isProtectedPage = protectedPages.contains(location);
-
-          if (!isLoggedIn && isProtectedPage) {
-            return LoginPage.routeName;
-          }
-
-          if (isLoggedIn && isPublicPage) {
-            return HomePage.routeName;
-          }
-
-          return null;
-        },
-        routes: [
-          GoRoute(
-            path: SplashPage.routeName,
-            builder: (context, state) => const SplashPage(),
-          ),
-          GoRoute(
-            path: LoginPage.routeName,
-            builder: (context, state) => const LoginPage(),
-          ),
-          GoRoute(
-            path: RegisterPage.routeName,
-            builder: (context, state) => const RegisterPage(),
-          ),
-          GoRoute(
-            path: HomePage.routeName,
-            builder: (context, state) => const HomePage(),
-          ),
-          GoRoute(
-            path: GamePage.routeName,
-            builder: (context, state) => const GamePage(),
-          ),
-          GoRoute(
-            path: SettingsPage.routeName,
-            builder: (context, state) => const SettingsPage(),
-          ),
-          GoRoute(
-            path: RecordsPage.routeName,
-            builder: (context, state) => const RecordsPage(),
-          ),
-          GoRoute(
-            path: PrivacyPage.routeName,
-            builder: (context, state) => const PrivacyPage(),
-          ),
-          GoRoute(
-            path: TermsPage.routeName,
-            builder: (context, state) => const TermsPage(),
-          ),
-          GoRoute(
-            path: AboutPage.routeName,
-            builder: (context, state) => const AboutPage(),
-          ),
-        ],
-      ),
+      routerConfig: router,
       locale: localeService.locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
