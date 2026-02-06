@@ -675,6 +675,9 @@ class _GamePageState extends State<GamePage> {
             borderRadius: BorderRadius.circular(28),
           ),
           child: Container(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(dialogContext).size.height * 0.9,
+            ),
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(28),
@@ -686,9 +689,10 @@ class _GamePageState extends State<GamePage> {
                     : [Colors.red.shade50, Colors.red.shade100],
               ),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
                 // Icon with circular background
                 Container(
                   width: 100,
@@ -862,6 +866,7 @@ class _GamePageState extends State<GamePage> {
                 ),
               ],
             ),
+          ),
           ),
         );
       },
