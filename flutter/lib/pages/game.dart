@@ -377,10 +377,11 @@ class _GamePageState extends State<GamePage> {
                     if (isLandscape) {
                       return SafeArea(
                         child: _buildLandscapeLayout(
-                        context,
-                        l10n,
-                        timedModeService,
-                      ));
+                          context,
+                          l10n,
+                          timedModeService,
+                        ),
+                      );
                     } else {
                       return _buildPortraitLayout(
                         context,
@@ -405,105 +406,104 @@ class _GamePageState extends State<GamePage> {
         // Scrollable content
         Expanded(
           child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Score Cards
-                  Padding(
-                    padding: EdgeInsets.only(top: 24, bottom: 24),
-                    child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      spacing: 8,
-                      children: [
-                        _buildScoreCard(
-                          l10n.guessesLeft,
-                          '${_maxWrongGuesses - _wrongGuesses}',
-                          Icons.favorite,
-                          Colors.red,
-                        ),
-                        if (timedModeService.isEnabled)
-                          _buildScoreCard(
-                            l10n.time,
-                            '${_remainingSeconds}s',
-                            Icons.timer,
-                            _remainingSeconds <= 10
-                                ? Colors.red
-                                : Colors.orange,
-                          ),
-                        _buildScoreCard(
-                          l10n.lettersUsed,
-                          '${_guessedLetters.length}',
-                          Icons.text_fields,
-                          Colors.blue,
-                        ),
-                        _buildScoreCard(
-                          l10n.score,
-                          '$_totalScore',
-                          Icons.star,
-                          Colors.amber,
-                        ),
-                        _buildScoreCard(
-                          l10n.wordsSolved,
-                          '$_wordsSolved',
-                          Icons.check_circle,
-                          Colors.green,
-                        ),
-                        _buildScoreCard(
-                          l10n.totalTime,
-                          '${_totalSecondsPlayed}s',
-                          Icons.access_time,
-                          Colors.purple,
-                        ),
-                      ],
-                    ),
-                  )),
-
-                  // Hangman Drawing
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: SizedBox(
-                      height: 200,
-                      child: Center(child: _buildHangmanDrawing()),
-                    ),
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  // Word Display
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Center(child: _buildWordDisplay()),
-                  ),
-
-                  const SizedBox(height: 12),
-
-                  // Hint Display or Game Status
-                  if (!_isGameWon && !_isGameLost)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 4.0,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Score Cards
+              Padding(
+                padding: EdgeInsets.only(top: 24, bottom: 24),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    spacing: 8,
+                    children: [
+                      _buildScoreCard(
+                        l10n.guessesLeft,
+                        '${_maxWrongGuesses - _wrongGuesses}',
+                        Icons.favorite,
+                        Colors.red,
                       ),
-                      child: _buildHintDisplay(),
-                    ),
-
-                  const SizedBox(height: 8),
-                ],
+                      if (timedModeService.isEnabled)
+                        _buildScoreCard(
+                          l10n.time,
+                          '${_remainingSeconds}s',
+                          Icons.timer,
+                          _remainingSeconds <= 10 ? Colors.red : Colors.orange,
+                        ),
+                      _buildScoreCard(
+                        l10n.lettersUsed,
+                        '${_guessedLetters.length}',
+                        Icons.text_fields,
+                        Colors.blue,
+                      ),
+                      _buildScoreCard(
+                        l10n.score,
+                        '$_totalScore',
+                        Icons.star,
+                        Colors.amber,
+                      ),
+                      _buildScoreCard(
+                        l10n.wordsSolved,
+                        '$_wordsSolved',
+                        Icons.check_circle,
+                        Colors.green,
+                      ),
+                      _buildScoreCard(
+                        l10n.totalTime,
+                        '${_totalSecondsPlayed}s',
+                        Icons.access_time,
+                        Colors.purple,
+                      ),
+                    ],
+                  ),
+                ),
               ),
+
+              // Hangman Drawing
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: SizedBox(
+                  height: 200,
+                  child: Center(child: _buildHangmanDrawing()),
+                ),
+              ),
+
+              const SizedBox(height: 8),
+
+              // Word Display
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Center(child: _buildWordDisplay()),
+              ),
+
+              const SizedBox(height: 12),
+
+              // Hint Display or Game Status
+              if (!_isGameWon && !_isGameLost)
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 4.0,
+                  ),
+                  child: _buildHintDisplay(),
+                ),
+
+              const SizedBox(height: 8),
+            ],
+          ),
         ),
 
         // Fixed Keyboard at bottom with card elevation
         Card(
-            margin: EdgeInsets.zero,
-            elevation: 8,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(24),
-                topRight: Radius.circular(24),
-              ),
+          margin: EdgeInsets.zero,
+          elevation: 8,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
             ),
-            child: _buildKeyboard(),
-          )
+          ),
+          child: _buildKeyboard(),
+        ),
       ],
     );
   }
@@ -665,7 +665,7 @@ class _GamePageState extends State<GamePage> {
 
   void _showGameResultModal(bool isWon) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -698,7 +698,9 @@ class _GamePageState extends State<GamePage> {
                     color: isWon ? Colors.green : Colors.red,
                     boxShadow: [
                       BoxShadow(
-                        color: (isWon ? Colors.green : Colors.red).withOpacity(0.3),
+                        color: (isWon ? Colors.green : Colors.red).withOpacity(
+                          0.3,
+                        ),
                         blurRadius: 20,
                         spreadRadius: 5,
                       ),
@@ -710,9 +712,9 @@ class _GamePageState extends State<GamePage> {
                     color: Colors.white,
                   ),
                 ),
-                
+
                 const SizedBox(height: 24),
-                
+
                 // Title
                 Text(
                   isWon ? l10n.youWon : l10n.gameOver,
@@ -723,13 +725,16 @@ class _GamePageState extends State<GamePage> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Points (only for wins)
                 if (isWon) ...[
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
@@ -771,7 +776,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                   const SizedBox(height: 24),
                 ],
-                
+
                 // The word was
                 Container(
                   padding: const EdgeInsets.all(16),
@@ -779,7 +784,9 @@ class _GamePageState extends State<GamePage> {
                     color: Colors.white.withOpacity(0.7),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: isWon ? Colors.green.shade300 : Colors.red.shade300,
+                      color: isWon
+                          ? Colors.green.shade300
+                          : Colors.red.shade300,
                       width: 2,
                     ),
                   ),
@@ -799,16 +806,18 @@ class _GamePageState extends State<GamePage> {
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: isWon ? Colors.green.shade900 : Colors.red.shade900,
+                          color: isWon
+                              ? Colors.green.shade900
+                              : Colors.red.shade900,
                           letterSpacing: 2,
                         ),
                       ),
                     ],
                   ),
                 ),
-                
+
                 const SizedBox(height: 32),
-                
+
                 // Action button
                 SizedBox(
                   width: double.infinity,
@@ -842,7 +851,9 @@ class _GamePageState extends State<GamePage> {
                         ),
                         const SizedBox(width: 8),
                         Icon(
-                          isWon ? Icons.arrow_forward_rounded : Icons.refresh_rounded,
+                          isWon
+                              ? Icons.arrow_forward_rounded
+                              : Icons.refresh_rounded,
                           size: 24,
                         ),
                       ],
@@ -1035,7 +1046,10 @@ class _GamePageState extends State<GamePage> {
             itemCount: hints.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1051,7 +1065,9 @@ class _GamePageState extends State<GamePage> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onTertiaryContainer,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onTertiaryContainer,
                       ),
                     ),
                     Flexible(
@@ -1059,7 +1075,9 @@ class _GamePageState extends State<GamePage> {
                         hints[index],
                         style: TextStyle(
                           fontSize: 14,
-                          color: Theme.of(context).colorScheme.onTertiaryContainer,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onTertiaryContainer,
                         ),
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
@@ -1134,7 +1152,10 @@ class _GamePageState extends State<GamePage> {
                                   : Theme.of(context).colorScheme.onError)
                             : Theme.of(context).colorScheme.onSurface,
                         minimumSize: const Size(0, 48),
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 12,
+                        ),
                       ),
                       child: Text(
                         letter,
