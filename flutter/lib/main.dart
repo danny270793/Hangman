@@ -36,7 +36,7 @@ void main() async {
   // Initialize services and load saved preferences
   // Get device locale
   final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
-  
+
   final localeService = LocaleService(initialLocale: deviceLocale);
   await localeService.loadLocale(deviceLocale: deviceLocale);
 
