@@ -92,68 +92,68 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     final authService = context.read<AuthService>();
     router = GoRouter(
-        refreshListenable: authService,
-        initialLocation: SplashPage.routeName,
-        redirect: (context, state) {
-          final isLoggedIn = authService.isAuthenticated;
-          final location = state.matchedLocation;
+      refreshListenable: authService,
+      initialLocation: SplashPage.routeName,
+      redirect: (context, state) {
+        final isLoggedIn = authService.isAuthenticated;
+        final location = state.matchedLocation;
 
-          final isPublicPage = publicPages.contains(location);
-          final isProtectedPage = protectedPages.contains(location);
+        final isPublicPage = publicPages.contains(location);
+        final isProtectedPage = protectedPages.contains(location);
 
-          if (!isLoggedIn && isProtectedPage) {
-            return LoginPage.routeName;
-          }
+        if (!isLoggedIn && isProtectedPage) {
+          return LoginPage.routeName;
+        }
 
-          if (isLoggedIn && isPublicPage) {
-            return HomePage.routeName;
-          }
+        if (isLoggedIn && isPublicPage) {
+          return HomePage.routeName;
+        }
 
-          return null;
-        },
-        routes: [
-          GoRoute(
-            path: SplashPage.routeName,
-            builder: (context, state) => const SplashPage(),
-          ),
-          GoRoute(
-            path: LoginPage.routeName,
-            builder: (context, state) => const LoginPage(),
-          ),
-          GoRoute(
-            path: RegisterPage.routeName,
-            builder: (context, state) => const RegisterPage(),
-          ),
-          GoRoute(
-            path: HomePage.routeName,
-            builder: (context, state) => const HomePage(),
-          ),
-          GoRoute(
-            path: GamePage.routeName,
-            builder: (context, state) => const GamePage(),
-          ),
-          GoRoute(
-            path: SettingsPage.routeName,
-            builder: (context, state) => const SettingsPage(),
-          ),
-          GoRoute(
-            path: RecordsPage.routeName,
-            builder: (context, state) => const RecordsPage(),
-          ),
-          GoRoute(
-            path: PrivacyPage.routeName,
-            builder: (context, state) => const PrivacyPage(),
-          ),
-          GoRoute(
-            path: TermsPage.routeName,
-            builder: (context, state) => const TermsPage(),
-          ),
-          GoRoute(
-            path: AboutPage.routeName,
-            builder: (context, state) => const AboutPage(),
-          ),
-        ],
-      );
+        return null;
+      },
+      routes: [
+        GoRoute(
+          path: SplashPage.routeName,
+          builder: (context, state) => const SplashPage(),
+        ),
+        GoRoute(
+          path: LoginPage.routeName,
+          builder: (context, state) => const LoginPage(),
+        ),
+        GoRoute(
+          path: RegisterPage.routeName,
+          builder: (context, state) => const RegisterPage(),
+        ),
+        GoRoute(
+          path: HomePage.routeName,
+          builder: (context, state) => const HomePage(),
+        ),
+        GoRoute(
+          path: GamePage.routeName,
+          builder: (context, state) => const GamePage(),
+        ),
+        GoRoute(
+          path: SettingsPage.routeName,
+          builder: (context, state) => const SettingsPage(),
+        ),
+        GoRoute(
+          path: RecordsPage.routeName,
+          builder: (context, state) => const RecordsPage(),
+        ),
+        GoRoute(
+          path: PrivacyPage.routeName,
+          builder: (context, state) => const PrivacyPage(),
+        ),
+        GoRoute(
+          path: TermsPage.routeName,
+          builder: (context, state) => const TermsPage(),
+        ),
+        GoRoute(
+          path: AboutPage.routeName,
+          builder: (context, state) => const AboutPage(),
+        ),
+      ],
+    );
   }
 
   @override
