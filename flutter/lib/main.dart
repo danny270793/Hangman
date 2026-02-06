@@ -65,7 +65,17 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  static const String routeName = '/';
+
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late final GoRouter router;
   final protectedPages = const [
     HomePage.routeName,
     GamePage.routeName,
@@ -77,16 +87,11 @@ class MyApp extends StatelessWidget {
   ];
   final publicPages = const [LoginPage.routeName, RegisterPage.routeName];
 
-  const MyApp({super.key});
-
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     final authService = context.read<AuthService>();
-    final localeService = context.watch<LocaleService>();
-    final themeService = context.watch<ThemeService>();
-
-    return MaterialApp.router(
-      routerConfig: GoRouter(
+    router = GoRouter(
         refreshListenable: authService,
         initialLocation: SplashPage.routeName,
         redirect: (context, state) {
@@ -148,7 +153,16 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => const AboutPage(),
           ),
         ],
-      ),
+      );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final localeService = context.watch<LocaleService>();
+    final themeService = context.watch<ThemeService>();
+
+    return MaterialApp.router(
+      routerConfig: router,
       locale: localeService.locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
