@@ -129,8 +129,20 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settings)),
       body: orientation == Orientation.portrait
-          ? _buildPortraitLayout(context, l10n, localeService, themeService, authService)
-          : _buildLandscapeLayout(context, l10n, localeService, themeService, authService),
+          ? _buildPortraitLayout(
+              context,
+              l10n,
+              localeService,
+              themeService,
+              authService,
+            )
+          : _buildLandscapeLayout(
+              context,
+              l10n,
+              localeService,
+              themeService,
+              authService,
+            ),
     );
   }
 
@@ -273,7 +285,7 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 _buildProfileHeader(context, l10n),
                 const SizedBox(height: 16),
-                
+
                 // Profile Settings
                 _buildSectionHeader(context, l10n.profile),
                 _buildSettingsTile(
@@ -318,14 +330,17 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Column(
               children: [
                 const SizedBox(height: 16),
-                
+
                 // General Settings Section
                 _buildSectionHeader(context, l10n.general),
                 _buildSettingsTile(
                   context,
                   icon: Icons.language,
                   title: l10n.language,
-                  subtitle: _getLanguageName(localeService.locale.languageCode, l10n),
+                  subtitle: _getLanguageName(
+                    localeService.locale.languageCode,
+                    l10n,
+                  ),
                   onTap: () {
                     _showLanguagePicker(context, l10n, localeService);
                   },
@@ -377,20 +392,20 @@ class _SettingsPageState extends State<SettingsPage> {
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
-                    onPressed: () {
-                      _showLogoutDialog(context, l10n);
-                    },
-                    icon: const Icon(Icons.logout),
-                    label: Text(l10n.logout),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                      onPressed: () {
+                        _showLogoutDialog(context, l10n);
+                      },
+                      icon: const Icon(Icons.logout),
+                      label: Text(l10n.logout),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                     ),
-                  ),
                   ),
                 ),
 
@@ -429,11 +444,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ? FileImage(File(_profileImagePath!))
                       : null,
                   child: _profileImagePath == null
-                      ? const Icon(
-                          Icons.person,
-                          size: 40,
-                          color: Colors.white,
-                        )
+                      ? const Icon(Icons.person, size: 40, color: Colors.white)
                       : null,
                 ),
                 Positioned(
