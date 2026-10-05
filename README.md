@@ -13,7 +13,14 @@ credentials from `--dart-define-from-file`.
 
 ## Database
 
-The schema (`hangman_*` tables, views, and functions) lives in [danny270793/supabase](https://github.com/danny270793/supabase). Hangman uses the same Supabase project as Wallet, Family Games, and Habit Tracker. Create and apply migrations there, not in this repo.
+This repo has the app only. The `hangman_*` schema lives in [danny270793/supabase](https://github.com/danny270793/supabase), the source of truth for migrations. Hangman shares that Supabase project with the other apps. To change the database you need both repos:
+
+```sh
+git clone git@github.com:danny270793/Hangman.git
+git clone git@github.com:danny270793/supabase.git
+```
+
+Create, test, and push migrations from the `supabase` repo. This repo ignores any `supabase/` folder, and `.env.json` holds the project credentials, so never commit it.
 
 ## Commands
 
