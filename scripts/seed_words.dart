@@ -145,7 +145,7 @@ Future<void> syncWordsForLocale(
 
   while (true) {
     final wordsResponse = await supabase
-        .from('words')
+        .from('hangman_words')
         .select('id, word')
         .eq('locale', locale)
         .range(offset, offset + batchSize - 1);
@@ -184,7 +184,7 @@ Future<void> syncWordsForLocale(
 
       while (true) {
         final wordTagsResponse = await supabase
-            .from('word_tags')
+            .from('hangman_word_tags')
             .select('word_id, tags(tag)')
             .inFilter('word_id', chunk)
             .range(offset, offset + batchSize - 1);
@@ -264,7 +264,7 @@ Future<void> syncWordsForLocale(
 
         // Insert word (difficulty_value will be auto-calculated by trigger)
         final wordResponse = await supabase
-            .from('words')
+            .from('hangman_words')
             .insert({
               'word': wordData.word,
               'locale': locale,
@@ -305,7 +305,7 @@ Future<void> syncWordsForLocale(
         final wordData = localWords[word]!;
 
         // Delete old tag associations
-        await supabase.from('word_tags').delete().eq('word_id', wordId);
+        await supabase.from('hangman_word_tags').delete().eq('word_id', wordId);
 
         // Insert new tags
         await insertTagsAndLink(supabase, wordId, wordData.tags, locale);
@@ -333,7 +333,7 @@ Future<void> syncWordsForLocale(
     for (final entry in wordsToDelete.entries) {
       try {
         // Delete word (cascades to word_tags due to ON DELETE CASCADE)
-        await supabase.from('words').delete().eq('id', entry.value);
+        await supabase.from('hangman_words').delete().eq('id', entry.value);
 
         deletedCount++;
         if (deletedCount % 50 == 0) {
@@ -361,7 +361,7 @@ Future<void> syncWordsForLocale(
 
   //   while (true) {
   //     final allTagsResponse = await supabase
-  //         .from('tags')
+  //         .from('hangman_tags')
   //         .select('id, tag')
   //         .eq('locale', locale)
   //         .range(offset, offset + batchSize - 1);
@@ -375,7 +375,7 @@ Future<void> syncWordsForLocale(
 
   //       // Check if this tag is associated with any words
   //       final wordTagsResponse = await supabase
-  //           .from('word_tags')
+  //           .from('hangman_word_tags')
   //           .select('word_id')
   //           .eq('tag_id', tagId)
   //           .limit(1);
@@ -383,7 +383,7 @@ Future<void> syncWordsForLocale(
   //       final count = (wordTagsResponse as List<dynamic>).length;
 
   //       if (count == 0) {
-  //         await supabase.from('tags').delete().eq('id', tagId);
+  //         await supabase.from('hangman_tags').delete().eq('id', tagId);
   //         orphanedCount++;
   //       }
   //     }
@@ -420,7 +420,7 @@ Future<void> insertTagsAndLink(
       late int tagId;
       try {
         final response = await supabase
-            .from('tags')
+            .from('hangman_tags')
             .insert({'tag': tag, 'locale': locale})
             .select('id')
             .single();
@@ -430,7 +430,7 @@ Future<void> insertTagsAndLink(
         // If tag already exists, get its ID
         if (e.code == '23505') {
           final existing = await supabase
-              .from('tags')
+              .from('hangman_tags')
               .select('id')
               .eq('tag', tag)
               .eq('locale', locale)
@@ -444,7 +444,7 @@ Future<void> insertTagsAndLink(
 
       // Link word to tag (ignore if already linked)
       try {
-        await supabase.from('word_tags').insert({
+        await supabase.from('hangman_word_tags').insert({
           'word_id': wordId,
           'tag_id': tagId,
         });

@@ -11,19 +11,11 @@ flutter run --dart-define-from-file=.env.json
 (it also needs `SUPABASE_SERVICE_KEY`); the app itself reads its Supabase
 credentials from `--dart-define-from-file`.
 
+## Database
+
+The schema (`hangman_*` tables, views, and functions) lives in [danny270793/supabase](https://github.com/danny270793/supabase). Hangman uses the same Supabase project as Wallet, Family Games, and Habit Tracker. Create and apply migrations there, not in this repo.
+
 ## Commands
-
-### Get supabase changes
-
-```bash
-supabase db pull
-```
-
-### Upload supabase changes
-
-```bash
-supabase db push
-```
 
 ### Format code
 
@@ -71,16 +63,16 @@ dart scripts/seed_words.dart
 After seeding or adding new words, recalculate difficulties using the Supabase SQL Editor:
 
 ```sql
-SELECT update_all_word_difficulties();
+SELECT hangman_update_all_word_difficulties();
 ```
 
 Or update specific locale:
 
 ```sql
-SELECT update_word_difficulties_by_locale('en');
+SELECT hangman_update_word_difficulties_by_locale('en');
 ```
 
-**Note**: Difficulty is automatically calculated when inserting/updating words via trigger, but you can manually recalculate all words with this function. See `DIFFICULTY_CALCULATION.md` for details.
+**Note**: Difficulty is automatically calculated when inserting/updating words via trigger, but you can manually recalculate all words with this function. See [difficulty calculation](https://github.com/danny270793/supabase/blob/main/docs/hangman/difficulty-calculation.md) for details.
 
 ### Reorganize JSON words by difficulty
 
@@ -92,7 +84,7 @@ dart scripts/group_words.dart
 
 This script:
 - Reads `assets/words_en.json` and `assets/words_es.json`
-- Calculates difficulty using Supabase `calculate_word_difficulty` function
+- Calculates difficulty using Supabase `hangman_calculate_word_difficulty` function
 - Groups words into easy (0-33), medium (34-66), and hard (67-100)
 - Saves the reorganized files back
 

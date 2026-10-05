@@ -110,7 +110,7 @@ dart scripts/seed_words.dart
 
 ### Requirements:
 - `.env` file with `SUPABASE_URL` and `SUPABASE_SERVICE_KEY`
-- Supabase database with words tables (see `WORDS_SCHEMA.md`)
+- Supabase database with words tables (see [words schema](https://github.com/danny270793/supabase/blob/main/docs/hangman/words-schema.md))
 - `supabase` package in `dev_dependencies`
 - JSON files with flat structure: `{ "words": [{ "word": "...", "tags": [...] }] }`
 
@@ -168,7 +168,7 @@ $ dart scripts/seed_words.dart
 3. **Insert Phase**: 
    - Adds words that exist in JSON but not in database
    - Creates tags if they don't exist
-   - Links words to tags via `word_tags` table
+   - Links words to tags via `hangman_word_tags` table
    - Difficulty value auto-calculated by database trigger
 
 4. **Update Phase**: 
@@ -179,7 +179,7 @@ $ dart scripts/seed_words.dart
 
 5. **Delete Phase**: 
    - Removes words from database that no longer exist in JSON
-   - Cascading delete removes word_tags automatically
+   - Cascading delete removes hangman_word_tags automatically
 
 6. **Cleanup Phase**:
    - Identifies orphaned tags (not linked to any words)
@@ -197,7 +197,7 @@ $ dart scripts/seed_words.dart
 ### Notes:
 
 - **Service role key** required for admin operations (INSERT, UPDATE, DELETE)
-- **Cascading deletes** remove word_tags automatically when words are deleted
+- **Cascading deletes** remove hangman_word_tags automatically when words are deleted
 - **Progress indicators** shown every 50 words for large operations
 - **UPPERCASE normalization** for all words to ensure consistent comparison
 - **Tag comparison** uses set difference to detect changes
@@ -212,7 +212,7 @@ $ dart scripts/seed_words.dart
 
 ### What it does:
 - Reads words from `assets/words_en.json` and `assets/words_es.json`
-- Calculates difficulty for each word using Supabase's `calculate_word_difficulty` function
+- Calculates difficulty for each word using Supabase's `hangman_calculate_word_difficulty` function
 - Groups words by difficulty: easy (0-33), medium (34-66), hard (67-100)
 - Saves the reorganized structure back to the JSON files
 
@@ -225,9 +225,9 @@ dart scripts/group_words.dart
 
 ### Requirements:
 - `.env` file with `SUPABASE_URL` and `SUPABASE_SERVICE_KEY`
-- Supabase database with `calculate_word_difficulty` function
+- Supabase database with `hangman_calculate_word_difficulty` function
 - `supabase` package in `dev_dependencies`
-- Words migration must be applied (see `DIFFICULTY_CALCULATION.md`)
+- Words migration must be applied (see [difficulty calculation](https://github.com/danny270793/supabase/blob/main/docs/hangman/difficulty-calculation.md))
 
 ### Example Output:
 
@@ -274,7 +274,7 @@ $ dart scripts/group_words.dart
 
 ### How Difficulty is Calculated:
 
-The script uses Supabase's `calculate_word_difficulty` function which considers:
+The script uses Supabase's `hangman_calculate_word_difficulty` function which considers:
 
 1. **Unique Letter Ratio (40%)**: Fewer repeated letters = harder
 2. **Letter Rarity (35%)**: Uncommon letters = harder (language-specific)
@@ -304,5 +304,5 @@ difficulty = (unique_ratio × 0.40) + (letter_rarity × 0.35) + (length × 0.25)
 - Each category contains a `words` array with word objects
 - Original tags are preserved during reorganization
 - The script handles errors gracefully and defaults problematic words to medium difficulty
-- See `DIFFICULTY_CALCULATION.md` for detailed documentation on the algorithm
+- See [difficulty calculation](https://github.com/danny270793/supabase/blob/main/docs/hangman/difficulty-calculation.md) for detailed documentation on the algorithm
 

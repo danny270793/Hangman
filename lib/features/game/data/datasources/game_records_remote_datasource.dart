@@ -42,7 +42,7 @@ class GameRecordsSupabaseDatasource implements GameRecordsRemoteDatasource {
     if (_client.auth.currentUser?.id == null) {
       throw const NotAuthenticatedException();
     }
-    await _client.from('game_records').insert({
+    await _client.from('hangman_game_records').insert({
       'has_timed_mode_enabled': hasTimedModeEnabled,
       'difficulty': difficulty,
       'points': points,
@@ -57,9 +57,9 @@ class GameRecordsSupabaseDatasource implements GameRecordsRemoteDatasource {
     required int offset,
   }) async {
     AppLogger.debug('getGameRecords called (offset $offset)');
-    // Query from the view that joins with auth.users to get usernames
+    // Query from the hangman_ view that joins with auth.users to get usernames
     final response = await _client
-        .from('game_records_with_usernames')
+        .from('hangman_game_records_with_usernames')
         .select()
         .order('points', ascending: false)
         .range(offset, offset + limit - 1);
