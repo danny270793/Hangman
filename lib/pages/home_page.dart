@@ -1,0 +1,405 @@
+import 'package:flutter/material.dart';
+import 'package:hangman/l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
+
+import '../core/di/injection.dart';
+import '../core/difficulty/app_difficulty_controller.dart';
+import '../core/timed_mode/app_timed_mode_controller.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final difficultyService = getIt<AppDifficultyController>();
+    final timedModeService = getIt<AppTimedModeController>();
+
+    return ListenableBuilder(
+      listenable: Listenable.merge([difficultyService, timedModeService]),
+      builder: (context, _) => Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+                Theme.of(context).colorScheme.secondary.withValues(alpha: 0.05),
+              ],
+            ),
+          ),
+          child: SafeArea(
+            bottom: false,
+            child: OrientationBuilder(
+              builder: (context, orientation) {
+                final isLandscape = orientation == Orientation.landscape;
+
+                return Stack(
+                  children: [
+                    // Main content
+                    if (isLandscape)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 24.0),
+                        child: _buildLandscapeLayout(
+                          context,
+                          l10n,
+                          difficultyService,
+                          timedModeService,
+                        ),
+                      )
+                    else
+                      Center(
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.all(24.0),
+                          child: _buildPortraitLayout(
+                            context,
+                            l10n,
+                            difficultyService,
+                            timedModeService,
+                          ),
+                        ),
+                      ),
+
+                    // Settings button in top-right corner
+                    Positioned(
+                      top: 8,
+                      right: 8,
+                      child: IconButton(
+                        icon: const Icon(Icons.settings),
+                        iconSize: 28,
+                        onPressed: () {
+                          context.push('/settings');
+                        },
+                        tooltip: l10n.settings,
+                        style: IconButton.styleFrom(
+                          backgroundColor: Theme.of(context).colorScheme.surface
+                              .withValues(alpha: 0.9),
+                          foregroundColor: Theme.of(context)
+                              .colorScheme
+                              .primary,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPortraitLayout(
+    BuildContext context,
+    AppLocalizations l10n,
+    AppDifficultyController difficultyService,
+    AppTimedModeController timedModeService,
+  ) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // Logo/Title Section
+        Container(
+          width: 120,
+          height: 120,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.1),
+                blurRadius: 10,
+                spreadRadius: 2,
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Image.asset('assets/icons/icon.png', fit: BoxFit.contain),
+          ),
+        ),
+        const SizedBox(height: 24),
+        Text(
+          l10n.hangmanGame,
+          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+        ),
+        const SizedBox(height: 48),
+
+        // Game Configuration Card
+        _buildConfigurationCard(
+          context,
+          l10n,
+          difficultyService,
+          timedModeService,
+        ),
+        const SizedBox(height: 48),
+
+        // Let's Play Button
+        _buildPlayButton(context, l10n),
+
+        const SizedBox(height: 16),
+
+        // See Records Button
+        _buildRecordsButton(context, l10n),
+      ],
+    );
+  }
+
+  Widget _buildLandscapeLayout(
+    BuildContext context,
+    AppLocalizations l10n,
+    AppDifficultyController difficultyService,
+    AppTimedModeController timedModeService,
+  ) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Left side - Logo and Title
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.1),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Image.asset(
+                    'assets/icons/icon.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                l10n.hangmanGame,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: 24),
+
+        // Right side - Configuration and Play Button
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.only(right: 24.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const SizedBox(height: 24),
+                _buildConfigurationCard(
+                  context,
+                  l10n,
+                  difficultyService,
+                  timedModeService,
+                ),
+                const SizedBox(height: 24),
+                _buildPlayButton(context, l10n),
+                const SizedBox(height: 16),
+                _buildRecordsButton(context, l10n),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildConfigurationCard(
+    BuildContext context,
+    AppLocalizations l10n,
+    AppDifficultyController difficultyService,
+    AppTimedModeController timedModeService,
+  ) {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              l10n.gameConfiguration,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            const SizedBox(height: 24),
+
+            // Difficulty Setting
+            _buildSettingsTile(
+              context,
+              icon: Icons.speed,
+              title: l10n.difficulty,
+              subtitle: _getDifficultyLabel(l10n, difficultyService.difficulty),
+              onTap: () {
+                _showDifficultyPicker(context, l10n, difficultyService);
+              },
+            ),
+            const Divider(height: 24),
+
+            // Timed Mode Setting
+            _buildSettingsTile(
+              context,
+              icon: Icons.timer,
+              title: l10n.timedMode,
+              subtitle: l10n.playWithTimer,
+              trailing: Switch(
+                value: timedModeService.enabled,
+                onChanged: (value) {
+                  timedModeService.setEnabled(value);
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPlayButton(BuildContext context, AppLocalizations l10n) {
+    return SizedBox(
+      width: double.infinity,
+      height: 60,
+      child: ElevatedButton.icon(
+        onPressed: () {
+          context.push('/game');
+        },
+        icon: const Icon(Icons.play_arrow, size: 32),
+        label: Text(
+          l10n.letsPlay,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          elevation: 4,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRecordsButton(BuildContext context, AppLocalizations l10n) {
+    return SizedBox(
+      width: double.infinity,
+      height: 50,
+      child: OutlinedButton.icon(
+        onPressed: () {
+          context.push('/records');
+        },
+        icon: const Icon(Icons.emoji_events, size: 24),
+        label: Text(
+          l10n.seeRecords,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Theme.of(context).colorScheme.primary,
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.primary,
+            width: 2,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSettingsTile(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    String? subtitle,
+    Widget? trailing,
+    VoidCallback? onTap,
+  }) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Icon(icon, color: Theme.of(context).colorScheme.primary),
+      ),
+      title: Text(title),
+      subtitle: subtitle != null ? Text(subtitle) : null,
+      trailing:
+          trailing ?? (onTap != null ? const Icon(Icons.chevron_right) : null),
+      onTap: trailing == null ? onTap : null,
+    );
+  }
+
+  String _getDifficultyLabel(AppLocalizations l10n, GameDifficulty difficulty) {
+    switch (difficulty) {
+      case GameDifficulty.easy:
+        return l10n.easy;
+      case GameDifficulty.medium:
+        return l10n.medium;
+      case GameDifficulty.hard:
+        return l10n.hard;
+    }
+  }
+
+  void _showDifficultyPicker(
+    BuildContext context,
+    AppLocalizations l10n,
+    AppDifficultyController difficultyService,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.selectDifficulty),
+          content: RadioGroup<GameDifficulty>(
+            groupValue: difficultyService.difficulty,
+            onChanged: (GameDifficulty? value) {
+              if (value != null) {
+                difficultyService.setDifficulty(value);
+                Navigator.of(dialogContext).pop();
+              }
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: GameDifficulty.values.map((difficulty) {
+                return RadioListTile<GameDifficulty>(
+                  title: Text(_getDifficultyLabel(l10n, difficulty)),
+                  value: difficulty,
+                );
+              }).toList(),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
