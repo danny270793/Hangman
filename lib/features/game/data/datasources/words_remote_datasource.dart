@@ -40,9 +40,9 @@ class WordsSupabaseDatasource implements WordsRemoteDatasource {
   @override
   Future<List<WordEntity>> getWords({required String locale}) async {
     AppLogger.debug('getWords called for $locale');
-    // Query words_with_tags view for the specified locale (single fetch)
+    // Query hangman_words_with_tags view for the specified locale (single fetch)
     final response = await _client
-        .from('words_with_tags')
+        .from('hangman_words_with_tags')
         .select()
         .eq('locale', locale);
     return (response as List<dynamic>)

@@ -4,8 +4,7 @@ This guide explains how to set up Supabase authentication for the Hangman app.
 
 ## Prerequisites
 
-1. Create a Supabase account at [https://supabase.com](https://supabase.com)
-2. Create a new project in Supabase
+Hangman uses the shared Supabase project from [danny270793/supabase](https://github.com/danny270793/supabase), the same one as Wallet, Family Games, and Habit Tracker. Apply that repo's migrations to the project before running the app.
 
 ## Configuration Steps
 
